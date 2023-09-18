@@ -1,5 +1,4 @@
 import "../globals.css";
-
 import getProducts, { ProductParams } from "../actions/getProducts";
 import getCurrentUser from "../actions/getCurrentUser";
 import Container from "@/components/Container";
@@ -8,7 +7,7 @@ import ProductCard from "@/components/products/ProductCard";
 import FloatingButton from "@/components/FloatingButton";
 import Categories from "@/components/categories/Categories";
 import Pagination from "@/components/Pagination";
-import { Product } from "@prisma/client";
+import { Product } from "../../../prisma/generated/client";
 import { PRODUCTS_PER_PAGE } from "@/constants";
 
 interface HomeProps {
