@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 /data
-/prisma
 .env
 # testing
 /coverage
