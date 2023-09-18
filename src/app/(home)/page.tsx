@@ -10,6 +10,7 @@ import Categories from "@/components/categories/Categories";
 import Pagination from "@/components/Pagination";
 
 import { PRODUCTS_PER_PAGE } from "@/constants";
+import { Product } from "@prisma/client";
 
 interface HomeProps {
   searchParams: ProductParams;
@@ -37,7 +38,7 @@ export default async function Home({ searchParams }: HomeProps) {
       ) : (
         <>
           <div className="grid  gap-8 pt-12 pb-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gird-cols-5 2xl:grid-cols-6">
-            {products.data.map((product) => (
+            {products.data.map((product: Product) => (
               <ProductCard
                 key={product.id}
                 currentUser={currentUser}
