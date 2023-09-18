@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/data
+/prisma
+.env
 # testing
 /coverage
 
@@ -33,3 +35,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE
