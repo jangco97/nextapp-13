@@ -14,26 +14,6 @@ interface HomeProps {
   searchParams: ProductParams;
 }
 
-// interface Product {
-//   id: number;
-//   title: string;
-//   description: string;
-//   price: number;
-//   image: string;
-//   category: string;
-//   userId: number;
-//   createdAt: string;
-//   updatedAt: string;
-//   User: {
-//     id: number;
-//     email: string;
-//     name: string;
-//     avatar: string;
-//     createdAt: string;
-//     updatedAt: string;
-//   };
-
-// }
 export default async function Home({ searchParams }: HomeProps) {
   console.log(searchParams);
   const page = searchParams?.page;

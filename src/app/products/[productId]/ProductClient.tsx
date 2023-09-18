@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import { categories } from "@/components/categories/Categories";
 import ProductHead from "@/components/products/ProductHead";
 import ProductInfo from "@/components/products/ProductInfo";
-import { Product, User } from "@prisma/client";
+import { Product, User } from "../../../../prisma/generated/client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -16,11 +16,11 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   const router = useRouter();
 
   const category = categories.find((item) => item.path === product.category);
-  
+
   const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
     ssr: false,
   });
-  console.log(product)
+  console.log(product);
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
@@ -46,7 +46,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
               />
             </div>
           </div>
-          {currentUser?.id !== product?.user?.id && 
+          {currentUser?.id !== product?.user?.id && (
             <div className="mt-10">
               <Button
                 onClick={() =>
@@ -57,7 +57,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
                 label="이 유저와 채팅하기"
               />
             </div>
-          }
+          )}
         </div>
       </div>
     </Container>

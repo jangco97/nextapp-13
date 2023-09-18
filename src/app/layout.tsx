@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import getCurrentUser from "./actions/getCurrentUser";
 import Script from "next/script";
 import ToastProvider from "@/components/ToastProvider";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,11 +18,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const currentUser = await getCurrentUser();
+  console.log(currentUser);
   return (
     <html lang="en">
       <body className={inter.className}>
         <Navbar currentUser={currentUser} />
-        <ToastProvider/>
+        <ToastProvider />
         {children}
         <Script
           type="text/javascript"

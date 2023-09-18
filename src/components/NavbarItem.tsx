@@ -4,16 +4,11 @@ import Link from "next/link";
 import React from "react";
 
 interface NavbarItemProps {
-  mobile?: boolean;
   currentUser?: User | null;
 }
-const NavbarItem = ({ mobile, currentUser }: NavbarItemProps) => {
+const NavbarItem = ({ currentUser }: NavbarItemProps) => {
   return (
-    <ul
-      className={`text-md justify-center flex gap-4 w-full items-center ${
-        mobile && "flex-col h-full"
-      } `}
-    >
+    <ul className={`text-md justify-center flex gap-4 w-full items-center`}>
       {" "}
       <li className="py-2 text-center border-b-4 cursor-pointer">
         <Link href={"/challenge"}>챌린지</Link>
