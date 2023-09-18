@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "../../prisma/generated/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
@@ -18,7 +18,7 @@ const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
   const toggleFavorite = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (!currentUser) {
-      toast.warn("로그인이 필요합니다.")
+      toast.warn("로그인이 필요합니다.");
       return;
     }
     try {
@@ -30,15 +30,15 @@ const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
       }
       await request();
       router.refresh();
-      toast.success("성공적으로 처리되었습니다.")
+      toast.success("성공적으로 처리되었습니다.");
     } catch (err) {
-      toast.error("실패했습니다.")
+      toast.error("실패했습니다.");
     }
   };
 
   return {
     hasFavorite,
-    toggleFavorite
+    toggleFavorite,
   };
 };
 

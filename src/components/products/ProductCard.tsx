@@ -1,5 +1,5 @@
 "use client";
-import { Product, User } from "@prisma/client";
+import { Product, User } from "../../../prisma/generated/client";
 import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";

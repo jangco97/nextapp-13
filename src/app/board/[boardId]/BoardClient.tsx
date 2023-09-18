@@ -5,8 +5,8 @@ import BoardButton from "@/components/boards/BoardButton";
 import BoardHead from "@/components/boards/BoardHead";
 import BoardInfo from "@/components/boards/BoardInfo";
 import { dopaminecategories } from "@/components/categories/DopamineCategories";
-dopaminecategories
-import { Board, User } from "@prisma/client";
+dopaminecategories;
+import { Board, User } from "../../../../prisma/generated/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -16,22 +16,25 @@ interface BoardClientProps {
 }
 const BoardClient = ({ board, currentUser }: BoardClientProps) => {
   const router = useRouter();
-  console.log(board)
-  const category = dopaminecategories.find((item) => item.path === board.category);
-  
+  console.log(board);
+  const category = dopaminecategories.find(
+    (item) => item.path === board.category
+  );
+
   function handleDeleteClick() {
     const isConfirmed = window.confirm("삭제하시겠습니까?");
 
-    if(isConfirmed){
-      axios.delete(`/api/boards/${board.id}`)
-      .then(() => {
-        router.push('/')
-      })
-      .catch((error) => {
-        alert(error)
-      })
-    }else {
-      console.log('삭제 취소')
+    if (isConfirmed) {
+      axios
+        .delete(`/api/boards/${board.id}`)
+        .then(() => {
+          router.push("/");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    } else {
+      console.log("삭제 취소");
     }
   }
   return (
@@ -45,15 +48,23 @@ const BoardClient = ({ board, currentUser }: BoardClientProps) => {
             createdAt={board.createdAt}
           />
           <div className="grid grid-cols-1 mt-6 gap-5">
-            <BoardInfo
-              description={board.description}
-            />
+            <BoardInfo description={board.description} />
           </div>
           <div className="w-full bg-gray-200 p-5  rounded-xl">
-          {currentUser?.id === board.user.id && <BoardButton label={"수정"} onClick={() => router.push(`${board.id}/modify`)}></BoardButton>}
-          {currentUser?.id === board.user.id && <BoardButton label={"삭제"} outline={true} onClick={ handleDeleteClick}></BoardButton>}
+            {currentUser?.id === board.user.id && (
+              <BoardButton
+                label={"수정"}
+                onClick={() => router.push(`${board.id}/modify`)}
+              ></BoardButton>
+            )}
+            {currentUser?.id === board.user.id && (
+              <BoardButton
+                label={"삭제"}
+                outline={true}
+                onClick={handleDeleteClick}
+              ></BoardButton>
+            )}
           </div>
-        
         </div>
       </div>
     </Container>

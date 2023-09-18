@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "../../prisma/generated/client";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";

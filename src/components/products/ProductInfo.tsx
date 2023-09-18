@@ -1,19 +1,21 @@
-import { User } from "@prisma/client";
+import { User } from "../../../prisma/generated/client";
 import React from "react";
 import { IconType } from "react-icons";
 import Avatar from "../Avatar";
 import ProductCategory from "./ProductCategory";
 import { formatTime } from "@/helpers/dayjs";
 interface ProductInfoProps {
-  user: User,
-  category: {
-    icon: IconType,
-    label: string,
-    description: string,
-  } | undefined;
-  createdAt: Date,
-  description: string,
-} 
+  user: User;
+  category:
+    | {
+        icon: IconType;
+        label: string;
+        description: string;
+      }
+    | undefined;
+  createdAt: Date;
+  description: string;
+}
 const ProductInfo = ({
   user,
   category,
@@ -26,12 +28,18 @@ const ProductInfo = ({
         <div className="flex items-center gap-2 text-xl font-semibold">
           <Avatar src={user?.image} />
           <p>{user?.name}</p>
-        </div>   
+        </div>
         <div>{formatTime(createdAt)}</div>
         <hr />
       </div>
-     
-      {category && <ProductCategory icon={category.icon} label={category.label} description={category.description}/>}
+
+      {category && (
+        <ProductCategory
+          icon={category.icon}
+          label={category.label}
+          description={category.description}
+        />
+      )}
       <hr />
       <div>{description}</div>
     </div>

@@ -1,17 +1,17 @@
 "use client";
-import { Board, User } from "@prisma/client";
+import { Board, User } from "../../../prisma/generated/client";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { fromNow } from "@/helpers/dayjs";
-interface BoardDataProps{
-    id: string;
-    title: string;
-    description: string;
-    category: string;
-    userId: string;
-    createdAt: Date;
-    updatedAt: Date;
-    user: User
+interface BoardDataProps {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  user: User;
 }
 interface BoardContainerProps {
   currentUser?: User | null;
@@ -19,7 +19,7 @@ interface BoardContainerProps {
 }
 const BoardContainer = ({ currentUser, data }: BoardContainerProps) => {
   const router = useRouter();
-  console.log(data)
+  console.log(data);
   return (
     <>
       <div
