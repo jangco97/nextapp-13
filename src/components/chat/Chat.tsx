@@ -25,7 +25,7 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
   });
 
   const conversation: TConversation | undefined =
-    currentUser?.conversations.find((conversation) =>
+    currentUser?.conversations.find((conversation: TConversation) =>
       conversation.users.find((user) => user.id === receiver.receiverId)
     );
   if (!receiver.receiverName || !currentUser) {
