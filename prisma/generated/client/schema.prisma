@@ -1,0 +1,196 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum UserType {
+  User
+  Admin
+}
+
+model User {
+  id                String              @id @default(cuid())
+  name              String?
+  hashedPassword    String?
+  email             String?             @unique
+  emailVerified     DateTime?
+  image             String?
+  level             Int                 @default(1)
+  tier              String[]            @default([])
+  accounts          Account[]
+  sessions          Session[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  userType          UserType            @default(User)
+  favoriteIds       String[]
+  Product           Product[]
+  Board             Board[]
+  ViewdBoardStore   ViewdBoardStore[]
+  BoardLikeDisLike  BoardLikeDisLike[]
+  challengeProgress ChallengeProgress[]
+  conversations     Conversation[]
+  sendMessages      Message[]           @relation("sender")
+  receivedMessages  Message[]           @relation("receiver")
+}
+
+model Board {
+  id               String             @id @default(cuid())
+  title            String
+  description      String
+  category         String             @default("전체")
+  userId           String
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  likes            Int                @default(0)
+  dislikes         Int                @default(0)
+  views            Int                @default(0)
+  ViewdBoardStore  ViewdBoardStore[]
+  BoardLikeDisLike BoardLikeDisLike[]
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BoardLikeDisLike {
+  id        Int      @id @default(autoincrement())
+  type      String // "Likes 또는 DisLikes"
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  boardId   String
+  board     Board    @relation(fields: [boardId], references: [id])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  imageSrc    String
+  category    String
+  userId      String
+  price       Int
+  latitude    Float
+  longitude   Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ViewdBoardStore {
+  id       String   @id @default(cuid())
+  userId   String
+  boardId  String
+  viewedAt DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id])
+  board    Board    @relation(fields: [boardId], references: [id])
+}
+
+model Challenge {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  imageSrc     String
+  reward       String
+  category     String
+  period       String
+  progress     Int
+  disabled     Boolean
+  participants Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  essays       Essay[]
+
+  challengeProgress ChallengeProgress[]
+}
+
+model Essay {
+  id          String    @id @default(cuid())
+  content     String // 에세이 내용
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
+  challengeId String // 어떤 챌린지에 속한 에세이인지를 나타내는 외래 키
+}
+
+model ChallengeProgress {
+  id          String    @id @default(cuid())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
+  challengeId String
+  // 유저별로 진행 상태를 나타내는 필드 추가 (예: progress, completed 등)
+  progress    Int
+  completed   Boolean
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Dopamine {
+  dopamine String @id @default(cuid())
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Conversation {
+  id         String    @id @default(cuid())
+  name       String?
+  senderId   String
+  receiverId String
+  users      User[]
+  messages   Message[]
+  createdAt  DateTime  @default(now())
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  text           String?
+  image          String?
+  senderId       String
+  receiverId     String
+  conversationId String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  sender         User         @relation(name: "sender", fields: [senderId], references: [id])
+  receiver       User         @relation(name: "receiver", fields: [receiverId], references: [id])
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+}
