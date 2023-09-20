@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import NavbarItem from "./NavbarItem";
 import { User } from "../../prisma/generated/client";
 interface NavbarProps {
-  currentUser?: User | null;
+  session: any;
 }
-const Navbar = ({ currentUser }: NavbarProps) => {
-  console.log(currentUser);
+const Navbar = ({ session }: NavbarProps) => {
+  console.log(session);
   return (
     <nav className="relative z-10 min-w-[928px] bg-gray-400 text-white">
       <div className="flex items-center justify-between mx-10">
@@ -15,7 +15,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
           <Link href={"/"}>Dopamine Detox</Link>
         </div>
         <div>
-          <NavbarItem currentUser={currentUser} />
+          <NavbarItem session={session} />
         </div>
       </div>
     </nav>

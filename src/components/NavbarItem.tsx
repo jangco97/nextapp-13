@@ -1,13 +1,11 @@
-import { User } from "../../prisma/generated/client";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
-
 interface NavbarItemProps {
-  currentUser?: User | null;
+  session: any;
 }
-const NavbarItem = ({ currentUser }: NavbarItemProps) => {
-  console.log(currentUser, "currentUser");
+const NavbarItem = ({ session }: NavbarItemProps) => {
+  console.log(session);
   return (
     <ul className={`text-md justify-center flex gap-4 w-full items-center`}>
       {" "}
@@ -24,13 +22,15 @@ const NavbarItem = ({ currentUser }: NavbarItemProps) => {
         <Link href={"/user"}>User</Link>
       </li>
       (
-      <li className="py-2 text-center border-b-4 cursor-pointer">
-        <button onClick={() => signOut()}>Sign out</button>
-      </li>
+      {session ? (
+        <li className="py-2 text-center border-b-4 cursor-pointer">
+          <button onClick={() => signOut()}>Sign out</button>
+        </li>
       ) : (
-      <li className="py-2 text-center border-b-4 cursor-pointer">
-        <button onClick={() => signIn()}>Sign in</button>
-      </li>
+        <li className="py-2 text-center border-b-4 cursor-pointer">
+          <button onClick={() => signIn()}>Sign in</button>
+        </li>
+      )}{" "}
       )
     </ul>
   );

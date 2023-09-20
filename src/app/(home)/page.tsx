@@ -9,17 +9,18 @@ import Categories from "@/components/categories/Categories";
 import Pagination from "@/components/Pagination";
 import { Product } from "../../../prisma/generated/client";
 import { PRODUCTS_PER_PAGE } from "@/constants";
-
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { User } from "@/components/user";
 interface HomeProps {
   searchParams: ProductParams;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  console.log(searchParams);
+  const session = await getServerSession(authOptions);
+  console.log(session);
   const page = searchParams?.page;
-  console.log(page);
   const pageNum = typeof page === "string" ? Number(page) : 1;
-  console.log(pageNum);
   //products에는 전체 아이템 개수까지 포함을 시켰다.
   const products = await getProducts(searchParams);
   const currentUser = await getCurrentUser();
@@ -46,6 +47,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </div>
         </>
       )}
+      <User></User>
       <Pagination
         page={pageNum}
         totalItems={products.totalItems}
