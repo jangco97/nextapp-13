@@ -1,4 +1,4 @@
-import { authOptions } from "../../pages/api/auth/[...nextauth]";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import React from "react";
 import getCurrentUser from "../actions/getCurrentUser";

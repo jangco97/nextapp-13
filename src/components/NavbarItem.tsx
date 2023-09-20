@@ -7,6 +7,7 @@ interface NavbarItemProps {
   currentUser?: User | null;
 }
 const NavbarItem = ({ currentUser }: NavbarItemProps) => {
+  console.log(currentUser, "currentUser");
   return (
     <ul className={`text-md justify-center flex gap-4 w-full items-center`}>
       {" "}
@@ -22,15 +23,15 @@ const NavbarItem = ({ currentUser }: NavbarItemProps) => {
       <li className="py-2 text-center border-b-4 cursor-pointer">
         <Link href={"/user"}>User</Link>
       </li>
-      {currentUser ? (
-        <li className="py-2 text-center border-b-4 cursor-pointer">
-          <button onClick={() => signOut()}>Sign out</button>
-        </li>
+      (
+      <li className="py-2 text-center border-b-4 cursor-pointer">
+        <button onClick={() => signOut()}>Sign out</button>
+      </li>
       ) : (
-        <li className="py-2 text-center border-b-4 cursor-pointer">
-          <button onClick={() => signIn()}>Sign in</button>
-        </li>
-      )}
+      <li className="py-2 text-center border-b-4 cursor-pointer">
+        <button onClick={() => signIn()}>Sign in</button>
+      </li>
+      )
     </ul>
   );
 };

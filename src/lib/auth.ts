@@ -1,19 +1,19 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "../../../../prisma/generated/client";
 import bcrypt from "bcryptjs";
+import { PrismaClient } from "prisma/generated/client";
 
 const prisma = new PrismaClient();
-
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "example@example.com",
+        },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
@@ -42,7 +42,6 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET!,
-  //session 데이터 저장
   session: {
     strategy: "jwt",
   },
@@ -63,4 +62,3 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
-export default NextAuth(authOptions);

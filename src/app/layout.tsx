@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import getCurrentUser from "./actions/getCurrentUser";
 import Script from "next/script";
 import ToastProvider from "@/components/ToastProvider";
+import { NextAuthProvider } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Navbar currentUser={currentUser} />
         <ToastProvider />
-        {children}
+        <NextAuthProvider>{children}</NextAuthProvider>
         <Script
           type="text/javascript"
           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72967a1e2143a6d338837326d597b5be&libraries=services,clusterer&autoload=false"
