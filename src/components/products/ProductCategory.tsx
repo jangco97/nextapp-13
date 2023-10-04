@@ -1,24 +1,42 @@
-
+import Link from "next/link";
 import React from "react";
-import { IconType } from "react-icons";
 
 interface ProductCategoryProps {
-  icon: IconType;
-  label: string;
-  description: string;
+  category:
+    | {
+        label: string;
+        categoryId: string;
+      }
+    | undefined;
+  subCategory:
+    | {
+        label: string;
+        categoryId: string;
+      }
+    | undefined;
 }
-const ProductCategory = ({
-  icon: Icon,
-  label,
-  description,
-}: ProductCategoryProps) => {
+const ProductCategory = ({ category, subCategory }: ProductCategoryProps) => {
   return (
     <div>
       <div className="flex flex-row items-center gap-4">
-        <Icon size={40} className="text-neutral-600" />
         <div className="flex flex-col">
-          <div className="text-lg font-semibold">{label}</div>
-          <div className="font-light text-neutral-500">{description}</div>
+          <div className="text-lg font-semibold">
+            <Link
+              href={`/?category=${category?.categoryId}&label=${category?.label}`}
+            >
+              {category?.label}
+            </Link>{" "}
+            {subCategory?.label && (
+              <>
+                <span className="text-lg font-semibold">{">"}</span>
+                <Link
+                  href={`/?category=${subCategory?.categoryId}&label=${category?.label}&subLabel=${subCategory?.label}`}
+                >
+                  {subCategory?.label}
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
