@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { SidebarContext } from "@/context/sidebaropen.context";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Dispatch } from "react";
 import Categories, { mainCategories } from "../categories/Categories";
 import CategoryBox from "../categories/CategoryBox";
 import { useSearchParams } from "next/navigation";

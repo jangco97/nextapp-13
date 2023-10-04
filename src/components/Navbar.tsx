@@ -84,7 +84,7 @@ const Navbar = ({ session }: NavbarProps) => {
         </form>
       </div>
       <div className="hidden md:block">
-        <NavbarItem session={session} pricedispatch={pricedispatch} />
+        <NavbarItem session={session} />
       </div>
     </nav>
   );
