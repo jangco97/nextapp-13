@@ -1,6 +1,5 @@
 import { User } from "../../../prisma/generated/client";
 import React from "react";
-import { IconType } from "react-icons";
 import Avatar from "../Avatar";
 import ProductCategory from "./ProductCategory";
 import { formatTime } from "@/helpers/dayjs";
@@ -8,19 +7,31 @@ interface ProductInfoProps {
   user: User;
   category:
     | {
-        icon: IconType;
         label: string;
-        description: string;
+        categoryId: string;
+      }
+    | undefined;
+  subCategory:
+    | {
+        label: string;
+        categoryId: string;
       }
     | undefined;
   createdAt: Date;
   description: string;
+  price?: number;
+  address?: string | null;
+  addressDetail?: string | null;
 }
 const ProductInfo = ({
   user,
   category,
+  subCategory,
   createdAt,
   description,
+  price,
+  address,
+  addressDetail,
 }: ProductInfoProps) => {
   return (
     <div className="flex flex-col gap-4">
@@ -34,14 +45,17 @@ const ProductInfo = ({
       </div>
 
       {category && (
-        <ProductCategory
-          icon={category.icon}
-          label={category.label}
-          description={category.description}
-        />
+        <ProductCategory category={category} subCategory={subCategory} />
       )}
+      {price && <div>{price}원</div>}
       <hr />
       <div>{description}</div>
+      <hr />
+      <div>
+        <span>{"주소:"}</span> <span className="text-red-400">{address}</span>
+        {"  |  "}
+        <span className="text-blue-400">{addressDetail}</span>
+      </div>
     </div>
   );
 };
