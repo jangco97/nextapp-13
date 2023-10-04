@@ -1,11 +1,12 @@
 // api/boards.ts (예시 파일 이름)
 import { NextResponse } from "next/server";
 import prisma from "@/helpers/prismadb";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export async function POST(request: Request) {
-  const currentUser = await getCurrentUser();
-  if (!currentUser) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
     return NextResponse.error();
   }
 
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
 
   // 필수 필드가 비어있는지 확인
   if (!title) {
-    return NextResponse.json({message: "빈 입력을 채워주세요."});
+    return NextResponse.json({ message: "빈 입력을 채워주세요." });
   }
 
   const board = await prisma.board.create({
@@ -23,7 +24,7 @@ export async function POST(request: Request) {
       title,
       description,
       category,
-      userId: currentUser.id,
+      userId: session.user?.id as string,
     },
   });
 
