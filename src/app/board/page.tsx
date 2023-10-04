@@ -21,7 +21,7 @@ const BoardPage = async ({ searchParams }: BoardProps) => {
   const pageNum = typeof page === "string" ? Number(page) : 1;
 
   const boards = await getBoards(searchParams);
-  console.log(boards)
+  console.log(boards);
   const currentUser = await getCurrentUser();
   return (
     <>
@@ -46,9 +46,9 @@ const BoardPage = async ({ searchParams }: BoardProps) => {
                     <span>날짜</span>
                   </div>
                 </div>
-                <hr/>
+                <hr />
               </div>
-              
+
               {boards.data.map((board) => (
                 <BoardContainer
                   key={board.id}

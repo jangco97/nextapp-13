@@ -49,25 +49,15 @@ export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
  */
 export type ViewdBoardStore = $Result.DefaultSelection<Prisma.$ViewdBoardStorePayload>
 /**
- * Model Challenge
+ * Model ViewdProductStore
  * 
  */
-export type Challenge = $Result.DefaultSelection<Prisma.$ChallengePayload>
+export type ViewdProductStore = $Result.DefaultSelection<Prisma.$ViewdProductStorePayload>
 /**
- * Model Essay
+ * Model Alert
  * 
  */
-export type Essay = $Result.DefaultSelection<Prisma.$EssayPayload>
-/**
- * Model ChallengeProgress
- * 
- */
-export type ChallengeProgress = $Result.DefaultSelection<Prisma.$ChallengeProgressPayload>
-/**
- * Model Dopamine
- * 
- */
-export type Dopamine = $Result.DefaultSelection<Prisma.$DopaminePayload>
+export type Alert = $Result.DefaultSelection<Prisma.$AlertPayload>
 /**
  * Model VerificationToken
  * 
@@ -294,44 +284,24 @@ export class PrismaClient<
   get viewdBoardStore(): Prisma.ViewdBoardStoreDelegate<ExtArgs>;
 
   /**
-   * `prisma.challenge`: Exposes CRUD operations for the **Challenge** model.
+   * `prisma.viewdProductStore`: Exposes CRUD operations for the **ViewdProductStore** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Challenges
-    * const challenges = await prisma.challenge.findMany()
+    * // Fetch zero or more ViewdProductStores
+    * const viewdProductStores = await prisma.viewdProductStore.findMany()
     * ```
     */
-  get challenge(): Prisma.ChallengeDelegate<ExtArgs>;
+  get viewdProductStore(): Prisma.ViewdProductStoreDelegate<ExtArgs>;
 
   /**
-   * `prisma.essay`: Exposes CRUD operations for the **Essay** model.
+   * `prisma.alert`: Exposes CRUD operations for the **Alert** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Essays
-    * const essays = await prisma.essay.findMany()
+    * // Fetch zero or more Alerts
+    * const alerts = await prisma.alert.findMany()
     * ```
     */
-  get essay(): Prisma.EssayDelegate<ExtArgs>;
-
-  /**
-   * `prisma.challengeProgress`: Exposes CRUD operations for the **ChallengeProgress** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ChallengeProgresses
-    * const challengeProgresses = await prisma.challengeProgress.findMany()
-    * ```
-    */
-  get challengeProgress(): Prisma.ChallengeProgressDelegate<ExtArgs>;
-
-  /**
-   * `prisma.dopamine`: Exposes CRUD operations for the **Dopamine** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Dopamines
-    * const dopamines = await prisma.dopamine.findMany()
-    * ```
-    */
-  get dopamine(): Prisma.DopamineDelegate<ExtArgs>;
+  get alert(): Prisma.AlertDelegate<ExtArgs>;
 
   /**
    * `prisma.verificationToken`: Exposes CRUD operations for the **VerificationToken** model.
@@ -839,10 +809,8 @@ export namespace Prisma {
     BoardLikeDisLike: 'BoardLikeDisLike',
     Product: 'Product',
     ViewdBoardStore: 'ViewdBoardStore',
-    Challenge: 'Challenge',
-    Essay: 'Essay',
-    ChallengeProgress: 'ChallengeProgress',
-    Dopamine: 'Dopamine',
+    ViewdProductStore: 'ViewdProductStore',
+    Alert: 'Alert',
     VerificationToken: 'VerificationToken',
     Conversation: 'Conversation',
     Message: 'Message'
@@ -862,7 +830,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'board' | 'boardLikeDisLike' | 'product' | 'viewdBoardStore' | 'challenge' | 'essay' | 'challengeProgress' | 'dopamine' | 'verificationToken' | 'conversation' | 'message'
+      modelProps: 'account' | 'session' | 'user' | 'board' | 'boardLikeDisLike' | 'product' | 'viewdBoardStore' | 'viewdProductStore' | 'alert' | 'verificationToken' | 'conversation' | 'message'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1328,267 +1296,135 @@ export namespace Prisma {
           }
         }
       }
-      Challenge: {
-        payload: Prisma.$ChallengePayload<ExtArgs>
-        fields: Prisma.ChallengeFieldRefs
+      ViewdProductStore: {
+        payload: Prisma.$ViewdProductStorePayload<ExtArgs>
+        fields: Prisma.ViewdProductStoreFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ChallengeFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload> | null
+            args: Prisma.ViewdProductStoreFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ChallengeFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>
+            args: Prisma.ViewdProductStoreFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>
           }
           findFirst: {
-            args: Prisma.ChallengeFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload> | null
+            args: Prisma.ViewdProductStoreFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ChallengeFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>
+            args: Prisma.ViewdProductStoreFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>
           }
           findMany: {
-            args: Prisma.ChallengeFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>[]
+            args: Prisma.ViewdProductStoreFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>[]
           }
           create: {
-            args: Prisma.ChallengeCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>
+            args: Prisma.ViewdProductStoreCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>
           }
           createMany: {
-            args: Prisma.ChallengeCreateManyArgs<ExtArgs>,
+            args: Prisma.ViewdProductStoreCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.ChallengeDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>
+            args: Prisma.ViewdProductStoreDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>
           }
           update: {
-            args: Prisma.ChallengeUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>
+            args: Prisma.ViewdProductStoreUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>
           }
           deleteMany: {
-            args: Prisma.ChallengeDeleteManyArgs<ExtArgs>,
+            args: Prisma.ViewdProductStoreDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.ChallengeUpdateManyArgs<ExtArgs>,
+            args: Prisma.ViewdProductStoreUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.ChallengeUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengePayload>
+            args: Prisma.ViewdProductStoreUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ViewdProductStorePayload>
           }
           aggregate: {
-            args: Prisma.ChallengeAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateChallenge>
+            args: Prisma.ViewdProductStoreAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateViewdProductStore>
           }
           groupBy: {
-            args: Prisma.ChallengeGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeGroupByOutputType>[]
+            args: Prisma.ViewdProductStoreGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ViewdProductStoreGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ChallengeCountArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeCountAggregateOutputType> | number
+            args: Prisma.ViewdProductStoreCountArgs<ExtArgs>,
+            result: $Utils.Optional<ViewdProductStoreCountAggregateOutputType> | number
           }
         }
       }
-      Essay: {
-        payload: Prisma.$EssayPayload<ExtArgs>
-        fields: Prisma.EssayFieldRefs
+      Alert: {
+        payload: Prisma.$AlertPayload<ExtArgs>
+        fields: Prisma.AlertFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.EssayFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload> | null
+            args: Prisma.AlertFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.EssayFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>
+            args: Prisma.AlertFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>
           }
           findFirst: {
-            args: Prisma.EssayFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload> | null
+            args: Prisma.AlertFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.EssayFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>
+            args: Prisma.AlertFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>
           }
           findMany: {
-            args: Prisma.EssayFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>[]
+            args: Prisma.AlertFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>[]
           }
           create: {
-            args: Prisma.EssayCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>
+            args: Prisma.AlertCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>
           }
           createMany: {
-            args: Prisma.EssayCreateManyArgs<ExtArgs>,
+            args: Prisma.AlertCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.EssayDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>
+            args: Prisma.AlertDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>
           }
           update: {
-            args: Prisma.EssayUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>
+            args: Prisma.AlertUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>
           }
           deleteMany: {
-            args: Prisma.EssayDeleteManyArgs<ExtArgs>,
+            args: Prisma.AlertDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.EssayUpdateManyArgs<ExtArgs>,
+            args: Prisma.AlertUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.EssayUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$EssayPayload>
+            args: Prisma.AlertUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AlertPayload>
           }
           aggregate: {
-            args: Prisma.EssayAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateEssay>
+            args: Prisma.AlertAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAlert>
           }
           groupBy: {
-            args: Prisma.EssayGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<EssayGroupByOutputType>[]
+            args: Prisma.AlertGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AlertGroupByOutputType>[]
           }
           count: {
-            args: Prisma.EssayCountArgs<ExtArgs>,
-            result: $Utils.Optional<EssayCountAggregateOutputType> | number
-          }
-        }
-      }
-      ChallengeProgress: {
-        payload: Prisma.$ChallengeProgressPayload<ExtArgs>
-        fields: Prisma.ChallengeProgressFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ChallengeProgressFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ChallengeProgressFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          findFirst: {
-            args: Prisma.ChallengeProgressFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ChallengeProgressFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          findMany: {
-            args: Prisma.ChallengeProgressFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>[]
-          }
-          create: {
-            args: Prisma.ChallengeProgressCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          createMany: {
-            args: Prisma.ChallengeProgressCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.ChallengeProgressDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          update: {
-            args: Prisma.ChallengeProgressUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          deleteMany: {
-            args: Prisma.ChallengeProgressDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ChallengeProgressUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ChallengeProgressUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          aggregate: {
-            args: Prisma.ChallengeProgressAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateChallengeProgress>
-          }
-          groupBy: {
-            args: Prisma.ChallengeProgressGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeProgressGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ChallengeProgressCountArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeProgressCountAggregateOutputType> | number
-          }
-        }
-      }
-      Dopamine: {
-        payload: Prisma.$DopaminePayload<ExtArgs>
-        fields: Prisma.DopamineFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.DopamineFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.DopamineFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>
-          }
-          findFirst: {
-            args: Prisma.DopamineFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.DopamineFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>
-          }
-          findMany: {
-            args: Prisma.DopamineFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>[]
-          }
-          create: {
-            args: Prisma.DopamineCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>
-          }
-          createMany: {
-            args: Prisma.DopamineCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.DopamineDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>
-          }
-          update: {
-            args: Prisma.DopamineUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>
-          }
-          deleteMany: {
-            args: Prisma.DopamineDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.DopamineUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.DopamineUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$DopaminePayload>
-          }
-          aggregate: {
-            args: Prisma.DopamineAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateDopamine>
-          }
-          groupBy: {
-            args: Prisma.DopamineGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<DopamineGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.DopamineCountArgs<ExtArgs>,
-            result: $Utils.Optional<DopamineCountAggregateOutputType> | number
+            args: Prisma.AlertCountArgs<ExtArgs>,
+            result: $Utils.Optional<AlertCountAggregateOutputType> | number
           }
         }
       }
@@ -1948,8 +1784,8 @@ export namespace Prisma {
     Product: number
     Board: number
     ViewdBoardStore: number
+    ViewdProductStore: number
     BoardLikeDisLike: number
-    challengeProgress: number
     conversations: number
     sendMessages: number
     receivedMessages: number
@@ -1961,8 +1797,8 @@ export namespace Prisma {
     Product?: boolean | UserCountOutputTypeCountProductArgs
     Board?: boolean | UserCountOutputTypeCountBoardArgs
     ViewdBoardStore?: boolean | UserCountOutputTypeCountViewdBoardStoreArgs
+    ViewdProductStore?: boolean | UserCountOutputTypeCountViewdProductStoreArgs
     BoardLikeDisLike?: boolean | UserCountOutputTypeCountBoardLikeDisLikeArgs
-    challengeProgress?: boolean | UserCountOutputTypeCountChallengeProgressArgs
     conversations?: boolean | UserCountOutputTypeCountConversationsArgs
     sendMessages?: boolean | UserCountOutputTypeCountSendMessagesArgs
     receivedMessages?: boolean | UserCountOutputTypeCountReceivedMessagesArgs
@@ -2024,16 +1860,16 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountBoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: BoardLikeDisLikeWhereInput
+  export type UserCountOutputTypeCountViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ViewdProductStoreWhereInput
   }
 
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountChallengeProgressArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ChallengeProgressWhereInput
+  export type UserCountOutputTypeCountBoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: BoardLikeDisLikeWhereInput
   }
 
 
@@ -2107,45 +1943,35 @@ export namespace Prisma {
 
 
   /**
-   * Count Type ChallengeCountOutputType
+   * Count Type ProductCountOutputType
    */
 
-  export type ChallengeCountOutputType = {
-    essays: number
-    challengeProgress: number
+  export type ProductCountOutputType = {
+    ViewdProductStore: number
   }
 
-  export type ChallengeCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    essays?: boolean | ChallengeCountOutputTypeCountEssaysArgs
-    challengeProgress?: boolean | ChallengeCountOutputTypeCountChallengeProgressArgs
+  export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    ViewdProductStore?: boolean | ProductCountOutputTypeCountViewdProductStoreArgs
   }
 
   // Custom InputTypes
 
   /**
-   * ChallengeCountOutputType without action
+   * ProductCountOutputType without action
    */
-  export type ChallengeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ProductCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeCountOutputType
+     * Select specific fields to fetch from the ProductCountOutputType
      */
-    select?: ChallengeCountOutputTypeSelect<ExtArgs> | null
+    select?: ProductCountOutputTypeSelect<ExtArgs> | null
   }
 
 
   /**
-   * ChallengeCountOutputType without action
+   * ProductCountOutputType without action
    */
-  export type ChallengeCountOutputTypeCountEssaysArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: EssayWhereInput
-  }
-
-
-  /**
-   * ChallengeCountOutputType without action
-   */
-  export type ChallengeCountOutputTypeCountChallengeProgressArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ChallengeProgressWhereInput
+  export type ProductCountOutputTypeCountViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ViewdProductStoreWhereInput
   }
 
 
@@ -4188,7 +4014,6 @@ export namespace Prisma {
     emailVerified: number
     image: number
     level: number
-    tier: number
     createdAt: number
     updatedAt: number
     userType: number
@@ -4239,7 +4064,6 @@ export namespace Prisma {
     emailVerified?: true
     image?: true
     level?: true
-    tier?: true
     createdAt?: true
     updatedAt?: true
     userType?: true
@@ -4341,7 +4165,6 @@ export namespace Prisma {
     emailVerified: Date | null
     image: string | null
     level: number
-    tier: string[]
     createdAt: Date
     updatedAt: Date
     userType: $Enums.UserType
@@ -4375,7 +4198,6 @@ export namespace Prisma {
     emailVerified?: boolean
     image?: boolean
     level?: boolean
-    tier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userType?: boolean
@@ -4385,8 +4207,8 @@ export namespace Prisma {
     Product?: boolean | User$ProductArgs<ExtArgs>
     Board?: boolean | User$BoardArgs<ExtArgs>
     ViewdBoardStore?: boolean | User$ViewdBoardStoreArgs<ExtArgs>
+    ViewdProductStore?: boolean | User$ViewdProductStoreArgs<ExtArgs>
     BoardLikeDisLike?: boolean | User$BoardLikeDisLikeArgs<ExtArgs>
-    challengeProgress?: boolean | User$challengeProgressArgs<ExtArgs>
     conversations?: boolean | User$conversationsArgs<ExtArgs>
     sendMessages?: boolean | User$sendMessagesArgs<ExtArgs>
     receivedMessages?: boolean | User$receivedMessagesArgs<ExtArgs>
@@ -4401,7 +4223,6 @@ export namespace Prisma {
     emailVerified?: boolean
     image?: boolean
     level?: boolean
-    tier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userType?: boolean
@@ -4414,8 +4235,8 @@ export namespace Prisma {
     Product?: boolean | User$ProductArgs<ExtArgs>
     Board?: boolean | User$BoardArgs<ExtArgs>
     ViewdBoardStore?: boolean | User$ViewdBoardStoreArgs<ExtArgs>
+    ViewdProductStore?: boolean | User$ViewdProductStoreArgs<ExtArgs>
     BoardLikeDisLike?: boolean | User$BoardLikeDisLikeArgs<ExtArgs>
-    challengeProgress?: boolean | User$challengeProgressArgs<ExtArgs>
     conversations?: boolean | User$conversationsArgs<ExtArgs>
     sendMessages?: boolean | User$sendMessagesArgs<ExtArgs>
     receivedMessages?: boolean | User$receivedMessagesArgs<ExtArgs>
@@ -4431,8 +4252,8 @@ export namespace Prisma {
       Product: Prisma.$ProductPayload<ExtArgs>[]
       Board: Prisma.$BoardPayload<ExtArgs>[]
       ViewdBoardStore: Prisma.$ViewdBoardStorePayload<ExtArgs>[]
+      ViewdProductStore: Prisma.$ViewdProductStorePayload<ExtArgs>[]
       BoardLikeDisLike: Prisma.$BoardLikeDisLikePayload<ExtArgs>[]
-      challengeProgress: Prisma.$ChallengeProgressPayload<ExtArgs>[]
       conversations: Prisma.$ConversationPayload<ExtArgs>[]
       sendMessages: Prisma.$MessagePayload<ExtArgs>[]
       receivedMessages: Prisma.$MessagePayload<ExtArgs>[]
@@ -4445,7 +4266,6 @@ export namespace Prisma {
       emailVerified: Date | null
       image: string | null
       level: number
-      tier: string[]
       createdAt: Date
       updatedAt: Date
       userType: $Enums.UserType
@@ -4825,9 +4645,9 @@ export namespace Prisma {
 
     ViewdBoardStore<T extends User$ViewdBoardStoreArgs<ExtArgs> = {}>(args?: Subset<T, User$ViewdBoardStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    BoardLikeDisLike<T extends User$BoardLikeDisLikeArgs<ExtArgs> = {}>(args?: Subset<T, User$BoardLikeDisLikeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findMany'> | Null>;
+    ViewdProductStore<T extends User$ViewdProductStoreArgs<ExtArgs> = {}>(args?: Subset<T, User$ViewdProductStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    challengeProgress<T extends User$challengeProgressArgs<ExtArgs> = {}>(args?: Subset<T, User$challengeProgressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findMany'> | Null>;
+    BoardLikeDisLike<T extends User$BoardLikeDisLikeArgs<ExtArgs> = {}>(args?: Subset<T, User$BoardLikeDisLikeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     conversations<T extends User$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, User$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -4870,7 +4690,6 @@ export namespace Prisma {
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
     readonly level: FieldRef<"User", 'Int'>
-    readonly tier: FieldRef<"User", 'String[]'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly userType: FieldRef<"User", 'UserType'>
@@ -5292,6 +5111,27 @@ export namespace Prisma {
 
 
   /**
+   * User.ViewdProductStore
+   */
+  export type User$ViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewdProductStore
+     */
+    select?: ViewdProductStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ViewdProductStoreInclude<ExtArgs> | null
+    where?: ViewdProductStoreWhereInput
+    orderBy?: ViewdProductStoreOrderByWithRelationInput | ViewdProductStoreOrderByWithRelationInput[]
+    cursor?: ViewdProductStoreWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ViewdProductStoreScalarFieldEnum | ViewdProductStoreScalarFieldEnum[]
+  }
+
+
+  /**
    * User.BoardLikeDisLike
    */
   export type User$BoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -5309,27 +5149,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BoardLikeDisLikeScalarFieldEnum | BoardLikeDisLikeScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.challengeProgress
-   */
-  export type User$challengeProgressArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    where?: ChallengeProgressWhereInput
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    cursor?: ChallengeProgressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
   }
 
 
@@ -7454,40 +7273,50 @@ export namespace Prisma {
     price: number | null
     latitude: number | null
     longitude: number | null
+    views: number | null
   }
 
   export type ProductSumAggregateOutputType = {
     price: number | null
     latitude: number | null
     longitude: number | null
+    views: number | null
   }
 
   export type ProductMinAggregateOutputType = {
     id: string | null
     title: string | null
     description: string | null
-    imageSrc: string | null
-    category: string | null
     userId: string | null
     price: number | null
     latitude: number | null
     longitude: number | null
+    address: string | null
+    addressDetail: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    sold: boolean | null
+    views: number | null
+    delivery: boolean | null
+    faceToFace: boolean | null
   }
 
   export type ProductMaxAggregateOutputType = {
     id: string | null
     title: string | null
     description: string | null
-    imageSrc: string | null
-    category: string | null
     userId: string | null
     price: number | null
     latitude: number | null
     longitude: number | null
+    address: string | null
+    addressDetail: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    sold: boolean | null
+    views: number | null
+    delivery: boolean | null
+    faceToFace: boolean | null
   }
 
   export type ProductCountAggregateOutputType = {
@@ -7495,13 +7324,19 @@ export namespace Prisma {
     title: number
     description: number
     imageSrc: number
-    category: number
     userId: number
     price: number
     latitude: number
     longitude: number
+    address: number
+    addressDetail: number
     createdAt: number
     updatedAt: number
+    sold: number
+    views: number
+    delivery: number
+    faceToFace: number
+    categories: number
     _all: number
   }
 
@@ -7510,40 +7345,50 @@ export namespace Prisma {
     price?: true
     latitude?: true
     longitude?: true
+    views?: true
   }
 
   export type ProductSumAggregateInputType = {
     price?: true
     latitude?: true
     longitude?: true
+    views?: true
   }
 
   export type ProductMinAggregateInputType = {
     id?: true
     title?: true
     description?: true
-    imageSrc?: true
-    category?: true
     userId?: true
     price?: true
     latitude?: true
     longitude?: true
+    address?: true
+    addressDetail?: true
     createdAt?: true
     updatedAt?: true
+    sold?: true
+    views?: true
+    delivery?: true
+    faceToFace?: true
   }
 
   export type ProductMaxAggregateInputType = {
     id?: true
     title?: true
     description?: true
-    imageSrc?: true
-    category?: true
     userId?: true
     price?: true
     latitude?: true
     longitude?: true
+    address?: true
+    addressDetail?: true
     createdAt?: true
     updatedAt?: true
+    sold?: true
+    views?: true
+    delivery?: true
+    faceToFace?: true
   }
 
   export type ProductCountAggregateInputType = {
@@ -7551,13 +7396,19 @@ export namespace Prisma {
     title?: true
     description?: true
     imageSrc?: true
-    category?: true
     userId?: true
     price?: true
     latitude?: true
     longitude?: true
+    address?: true
+    addressDetail?: true
     createdAt?: true
     updatedAt?: true
+    sold?: true
+    views?: true
+    delivery?: true
+    faceToFace?: true
+    categories?: true
     _all?: true
   }
 
@@ -7651,14 +7502,20 @@ export namespace Prisma {
     id: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc: string[]
     userId: string
     price: number
-    latitude: number
-    longitude: number
+    latitude: number | null
+    longitude: number | null
+    address: string | null
+    addressDetail: string | null
     createdAt: Date
     updatedAt: Date
+    sold: boolean
+    views: number
+    delivery: boolean
+    faceToFace: boolean
+    categories: string[]
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
     _sum: ProductSumAggregateOutputType | null
@@ -7685,14 +7542,22 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     imageSrc?: boolean
-    category?: boolean
     userId?: boolean
     price?: boolean
     latitude?: boolean
     longitude?: boolean
+    address?: boolean
+    addressDetail?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sold?: boolean
+    views?: boolean
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    ViewdProductStore?: boolean | Product$ViewdProductStoreArgs<ExtArgs>
+    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
@@ -7700,17 +7565,25 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     imageSrc?: boolean
-    category?: boolean
     userId?: boolean
     price?: boolean
     latitude?: boolean
     longitude?: boolean
+    address?: boolean
+    addressDetail?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sold?: boolean
+    views?: boolean
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: boolean
   }
 
   export type ProductInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    ViewdProductStore?: boolean | Product$ViewdProductStoreArgs<ExtArgs>
+    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
@@ -7718,19 +7591,26 @@ export namespace Prisma {
     name: "Product"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      ViewdProductStore: Prisma.$ViewdProductStorePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
       title: string
       description: string
-      imageSrc: string
-      category: string
+      imageSrc: string[]
       userId: string
       price: number
-      latitude: number
-      longitude: number
+      latitude: number | null
+      longitude: number | null
+      address: string | null
+      addressDetail: string | null
       createdAt: Date
       updatedAt: Date
+      sold: boolean
+      views: number
+      delivery: boolean
+      faceToFace: boolean
+      categories: string[]
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -8098,6 +7978,8 @@ export namespace Prisma {
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    ViewdProductStore<T extends Product$ViewdProductStoreArgs<ExtArgs> = {}>(args?: Subset<T, Product$ViewdProductStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8129,14 +8011,20 @@ export namespace Prisma {
     readonly id: FieldRef<"Product", 'String'>
     readonly title: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
-    readonly imageSrc: FieldRef<"Product", 'String'>
-    readonly category: FieldRef<"Product", 'String'>
+    readonly imageSrc: FieldRef<"Product", 'String[]'>
     readonly userId: FieldRef<"Product", 'String'>
     readonly price: FieldRef<"Product", 'Int'>
     readonly latitude: FieldRef<"Product", 'Float'>
     readonly longitude: FieldRef<"Product", 'Float'>
+    readonly address: FieldRef<"Product", 'String'>
+    readonly addressDetail: FieldRef<"Product", 'String'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
+    readonly sold: FieldRef<"Product", 'Boolean'>
+    readonly views: FieldRef<"Product", 'Int'>
+    readonly delivery: FieldRef<"Product", 'Boolean'>
+    readonly faceToFace: FieldRef<"Product", 'Boolean'>
+    readonly categories: FieldRef<"Product", 'String[]'>
   }
     
 
@@ -8445,6 +8333,27 @@ export namespace Prisma {
      * Filter which Products to delete
      */
     where?: ProductWhereInput
+  }
+
+
+  /**
+   * Product.ViewdProductStore
+   */
+  export type Product$ViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewdProductStore
+     */
+    select?: ViewdProductStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ViewdProductStoreInclude<ExtArgs> | null
+    where?: ViewdProductStoreWhereInput
+    orderBy?: ViewdProductStoreOrderByWithRelationInput | ViewdProductStoreOrderByWithRelationInput[]
+    cursor?: ViewdProductStoreWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ViewdProductStoreScalarFieldEnum | ViewdProductStoreScalarFieldEnum[]
   }
 
 
@@ -9377,2407 +9286,343 @@ export namespace Prisma {
 
 
   /**
-   * Model Challenge
+   * Model ViewdProductStore
    */
 
-  export type AggregateChallenge = {
-    _count: ChallengeCountAggregateOutputType | null
-    _avg: ChallengeAvgAggregateOutputType | null
-    _sum: ChallengeSumAggregateOutputType | null
-    _min: ChallengeMinAggregateOutputType | null
-    _max: ChallengeMaxAggregateOutputType | null
+  export type AggregateViewdProductStore = {
+    _count: ViewdProductStoreCountAggregateOutputType | null
+    _min: ViewdProductStoreMinAggregateOutputType | null
+    _max: ViewdProductStoreMaxAggregateOutputType | null
   }
 
-  export type ChallengeAvgAggregateOutputType = {
-    progress: number | null
-    participants: number | null
-  }
-
-  export type ChallengeSumAggregateOutputType = {
-    progress: number | null
-    participants: number | null
-  }
-
-  export type ChallengeMinAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    imageSrc: string | null
-    reward: string | null
-    category: string | null
-    period: string | null
-    progress: number | null
-    disabled: boolean | null
-    participants: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type ChallengeMaxAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    imageSrc: string | null
-    reward: string | null
-    category: string | null
-    period: string | null
-    progress: number | null
-    disabled: boolean | null
-    participants: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type ChallengeCountAggregateOutputType = {
-    id: number
-    title: number
-    description: number
-    imageSrc: number
-    reward: number
-    category: number
-    period: number
-    progress: number
-    disabled: number
-    participants: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type ChallengeAvgAggregateInputType = {
-    progress?: true
-    participants?: true
-  }
-
-  export type ChallengeSumAggregateInputType = {
-    progress?: true
-    participants?: true
-  }
-
-  export type ChallengeMinAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    imageSrc?: true
-    reward?: true
-    category?: true
-    period?: true
-    progress?: true
-    disabled?: true
-    participants?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type ChallengeMaxAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    imageSrc?: true
-    reward?: true
-    category?: true
-    period?: true
-    progress?: true
-    disabled?: true
-    participants?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type ChallengeCountAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    imageSrc?: true
-    reward?: true
-    category?: true
-    period?: true
-    progress?: true
-    disabled?: true
-    participants?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type ChallengeAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Challenge to aggregate.
-     */
-    where?: ChallengeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Challenges to fetch.
-     */
-    orderBy?: ChallengeOrderByWithRelationInput | ChallengeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ChallengeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Challenges from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Challenges.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Challenges
-    **/
-    _count?: true | ChallengeCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ChallengeAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ChallengeSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ChallengeMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ChallengeMaxAggregateInputType
-  }
-
-  export type GetChallengeAggregateType<T extends ChallengeAggregateArgs> = {
-        [P in keyof T & keyof AggregateChallenge]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChallenge[P]>
-      : GetScalarType<T[P], AggregateChallenge[P]>
-  }
-
-
-
-
-  export type ChallengeGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ChallengeWhereInput
-    orderBy?: ChallengeOrderByWithAggregationInput | ChallengeOrderByWithAggregationInput[]
-    by: ChallengeScalarFieldEnum[] | ChallengeScalarFieldEnum
-    having?: ChallengeScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ChallengeCountAggregateInputType | true
-    _avg?: ChallengeAvgAggregateInputType
-    _sum?: ChallengeSumAggregateInputType
-    _min?: ChallengeMinAggregateInputType
-    _max?: ChallengeMaxAggregateInputType
-  }
-
-  export type ChallengeGroupByOutputType = {
-    id: string
-    title: string
-    description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
-    createdAt: Date
-    updatedAt: Date
-    _count: ChallengeCountAggregateOutputType | null
-    _avg: ChallengeAvgAggregateOutputType | null
-    _sum: ChallengeSumAggregateOutputType | null
-    _min: ChallengeMinAggregateOutputType | null
-    _max: ChallengeMaxAggregateOutputType | null
-  }
-
-  type GetChallengeGroupByPayload<T extends ChallengeGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ChallengeGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChallengeGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChallengeGroupByOutputType[P]>
-            : GetScalarType<T[P], ChallengeGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ChallengeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    imageSrc?: boolean
-    reward?: boolean
-    category?: boolean
-    period?: boolean
-    progress?: boolean
-    disabled?: boolean
-    participants?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    essays?: boolean | Challenge$essaysArgs<ExtArgs>
-    challengeProgress?: boolean | Challenge$challengeProgressArgs<ExtArgs>
-    _count?: boolean | ChallengeCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challenge"]>
-
-  export type ChallengeSelectScalar = {
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    imageSrc?: boolean
-    reward?: boolean
-    category?: boolean
-    period?: boolean
-    progress?: boolean
-    disabled?: boolean
-    participants?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type ChallengeInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    essays?: boolean | Challenge$essaysArgs<ExtArgs>
-    challengeProgress?: boolean | Challenge$challengeProgressArgs<ExtArgs>
-    _count?: boolean | ChallengeCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-
-  export type $ChallengePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "Challenge"
-    objects: {
-      essays: Prisma.$EssayPayload<ExtArgs>[]
-      challengeProgress: Prisma.$ChallengeProgressPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetResult<{
-      id: string
-      title: string
-      description: string
-      imageSrc: string
-      reward: string
-      category: string
-      period: string
-      progress: number
-      disabled: boolean
-      participants: number
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["challenge"]>
-    composites: {}
-  }
-
-
-  type ChallengeGetPayload<S extends boolean | null | undefined | ChallengeDefaultArgs> = $Result.GetResult<Prisma.$ChallengePayload, S>
-
-  type ChallengeCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<ChallengeFindManyArgs, 'select' | 'include'> & {
-      select?: ChallengeCountAggregateInputType | true
-    }
-
-  export interface ChallengeDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Challenge'], meta: { name: 'Challenge' } }
-    /**
-     * Find zero or one Challenge that matches the filter.
-     * @param {ChallengeFindUniqueArgs} args - Arguments to find a Challenge
-     * @example
-     * // Get one Challenge
-     * const challenge = await prisma.challenge.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ChallengeFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeFindUniqueArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Challenge that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {ChallengeFindUniqueOrThrowArgs} args - Arguments to find a Challenge
-     * @example
-     * // Get one Challenge
-     * const challenge = await prisma.challenge.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ChallengeFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Challenge that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeFindFirstArgs} args - Arguments to find a Challenge
-     * @example
-     * // Get one Challenge
-     * const challenge = await prisma.challenge.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ChallengeFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeFindFirstArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Challenge that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeFindFirstOrThrowArgs} args - Arguments to find a Challenge
-     * @example
-     * // Get one Challenge
-     * const challenge = await prisma.challenge.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ChallengeFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Challenges that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Challenges
-     * const challenges = await prisma.challenge.findMany()
-     * 
-     * // Get first 10 Challenges
-     * const challenges = await prisma.challenge.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const challengeWithIdOnly = await prisma.challenge.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends ChallengeFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Challenge.
-     * @param {ChallengeCreateArgs} args - Arguments to create a Challenge.
-     * @example
-     * // Create one Challenge
-     * const Challenge = await prisma.challenge.create({
-     *   data: {
-     *     // ... data to create a Challenge
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ChallengeCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeCreateArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Challenges.
-     *     @param {ChallengeCreateManyArgs} args - Arguments to create many Challenges.
-     *     @example
-     *     // Create many Challenges
-     *     const challenge = await prisma.challenge.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends ChallengeCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Challenge.
-     * @param {ChallengeDeleteArgs} args - Arguments to delete one Challenge.
-     * @example
-     * // Delete one Challenge
-     * const Challenge = await prisma.challenge.delete({
-     *   where: {
-     *     // ... filter to delete one Challenge
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ChallengeDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeDeleteArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Challenge.
-     * @param {ChallengeUpdateArgs} args - Arguments to update one Challenge.
-     * @example
-     * // Update one Challenge
-     * const challenge = await prisma.challenge.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ChallengeUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeUpdateArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Challenges.
-     * @param {ChallengeDeleteManyArgs} args - Arguments to filter Challenges to delete.
-     * @example
-     * // Delete a few Challenges
-     * const { count } = await prisma.challenge.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ChallengeDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Challenges.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Challenges
-     * const challenge = await prisma.challenge.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ChallengeUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Challenge.
-     * @param {ChallengeUpsertArgs} args - Arguments to update or create a Challenge.
-     * @example
-     * // Update or create a Challenge
-     * const challenge = await prisma.challenge.upsert({
-     *   create: {
-     *     // ... data to create a Challenge
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Challenge we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ChallengeUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeUpsertArgs<ExtArgs>>
-    ): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Challenges.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeCountArgs} args - Arguments to filter Challenges to count.
-     * @example
-     * // Count the number of Challenges
-     * const count = await prisma.challenge.count({
-     *   where: {
-     *     // ... the filter for the Challenges we want to count
-     *   }
-     * })
-    **/
-    count<T extends ChallengeCountArgs>(
-      args?: Subset<T, ChallengeCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChallengeCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Challenge.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ChallengeAggregateArgs>(args: Subset<T, ChallengeAggregateArgs>): Prisma.PrismaPromise<GetChallengeAggregateType<T>>
-
-    /**
-     * Group by Challenge.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ChallengeGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChallengeGroupByArgs['orderBy'] }
-        : { orderBy?: ChallengeGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ChallengeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChallengeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Challenge model
-   */
-  readonly fields: ChallengeFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Challenge.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ChallengeClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    essays<T extends Challenge$essaysArgs<ExtArgs> = {}>(args?: Subset<T, Challenge$essaysArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    challengeProgress<T extends Challenge$challengeProgressArgs<ExtArgs> = {}>(args?: Subset<T, Challenge$challengeProgressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the Challenge model
-   */ 
-  interface ChallengeFieldRefs {
-    readonly id: FieldRef<"Challenge", 'String'>
-    readonly title: FieldRef<"Challenge", 'String'>
-    readonly description: FieldRef<"Challenge", 'String'>
-    readonly imageSrc: FieldRef<"Challenge", 'String'>
-    readonly reward: FieldRef<"Challenge", 'String'>
-    readonly category: FieldRef<"Challenge", 'String'>
-    readonly period: FieldRef<"Challenge", 'String'>
-    readonly progress: FieldRef<"Challenge", 'Int'>
-    readonly disabled: FieldRef<"Challenge", 'Boolean'>
-    readonly participants: FieldRef<"Challenge", 'Int'>
-    readonly createdAt: FieldRef<"Challenge", 'DateTime'>
-    readonly updatedAt: FieldRef<"Challenge", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * Challenge findUnique
-   */
-  export type ChallengeFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * Filter, which Challenge to fetch.
-     */
-    where: ChallengeWhereUniqueInput
-  }
-
-
-  /**
-   * Challenge findUniqueOrThrow
-   */
-  export type ChallengeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * Filter, which Challenge to fetch.
-     */
-    where: ChallengeWhereUniqueInput
-  }
-
-
-  /**
-   * Challenge findFirst
-   */
-  export type ChallengeFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * Filter, which Challenge to fetch.
-     */
-    where?: ChallengeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Challenges to fetch.
-     */
-    orderBy?: ChallengeOrderByWithRelationInput | ChallengeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Challenges.
-     */
-    cursor?: ChallengeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Challenges from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Challenges.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Challenges.
-     */
-    distinct?: ChallengeScalarFieldEnum | ChallengeScalarFieldEnum[]
-  }
-
-
-  /**
-   * Challenge findFirstOrThrow
-   */
-  export type ChallengeFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * Filter, which Challenge to fetch.
-     */
-    where?: ChallengeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Challenges to fetch.
-     */
-    orderBy?: ChallengeOrderByWithRelationInput | ChallengeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Challenges.
-     */
-    cursor?: ChallengeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Challenges from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Challenges.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Challenges.
-     */
-    distinct?: ChallengeScalarFieldEnum | ChallengeScalarFieldEnum[]
-  }
-
-
-  /**
-   * Challenge findMany
-   */
-  export type ChallengeFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * Filter, which Challenges to fetch.
-     */
-    where?: ChallengeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Challenges to fetch.
-     */
-    orderBy?: ChallengeOrderByWithRelationInput | ChallengeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Challenges.
-     */
-    cursor?: ChallengeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Challenges from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Challenges.
-     */
-    skip?: number
-    distinct?: ChallengeScalarFieldEnum | ChallengeScalarFieldEnum[]
-  }
-
-
-  /**
-   * Challenge create
-   */
-  export type ChallengeCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Challenge.
-     */
-    data: XOR<ChallengeCreateInput, ChallengeUncheckedCreateInput>
-  }
-
-
-  /**
-   * Challenge createMany
-   */
-  export type ChallengeCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Challenges.
-     */
-    data: ChallengeCreateManyInput | ChallengeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * Challenge update
-   */
-  export type ChallengeUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Challenge.
-     */
-    data: XOR<ChallengeUpdateInput, ChallengeUncheckedUpdateInput>
-    /**
-     * Choose, which Challenge to update.
-     */
-    where: ChallengeWhereUniqueInput
-  }
-
-
-  /**
-   * Challenge updateMany
-   */
-  export type ChallengeUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Challenges.
-     */
-    data: XOR<ChallengeUpdateManyMutationInput, ChallengeUncheckedUpdateManyInput>
-    /**
-     * Filter which Challenges to update
-     */
-    where?: ChallengeWhereInput
-  }
-
-
-  /**
-   * Challenge upsert
-   */
-  export type ChallengeUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Challenge to update in case it exists.
-     */
-    where: ChallengeWhereUniqueInput
-    /**
-     * In case the Challenge found by the `where` argument doesn't exist, create a new Challenge with this data.
-     */
-    create: XOR<ChallengeCreateInput, ChallengeUncheckedCreateInput>
-    /**
-     * In case the Challenge was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ChallengeUpdateInput, ChallengeUncheckedUpdateInput>
-  }
-
-
-  /**
-   * Challenge delete
-   */
-  export type ChallengeDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-    /**
-     * Filter which Challenge to delete.
-     */
-    where: ChallengeWhereUniqueInput
-  }
-
-
-  /**
-   * Challenge deleteMany
-   */
-  export type ChallengeDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Challenges to delete
-     */
-    where?: ChallengeWhereInput
-  }
-
-
-  /**
-   * Challenge.essays
-   */
-  export type Challenge$essaysArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    where?: EssayWhereInput
-    orderBy?: EssayOrderByWithRelationInput | EssayOrderByWithRelationInput[]
-    cursor?: EssayWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: EssayScalarFieldEnum | EssayScalarFieldEnum[]
-  }
-
-
-  /**
-   * Challenge.challengeProgress
-   */
-  export type Challenge$challengeProgressArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    where?: ChallengeProgressWhereInput
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    cursor?: ChallengeProgressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
-  }
-
-
-  /**
-   * Challenge without action
-   */
-  export type ChallengeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Challenge
-     */
-    select?: ChallengeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeInclude<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model Essay
-   */
-
-  export type AggregateEssay = {
-    _count: EssayCountAggregateOutputType | null
-    _min: EssayMinAggregateOutputType | null
-    _max: EssayMaxAggregateOutputType | null
-  }
-
-  export type EssayMinAggregateOutputType = {
-    id: string | null
-    content: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    challengeId: string | null
-  }
-
-  export type EssayMaxAggregateOutputType = {
-    id: string | null
-    content: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    challengeId: string | null
-  }
-
-  export type EssayCountAggregateOutputType = {
-    id: number
-    content: number
-    createdAt: number
-    updatedAt: number
-    challengeId: number
-    _all: number
-  }
-
-
-  export type EssayMinAggregateInputType = {
-    id?: true
-    content?: true
-    createdAt?: true
-    updatedAt?: true
-    challengeId?: true
-  }
-
-  export type EssayMaxAggregateInputType = {
-    id?: true
-    content?: true
-    createdAt?: true
-    updatedAt?: true
-    challengeId?: true
-  }
-
-  export type EssayCountAggregateInputType = {
-    id?: true
-    content?: true
-    createdAt?: true
-    updatedAt?: true
-    challengeId?: true
-    _all?: true
-  }
-
-  export type EssayAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Essay to aggregate.
-     */
-    where?: EssayWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Essays to fetch.
-     */
-    orderBy?: EssayOrderByWithRelationInput | EssayOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: EssayWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Essays from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Essays.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Essays
-    **/
-    _count?: true | EssayCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: EssayMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: EssayMaxAggregateInputType
-  }
-
-  export type GetEssayAggregateType<T extends EssayAggregateArgs> = {
-        [P in keyof T & keyof AggregateEssay]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateEssay[P]>
-      : GetScalarType<T[P], AggregateEssay[P]>
-  }
-
-
-
-
-  export type EssayGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: EssayWhereInput
-    orderBy?: EssayOrderByWithAggregationInput | EssayOrderByWithAggregationInput[]
-    by: EssayScalarFieldEnum[] | EssayScalarFieldEnum
-    having?: EssayScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: EssayCountAggregateInputType | true
-    _min?: EssayMinAggregateInputType
-    _max?: EssayMaxAggregateInputType
-  }
-
-  export type EssayGroupByOutputType = {
-    id: string
-    content: string
-    createdAt: Date
-    updatedAt: Date
-    challengeId: string
-    _count: EssayCountAggregateOutputType | null
-    _min: EssayMinAggregateOutputType | null
-    _max: EssayMaxAggregateOutputType | null
-  }
-
-  type GetEssayGroupByPayload<T extends EssayGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<EssayGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof EssayGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], EssayGroupByOutputType[P]>
-            : GetScalarType<T[P], EssayGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type EssaySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    challengeId?: boolean
-    challenge?: boolean | ChallengeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["essay"]>
-
-  export type EssaySelectScalar = {
-    id?: boolean
-    content?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    challengeId?: boolean
-  }
-
-  export type EssayInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    challenge?: boolean | ChallengeDefaultArgs<ExtArgs>
-  }
-
-
-  export type $EssayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "Essay"
-    objects: {
-      challenge: Prisma.$ChallengePayload<ExtArgs>
-    }
-    scalars: $Extensions.GetResult<{
-      id: string
-      content: string
-      createdAt: Date
-      updatedAt: Date
-      challengeId: string
-    }, ExtArgs["result"]["essay"]>
-    composites: {}
-  }
-
-
-  type EssayGetPayload<S extends boolean | null | undefined | EssayDefaultArgs> = $Result.GetResult<Prisma.$EssayPayload, S>
-
-  type EssayCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<EssayFindManyArgs, 'select' | 'include'> & {
-      select?: EssayCountAggregateInputType | true
-    }
-
-  export interface EssayDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Essay'], meta: { name: 'Essay' } }
-    /**
-     * Find zero or one Essay that matches the filter.
-     * @param {EssayFindUniqueArgs} args - Arguments to find a Essay
-     * @example
-     * // Get one Essay
-     * const essay = await prisma.essay.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends EssayFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, EssayFindUniqueArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Essay that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {EssayFindUniqueOrThrowArgs} args - Arguments to find a Essay
-     * @example
-     * // Get one Essay
-     * const essay = await prisma.essay.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends EssayFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, EssayFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Essay that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayFindFirstArgs} args - Arguments to find a Essay
-     * @example
-     * // Get one Essay
-     * const essay = await prisma.essay.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends EssayFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, EssayFindFirstArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Essay that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayFindFirstOrThrowArgs} args - Arguments to find a Essay
-     * @example
-     * // Get one Essay
-     * const essay = await prisma.essay.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends EssayFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, EssayFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Essays that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Essays
-     * const essays = await prisma.essay.findMany()
-     * 
-     * // Get first 10 Essays
-     * const essays = await prisma.essay.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const essayWithIdOnly = await prisma.essay.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends EssayFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, EssayFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Essay.
-     * @param {EssayCreateArgs} args - Arguments to create a Essay.
-     * @example
-     * // Create one Essay
-     * const Essay = await prisma.essay.create({
-     *   data: {
-     *     // ... data to create a Essay
-     *   }
-     * })
-     * 
-    **/
-    create<T extends EssayCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, EssayCreateArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Essays.
-     *     @param {EssayCreateManyArgs} args - Arguments to create many Essays.
-     *     @example
-     *     // Create many Essays
-     *     const essay = await prisma.essay.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends EssayCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, EssayCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Essay.
-     * @param {EssayDeleteArgs} args - Arguments to delete one Essay.
-     * @example
-     * // Delete one Essay
-     * const Essay = await prisma.essay.delete({
-     *   where: {
-     *     // ... filter to delete one Essay
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends EssayDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, EssayDeleteArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Essay.
-     * @param {EssayUpdateArgs} args - Arguments to update one Essay.
-     * @example
-     * // Update one Essay
-     * const essay = await prisma.essay.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends EssayUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, EssayUpdateArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Essays.
-     * @param {EssayDeleteManyArgs} args - Arguments to filter Essays to delete.
-     * @example
-     * // Delete a few Essays
-     * const { count } = await prisma.essay.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends EssayDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, EssayDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Essays.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Essays
-     * const essay = await prisma.essay.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends EssayUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, EssayUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Essay.
-     * @param {EssayUpsertArgs} args - Arguments to update or create a Essay.
-     * @example
-     * // Update or create a Essay
-     * const essay = await prisma.essay.upsert({
-     *   create: {
-     *     // ... data to create a Essay
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Essay we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends EssayUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, EssayUpsertArgs<ExtArgs>>
-    ): Prisma__EssayClient<$Result.GetResult<Prisma.$EssayPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Essays.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayCountArgs} args - Arguments to filter Essays to count.
-     * @example
-     * // Count the number of Essays
-     * const count = await prisma.essay.count({
-     *   where: {
-     *     // ... the filter for the Essays we want to count
-     *   }
-     * })
-    **/
-    count<T extends EssayCountArgs>(
-      args?: Subset<T, EssayCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], EssayCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Essay.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends EssayAggregateArgs>(args: Subset<T, EssayAggregateArgs>): Prisma.PrismaPromise<GetEssayAggregateType<T>>
-
-    /**
-     * Group by Essay.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {EssayGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends EssayGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: EssayGroupByArgs['orderBy'] }
-        : { orderBy?: EssayGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, EssayGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEssayGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Essay model
-   */
-  readonly fields: EssayFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Essay.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__EssayClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    challenge<T extends ChallengeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeDefaultArgs<ExtArgs>>): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the Essay model
-   */ 
-  interface EssayFieldRefs {
-    readonly id: FieldRef<"Essay", 'String'>
-    readonly content: FieldRef<"Essay", 'String'>
-    readonly createdAt: FieldRef<"Essay", 'DateTime'>
-    readonly updatedAt: FieldRef<"Essay", 'DateTime'>
-    readonly challengeId: FieldRef<"Essay", 'String'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * Essay findUnique
-   */
-  export type EssayFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * Filter, which Essay to fetch.
-     */
-    where: EssayWhereUniqueInput
-  }
-
-
-  /**
-   * Essay findUniqueOrThrow
-   */
-  export type EssayFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * Filter, which Essay to fetch.
-     */
-    where: EssayWhereUniqueInput
-  }
-
-
-  /**
-   * Essay findFirst
-   */
-  export type EssayFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * Filter, which Essay to fetch.
-     */
-    where?: EssayWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Essays to fetch.
-     */
-    orderBy?: EssayOrderByWithRelationInput | EssayOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Essays.
-     */
-    cursor?: EssayWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Essays from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Essays.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Essays.
-     */
-    distinct?: EssayScalarFieldEnum | EssayScalarFieldEnum[]
-  }
-
-
-  /**
-   * Essay findFirstOrThrow
-   */
-  export type EssayFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * Filter, which Essay to fetch.
-     */
-    where?: EssayWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Essays to fetch.
-     */
-    orderBy?: EssayOrderByWithRelationInput | EssayOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Essays.
-     */
-    cursor?: EssayWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Essays from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Essays.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Essays.
-     */
-    distinct?: EssayScalarFieldEnum | EssayScalarFieldEnum[]
-  }
-
-
-  /**
-   * Essay findMany
-   */
-  export type EssayFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * Filter, which Essays to fetch.
-     */
-    where?: EssayWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Essays to fetch.
-     */
-    orderBy?: EssayOrderByWithRelationInput | EssayOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Essays.
-     */
-    cursor?: EssayWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Essays from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Essays.
-     */
-    skip?: number
-    distinct?: EssayScalarFieldEnum | EssayScalarFieldEnum[]
-  }
-
-
-  /**
-   * Essay create
-   */
-  export type EssayCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Essay.
-     */
-    data: XOR<EssayCreateInput, EssayUncheckedCreateInput>
-  }
-
-
-  /**
-   * Essay createMany
-   */
-  export type EssayCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Essays.
-     */
-    data: EssayCreateManyInput | EssayCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * Essay update
-   */
-  export type EssayUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Essay.
-     */
-    data: XOR<EssayUpdateInput, EssayUncheckedUpdateInput>
-    /**
-     * Choose, which Essay to update.
-     */
-    where: EssayWhereUniqueInput
-  }
-
-
-  /**
-   * Essay updateMany
-   */
-  export type EssayUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Essays.
-     */
-    data: XOR<EssayUpdateManyMutationInput, EssayUncheckedUpdateManyInput>
-    /**
-     * Filter which Essays to update
-     */
-    where?: EssayWhereInput
-  }
-
-
-  /**
-   * Essay upsert
-   */
-  export type EssayUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Essay to update in case it exists.
-     */
-    where: EssayWhereUniqueInput
-    /**
-     * In case the Essay found by the `where` argument doesn't exist, create a new Essay with this data.
-     */
-    create: XOR<EssayCreateInput, EssayUncheckedCreateInput>
-    /**
-     * In case the Essay was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<EssayUpdateInput, EssayUncheckedUpdateInput>
-  }
-
-
-  /**
-   * Essay delete
-   */
-  export type EssayDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-    /**
-     * Filter which Essay to delete.
-     */
-    where: EssayWhereUniqueInput
-  }
-
-
-  /**
-   * Essay deleteMany
-   */
-  export type EssayDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Essays to delete
-     */
-    where?: EssayWhereInput
-  }
-
-
-  /**
-   * Essay without action
-   */
-  export type EssayDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Essay
-     */
-    select?: EssaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EssayInclude<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model ChallengeProgress
-   */
-
-  export type AggregateChallengeProgress = {
-    _count: ChallengeProgressCountAggregateOutputType | null
-    _avg: ChallengeProgressAvgAggregateOutputType | null
-    _sum: ChallengeProgressSumAggregateOutputType | null
-    _min: ChallengeProgressMinAggregateOutputType | null
-    _max: ChallengeProgressMaxAggregateOutputType | null
-  }
-
-  export type ChallengeProgressAvgAggregateOutputType = {
-    progress: number | null
-  }
-
-  export type ChallengeProgressSumAggregateOutputType = {
-    progress: number | null
-  }
-
-  export type ChallengeProgressMinAggregateOutputType = {
+  export type ViewdProductStoreMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    challengeId: string | null
-    progress: number | null
-    completed: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    productId: string | null
+    viewedAt: Date | null
   }
 
-  export type ChallengeProgressMaxAggregateOutputType = {
+  export type ViewdProductStoreMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    challengeId: string | null
-    progress: number | null
-    completed: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    productId: string | null
+    viewedAt: Date | null
   }
 
-  export type ChallengeProgressCountAggregateOutputType = {
+  export type ViewdProductStoreCountAggregateOutputType = {
     id: number
     userId: number
-    challengeId: number
-    progress: number
-    completed: number
-    createdAt: number
-    updatedAt: number
+    productId: number
+    viewedAt: number
     _all: number
   }
 
 
-  export type ChallengeProgressAvgAggregateInputType = {
-    progress?: true
-  }
-
-  export type ChallengeProgressSumAggregateInputType = {
-    progress?: true
-  }
-
-  export type ChallengeProgressMinAggregateInputType = {
+  export type ViewdProductStoreMinAggregateInputType = {
     id?: true
     userId?: true
-    challengeId?: true
-    progress?: true
-    completed?: true
-    createdAt?: true
-    updatedAt?: true
+    productId?: true
+    viewedAt?: true
   }
 
-  export type ChallengeProgressMaxAggregateInputType = {
+  export type ViewdProductStoreMaxAggregateInputType = {
     id?: true
     userId?: true
-    challengeId?: true
-    progress?: true
-    completed?: true
-    createdAt?: true
-    updatedAt?: true
+    productId?: true
+    viewedAt?: true
   }
 
-  export type ChallengeProgressCountAggregateInputType = {
+  export type ViewdProductStoreCountAggregateInputType = {
     id?: true
     userId?: true
-    challengeId?: true
-    progress?: true
-    completed?: true
-    createdAt?: true
-    updatedAt?: true
+    productId?: true
+    viewedAt?: true
     _all?: true
   }
 
-  export type ChallengeProgressAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ChallengeProgress to aggregate.
+     * Filter which ViewdProductStore to aggregate.
      */
-    where?: ChallengeProgressWhereInput
+    where?: ViewdProductStoreWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ChallengeProgresses to fetch.
+     * Determine the order of ViewdProductStores to fetch.
      */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
+    orderBy?: ViewdProductStoreOrderByWithRelationInput | ViewdProductStoreOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ChallengeProgressWhereUniqueInput
+    cursor?: ViewdProductStoreWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
+     * Take `±n` ViewdProductStores from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ChallengeProgresses.
+     * Skip the first `n` ViewdProductStores.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned ChallengeProgresses
+     * Count returned ViewdProductStores
     **/
-    _count?: true | ChallengeProgressCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ChallengeProgressAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ChallengeProgressSumAggregateInputType
+    _count?: true | ViewdProductStoreCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ChallengeProgressMinAggregateInputType
+    _min?: ViewdProductStoreMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ChallengeProgressMaxAggregateInputType
+    _max?: ViewdProductStoreMaxAggregateInputType
   }
 
-  export type GetChallengeProgressAggregateType<T extends ChallengeProgressAggregateArgs> = {
-        [P in keyof T & keyof AggregateChallengeProgress]: P extends '_count' | 'count'
+  export type GetViewdProductStoreAggregateType<T extends ViewdProductStoreAggregateArgs> = {
+        [P in keyof T & keyof AggregateViewdProductStore]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateChallengeProgress[P]>
-      : GetScalarType<T[P], AggregateChallengeProgress[P]>
+        : GetScalarType<T[P], AggregateViewdProductStore[P]>
+      : GetScalarType<T[P], AggregateViewdProductStore[P]>
   }
 
 
 
 
-  export type ChallengeProgressGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ChallengeProgressWhereInput
-    orderBy?: ChallengeProgressOrderByWithAggregationInput | ChallengeProgressOrderByWithAggregationInput[]
-    by: ChallengeProgressScalarFieldEnum[] | ChallengeProgressScalarFieldEnum
-    having?: ChallengeProgressScalarWhereWithAggregatesInput
+  export type ViewdProductStoreGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ViewdProductStoreWhereInput
+    orderBy?: ViewdProductStoreOrderByWithAggregationInput | ViewdProductStoreOrderByWithAggregationInput[]
+    by: ViewdProductStoreScalarFieldEnum[] | ViewdProductStoreScalarFieldEnum
+    having?: ViewdProductStoreScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ChallengeProgressCountAggregateInputType | true
-    _avg?: ChallengeProgressAvgAggregateInputType
-    _sum?: ChallengeProgressSumAggregateInputType
-    _min?: ChallengeProgressMinAggregateInputType
-    _max?: ChallengeProgressMaxAggregateInputType
+    _count?: ViewdProductStoreCountAggregateInputType | true
+    _min?: ViewdProductStoreMinAggregateInputType
+    _max?: ViewdProductStoreMaxAggregateInputType
   }
 
-  export type ChallengeProgressGroupByOutputType = {
+  export type ViewdProductStoreGroupByOutputType = {
     id: string
     userId: string
-    challengeId: string
-    progress: number
-    completed: boolean
-    createdAt: Date
-    updatedAt: Date
-    _count: ChallengeProgressCountAggregateOutputType | null
-    _avg: ChallengeProgressAvgAggregateOutputType | null
-    _sum: ChallengeProgressSumAggregateOutputType | null
-    _min: ChallengeProgressMinAggregateOutputType | null
-    _max: ChallengeProgressMaxAggregateOutputType | null
+    productId: string
+    viewedAt: Date
+    _count: ViewdProductStoreCountAggregateOutputType | null
+    _min: ViewdProductStoreMinAggregateOutputType | null
+    _max: ViewdProductStoreMaxAggregateOutputType | null
   }
 
-  type GetChallengeProgressGroupByPayload<T extends ChallengeProgressGroupByArgs> = Prisma.PrismaPromise<
+  type GetViewdProductStoreGroupByPayload<T extends ViewdProductStoreGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ChallengeProgressGroupByOutputType, T['by']> &
+      PickEnumerable<ViewdProductStoreGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ChallengeProgressGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ViewdProductStoreGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ChallengeProgressGroupByOutputType[P]>
-            : GetScalarType<T[P], ChallengeProgressGroupByOutputType[P]>
+              : GetScalarType<T[P], ViewdProductStoreGroupByOutputType[P]>
+            : GetScalarType<T[P], ViewdProductStoreGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ChallengeProgressSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ViewdProductStoreSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    challengeId?: boolean
-    progress?: boolean
-    completed?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    productId?: boolean
+    viewedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    challenge?: boolean | ChallengeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challengeProgress"]>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewdProductStore"]>
 
-  export type ChallengeProgressSelectScalar = {
+  export type ViewdProductStoreSelectScalar = {
     id?: boolean
     userId?: boolean
-    challengeId?: boolean
-    progress?: boolean
-    completed?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    productId?: boolean
+    viewedAt?: boolean
   }
 
-  export type ChallengeProgressInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    challenge?: boolean | ChallengeDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
   }
 
 
-  export type $ChallengeProgressPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "ChallengeProgress"
+  export type $ViewdProductStorePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "ViewdProductStore"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      challenge: Prisma.$ChallengePayload<ExtArgs>
+      product: Prisma.$ProductPayload<ExtArgs>
     }
     scalars: $Extensions.GetResult<{
       id: string
       userId: string
-      challengeId: string
-      progress: number
-      completed: boolean
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["challengeProgress"]>
+      productId: string
+      viewedAt: Date
+    }, ExtArgs["result"]["viewdProductStore"]>
     composites: {}
   }
 
 
-  type ChallengeProgressGetPayload<S extends boolean | null | undefined | ChallengeProgressDefaultArgs> = $Result.GetResult<Prisma.$ChallengeProgressPayload, S>
+  type ViewdProductStoreGetPayload<S extends boolean | null | undefined | ViewdProductStoreDefaultArgs> = $Result.GetResult<Prisma.$ViewdProductStorePayload, S>
 
-  type ChallengeProgressCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<ChallengeProgressFindManyArgs, 'select' | 'include'> & {
-      select?: ChallengeProgressCountAggregateInputType | true
+  type ViewdProductStoreCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<ViewdProductStoreFindManyArgs, 'select' | 'include'> & {
+      select?: ViewdProductStoreCountAggregateInputType | true
     }
 
-  export interface ChallengeProgressDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChallengeProgress'], meta: { name: 'ChallengeProgress' } }
+  export interface ViewdProductStoreDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ViewdProductStore'], meta: { name: 'ViewdProductStore' } }
     /**
-     * Find zero or one ChallengeProgress that matches the filter.
-     * @param {ChallengeProgressFindUniqueArgs} args - Arguments to find a ChallengeProgress
+     * Find zero or one ViewdProductStore that matches the filter.
+     * @param {ViewdProductStoreFindUniqueArgs} args - Arguments to find a ViewdProductStore
      * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findUnique({
+     * // Get one ViewdProductStore
+     * const viewdProductStore = await prisma.viewdProductStore.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends ChallengeProgressFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressFindUniqueArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends ViewdProductStoreFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ViewdProductStoreFindUniqueArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one ChallengeProgress that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one ViewdProductStore that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {ChallengeProgressFindUniqueOrThrowArgs} args - Arguments to find a ChallengeProgress
+     * @param {ViewdProductStoreFindUniqueOrThrowArgs} args - Arguments to find a ViewdProductStore
      * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findUniqueOrThrow({
+     * // Get one ViewdProductStore
+     * const viewdProductStore = await prisma.viewdProductStore.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends ChallengeProgressFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends ViewdProductStoreFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ViewdProductStoreFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first ChallengeProgress that matches the filter.
+     * Find the first ViewdProductStore that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressFindFirstArgs} args - Arguments to find a ChallengeProgress
+     * @param {ViewdProductStoreFindFirstArgs} args - Arguments to find a ViewdProductStore
      * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findFirst({
+     * // Get one ViewdProductStore
+     * const viewdProductStore = await prisma.viewdProductStore.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends ChallengeProgressFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindFirstArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends ViewdProductStoreFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ViewdProductStoreFindFirstArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first ChallengeProgress that matches the filter or
+     * Find the first ViewdProductStore that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressFindFirstOrThrowArgs} args - Arguments to find a ChallengeProgress
+     * @param {ViewdProductStoreFindFirstOrThrowArgs} args - Arguments to find a ViewdProductStore
      * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findFirstOrThrow({
+     * // Get one ViewdProductStore
+     * const viewdProductStore = await prisma.viewdProductStore.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends ChallengeProgressFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends ViewdProductStoreFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ViewdProductStoreFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more ChallengeProgresses that matches the filter.
+     * Find zero or more ViewdProductStores that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {ViewdProductStoreFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all ChallengeProgresses
-     * const challengeProgresses = await prisma.challengeProgress.findMany()
+     * // Get all ViewdProductStores
+     * const viewdProductStores = await prisma.viewdProductStore.findMany()
      * 
-     * // Get first 10 ChallengeProgresses
-     * const challengeProgresses = await prisma.challengeProgress.findMany({ take: 10 })
+     * // Get first 10 ViewdProductStores
+     * const viewdProductStores = await prisma.viewdProductStore.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const challengeProgressWithIdOnly = await prisma.challengeProgress.findMany({ select: { id: true } })
+     * const viewdProductStoreWithIdOnly = await prisma.viewdProductStore.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends ChallengeProgressFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends ViewdProductStoreFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ViewdProductStoreFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a ChallengeProgress.
-     * @param {ChallengeProgressCreateArgs} args - Arguments to create a ChallengeProgress.
+     * Create a ViewdProductStore.
+     * @param {ViewdProductStoreCreateArgs} args - Arguments to create a ViewdProductStore.
      * @example
-     * // Create one ChallengeProgress
-     * const ChallengeProgress = await prisma.challengeProgress.create({
+     * // Create one ViewdProductStore
+     * const ViewdProductStore = await prisma.viewdProductStore.create({
      *   data: {
-     *     // ... data to create a ChallengeProgress
+     *     // ... data to create a ViewdProductStore
      *   }
      * })
      * 
     **/
-    create<T extends ChallengeProgressCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressCreateArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends ViewdProductStoreCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ViewdProductStoreCreateArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many ChallengeProgresses.
-     *     @param {ChallengeProgressCreateManyArgs} args - Arguments to create many ChallengeProgresses.
+     * Create many ViewdProductStores.
+     *     @param {ViewdProductStoreCreateManyArgs} args - Arguments to create many ViewdProductStores.
      *     @example
-     *     // Create many ChallengeProgresses
-     *     const challengeProgress = await prisma.challengeProgress.createMany({
+     *     // Create many ViewdProductStores
+     *     const viewdProductStore = await prisma.viewdProductStore.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends ChallengeProgressCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressCreateManyArgs<ExtArgs>>
+    createMany<T extends ViewdProductStoreCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ViewdProductStoreCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a ChallengeProgress.
-     * @param {ChallengeProgressDeleteArgs} args - Arguments to delete one ChallengeProgress.
+     * Delete a ViewdProductStore.
+     * @param {ViewdProductStoreDeleteArgs} args - Arguments to delete one ViewdProductStore.
      * @example
-     * // Delete one ChallengeProgress
-     * const ChallengeProgress = await prisma.challengeProgress.delete({
+     * // Delete one ViewdProductStore
+     * const ViewdProductStore = await prisma.viewdProductStore.delete({
      *   where: {
-     *     // ... filter to delete one ChallengeProgress
+     *     // ... filter to delete one ViewdProductStore
      *   }
      * })
      * 
     **/
-    delete<T extends ChallengeProgressDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressDeleteArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends ViewdProductStoreDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ViewdProductStoreDeleteArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one ChallengeProgress.
-     * @param {ChallengeProgressUpdateArgs} args - Arguments to update one ChallengeProgress.
+     * Update one ViewdProductStore.
+     * @param {ViewdProductStoreUpdateArgs} args - Arguments to update one ViewdProductStore.
      * @example
-     * // Update one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.update({
+     * // Update one ViewdProductStore
+     * const viewdProductStore = await prisma.viewdProductStore.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -11787,34 +9632,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends ChallengeProgressUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressUpdateArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends ViewdProductStoreUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ViewdProductStoreUpdateArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more ChallengeProgresses.
-     * @param {ChallengeProgressDeleteManyArgs} args - Arguments to filter ChallengeProgresses to delete.
+     * Delete zero or more ViewdProductStores.
+     * @param {ViewdProductStoreDeleteManyArgs} args - Arguments to filter ViewdProductStores to delete.
      * @example
-     * // Delete a few ChallengeProgresses
-     * const { count } = await prisma.challengeProgress.deleteMany({
+     * // Delete a few ViewdProductStores
+     * const { count } = await prisma.viewdProductStore.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends ChallengeProgressDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends ViewdProductStoreDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ViewdProductStoreDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more ChallengeProgresses.
+     * Update zero or more ViewdProductStores.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ViewdProductStoreUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many ChallengeProgresses
-     * const challengeProgress = await prisma.challengeProgress.updateMany({
+     * // Update many ViewdProductStores
+     * const viewdProductStore = await prisma.viewdProductStore.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -11824,59 +9669,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends ChallengeProgressUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressUpdateManyArgs<ExtArgs>>
+    updateMany<T extends ViewdProductStoreUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ViewdProductStoreUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one ChallengeProgress.
-     * @param {ChallengeProgressUpsertArgs} args - Arguments to update or create a ChallengeProgress.
+     * Create or update one ViewdProductStore.
+     * @param {ViewdProductStoreUpsertArgs} args - Arguments to update or create a ViewdProductStore.
      * @example
-     * // Update or create a ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.upsert({
+     * // Update or create a ViewdProductStore
+     * const viewdProductStore = await prisma.viewdProductStore.upsert({
      *   create: {
-     *     // ... data to create a ChallengeProgress
+     *     // ... data to create a ViewdProductStore
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the ChallengeProgress we want to update
+     *     // ... the filter for the ViewdProductStore we want to update
      *   }
      * })
     **/
-    upsert<T extends ChallengeProgressUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressUpsertArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends ViewdProductStoreUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ViewdProductStoreUpsertArgs<ExtArgs>>
+    ): Prisma__ViewdProductStoreClient<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of ChallengeProgresses.
+     * Count the number of ViewdProductStores.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressCountArgs} args - Arguments to filter ChallengeProgresses to count.
+     * @param {ViewdProductStoreCountArgs} args - Arguments to filter ViewdProductStores to count.
      * @example
-     * // Count the number of ChallengeProgresses
-     * const count = await prisma.challengeProgress.count({
+     * // Count the number of ViewdProductStores
+     * const count = await prisma.viewdProductStore.count({
      *   where: {
-     *     // ... the filter for the ChallengeProgresses we want to count
+     *     // ... the filter for the ViewdProductStores we want to count
      *   }
      * })
     **/
-    count<T extends ChallengeProgressCountArgs>(
-      args?: Subset<T, ChallengeProgressCountArgs>,
+    count<T extends ViewdProductStoreCountArgs>(
+      args?: Subset<T, ViewdProductStoreCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ChallengeProgressCountAggregateOutputType>
+          : GetScalarType<T['select'], ViewdProductStoreCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a ChallengeProgress.
+     * Allows you to perform aggregations operations on a ViewdProductStore.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ViewdProductStoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -11896,13 +9741,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ChallengeProgressAggregateArgs>(args: Subset<T, ChallengeProgressAggregateArgs>): Prisma.PrismaPromise<GetChallengeProgressAggregateType<T>>
+    aggregate<T extends ViewdProductStoreAggregateArgs>(args: Subset<T, ViewdProductStoreAggregateArgs>): Prisma.PrismaPromise<GetViewdProductStoreAggregateType<T>>
 
     /**
-     * Group by ChallengeProgress.
+     * Group by ViewdProductStore.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressGroupByArgs} args - Group by arguments.
+     * @param {ViewdProductStoreGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -11917,14 +9762,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ChallengeProgressGroupByArgs,
+      T extends ViewdProductStoreGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChallengeProgressGroupByArgs['orderBy'] }
-        : { orderBy?: ChallengeProgressGroupByArgs['orderBy'] },
+        ? { orderBy: ViewdProductStoreGroupByArgs['orderBy'] }
+        : { orderBy?: ViewdProductStoreGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -11973,25 +9818,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ChallengeProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChallengeProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ViewdProductStoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetViewdProductStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the ChallengeProgress model
+   * Fields of the ViewdProductStore model
    */
-  readonly fields: ChallengeProgressFieldRefs;
+  readonly fields: ViewdProductStoreFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for ChallengeProgress.
+   * The delegate class that acts as a "Promise-like" for ViewdProductStore.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ChallengeProgressClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ViewdProductStoreClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    challenge<T extends ChallengeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeDefaultArgs<ExtArgs>>): Prisma__ChallengeClient<$Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12018,641 +9863,704 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the ChallengeProgress model
+   * Fields of the ViewdProductStore model
    */ 
-  interface ChallengeProgressFieldRefs {
-    readonly id: FieldRef<"ChallengeProgress", 'String'>
-    readonly userId: FieldRef<"ChallengeProgress", 'String'>
-    readonly challengeId: FieldRef<"ChallengeProgress", 'String'>
-    readonly progress: FieldRef<"ChallengeProgress", 'Int'>
-    readonly completed: FieldRef<"ChallengeProgress", 'Boolean'>
-    readonly createdAt: FieldRef<"ChallengeProgress", 'DateTime'>
-    readonly updatedAt: FieldRef<"ChallengeProgress", 'DateTime'>
+  interface ViewdProductStoreFieldRefs {
+    readonly id: FieldRef<"ViewdProductStore", 'String'>
+    readonly userId: FieldRef<"ViewdProductStore", 'String'>
+    readonly productId: FieldRef<"ViewdProductStore", 'String'>
+    readonly viewedAt: FieldRef<"ViewdProductStore", 'DateTime'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * ChallengeProgress findUnique
+   * ViewdProductStore findUnique
    */
-  export type ChallengeProgressFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * Filter, which ChallengeProgress to fetch.
+     * Filter, which ViewdProductStore to fetch.
      */
-    where: ChallengeProgressWhereUniqueInput
+    where: ViewdProductStoreWhereUniqueInput
   }
 
 
   /**
-   * ChallengeProgress findUniqueOrThrow
+   * ViewdProductStore findUniqueOrThrow
    */
-  export type ChallengeProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * Filter, which ChallengeProgress to fetch.
+     * Filter, which ViewdProductStore to fetch.
      */
-    where: ChallengeProgressWhereUniqueInput
+    where: ViewdProductStoreWhereUniqueInput
   }
 
 
   /**
-   * ChallengeProgress findFirst
+   * ViewdProductStore findFirst
    */
-  export type ChallengeProgressFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * Filter, which ChallengeProgress to fetch.
+     * Filter, which ViewdProductStore to fetch.
      */
-    where?: ChallengeProgressWhereInput
+    where?: ViewdProductStoreWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ChallengeProgresses to fetch.
+     * Determine the order of ViewdProductStores to fetch.
      */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
+    orderBy?: ViewdProductStoreOrderByWithRelationInput | ViewdProductStoreOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ChallengeProgresses.
+     * Sets the position for searching for ViewdProductStores.
      */
-    cursor?: ChallengeProgressWhereUniqueInput
+    cursor?: ViewdProductStoreWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
+     * Take `±n` ViewdProductStores from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ChallengeProgresses.
+     * Skip the first `n` ViewdProductStores.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ChallengeProgresses.
+     * Filter by unique combinations of ViewdProductStores.
      */
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
+    distinct?: ViewdProductStoreScalarFieldEnum | ViewdProductStoreScalarFieldEnum[]
   }
 
 
   /**
-   * ChallengeProgress findFirstOrThrow
+   * ViewdProductStore findFirstOrThrow
    */
-  export type ChallengeProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * Filter, which ChallengeProgress to fetch.
+     * Filter, which ViewdProductStore to fetch.
      */
-    where?: ChallengeProgressWhereInput
+    where?: ViewdProductStoreWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ChallengeProgresses to fetch.
+     * Determine the order of ViewdProductStores to fetch.
      */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
+    orderBy?: ViewdProductStoreOrderByWithRelationInput | ViewdProductStoreOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ChallengeProgresses.
+     * Sets the position for searching for ViewdProductStores.
      */
-    cursor?: ChallengeProgressWhereUniqueInput
+    cursor?: ViewdProductStoreWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
+     * Take `±n` ViewdProductStores from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ChallengeProgresses.
+     * Skip the first `n` ViewdProductStores.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ChallengeProgresses.
+     * Filter by unique combinations of ViewdProductStores.
      */
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
+    distinct?: ViewdProductStoreScalarFieldEnum | ViewdProductStoreScalarFieldEnum[]
   }
 
 
   /**
-   * ChallengeProgress findMany
+   * ViewdProductStore findMany
    */
-  export type ChallengeProgressFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * Filter, which ChallengeProgresses to fetch.
+     * Filter, which ViewdProductStores to fetch.
      */
-    where?: ChallengeProgressWhereInput
+    where?: ViewdProductStoreWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ChallengeProgresses to fetch.
+     * Determine the order of ViewdProductStores to fetch.
      */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
+    orderBy?: ViewdProductStoreOrderByWithRelationInput | ViewdProductStoreOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing ChallengeProgresses.
+     * Sets the position for listing ViewdProductStores.
      */
-    cursor?: ChallengeProgressWhereUniqueInput
+    cursor?: ViewdProductStoreWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
+     * Take `±n` ViewdProductStores from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ChallengeProgresses.
+     * Skip the first `n` ViewdProductStores.
      */
     skip?: number
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
+    distinct?: ViewdProductStoreScalarFieldEnum | ViewdProductStoreScalarFieldEnum[]
   }
 
 
   /**
-   * ChallengeProgress create
+   * ViewdProductStore create
    */
-  export type ChallengeProgressCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * The data needed to create a ChallengeProgress.
+     * The data needed to create a ViewdProductStore.
      */
-    data: XOR<ChallengeProgressCreateInput, ChallengeProgressUncheckedCreateInput>
+    data: XOR<ViewdProductStoreCreateInput, ViewdProductStoreUncheckedCreateInput>
   }
 
 
   /**
-   * ChallengeProgress createMany
+   * ViewdProductStore createMany
    */
-  export type ChallengeProgressCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many ChallengeProgresses.
+     * The data used to create many ViewdProductStores.
      */
-    data: ChallengeProgressCreateManyInput | ChallengeProgressCreateManyInput[]
+    data: ViewdProductStoreCreateManyInput | ViewdProductStoreCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * ChallengeProgress update
+   * ViewdProductStore update
    */
-  export type ChallengeProgressUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * The data needed to update a ChallengeProgress.
+     * The data needed to update a ViewdProductStore.
      */
-    data: XOR<ChallengeProgressUpdateInput, ChallengeProgressUncheckedUpdateInput>
+    data: XOR<ViewdProductStoreUpdateInput, ViewdProductStoreUncheckedUpdateInput>
     /**
-     * Choose, which ChallengeProgress to update.
+     * Choose, which ViewdProductStore to update.
      */
-    where: ChallengeProgressWhereUniqueInput
+    where: ViewdProductStoreWhereUniqueInput
   }
 
 
   /**
-   * ChallengeProgress updateMany
+   * ViewdProductStore updateMany
    */
-  export type ChallengeProgressUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update ChallengeProgresses.
+     * The data used to update ViewdProductStores.
      */
-    data: XOR<ChallengeProgressUpdateManyMutationInput, ChallengeProgressUncheckedUpdateManyInput>
+    data: XOR<ViewdProductStoreUpdateManyMutationInput, ViewdProductStoreUncheckedUpdateManyInput>
     /**
-     * Filter which ChallengeProgresses to update
+     * Filter which ViewdProductStores to update
      */
-    where?: ChallengeProgressWhereInput
+    where?: ViewdProductStoreWhereInput
   }
 
 
   /**
-   * ChallengeProgress upsert
+   * ViewdProductStore upsert
    */
-  export type ChallengeProgressUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * The filter to search for the ChallengeProgress to update in case it exists.
+     * The filter to search for the ViewdProductStore to update in case it exists.
      */
-    where: ChallengeProgressWhereUniqueInput
+    where: ViewdProductStoreWhereUniqueInput
     /**
-     * In case the ChallengeProgress found by the `where` argument doesn't exist, create a new ChallengeProgress with this data.
+     * In case the ViewdProductStore found by the `where` argument doesn't exist, create a new ViewdProductStore with this data.
      */
-    create: XOR<ChallengeProgressCreateInput, ChallengeProgressUncheckedCreateInput>
+    create: XOR<ViewdProductStoreCreateInput, ViewdProductStoreUncheckedCreateInput>
     /**
-     * In case the ChallengeProgress was found with the provided `where` argument, update it with this data.
+     * In case the ViewdProductStore was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ChallengeProgressUpdateInput, ChallengeProgressUncheckedUpdateInput>
+    update: XOR<ViewdProductStoreUpdateInput, ViewdProductStoreUncheckedUpdateInput>
   }
 
 
   /**
-   * ChallengeProgress delete
+   * ViewdProductStore delete
    */
-  export type ChallengeProgressDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
     /**
-     * Filter which ChallengeProgress to delete.
+     * Filter which ViewdProductStore to delete.
      */
-    where: ChallengeProgressWhereUniqueInput
+    where: ViewdProductStoreWhereUniqueInput
   }
 
 
   /**
-   * ChallengeProgress deleteMany
+   * ViewdProductStore deleteMany
    */
-  export type ChallengeProgressDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ChallengeProgresses to delete
+     * Filter which ViewdProductStores to delete
      */
-    where?: ChallengeProgressWhereInput
+    where?: ViewdProductStoreWhereInput
   }
 
 
   /**
-   * ChallengeProgress without action
+   * ViewdProductStore without action
    */
-  export type ChallengeProgressDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ViewdProductStoreDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the ViewdProductStore
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: ViewdProductStoreSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
+    include?: ViewdProductStoreInclude<ExtArgs> | null
   }
 
 
 
   /**
-   * Model Dopamine
+   * Model Alert
    */
 
-  export type AggregateDopamine = {
-    _count: DopamineCountAggregateOutputType | null
-    _min: DopamineMinAggregateOutputType | null
-    _max: DopamineMaxAggregateOutputType | null
+  export type AggregateAlert = {
+    _count: AlertCountAggregateOutputType | null
+    _min: AlertMinAggregateOutputType | null
+    _max: AlertMaxAggregateOutputType | null
   }
 
-  export type DopamineMinAggregateOutputType = {
-    dopamine: string | null
+  export type AlertMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    category: string | null
+    disabled: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type DopamineMaxAggregateOutputType = {
-    dopamine: string | null
+  export type AlertMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    category: string | null
+    disabled: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type DopamineCountAggregateOutputType = {
-    dopamine: number
+  export type AlertCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    imageSrc: number
+    category: number
+    disabled: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
-  export type DopamineMinAggregateInputType = {
-    dopamine?: true
+  export type AlertMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    category?: true
+    disabled?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
-  export type DopamineMaxAggregateInputType = {
-    dopamine?: true
+  export type AlertMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    category?: true
+    disabled?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
-  export type DopamineCountAggregateInputType = {
-    dopamine?: true
+  export type AlertCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    imageSrc?: true
+    category?: true
+    disabled?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
-  export type DopamineAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Dopamine to aggregate.
+     * Filter which Alert to aggregate.
      */
-    where?: DopamineWhereInput
+    where?: AlertWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Dopamines to fetch.
+     * Determine the order of Alerts to fetch.
      */
-    orderBy?: DopamineOrderByWithRelationInput | DopamineOrderByWithRelationInput[]
+    orderBy?: AlertOrderByWithRelationInput | AlertOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: DopamineWhereUniqueInput
+    cursor?: AlertWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Dopamines from the position of the cursor.
+     * Take `±n` Alerts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Dopamines.
+     * Skip the first `n` Alerts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Dopamines
+     * Count returned Alerts
     **/
-    _count?: true | DopamineCountAggregateInputType
+    _count?: true | AlertCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: DopamineMinAggregateInputType
+    _min?: AlertMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: DopamineMaxAggregateInputType
+    _max?: AlertMaxAggregateInputType
   }
 
-  export type GetDopamineAggregateType<T extends DopamineAggregateArgs> = {
-        [P in keyof T & keyof AggregateDopamine]: P extends '_count' | 'count'
+  export type GetAlertAggregateType<T extends AlertAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlert]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDopamine[P]>
-      : GetScalarType<T[P], AggregateDopamine[P]>
+        : GetScalarType<T[P], AggregateAlert[P]>
+      : GetScalarType<T[P], AggregateAlert[P]>
   }
 
 
 
 
-  export type DopamineGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: DopamineWhereInput
-    orderBy?: DopamineOrderByWithAggregationInput | DopamineOrderByWithAggregationInput[]
-    by: DopamineScalarFieldEnum[] | DopamineScalarFieldEnum
-    having?: DopamineScalarWhereWithAggregatesInput
+  export type AlertGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: AlertWhereInput
+    orderBy?: AlertOrderByWithAggregationInput | AlertOrderByWithAggregationInput[]
+    by: AlertScalarFieldEnum[] | AlertScalarFieldEnum
+    having?: AlertScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: DopamineCountAggregateInputType | true
-    _min?: DopamineMinAggregateInputType
-    _max?: DopamineMaxAggregateInputType
+    _count?: AlertCountAggregateInputType | true
+    _min?: AlertMinAggregateInputType
+    _max?: AlertMaxAggregateInputType
   }
 
-  export type DopamineGroupByOutputType = {
-    dopamine: string
-    _count: DopamineCountAggregateOutputType | null
-    _min: DopamineMinAggregateOutputType | null
-    _max: DopamineMaxAggregateOutputType | null
+  export type AlertGroupByOutputType = {
+    id: string
+    title: string
+    description: string
+    imageSrc: string[]
+    category: string
+    disabled: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: AlertCountAggregateOutputType | null
+    _min: AlertMinAggregateOutputType | null
+    _max: AlertMaxAggregateOutputType | null
   }
 
-  type GetDopamineGroupByPayload<T extends DopamineGroupByArgs> = Prisma.PrismaPromise<
+  type GetAlertGroupByPayload<T extends AlertGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<DopamineGroupByOutputType, T['by']> &
+      PickEnumerable<AlertGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof DopamineGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AlertGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], DopamineGroupByOutputType[P]>
-            : GetScalarType<T[P], DopamineGroupByOutputType[P]>
+              : GetScalarType<T[P], AlertGroupByOutputType[P]>
+            : GetScalarType<T[P], AlertGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type DopamineSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    dopamine?: boolean
-  }, ExtArgs["result"]["dopamine"]>
+  export type AlertSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    imageSrc?: boolean
+    category?: boolean
+    disabled?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["alert"]>
 
-  export type DopamineSelectScalar = {
-    dopamine?: boolean
+  export type AlertSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    imageSrc?: boolean
+    category?: boolean
+    disabled?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
 
-  export type $DopaminePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "Dopamine"
+  export type $AlertPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "Alert"
     objects: {}
     scalars: $Extensions.GetResult<{
-      dopamine: string
-    }, ExtArgs["result"]["dopamine"]>
+      id: string
+      title: string
+      description: string
+      imageSrc: string[]
+      category: string
+      disabled: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["alert"]>
     composites: {}
   }
 
 
-  type DopamineGetPayload<S extends boolean | null | undefined | DopamineDefaultArgs> = $Result.GetResult<Prisma.$DopaminePayload, S>
+  type AlertGetPayload<S extends boolean | null | undefined | AlertDefaultArgs> = $Result.GetResult<Prisma.$AlertPayload, S>
 
-  type DopamineCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<DopamineFindManyArgs, 'select' | 'include'> & {
-      select?: DopamineCountAggregateInputType | true
+  type AlertCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<AlertFindManyArgs, 'select' | 'include'> & {
+      select?: AlertCountAggregateInputType | true
     }
 
-  export interface DopamineDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Dopamine'], meta: { name: 'Dopamine' } }
+  export interface AlertDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Alert'], meta: { name: 'Alert' } }
     /**
-     * Find zero or one Dopamine that matches the filter.
-     * @param {DopamineFindUniqueArgs} args - Arguments to find a Dopamine
+     * Find zero or one Alert that matches the filter.
+     * @param {AlertFindUniqueArgs} args - Arguments to find a Alert
      * @example
-     * // Get one Dopamine
-     * const dopamine = await prisma.dopamine.findUnique({
+     * // Get one Alert
+     * const alert = await prisma.alert.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends DopamineFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, DopamineFindUniqueArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends AlertFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AlertFindUniqueArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Dopamine that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Alert that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {DopamineFindUniqueOrThrowArgs} args - Arguments to find a Dopamine
+     * @param {AlertFindUniqueOrThrowArgs} args - Arguments to find a Alert
      * @example
-     * // Get one Dopamine
-     * const dopamine = await prisma.dopamine.findUniqueOrThrow({
+     * // Get one Alert
+     * const alert = await prisma.alert.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends DopamineFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, DopamineFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends AlertFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AlertFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Dopamine that matches the filter.
+     * Find the first Alert that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineFindFirstArgs} args - Arguments to find a Dopamine
+     * @param {AlertFindFirstArgs} args - Arguments to find a Alert
      * @example
-     * // Get one Dopamine
-     * const dopamine = await prisma.dopamine.findFirst({
+     * // Get one Alert
+     * const alert = await prisma.alert.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends DopamineFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, DopamineFindFirstArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends AlertFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AlertFindFirstArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Dopamine that matches the filter or
+     * Find the first Alert that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineFindFirstOrThrowArgs} args - Arguments to find a Dopamine
+     * @param {AlertFindFirstOrThrowArgs} args - Arguments to find a Alert
      * @example
-     * // Get one Dopamine
-     * const dopamine = await prisma.dopamine.findFirstOrThrow({
+     * // Get one Alert
+     * const alert = await prisma.alert.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends DopamineFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, DopamineFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends AlertFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AlertFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Dopamines that matches the filter.
+     * Find zero or more Alerts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {AlertFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Dopamines
-     * const dopamines = await prisma.dopamine.findMany()
+     * // Get all Alerts
+     * const alerts = await prisma.alert.findMany()
      * 
-     * // Get first 10 Dopamines
-     * const dopamines = await prisma.dopamine.findMany({ take: 10 })
+     * // Get first 10 Alerts
+     * const alerts = await prisma.alert.findMany({ take: 10 })
      * 
-     * // Only select the `dopamine`
-     * const dopamineWithDopamineOnly = await prisma.dopamine.findMany({ select: { dopamine: true } })
+     * // Only select the `id`
+     * const alertWithIdOnly = await prisma.alert.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends DopamineFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, DopamineFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends AlertFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AlertFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Dopamine.
-     * @param {DopamineCreateArgs} args - Arguments to create a Dopamine.
+     * Create a Alert.
+     * @param {AlertCreateArgs} args - Arguments to create a Alert.
      * @example
-     * // Create one Dopamine
-     * const Dopamine = await prisma.dopamine.create({
+     * // Create one Alert
+     * const Alert = await prisma.alert.create({
      *   data: {
-     *     // ... data to create a Dopamine
+     *     // ... data to create a Alert
      *   }
      * })
      * 
     **/
-    create<T extends DopamineCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, DopamineCreateArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends AlertCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AlertCreateArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Dopamines.
-     *     @param {DopamineCreateManyArgs} args - Arguments to create many Dopamines.
+     * Create many Alerts.
+     *     @param {AlertCreateManyArgs} args - Arguments to create many Alerts.
      *     @example
-     *     // Create many Dopamines
-     *     const dopamine = await prisma.dopamine.createMany({
+     *     // Create many Alerts
+     *     const alert = await prisma.alert.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends DopamineCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, DopamineCreateManyArgs<ExtArgs>>
+    createMany<T extends AlertCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AlertCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Dopamine.
-     * @param {DopamineDeleteArgs} args - Arguments to delete one Dopamine.
+     * Delete a Alert.
+     * @param {AlertDeleteArgs} args - Arguments to delete one Alert.
      * @example
-     * // Delete one Dopamine
-     * const Dopamine = await prisma.dopamine.delete({
+     * // Delete one Alert
+     * const Alert = await prisma.alert.delete({
      *   where: {
-     *     // ... filter to delete one Dopamine
+     *     // ... filter to delete one Alert
      *   }
      * })
      * 
     **/
-    delete<T extends DopamineDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, DopamineDeleteArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends AlertDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AlertDeleteArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Dopamine.
-     * @param {DopamineUpdateArgs} args - Arguments to update one Dopamine.
+     * Update one Alert.
+     * @param {AlertUpdateArgs} args - Arguments to update one Alert.
      * @example
-     * // Update one Dopamine
-     * const dopamine = await prisma.dopamine.update({
+     * // Update one Alert
+     * const alert = await prisma.alert.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12662,34 +10570,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends DopamineUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, DopamineUpdateArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends AlertUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AlertUpdateArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Dopamines.
-     * @param {DopamineDeleteManyArgs} args - Arguments to filter Dopamines to delete.
+     * Delete zero or more Alerts.
+     * @param {AlertDeleteManyArgs} args - Arguments to filter Alerts to delete.
      * @example
-     * // Delete a few Dopamines
-     * const { count } = await prisma.dopamine.deleteMany({
+     * // Delete a few Alerts
+     * const { count } = await prisma.alert.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends DopamineDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, DopamineDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends AlertDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AlertDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Dopamines.
+     * Update zero or more Alerts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AlertUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Dopamines
-     * const dopamine = await prisma.dopamine.updateMany({
+     * // Update many Alerts
+     * const alert = await prisma.alert.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12699,59 +10607,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends DopamineUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, DopamineUpdateManyArgs<ExtArgs>>
+    updateMany<T extends AlertUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AlertUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Dopamine.
-     * @param {DopamineUpsertArgs} args - Arguments to update or create a Dopamine.
+     * Create or update one Alert.
+     * @param {AlertUpsertArgs} args - Arguments to update or create a Alert.
      * @example
-     * // Update or create a Dopamine
-     * const dopamine = await prisma.dopamine.upsert({
+     * // Update or create a Alert
+     * const alert = await prisma.alert.upsert({
      *   create: {
-     *     // ... data to create a Dopamine
+     *     // ... data to create a Alert
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Dopamine we want to update
+     *     // ... the filter for the Alert we want to update
      *   }
      * })
     **/
-    upsert<T extends DopamineUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, DopamineUpsertArgs<ExtArgs>>
-    ): Prisma__DopamineClient<$Result.GetResult<Prisma.$DopaminePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends AlertUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AlertUpsertArgs<ExtArgs>>
+    ): Prisma__AlertClient<$Result.GetResult<Prisma.$AlertPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Dopamines.
+     * Count the number of Alerts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineCountArgs} args - Arguments to filter Dopamines to count.
+     * @param {AlertCountArgs} args - Arguments to filter Alerts to count.
      * @example
-     * // Count the number of Dopamines
-     * const count = await prisma.dopamine.count({
+     * // Count the number of Alerts
+     * const count = await prisma.alert.count({
      *   where: {
-     *     // ... the filter for the Dopamines we want to count
+     *     // ... the filter for the Alerts we want to count
      *   }
      * })
     **/
-    count<T extends DopamineCountArgs>(
-      args?: Subset<T, DopamineCountArgs>,
+    count<T extends AlertCountArgs>(
+      args?: Subset<T, AlertCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], DopamineCountAggregateOutputType>
+          : GetScalarType<T['select'], AlertCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Dopamine.
+     * Allows you to perform aggregations operations on a Alert.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AlertAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -12771,13 +10679,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends DopamineAggregateArgs>(args: Subset<T, DopamineAggregateArgs>): Prisma.PrismaPromise<GetDopamineAggregateType<T>>
+    aggregate<T extends AlertAggregateArgs>(args: Subset<T, AlertAggregateArgs>): Prisma.PrismaPromise<GetAlertAggregateType<T>>
 
     /**
-     * Group by Dopamine.
+     * Group by Alert.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DopamineGroupByArgs} args - Group by arguments.
+     * @param {AlertGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -12792,14 +10700,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends DopamineGroupByArgs,
+      T extends AlertGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DopamineGroupByArgs['orderBy'] }
-        : { orderBy?: DopamineGroupByArgs['orderBy'] },
+        ? { orderBy: AlertGroupByArgs['orderBy'] }
+        : { orderBy?: AlertGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -12848,20 +10756,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, DopamineGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDopamineGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AlertGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlertGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Dopamine model
+   * Fields of the Alert model
    */
-  readonly fields: DopamineFieldRefs;
+  readonly fields: AlertFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Dopamine.
+   * The delegate class that acts as a "Promise-like" for Alert.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__DopamineClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AlertClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
 
@@ -12890,293 +10798,300 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Dopamine model
+   * Fields of the Alert model
    */ 
-  interface DopamineFieldRefs {
-    readonly dopamine: FieldRef<"Dopamine", 'String'>
+  interface AlertFieldRefs {
+    readonly id: FieldRef<"Alert", 'String'>
+    readonly title: FieldRef<"Alert", 'String'>
+    readonly description: FieldRef<"Alert", 'String'>
+    readonly imageSrc: FieldRef<"Alert", 'String[]'>
+    readonly category: FieldRef<"Alert", 'String'>
+    readonly disabled: FieldRef<"Alert", 'Boolean'>
+    readonly createdAt: FieldRef<"Alert", 'DateTime'>
+    readonly updatedAt: FieldRef<"Alert", 'DateTime'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * Dopamine findUnique
+   * Alert findUnique
    */
-  export type DopamineFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * Filter, which Dopamine to fetch.
+     * Filter, which Alert to fetch.
      */
-    where: DopamineWhereUniqueInput
+    where: AlertWhereUniqueInput
   }
 
 
   /**
-   * Dopamine findUniqueOrThrow
+   * Alert findUniqueOrThrow
    */
-  export type DopamineFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * Filter, which Dopamine to fetch.
+     * Filter, which Alert to fetch.
      */
-    where: DopamineWhereUniqueInput
+    where: AlertWhereUniqueInput
   }
 
 
   /**
-   * Dopamine findFirst
+   * Alert findFirst
    */
-  export type DopamineFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * Filter, which Dopamine to fetch.
+     * Filter, which Alert to fetch.
      */
-    where?: DopamineWhereInput
+    where?: AlertWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Dopamines to fetch.
+     * Determine the order of Alerts to fetch.
      */
-    orderBy?: DopamineOrderByWithRelationInput | DopamineOrderByWithRelationInput[]
+    orderBy?: AlertOrderByWithRelationInput | AlertOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Dopamines.
+     * Sets the position for searching for Alerts.
      */
-    cursor?: DopamineWhereUniqueInput
+    cursor?: AlertWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Dopamines from the position of the cursor.
+     * Take `±n` Alerts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Dopamines.
+     * Skip the first `n` Alerts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Dopamines.
+     * Filter by unique combinations of Alerts.
      */
-    distinct?: DopamineScalarFieldEnum | DopamineScalarFieldEnum[]
+    distinct?: AlertScalarFieldEnum | AlertScalarFieldEnum[]
   }
 
 
   /**
-   * Dopamine findFirstOrThrow
+   * Alert findFirstOrThrow
    */
-  export type DopamineFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * Filter, which Dopamine to fetch.
+     * Filter, which Alert to fetch.
      */
-    where?: DopamineWhereInput
+    where?: AlertWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Dopamines to fetch.
+     * Determine the order of Alerts to fetch.
      */
-    orderBy?: DopamineOrderByWithRelationInput | DopamineOrderByWithRelationInput[]
+    orderBy?: AlertOrderByWithRelationInput | AlertOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Dopamines.
+     * Sets the position for searching for Alerts.
      */
-    cursor?: DopamineWhereUniqueInput
+    cursor?: AlertWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Dopamines from the position of the cursor.
+     * Take `±n` Alerts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Dopamines.
+     * Skip the first `n` Alerts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Dopamines.
+     * Filter by unique combinations of Alerts.
      */
-    distinct?: DopamineScalarFieldEnum | DopamineScalarFieldEnum[]
+    distinct?: AlertScalarFieldEnum | AlertScalarFieldEnum[]
   }
 
 
   /**
-   * Dopamine findMany
+   * Alert findMany
    */
-  export type DopamineFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * Filter, which Dopamines to fetch.
+     * Filter, which Alerts to fetch.
      */
-    where?: DopamineWhereInput
+    where?: AlertWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Dopamines to fetch.
+     * Determine the order of Alerts to fetch.
      */
-    orderBy?: DopamineOrderByWithRelationInput | DopamineOrderByWithRelationInput[]
+    orderBy?: AlertOrderByWithRelationInput | AlertOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Dopamines.
+     * Sets the position for listing Alerts.
      */
-    cursor?: DopamineWhereUniqueInput
+    cursor?: AlertWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Dopamines from the position of the cursor.
+     * Take `±n` Alerts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Dopamines.
+     * Skip the first `n` Alerts.
      */
     skip?: number
-    distinct?: DopamineScalarFieldEnum | DopamineScalarFieldEnum[]
+    distinct?: AlertScalarFieldEnum | AlertScalarFieldEnum[]
   }
 
 
   /**
-   * Dopamine create
+   * Alert create
    */
-  export type DopamineCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * The data needed to create a Dopamine.
+     * The data needed to create a Alert.
      */
-    data?: XOR<DopamineCreateInput, DopamineUncheckedCreateInput>
+    data: XOR<AlertCreateInput, AlertUncheckedCreateInput>
   }
 
 
   /**
-   * Dopamine createMany
+   * Alert createMany
    */
-  export type DopamineCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Dopamines.
+     * The data used to create many Alerts.
      */
-    data: DopamineCreateManyInput | DopamineCreateManyInput[]
+    data: AlertCreateManyInput | AlertCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * Dopamine update
+   * Alert update
    */
-  export type DopamineUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * The data needed to update a Dopamine.
+     * The data needed to update a Alert.
      */
-    data: XOR<DopamineUpdateInput, DopamineUncheckedUpdateInput>
+    data: XOR<AlertUpdateInput, AlertUncheckedUpdateInput>
     /**
-     * Choose, which Dopamine to update.
+     * Choose, which Alert to update.
      */
-    where: DopamineWhereUniqueInput
+    where: AlertWhereUniqueInput
   }
 
 
   /**
-   * Dopamine updateMany
+   * Alert updateMany
    */
-  export type DopamineUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Dopamines.
+     * The data used to update Alerts.
      */
-    data: XOR<DopamineUpdateManyMutationInput, DopamineUncheckedUpdateManyInput>
+    data: XOR<AlertUpdateManyMutationInput, AlertUncheckedUpdateManyInput>
     /**
-     * Filter which Dopamines to update
+     * Filter which Alerts to update
      */
-    where?: DopamineWhereInput
+    where?: AlertWhereInput
   }
 
 
   /**
-   * Dopamine upsert
+   * Alert upsert
    */
-  export type DopamineUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * The filter to search for the Dopamine to update in case it exists.
+     * The filter to search for the Alert to update in case it exists.
      */
-    where: DopamineWhereUniqueInput
+    where: AlertWhereUniqueInput
     /**
-     * In case the Dopamine found by the `where` argument doesn't exist, create a new Dopamine with this data.
+     * In case the Alert found by the `where` argument doesn't exist, create a new Alert with this data.
      */
-    create: XOR<DopamineCreateInput, DopamineUncheckedCreateInput>
+    create: XOR<AlertCreateInput, AlertUncheckedCreateInput>
     /**
-     * In case the Dopamine was found with the provided `where` argument, update it with this data.
+     * In case the Alert was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<DopamineUpdateInput, DopamineUncheckedUpdateInput>
+    update: XOR<AlertUpdateInput, AlertUncheckedUpdateInput>
   }
 
 
   /**
-   * Dopamine delete
+   * Alert delete
    */
-  export type DopamineDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
     /**
-     * Filter which Dopamine to delete.
+     * Filter which Alert to delete.
      */
-    where: DopamineWhereUniqueInput
+    where: AlertWhereUniqueInput
   }
 
 
   /**
-   * Dopamine deleteMany
+   * Alert deleteMany
    */
-  export type DopamineDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Dopamines to delete
+     * Filter which Alerts to delete
      */
-    where?: DopamineWhereInput
+    where?: AlertWhereInput
   }
 
 
   /**
-   * Dopamine without action
+   * Alert without action
    */
-  export type DopamineDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AlertDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dopamine
+     * Select specific fields to fetch from the Alert
      */
-    select?: DopamineSelect<ExtArgs> | null
+    select?: AlertSelect<ExtArgs> | null
   }
 
 
@@ -16007,7 +13922,6 @@ export namespace Prisma {
     emailVerified: 'emailVerified',
     image: 'image',
     level: 'level',
-    tier: 'tier',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userType: 'userType',
@@ -16049,13 +13963,19 @@ export namespace Prisma {
     title: 'title',
     description: 'description',
     imageSrc: 'imageSrc',
-    category: 'category',
     userId: 'userId',
     price: 'price',
     latitude: 'latitude',
     longitude: 'longitude',
+    address: 'address',
+    addressDetail: 'addressDetail',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    sold: 'sold',
+    views: 'views',
+    delivery: 'delivery',
+    faceToFace: 'faceToFace',
+    categories: 'categories'
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -16071,53 +13991,28 @@ export namespace Prisma {
   export type ViewdBoardStoreScalarFieldEnum = (typeof ViewdBoardStoreScalarFieldEnum)[keyof typeof ViewdBoardStoreScalarFieldEnum]
 
 
-  export const ChallengeScalarFieldEnum: {
+  export const ViewdProductStoreScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    productId: 'productId',
+    viewedAt: 'viewedAt'
+  };
+
+  export type ViewdProductStoreScalarFieldEnum = (typeof ViewdProductStoreScalarFieldEnum)[keyof typeof ViewdProductStoreScalarFieldEnum]
+
+
+  export const AlertScalarFieldEnum: {
     id: 'id',
     title: 'title',
     description: 'description',
     imageSrc: 'imageSrc',
-    reward: 'reward',
     category: 'category',
-    period: 'period',
-    progress: 'progress',
     disabled: 'disabled',
-    participants: 'participants',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type ChallengeScalarFieldEnum = (typeof ChallengeScalarFieldEnum)[keyof typeof ChallengeScalarFieldEnum]
-
-
-  export const EssayScalarFieldEnum: {
-    id: 'id',
-    content: 'content',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    challengeId: 'challengeId'
-  };
-
-  export type EssayScalarFieldEnum = (typeof EssayScalarFieldEnum)[keyof typeof EssayScalarFieldEnum]
-
-
-  export const ChallengeProgressScalarFieldEnum: {
-    id: 'id',
-    userId: 'userId',
-    challengeId: 'challengeId',
-    progress: 'progress',
-    completed: 'completed',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type ChallengeProgressScalarFieldEnum = (typeof ChallengeProgressScalarFieldEnum)[keyof typeof ChallengeProgressScalarFieldEnum]
-
-
-  export const DopamineScalarFieldEnum: {
-    dopamine: 'dopamine'
-  };
-
-  export type DopamineScalarFieldEnum = (typeof DopamineScalarFieldEnum)[keyof typeof DopamineScalarFieldEnum]
+  export type AlertScalarFieldEnum = (typeof AlertScalarFieldEnum)[keyof typeof AlertScalarFieldEnum]
 
 
   export const VerificationTokenScalarFieldEnum: {
@@ -16417,7 +14312,6 @@ export namespace Prisma {
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     level?: IntFilter<"User"> | number
-    tier?: StringNullableListFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
@@ -16427,8 +14321,8 @@ export namespace Prisma {
     Product?: ProductListRelationFilter
     Board?: BoardListRelationFilter
     ViewdBoardStore?: ViewdBoardStoreListRelationFilter
+    ViewdProductStore?: ViewdProductStoreListRelationFilter
     BoardLikeDisLike?: BoardLikeDisLikeListRelationFilter
-    challengeProgress?: ChallengeProgressListRelationFilter
     conversations?: ConversationListRelationFilter
     sendMessages?: MessageListRelationFilter
     receivedMessages?: MessageListRelationFilter
@@ -16442,7 +14336,6 @@ export namespace Prisma {
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     level?: SortOrder
-    tier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userType?: SortOrder
@@ -16452,8 +14345,8 @@ export namespace Prisma {
     Product?: ProductOrderByRelationAggregateInput
     Board?: BoardOrderByRelationAggregateInput
     ViewdBoardStore?: ViewdBoardStoreOrderByRelationAggregateInput
+    ViewdProductStore?: ViewdProductStoreOrderByRelationAggregateInput
     BoardLikeDisLike?: BoardLikeDisLikeOrderByRelationAggregateInput
-    challengeProgress?: ChallengeProgressOrderByRelationAggregateInput
     conversations?: ConversationOrderByRelationAggregateInput
     sendMessages?: MessageOrderByRelationAggregateInput
     receivedMessages?: MessageOrderByRelationAggregateInput
@@ -16470,7 +14363,6 @@ export namespace Prisma {
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     level?: IntFilter<"User"> | number
-    tier?: StringNullableListFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
@@ -16480,8 +14372,8 @@ export namespace Prisma {
     Product?: ProductListRelationFilter
     Board?: BoardListRelationFilter
     ViewdBoardStore?: ViewdBoardStoreListRelationFilter
+    ViewdProductStore?: ViewdProductStoreListRelationFilter
     BoardLikeDisLike?: BoardLikeDisLikeListRelationFilter
-    challengeProgress?: ChallengeProgressListRelationFilter
     conversations?: ConversationListRelationFilter
     sendMessages?: MessageListRelationFilter
     receivedMessages?: MessageListRelationFilter
@@ -16495,7 +14387,6 @@ export namespace Prisma {
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     level?: SortOrder
-    tier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userType?: SortOrder
@@ -16518,7 +14409,6 @@ export namespace Prisma {
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     level?: IntWithAggregatesFilter<"User"> | number
-    tier?: StringNullableListFilter<"User">
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     userType?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
@@ -16680,15 +14570,22 @@ export namespace Prisma {
     id?: StringFilter<"Product"> | string
     title?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
-    imageSrc?: StringFilter<"Product"> | string
-    category?: StringFilter<"Product"> | string
+    imageSrc?: StringNullableListFilter<"Product">
     userId?: StringFilter<"Product"> | string
     price?: IntFilter<"Product"> | number
-    latitude?: FloatFilter<"Product"> | number
-    longitude?: FloatFilter<"Product"> | number
+    latitude?: FloatNullableFilter<"Product"> | number | null
+    longitude?: FloatNullableFilter<"Product"> | number | null
+    address?: StringNullableFilter<"Product"> | string | null
+    addressDetail?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
+    sold?: BoolFilter<"Product"> | boolean
+    views?: IntFilter<"Product"> | number
+    delivery?: BoolFilter<"Product"> | boolean
+    faceToFace?: BoolFilter<"Product"> | boolean
+    categories?: StringNullableListFilter<"Product">
     user?: XOR<UserRelationFilter, UserWhereInput>
+    ViewdProductStore?: ViewdProductStoreListRelationFilter
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -16696,14 +14593,21 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     imageSrc?: SortOrder
-    category?: SortOrder
     userId?: SortOrder
     price?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    addressDetail?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sold?: SortOrder
+    views?: SortOrder
+    delivery?: SortOrder
+    faceToFace?: SortOrder
+    categories?: SortOrder
     user?: UserOrderByWithRelationInput
+    ViewdProductStore?: ViewdProductStoreOrderByRelationAggregateInput
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -16713,15 +14617,22 @@ export namespace Prisma {
     NOT?: ProductWhereInput | ProductWhereInput[]
     title?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
-    imageSrc?: StringFilter<"Product"> | string
-    category?: StringFilter<"Product"> | string
+    imageSrc?: StringNullableListFilter<"Product">
     userId?: StringFilter<"Product"> | string
     price?: IntFilter<"Product"> | number
-    latitude?: FloatFilter<"Product"> | number
-    longitude?: FloatFilter<"Product"> | number
+    latitude?: FloatNullableFilter<"Product"> | number | null
+    longitude?: FloatNullableFilter<"Product"> | number | null
+    address?: StringNullableFilter<"Product"> | string | null
+    addressDetail?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
+    sold?: BoolFilter<"Product"> | boolean
+    views?: IntFilter<"Product"> | number
+    delivery?: BoolFilter<"Product"> | boolean
+    faceToFace?: BoolFilter<"Product"> | boolean
+    categories?: StringNullableListFilter<"Product">
     user?: XOR<UserRelationFilter, UserWhereInput>
+    ViewdProductStore?: ViewdProductStoreListRelationFilter
   }, "id">
 
   export type ProductOrderByWithAggregationInput = {
@@ -16729,13 +14640,19 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     imageSrc?: SortOrder
-    category?: SortOrder
     userId?: SortOrder
     price?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    addressDetail?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sold?: SortOrder
+    views?: SortOrder
+    delivery?: SortOrder
+    faceToFace?: SortOrder
+    categories?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _avg?: ProductAvgOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
@@ -16750,14 +14667,20 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Product"> | string
     title?: StringWithAggregatesFilter<"Product"> | string
     description?: StringWithAggregatesFilter<"Product"> | string
-    imageSrc?: StringWithAggregatesFilter<"Product"> | string
-    category?: StringWithAggregatesFilter<"Product"> | string
+    imageSrc?: StringNullableListFilter<"Product">
     userId?: StringWithAggregatesFilter<"Product"> | string
     price?: IntWithAggregatesFilter<"Product"> | number
-    latitude?: FloatWithAggregatesFilter<"Product"> | number
-    longitude?: FloatWithAggregatesFilter<"Product"> | number
+    latitude?: FloatNullableWithAggregatesFilter<"Product"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"Product"> | number | null
+    address?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    addressDetail?: StringNullableWithAggregatesFilter<"Product"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
+    sold?: BoolWithAggregatesFilter<"Product"> | boolean
+    views?: IntWithAggregatesFilter<"Product"> | number
+    delivery?: BoolWithAggregatesFilter<"Product"> | boolean
+    faceToFace?: BoolWithAggregatesFilter<"Product"> | boolean
+    categories?: StringNullableListFilter<"Product">
   }
 
   export type ViewdBoardStoreWhereInput = {
@@ -16813,256 +14736,124 @@ export namespace Prisma {
     viewedAt?: DateTimeWithAggregatesFilter<"ViewdBoardStore"> | Date | string
   }
 
-  export type ChallengeWhereInput = {
-    AND?: ChallengeWhereInput | ChallengeWhereInput[]
-    OR?: ChallengeWhereInput[]
-    NOT?: ChallengeWhereInput | ChallengeWhereInput[]
-    id?: StringFilter<"Challenge"> | string
-    title?: StringFilter<"Challenge"> | string
-    description?: StringFilter<"Challenge"> | string
-    imageSrc?: StringFilter<"Challenge"> | string
-    reward?: StringFilter<"Challenge"> | string
-    category?: StringFilter<"Challenge"> | string
-    period?: StringFilter<"Challenge"> | string
-    progress?: IntFilter<"Challenge"> | number
-    disabled?: BoolFilter<"Challenge"> | boolean
-    participants?: IntFilter<"Challenge"> | number
-    createdAt?: DateTimeFilter<"Challenge"> | Date | string
-    updatedAt?: DateTimeFilter<"Challenge"> | Date | string
-    essays?: EssayListRelationFilter
-    challengeProgress?: ChallengeProgressListRelationFilter
-  }
-
-  export type ChallengeOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    imageSrc?: SortOrder
-    reward?: SortOrder
-    category?: SortOrder
-    period?: SortOrder
-    progress?: SortOrder
-    disabled?: SortOrder
-    participants?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    essays?: EssayOrderByRelationAggregateInput
-    challengeProgress?: ChallengeProgressOrderByRelationAggregateInput
-  }
-
-  export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: ChallengeWhereInput | ChallengeWhereInput[]
-    OR?: ChallengeWhereInput[]
-    NOT?: ChallengeWhereInput | ChallengeWhereInput[]
-    title?: StringFilter<"Challenge"> | string
-    description?: StringFilter<"Challenge"> | string
-    imageSrc?: StringFilter<"Challenge"> | string
-    reward?: StringFilter<"Challenge"> | string
-    category?: StringFilter<"Challenge"> | string
-    period?: StringFilter<"Challenge"> | string
-    progress?: IntFilter<"Challenge"> | number
-    disabled?: BoolFilter<"Challenge"> | boolean
-    participants?: IntFilter<"Challenge"> | number
-    createdAt?: DateTimeFilter<"Challenge"> | Date | string
-    updatedAt?: DateTimeFilter<"Challenge"> | Date | string
-    essays?: EssayListRelationFilter
-    challengeProgress?: ChallengeProgressListRelationFilter
-  }, "id">
-
-  export type ChallengeOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    imageSrc?: SortOrder
-    reward?: SortOrder
-    category?: SortOrder
-    period?: SortOrder
-    progress?: SortOrder
-    disabled?: SortOrder
-    participants?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: ChallengeCountOrderByAggregateInput
-    _avg?: ChallengeAvgOrderByAggregateInput
-    _max?: ChallengeMaxOrderByAggregateInput
-    _min?: ChallengeMinOrderByAggregateInput
-    _sum?: ChallengeSumOrderByAggregateInput
-  }
-
-  export type ChallengeScalarWhereWithAggregatesInput = {
-    AND?: ChallengeScalarWhereWithAggregatesInput | ChallengeScalarWhereWithAggregatesInput[]
-    OR?: ChallengeScalarWhereWithAggregatesInput[]
-    NOT?: ChallengeScalarWhereWithAggregatesInput | ChallengeScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Challenge"> | string
-    title?: StringWithAggregatesFilter<"Challenge"> | string
-    description?: StringWithAggregatesFilter<"Challenge"> | string
-    imageSrc?: StringWithAggregatesFilter<"Challenge"> | string
-    reward?: StringWithAggregatesFilter<"Challenge"> | string
-    category?: StringWithAggregatesFilter<"Challenge"> | string
-    period?: StringWithAggregatesFilter<"Challenge"> | string
-    progress?: IntWithAggregatesFilter<"Challenge"> | number
-    disabled?: BoolWithAggregatesFilter<"Challenge"> | boolean
-    participants?: IntWithAggregatesFilter<"Challenge"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Challenge"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Challenge"> | Date | string
-  }
-
-  export type EssayWhereInput = {
-    AND?: EssayWhereInput | EssayWhereInput[]
-    OR?: EssayWhereInput[]
-    NOT?: EssayWhereInput | EssayWhereInput[]
-    id?: StringFilter<"Essay"> | string
-    content?: StringFilter<"Essay"> | string
-    createdAt?: DateTimeFilter<"Essay"> | Date | string
-    updatedAt?: DateTimeFilter<"Essay"> | Date | string
-    challengeId?: StringFilter<"Essay"> | string
-    challenge?: XOR<ChallengeRelationFilter, ChallengeWhereInput>
-  }
-
-  export type EssayOrderByWithRelationInput = {
-    id?: SortOrder
-    content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    challengeId?: SortOrder
-    challenge?: ChallengeOrderByWithRelationInput
-  }
-
-  export type EssayWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: EssayWhereInput | EssayWhereInput[]
-    OR?: EssayWhereInput[]
-    NOT?: EssayWhereInput | EssayWhereInput[]
-    content?: StringFilter<"Essay"> | string
-    createdAt?: DateTimeFilter<"Essay"> | Date | string
-    updatedAt?: DateTimeFilter<"Essay"> | Date | string
-    challengeId?: StringFilter<"Essay"> | string
-    challenge?: XOR<ChallengeRelationFilter, ChallengeWhereInput>
-  }, "id">
-
-  export type EssayOrderByWithAggregationInput = {
-    id?: SortOrder
-    content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    challengeId?: SortOrder
-    _count?: EssayCountOrderByAggregateInput
-    _max?: EssayMaxOrderByAggregateInput
-    _min?: EssayMinOrderByAggregateInput
-  }
-
-  export type EssayScalarWhereWithAggregatesInput = {
-    AND?: EssayScalarWhereWithAggregatesInput | EssayScalarWhereWithAggregatesInput[]
-    OR?: EssayScalarWhereWithAggregatesInput[]
-    NOT?: EssayScalarWhereWithAggregatesInput | EssayScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Essay"> | string
-    content?: StringWithAggregatesFilter<"Essay"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Essay"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Essay"> | Date | string
-    challengeId?: StringWithAggregatesFilter<"Essay"> | string
-  }
-
-  export type ChallengeProgressWhereInput = {
-    AND?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    OR?: ChallengeProgressWhereInput[]
-    NOT?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    id?: StringFilter<"ChallengeProgress"> | string
-    userId?: StringFilter<"ChallengeProgress"> | string
-    challengeId?: StringFilter<"ChallengeProgress"> | string
-    progress?: IntFilter<"ChallengeProgress"> | number
-    completed?: BoolFilter<"ChallengeProgress"> | boolean
-    createdAt?: DateTimeFilter<"ChallengeProgress"> | Date | string
-    updatedAt?: DateTimeFilter<"ChallengeProgress"> | Date | string
+  export type ViewdProductStoreWhereInput = {
+    AND?: ViewdProductStoreWhereInput | ViewdProductStoreWhereInput[]
+    OR?: ViewdProductStoreWhereInput[]
+    NOT?: ViewdProductStoreWhereInput | ViewdProductStoreWhereInput[]
+    id?: StringFilter<"ViewdProductStore"> | string
+    userId?: StringFilter<"ViewdProductStore"> | string
+    productId?: StringFilter<"ViewdProductStore"> | string
+    viewedAt?: DateTimeFilter<"ViewdProductStore"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    challenge?: XOR<ChallengeRelationFilter, ChallengeWhereInput>
+    product?: XOR<ProductRelationFilter, ProductWhereInput>
   }
 
-  export type ChallengeProgressOrderByWithRelationInput = {
+  export type ViewdProductStoreOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    challengeId?: SortOrder
-    progress?: SortOrder
-    completed?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    productId?: SortOrder
+    viewedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    challenge?: ChallengeOrderByWithRelationInput
+    product?: ProductOrderByWithRelationInput
   }
 
-  export type ChallengeProgressWhereUniqueInput = Prisma.AtLeast<{
+  export type ViewdProductStoreWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    OR?: ChallengeProgressWhereInput[]
-    NOT?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    userId?: StringFilter<"ChallengeProgress"> | string
-    challengeId?: StringFilter<"ChallengeProgress"> | string
-    progress?: IntFilter<"ChallengeProgress"> | number
-    completed?: BoolFilter<"ChallengeProgress"> | boolean
-    createdAt?: DateTimeFilter<"ChallengeProgress"> | Date | string
-    updatedAt?: DateTimeFilter<"ChallengeProgress"> | Date | string
+    AND?: ViewdProductStoreWhereInput | ViewdProductStoreWhereInput[]
+    OR?: ViewdProductStoreWhereInput[]
+    NOT?: ViewdProductStoreWhereInput | ViewdProductStoreWhereInput[]
+    userId?: StringFilter<"ViewdProductStore"> | string
+    productId?: StringFilter<"ViewdProductStore"> | string
+    viewedAt?: DateTimeFilter<"ViewdProductStore"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    challenge?: XOR<ChallengeRelationFilter, ChallengeWhereInput>
+    product?: XOR<ProductRelationFilter, ProductWhereInput>
   }, "id">
 
-  export type ChallengeProgressOrderByWithAggregationInput = {
+  export type ViewdProductStoreOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    challengeId?: SortOrder
-    progress?: SortOrder
-    completed?: SortOrder
+    productId?: SortOrder
+    viewedAt?: SortOrder
+    _count?: ViewdProductStoreCountOrderByAggregateInput
+    _max?: ViewdProductStoreMaxOrderByAggregateInput
+    _min?: ViewdProductStoreMinOrderByAggregateInput
+  }
+
+  export type ViewdProductStoreScalarWhereWithAggregatesInput = {
+    AND?: ViewdProductStoreScalarWhereWithAggregatesInput | ViewdProductStoreScalarWhereWithAggregatesInput[]
+    OR?: ViewdProductStoreScalarWhereWithAggregatesInput[]
+    NOT?: ViewdProductStoreScalarWhereWithAggregatesInput | ViewdProductStoreScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ViewdProductStore"> | string
+    userId?: StringWithAggregatesFilter<"ViewdProductStore"> | string
+    productId?: StringWithAggregatesFilter<"ViewdProductStore"> | string
+    viewedAt?: DateTimeWithAggregatesFilter<"ViewdProductStore"> | Date | string
+  }
+
+  export type AlertWhereInput = {
+    AND?: AlertWhereInput | AlertWhereInput[]
+    OR?: AlertWhereInput[]
+    NOT?: AlertWhereInput | AlertWhereInput[]
+    id?: StringFilter<"Alert"> | string
+    title?: StringFilter<"Alert"> | string
+    description?: StringFilter<"Alert"> | string
+    imageSrc?: StringNullableListFilter<"Alert">
+    category?: StringFilter<"Alert"> | string
+    disabled?: BoolFilter<"Alert"> | boolean
+    createdAt?: DateTimeFilter<"Alert"> | Date | string
+    updatedAt?: DateTimeFilter<"Alert"> | Date | string
+  }
+
+  export type AlertOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageSrc?: SortOrder
+    category?: SortOrder
+    disabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: ChallengeProgressCountOrderByAggregateInput
-    _avg?: ChallengeProgressAvgOrderByAggregateInput
-    _max?: ChallengeProgressMaxOrderByAggregateInput
-    _min?: ChallengeProgressMinOrderByAggregateInput
-    _sum?: ChallengeProgressSumOrderByAggregateInput
   }
 
-  export type ChallengeProgressScalarWhereWithAggregatesInput = {
-    AND?: ChallengeProgressScalarWhereWithAggregatesInput | ChallengeProgressScalarWhereWithAggregatesInput[]
-    OR?: ChallengeProgressScalarWhereWithAggregatesInput[]
-    NOT?: ChallengeProgressScalarWhereWithAggregatesInput | ChallengeProgressScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ChallengeProgress"> | string
-    userId?: StringWithAggregatesFilter<"ChallengeProgress"> | string
-    challengeId?: StringWithAggregatesFilter<"ChallengeProgress"> | string
-    progress?: IntWithAggregatesFilter<"ChallengeProgress"> | number
-    completed?: BoolWithAggregatesFilter<"ChallengeProgress"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"ChallengeProgress"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"ChallengeProgress"> | Date | string
+  export type AlertWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AlertWhereInput | AlertWhereInput[]
+    OR?: AlertWhereInput[]
+    NOT?: AlertWhereInput | AlertWhereInput[]
+    title?: StringFilter<"Alert"> | string
+    description?: StringFilter<"Alert"> | string
+    imageSrc?: StringNullableListFilter<"Alert">
+    category?: StringFilter<"Alert"> | string
+    disabled?: BoolFilter<"Alert"> | boolean
+    createdAt?: DateTimeFilter<"Alert"> | Date | string
+    updatedAt?: DateTimeFilter<"Alert"> | Date | string
+  }, "id">
+
+  export type AlertOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageSrc?: SortOrder
+    category?: SortOrder
+    disabled?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AlertCountOrderByAggregateInput
+    _max?: AlertMaxOrderByAggregateInput
+    _min?: AlertMinOrderByAggregateInput
   }
 
-  export type DopamineWhereInput = {
-    AND?: DopamineWhereInput | DopamineWhereInput[]
-    OR?: DopamineWhereInput[]
-    NOT?: DopamineWhereInput | DopamineWhereInput[]
-    dopamine?: StringFilter<"Dopamine"> | string
-  }
-
-  export type DopamineOrderByWithRelationInput = {
-    dopamine?: SortOrder
-  }
-
-  export type DopamineWhereUniqueInput = Prisma.AtLeast<{
-    dopamine?: string
-    AND?: DopamineWhereInput | DopamineWhereInput[]
-    OR?: DopamineWhereInput[]
-    NOT?: DopamineWhereInput | DopamineWhereInput[]
-  }, "dopamine">
-
-  export type DopamineOrderByWithAggregationInput = {
-    dopamine?: SortOrder
-    _count?: DopamineCountOrderByAggregateInput
-    _max?: DopamineMaxOrderByAggregateInput
-    _min?: DopamineMinOrderByAggregateInput
-  }
-
-  export type DopamineScalarWhereWithAggregatesInput = {
-    AND?: DopamineScalarWhereWithAggregatesInput | DopamineScalarWhereWithAggregatesInput[]
-    OR?: DopamineScalarWhereWithAggregatesInput[]
-    NOT?: DopamineScalarWhereWithAggregatesInput | DopamineScalarWhereWithAggregatesInput[]
-    dopamine?: StringWithAggregatesFilter<"Dopamine"> | string
+  export type AlertScalarWhereWithAggregatesInput = {
+    AND?: AlertScalarWhereWithAggregatesInput | AlertScalarWhereWithAggregatesInput[]
+    OR?: AlertScalarWhereWithAggregatesInput[]
+    NOT?: AlertScalarWhereWithAggregatesInput | AlertScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Alert"> | string
+    title?: StringWithAggregatesFilter<"Alert"> | string
+    description?: StringWithAggregatesFilter<"Alert"> | string
+    imageSrc?: StringNullableListFilter<"Alert">
+    category?: StringWithAggregatesFilter<"Alert"> | string
+    disabled?: BoolWithAggregatesFilter<"Alert"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Alert"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Alert"> | Date | string
   }
 
   export type VerificationTokenWhereInput = {
@@ -17402,7 +15193,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -17412,8 +15202,8 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -17427,7 +15217,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -17437,8 +15226,8 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -17452,7 +15241,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -17462,8 +15250,8 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -17477,7 +15265,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -17487,8 +15274,8 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
@@ -17502,7 +15289,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -17517,7 +15303,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -17532,7 +15317,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -17692,97 +15476,143 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc?: ProductCreateimageSrcInput | string[]
     price: number
-    latitude: number
-    longitude: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
     user: UserCreateNestedOneWithoutProductInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc?: ProductCreateimageSrcInput | string[]
     userId: string
     price: number
-    latitude: number
-    longitude: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
     user?: UserUpdateOneRequiredWithoutProductNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc?: ProductCreateimageSrcInput | string[]
     userId: string
     price: number
-    latitude: number
-    longitude: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
   }
 
   export type ProductUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
   }
 
   export type ProductUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
   }
 
   export type ViewdBoardStoreCreateInput = {
@@ -17832,268 +15662,128 @@ export namespace Prisma {
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChallengeCreateInput = {
+  export type ViewdProductStoreCreateInput = {
     id?: string
-    title: string
-    description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    essays?: EssayCreateNestedManyWithoutChallengeInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutChallengeInput
+    viewedAt?: Date | string
+    user: UserCreateNestedOneWithoutViewdProductStoreInput
+    product: ProductCreateNestedOneWithoutViewdProductStoreInput
   }
 
-  export type ChallengeUncheckedCreateInput = {
-    id?: string
-    title: string
-    description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    essays?: EssayUncheckedCreateNestedManyWithoutChallengeInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutChallengeInput
-  }
-
-  export type ChallengeUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    essays?: EssayUpdateManyWithoutChallengeNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutChallengeNestedInput
-  }
-
-  export type ChallengeUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    essays?: EssayUncheckedUpdateManyWithoutChallengeNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutChallengeNestedInput
-  }
-
-  export type ChallengeCreateManyInput = {
-    id?: string
-    title: string
-    description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChallengeUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EssayCreateInput = {
-    id?: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    challenge: ChallengeCreateNestedOneWithoutEssaysInput
-  }
-
-  export type EssayUncheckedCreateInput = {
-    id?: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    challengeId: string
-  }
-
-  export type EssayUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    challenge?: ChallengeUpdateOneRequiredWithoutEssaysNestedInput
-  }
-
-  export type EssayUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type EssayCreateManyInput = {
-    id?: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    challengeId: string
-  }
-
-  export type EssayUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EssayUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ChallengeProgressCreateInput = {
-    id?: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutChallengeProgressInput
-    challenge: ChallengeCreateNestedOneWithoutChallengeProgressInput
-  }
-
-  export type ChallengeProgressUncheckedCreateInput = {
+  export type ViewdProductStoreUncheckedCreateInput = {
     id?: string
     userId: string
-    challengeId: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    productId: string
+    viewedAt?: Date | string
   }
 
-  export type ChallengeProgressUpdateInput = {
+  export type ViewdProductStoreUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutChallengeProgressNestedInput
-    challenge?: ChallengeUpdateOneRequiredWithoutChallengeProgressNestedInput
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutViewdProductStoreNestedInput
+    product?: ProductUpdateOneRequiredWithoutViewdProductStoreNestedInput
   }
 
-  export type ChallengeProgressUncheckedUpdateInput = {
+  export type ViewdProductStoreUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    challengeId?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    productId?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChallengeProgressCreateManyInput = {
+  export type ViewdProductStoreCreateManyInput = {
     id?: string
     userId: string
-    challengeId: string
-    progress: number
-    completed: boolean
+    productId: string
+    viewedAt?: Date | string
+  }
+
+  export type ViewdProductStoreUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewdProductStoreUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AlertCreateInput = {
+    id?: string
+    title: string
+    description: string
+    imageSrc?: AlertCreateimageSrcInput | string[]
+    category: string
+    disabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ChallengeProgressUpdateManyMutationInput = {
+  export type AlertUncheckedCreateInput = {
+    id?: string
+    title: string
+    description: string
+    imageSrc?: AlertCreateimageSrcInput | string[]
+    category: string
+    disabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AlertUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    imageSrc?: AlertUpdateimageSrcInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
+    disabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChallengeProgressUncheckedUpdateManyInput = {
+  export type AlertUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    challengeId?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    imageSrc?: AlertUpdateimageSrcInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
+    disabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DopamineCreateInput = {
-    dopamine?: string
+  export type AlertCreateManyInput = {
+    id?: string
+    title: string
+    description: string
+    imageSrc?: AlertCreateimageSrcInput | string[]
+    category: string
+    disabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type DopamineUncheckedCreateInput = {
-    dopamine?: string
+  export type AlertUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    imageSrc?: AlertUpdateimageSrcInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DopamineUpdateInput = {
-    dopamine?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DopamineUncheckedUpdateInput = {
-    dopamine?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DopamineCreateManyInput = {
-    dopamine?: string
-  }
-
-  export type DopamineUpdateManyMutationInput = {
-    dopamine?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DopamineUncheckedUpdateManyInput = {
-    dopamine?: StringFieldUpdateOperationsInput | string
+  export type AlertUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    imageSrc?: AlertUpdateimageSrcInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VerificationTokenCreateInput = {
@@ -18505,19 +16195,19 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type EnumUserTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
     hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
     hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
     isEmpty?: boolean
-  }
-
-  export type EnumUserTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
   export type AccountListRelationFilter = {
@@ -18550,16 +16240,16 @@ export namespace Prisma {
     none?: ViewdBoardStoreWhereInput
   }
 
+  export type ViewdProductStoreListRelationFilter = {
+    every?: ViewdProductStoreWhereInput
+    some?: ViewdProductStoreWhereInput
+    none?: ViewdProductStoreWhereInput
+  }
+
   export type BoardLikeDisLikeListRelationFilter = {
     every?: BoardLikeDisLikeWhereInput
     some?: BoardLikeDisLikeWhereInput
     none?: BoardLikeDisLikeWhereInput
-  }
-
-  export type ChallengeProgressListRelationFilter = {
-    every?: ChallengeProgressWhereInput
-    some?: ChallengeProgressWhereInput
-    none?: ChallengeProgressWhereInput
   }
 
   export type ConversationListRelationFilter = {
@@ -18594,11 +16284,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type BoardLikeDisLikeOrderByRelationAggregateInput = {
+  export type ViewdProductStoreOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type ChallengeProgressOrderByRelationAggregateInput = {
+  export type BoardLikeDisLikeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18618,7 +16308,6 @@ export namespace Prisma {
     emailVerified?: SortOrder
     image?: SortOrder
     level?: SortOrder
-    tier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userType?: SortOrder
@@ -18787,15 +16476,20 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type ProductCountOrderByAggregateInput = {
@@ -18803,69 +16497,93 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     imageSrc?: SortOrder
-    category?: SortOrder
     userId?: SortOrder
     price?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sold?: SortOrder
+    views?: SortOrder
+    delivery?: SortOrder
+    faceToFace?: SortOrder
+    categories?: SortOrder
   }
 
   export type ProductAvgOrderByAggregateInput = {
     price?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    views?: SortOrder
   }
 
   export type ProductMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    imageSrc?: SortOrder
-    category?: SortOrder
     userId?: SortOrder
     price?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sold?: SortOrder
+    views?: SortOrder
+    delivery?: SortOrder
+    faceToFace?: SortOrder
   }
 
   export type ProductMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    imageSrc?: SortOrder
-    category?: SortOrder
     userId?: SortOrder
     price?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sold?: SortOrder
+    views?: SortOrder
+    delivery?: SortOrder
+    faceToFace?: SortOrder
   }
 
   export type ProductSumOrderByAggregateInput = {
     price?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    views?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ViewdBoardStoreCountOrderByAggregateInput = {
@@ -18889,161 +16607,61 @@ export namespace Prisma {
     viewedAt?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type ProductRelationFilter = {
+    is?: ProductWhereInput
+    isNot?: ProductWhereInput
   }
 
-  export type EssayListRelationFilter = {
-    every?: EssayWhereInput
-    some?: EssayWhereInput
-    none?: EssayWhereInput
+  export type ViewdProductStoreCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    viewedAt?: SortOrder
   }
 
-  export type EssayOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type ViewdProductStoreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    viewedAt?: SortOrder
   }
 
-  export type ChallengeCountOrderByAggregateInput = {
+  export type ViewdProductStoreMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    viewedAt?: SortOrder
+  }
+
+  export type AlertCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     imageSrc?: SortOrder
-    reward?: SortOrder
     category?: SortOrder
-    period?: SortOrder
-    progress?: SortOrder
     disabled?: SortOrder
-    participants?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type ChallengeAvgOrderByAggregateInput = {
-    progress?: SortOrder
-    participants?: SortOrder
-  }
-
-  export type ChallengeMaxOrderByAggregateInput = {
+  export type AlertMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    imageSrc?: SortOrder
-    reward?: SortOrder
     category?: SortOrder
-    period?: SortOrder
-    progress?: SortOrder
     disabled?: SortOrder
-    participants?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type ChallengeMinOrderByAggregateInput = {
+  export type AlertMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    imageSrc?: SortOrder
-    reward?: SortOrder
     category?: SortOrder
-    period?: SortOrder
-    progress?: SortOrder
     disabled?: SortOrder
-    participants?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type ChallengeSumOrderByAggregateInput = {
-    progress?: SortOrder
-    participants?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type ChallengeRelationFilter = {
-    is?: ChallengeWhereInput
-    isNot?: ChallengeWhereInput
-  }
-
-  export type EssayCountOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    challengeId?: SortOrder
-  }
-
-  export type EssayMaxOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    challengeId?: SortOrder
-  }
-
-  export type EssayMinOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    challengeId?: SortOrder
-  }
-
-  export type ChallengeProgressCountOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    challengeId?: SortOrder
-    progress?: SortOrder
-    completed?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ChallengeProgressAvgOrderByAggregateInput = {
-    progress?: SortOrder
-  }
-
-  export type ChallengeProgressMaxOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    challengeId?: SortOrder
-    progress?: SortOrder
-    completed?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ChallengeProgressMinOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    challengeId?: SortOrder
-    progress?: SortOrder
-    completed?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ChallengeProgressSumOrderByAggregateInput = {
-    progress?: SortOrder
-  }
-
-  export type DopamineCountOrderByAggregateInput = {
-    dopamine?: SortOrder
-  }
-
-  export type DopamineMaxOrderByAggregateInput = {
-    dopamine?: SortOrder
-  }
-
-  export type DopamineMinOrderByAggregateInput = {
-    dopamine?: SortOrder
   }
 
   export type VerificationTokenIdentifierTokenCompoundUniqueInput = {
@@ -19189,10 +16807,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
   }
 
-  export type UserCreatetierInput = {
-    set: string[]
-  }
-
   export type UserCreatefavoriteIdsInput = {
     set: string[]
   }
@@ -19232,18 +16846,18 @@ export namespace Prisma {
     connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
   }
 
+  export type ViewdProductStoreCreateNestedManyWithoutUserInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
+    createMany?: ViewdProductStoreCreateManyUserInputEnvelope
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+  }
+
   export type BoardLikeDisLikeCreateNestedManyWithoutUserInput = {
     create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
     createMany?: BoardLikeDisLikeCreateManyUserInputEnvelope
     connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-  }
-
-  export type ChallengeProgressCreateNestedManyWithoutUserInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
   }
 
   export type ConversationCreateNestedManyWithoutUsersInput = {
@@ -19301,18 +16915,18 @@ export namespace Prisma {
     connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
   }
 
+  export type ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
+    createMany?: ViewdProductStoreCreateManyUserInputEnvelope
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+  }
+
   export type BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
     createMany?: BoardLikeDisLikeCreateManyUserInputEnvelope
     connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-  }
-
-  export type ChallengeProgressUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
   }
 
   export type ConversationUncheckedCreateNestedManyWithoutUsersInput = {
@@ -19345,11 +16959,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type UserUpdatetierInput = {
-    set?: string[]
-    push?: string | string[]
   }
 
   export type EnumUserTypeFieldUpdateOperationsInput = {
@@ -19431,6 +17040,20 @@ export namespace Prisma {
     deleteMany?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
   }
 
+  export type ViewdProductStoreUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
+    upsert?: ViewdProductStoreUpsertWithWhereUniqueWithoutUserInput | ViewdProductStoreUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ViewdProductStoreCreateManyUserInputEnvelope
+    set?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    disconnect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    delete?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    update?: ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput | ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ViewdProductStoreUpdateManyWithWhereWithoutUserInput | ViewdProductStoreUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
+  }
+
   export type BoardLikeDisLikeUpdateManyWithoutUserNestedInput = {
     create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
@@ -19443,20 +17066,6 @@ export namespace Prisma {
     update?: BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput | BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput | BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
-  }
-
-  export type ChallengeProgressUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutUserInput | ChallengeProgressUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutUserInput | ChallengeProgressUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutUserInput | ChallengeProgressUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
   }
 
   export type ConversationUpdateManyWithoutUsersNestedInput = {
@@ -19570,6 +17179,20 @@ export namespace Prisma {
     deleteMany?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
   }
 
+  export type ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
+    upsert?: ViewdProductStoreUpsertWithWhereUniqueWithoutUserInput | ViewdProductStoreUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ViewdProductStoreCreateManyUserInputEnvelope
+    set?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    disconnect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    delete?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    update?: ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput | ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ViewdProductStoreUpdateManyWithWhereWithoutUserInput | ViewdProductStoreUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
+  }
+
   export type BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
@@ -19582,20 +17205,6 @@ export namespace Prisma {
     update?: BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput | BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput | BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
-  }
-
-  export type ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutUserInput | ChallengeProgressUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutUserInput | ChallengeProgressUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutUserInput | ChallengeProgressUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
   }
 
   export type ConversationUncheckedUpdateManyWithoutUsersNestedInput = {
@@ -19765,18 +17374,54 @@ export namespace Prisma {
     update?: XOR<XOR<BoardUpdateToOneWithWhereWithoutBoardLikeDisLikeInput, BoardUpdateWithoutBoardLikeDisLikeInput>, BoardUncheckedUpdateWithoutBoardLikeDisLikeInput>
   }
 
+  export type ProductCreateimageSrcInput = {
+    set: string[]
+  }
+
+  export type ProductCreatecategoriesInput = {
+    set: string[]
+  }
+
   export type UserCreateNestedOneWithoutProductInput = {
     create?: XOR<UserCreateWithoutProductInput, UserUncheckedCreateWithoutProductInput>
     connectOrCreate?: UserCreateOrConnectWithoutProductInput
     connect?: UserWhereUniqueInput
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
+  export type ViewdProductStoreCreateNestedManyWithoutProductInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutProductInput, ViewdProductStoreUncheckedCreateWithoutProductInput> | ViewdProductStoreCreateWithoutProductInput[] | ViewdProductStoreUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutProductInput | ViewdProductStoreCreateOrConnectWithoutProductInput[]
+    createMany?: ViewdProductStoreCreateManyProductInputEnvelope
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+  }
+
+  export type ViewdProductStoreUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutProductInput, ViewdProductStoreUncheckedCreateWithoutProductInput> | ViewdProductStoreCreateWithoutProductInput[] | ViewdProductStoreUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutProductInput | ViewdProductStoreCreateOrConnectWithoutProductInput[]
+    createMany?: ViewdProductStoreCreateManyProductInputEnvelope
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+  }
+
+  export type ProductUpdateimageSrcInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type ProductUpdatecategoriesInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type UserUpdateOneRequiredWithoutProductNestedInput = {
@@ -19785,6 +17430,34 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutProductInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProductInput, UserUpdateWithoutProductInput>, UserUncheckedUpdateWithoutProductInput>
+  }
+
+  export type ViewdProductStoreUpdateManyWithoutProductNestedInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutProductInput, ViewdProductStoreUncheckedCreateWithoutProductInput> | ViewdProductStoreCreateWithoutProductInput[] | ViewdProductStoreUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutProductInput | ViewdProductStoreCreateOrConnectWithoutProductInput[]
+    upsert?: ViewdProductStoreUpsertWithWhereUniqueWithoutProductInput | ViewdProductStoreUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: ViewdProductStoreCreateManyProductInputEnvelope
+    set?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    disconnect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    delete?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    update?: ViewdProductStoreUpdateWithWhereUniqueWithoutProductInput | ViewdProductStoreUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: ViewdProductStoreUpdateManyWithWhereWithoutProductInput | ViewdProductStoreUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
+  }
+
+  export type ViewdProductStoreUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<ViewdProductStoreCreateWithoutProductInput, ViewdProductStoreUncheckedCreateWithoutProductInput> | ViewdProductStoreCreateWithoutProductInput[] | ViewdProductStoreUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutProductInput | ViewdProductStoreCreateOrConnectWithoutProductInput[]
+    upsert?: ViewdProductStoreUpsertWithWhereUniqueWithoutProductInput | ViewdProductStoreUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: ViewdProductStoreCreateManyProductInputEnvelope
+    set?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    disconnect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    delete?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
+    update?: ViewdProductStoreUpdateWithWhereUniqueWithoutProductInput | ViewdProductStoreUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: ViewdProductStoreUpdateManyWithWhereWithoutProductInput | ViewdProductStoreUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutViewdBoardStoreInput = {
@@ -19815,134 +17488,41 @@ export namespace Prisma {
     update?: XOR<XOR<BoardUpdateToOneWithWhereWithoutViewdBoardStoreInput, BoardUpdateWithoutViewdBoardStoreInput>, BoardUncheckedUpdateWithoutViewdBoardStoreInput>
   }
 
-  export type EssayCreateNestedManyWithoutChallengeInput = {
-    create?: XOR<EssayCreateWithoutChallengeInput, EssayUncheckedCreateWithoutChallengeInput> | EssayCreateWithoutChallengeInput[] | EssayUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: EssayCreateOrConnectWithoutChallengeInput | EssayCreateOrConnectWithoutChallengeInput[]
-    createMany?: EssayCreateManyChallengeInputEnvelope
-    connect?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-  }
-
-  export type ChallengeProgressCreateNestedManyWithoutChallengeInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-  }
-
-  export type EssayUncheckedCreateNestedManyWithoutChallengeInput = {
-    create?: XOR<EssayCreateWithoutChallengeInput, EssayUncheckedCreateWithoutChallengeInput> | EssayCreateWithoutChallengeInput[] | EssayUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: EssayCreateOrConnectWithoutChallengeInput | EssayCreateOrConnectWithoutChallengeInput[]
-    createMany?: EssayCreateManyChallengeInputEnvelope
-    connect?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-  }
-
-  export type ChallengeProgressUncheckedCreateNestedManyWithoutChallengeInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
-  export type EssayUpdateManyWithoutChallengeNestedInput = {
-    create?: XOR<EssayCreateWithoutChallengeInput, EssayUncheckedCreateWithoutChallengeInput> | EssayCreateWithoutChallengeInput[] | EssayUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: EssayCreateOrConnectWithoutChallengeInput | EssayCreateOrConnectWithoutChallengeInput[]
-    upsert?: EssayUpsertWithWhereUniqueWithoutChallengeInput | EssayUpsertWithWhereUniqueWithoutChallengeInput[]
-    createMany?: EssayCreateManyChallengeInputEnvelope
-    set?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    disconnect?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    delete?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    connect?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    update?: EssayUpdateWithWhereUniqueWithoutChallengeInput | EssayUpdateWithWhereUniqueWithoutChallengeInput[]
-    updateMany?: EssayUpdateManyWithWhereWithoutChallengeInput | EssayUpdateManyWithWhereWithoutChallengeInput[]
-    deleteMany?: EssayScalarWhereInput | EssayScalarWhereInput[]
-  }
-
-  export type ChallengeProgressUpdateManyWithoutChallengeNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutChallengeInput | ChallengeProgressUpdateManyWithWhereWithoutChallengeInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-  }
-
-  export type EssayUncheckedUpdateManyWithoutChallengeNestedInput = {
-    create?: XOR<EssayCreateWithoutChallengeInput, EssayUncheckedCreateWithoutChallengeInput> | EssayCreateWithoutChallengeInput[] | EssayUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: EssayCreateOrConnectWithoutChallengeInput | EssayCreateOrConnectWithoutChallengeInput[]
-    upsert?: EssayUpsertWithWhereUniqueWithoutChallengeInput | EssayUpsertWithWhereUniqueWithoutChallengeInput[]
-    createMany?: EssayCreateManyChallengeInputEnvelope
-    set?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    disconnect?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    delete?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    connect?: EssayWhereUniqueInput | EssayWhereUniqueInput[]
-    update?: EssayUpdateWithWhereUniqueWithoutChallengeInput | EssayUpdateWithWhereUniqueWithoutChallengeInput[]
-    updateMany?: EssayUpdateManyWithWhereWithoutChallengeInput | EssayUpdateManyWithWhereWithoutChallengeInput[]
-    deleteMany?: EssayScalarWhereInput | EssayScalarWhereInput[]
-  }
-
-  export type ChallengeProgressUncheckedUpdateManyWithoutChallengeNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutChallengeInput | ChallengeProgressUpdateManyWithWhereWithoutChallengeInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-  }
-
-  export type ChallengeCreateNestedOneWithoutEssaysInput = {
-    create?: XOR<ChallengeCreateWithoutEssaysInput, ChallengeUncheckedCreateWithoutEssaysInput>
-    connectOrCreate?: ChallengeCreateOrConnectWithoutEssaysInput
-    connect?: ChallengeWhereUniqueInput
-  }
-
-  export type ChallengeUpdateOneRequiredWithoutEssaysNestedInput = {
-    create?: XOR<ChallengeCreateWithoutEssaysInput, ChallengeUncheckedCreateWithoutEssaysInput>
-    connectOrCreate?: ChallengeCreateOrConnectWithoutEssaysInput
-    upsert?: ChallengeUpsertWithoutEssaysInput
-    connect?: ChallengeWhereUniqueInput
-    update?: XOR<XOR<ChallengeUpdateToOneWithWhereWithoutEssaysInput, ChallengeUpdateWithoutEssaysInput>, ChallengeUncheckedUpdateWithoutEssaysInput>
-  }
-
-  export type UserCreateNestedOneWithoutChallengeProgressInput = {
-    create?: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: UserCreateOrConnectWithoutChallengeProgressInput
+  export type UserCreateNestedOneWithoutViewdProductStoreInput = {
+    create?: XOR<UserCreateWithoutViewdProductStoreInput, UserUncheckedCreateWithoutViewdProductStoreInput>
+    connectOrCreate?: UserCreateOrConnectWithoutViewdProductStoreInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ChallengeCreateNestedOneWithoutChallengeProgressInput = {
-    create?: XOR<ChallengeCreateWithoutChallengeProgressInput, ChallengeUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: ChallengeCreateOrConnectWithoutChallengeProgressInput
-    connect?: ChallengeWhereUniqueInput
+  export type ProductCreateNestedOneWithoutViewdProductStoreInput = {
+    create?: XOR<ProductCreateWithoutViewdProductStoreInput, ProductUncheckedCreateWithoutViewdProductStoreInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutViewdProductStoreInput
+    connect?: ProductWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutChallengeProgressNestedInput = {
-    create?: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: UserCreateOrConnectWithoutChallengeProgressInput
-    upsert?: UserUpsertWithoutChallengeProgressInput
+  export type UserUpdateOneRequiredWithoutViewdProductStoreNestedInput = {
+    create?: XOR<UserCreateWithoutViewdProductStoreInput, UserUncheckedCreateWithoutViewdProductStoreInput>
+    connectOrCreate?: UserCreateOrConnectWithoutViewdProductStoreInput
+    upsert?: UserUpsertWithoutViewdProductStoreInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChallengeProgressInput, UserUpdateWithoutChallengeProgressInput>, UserUncheckedUpdateWithoutChallengeProgressInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutViewdProductStoreInput, UserUpdateWithoutViewdProductStoreInput>, UserUncheckedUpdateWithoutViewdProductStoreInput>
   }
 
-  export type ChallengeUpdateOneRequiredWithoutChallengeProgressNestedInput = {
-    create?: XOR<ChallengeCreateWithoutChallengeProgressInput, ChallengeUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: ChallengeCreateOrConnectWithoutChallengeProgressInput
-    upsert?: ChallengeUpsertWithoutChallengeProgressInput
-    connect?: ChallengeWhereUniqueInput
-    update?: XOR<XOR<ChallengeUpdateToOneWithWhereWithoutChallengeProgressInput, ChallengeUpdateWithoutChallengeProgressInput>, ChallengeUncheckedUpdateWithoutChallengeProgressInput>
+  export type ProductUpdateOneRequiredWithoutViewdProductStoreNestedInput = {
+    create?: XOR<ProductCreateWithoutViewdProductStoreInput, ProductUncheckedCreateWithoutViewdProductStoreInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutViewdProductStoreInput
+    upsert?: ProductUpsertWithoutViewdProductStoreInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutViewdProductStoreInput, ProductUpdateWithoutViewdProductStoreInput>, ProductUncheckedUpdateWithoutViewdProductStoreInput>
+  }
+
+  export type AlertCreateimageSrcInput = {
+    set: string[]
+  }
+
+  export type AlertUpdateimageSrcInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type UserCreateNestedManyWithoutConversationsInput = {
@@ -20272,25 +17852,25 @@ export namespace Prisma {
     _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -20309,7 +17889,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -20318,8 +17897,8 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -20333,7 +17912,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -20342,8 +17920,8 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -20373,7 +17951,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -20382,8 +17959,8 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -20397,7 +17974,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -20406,8 +17982,8 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
@@ -20421,7 +17997,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -20430,8 +18005,8 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -20445,7 +18020,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -20454,8 +18028,8 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -20485,7 +18059,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -20494,8 +18067,8 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -20509,7 +18082,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -20518,8 +18090,8 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
@@ -20589,26 +18161,40 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc?: ProductCreateimageSrcInput | string[]
     price: number
-    latitude: number
-    longitude: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc?: ProductCreateimageSrcInput | string[]
     price: number
-    latitude: number
-    longitude: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutUserInput = {
@@ -20681,6 +18267,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ViewdProductStoreCreateWithoutUserInput = {
+    id?: string
+    viewedAt?: Date | string
+    product: ProductCreateNestedOneWithoutViewdProductStoreInput
+  }
+
+  export type ViewdProductStoreUncheckedCreateWithoutUserInput = {
+    id?: string
+    productId: string
+    viewedAt?: Date | string
+  }
+
+  export type ViewdProductStoreCreateOrConnectWithoutUserInput = {
+    where: ViewdProductStoreWhereUniqueInput
+    create: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput>
+  }
+
+  export type ViewdProductStoreCreateManyUserInputEnvelope = {
+    data: ViewdProductStoreCreateManyUserInput | ViewdProductStoreCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type BoardLikeDisLikeCreateWithoutUserInput = {
     type: string
     createdAt?: Date | string
@@ -20701,34 +18309,6 @@ export namespace Prisma {
 
   export type BoardLikeDisLikeCreateManyUserInputEnvelope = {
     data: BoardLikeDisLikeCreateManyUserInput | BoardLikeDisLikeCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ChallengeProgressCreateWithoutUserInput = {
-    id?: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    challenge: ChallengeCreateNestedOneWithoutChallengeProgressInput
-  }
-
-  export type ChallengeProgressUncheckedCreateWithoutUserInput = {
-    id?: string
-    challengeId: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChallengeProgressCreateOrConnectWithoutUserInput = {
-    where: ChallengeProgressWhereUniqueInput
-    create: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput>
-  }
-
-  export type ChallengeProgressCreateManyUserInputEnvelope = {
-    data: ChallengeProgressCreateManyUserInput | ChallengeProgressCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -20898,14 +18478,20 @@ export namespace Prisma {
     id?: StringFilter<"Product"> | string
     title?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
-    imageSrc?: StringFilter<"Product"> | string
-    category?: StringFilter<"Product"> | string
+    imageSrc?: StringNullableListFilter<"Product">
     userId?: StringFilter<"Product"> | string
     price?: IntFilter<"Product"> | number
-    latitude?: FloatFilter<"Product"> | number
-    longitude?: FloatFilter<"Product"> | number
+    latitude?: FloatNullableFilter<"Product"> | number | null
+    longitude?: FloatNullableFilter<"Product"> | number | null
+    address?: StringNullableFilter<"Product"> | string | null
+    addressDetail?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
+    sold?: BoolFilter<"Product"> | boolean
+    views?: IntFilter<"Product"> | number
+    delivery?: BoolFilter<"Product"> | boolean
+    faceToFace?: BoolFilter<"Product"> | boolean
+    categories?: StringNullableListFilter<"Product">
   }
 
   export type BoardUpsertWithWhereUniqueWithoutUserInput = {
@@ -20966,6 +18552,32 @@ export namespace Prisma {
     viewedAt?: DateTimeFilter<"ViewdBoardStore"> | Date | string
   }
 
+  export type ViewdProductStoreUpsertWithWhereUniqueWithoutUserInput = {
+    where: ViewdProductStoreWhereUniqueInput
+    update: XOR<ViewdProductStoreUpdateWithoutUserInput, ViewdProductStoreUncheckedUpdateWithoutUserInput>
+    create: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput>
+  }
+
+  export type ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput = {
+    where: ViewdProductStoreWhereUniqueInput
+    data: XOR<ViewdProductStoreUpdateWithoutUserInput, ViewdProductStoreUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ViewdProductStoreUpdateManyWithWhereWithoutUserInput = {
+    where: ViewdProductStoreScalarWhereInput
+    data: XOR<ViewdProductStoreUpdateManyMutationInput, ViewdProductStoreUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ViewdProductStoreScalarWhereInput = {
+    AND?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
+    OR?: ViewdProductStoreScalarWhereInput[]
+    NOT?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
+    id?: StringFilter<"ViewdProductStore"> | string
+    userId?: StringFilter<"ViewdProductStore"> | string
+    productId?: StringFilter<"ViewdProductStore"> | string
+    viewedAt?: DateTimeFilter<"ViewdProductStore"> | Date | string
+  }
+
   export type BoardLikeDisLikeUpsertWithWhereUniqueWithoutUserInput = {
     where: BoardLikeDisLikeWhereUniqueInput
     update: XOR<BoardLikeDisLikeUpdateWithoutUserInput, BoardLikeDisLikeUncheckedUpdateWithoutUserInput>
@@ -20991,35 +18603,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"BoardLikeDisLike"> | Date | string
     userId?: StringFilter<"BoardLikeDisLike"> | string
     boardId?: StringFilter<"BoardLikeDisLike"> | string
-  }
-
-  export type ChallengeProgressUpsertWithWhereUniqueWithoutUserInput = {
-    where: ChallengeProgressWhereUniqueInput
-    update: XOR<ChallengeProgressUpdateWithoutUserInput, ChallengeProgressUncheckedUpdateWithoutUserInput>
-    create: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput>
-  }
-
-  export type ChallengeProgressUpdateWithWhereUniqueWithoutUserInput = {
-    where: ChallengeProgressWhereUniqueInput
-    data: XOR<ChallengeProgressUpdateWithoutUserInput, ChallengeProgressUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ChallengeProgressUpdateManyWithWhereWithoutUserInput = {
-    where: ChallengeProgressScalarWhereInput
-    data: XOR<ChallengeProgressUpdateManyMutationInput, ChallengeProgressUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type ChallengeProgressScalarWhereInput = {
-    AND?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-    OR?: ChallengeProgressScalarWhereInput[]
-    NOT?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-    id?: StringFilter<"ChallengeProgress"> | string
-    userId?: StringFilter<"ChallengeProgress"> | string
-    challengeId?: StringFilter<"ChallengeProgress"> | string
-    progress?: IntFilter<"ChallengeProgress"> | number
-    completed?: BoolFilter<"ChallengeProgress"> | boolean
-    createdAt?: DateTimeFilter<"ChallengeProgress"> | Date | string
-    updatedAt?: DateTimeFilter<"ChallengeProgress"> | Date | string
   }
 
   export type ConversationUpsertWithWhereUniqueWithoutUsersInput = {
@@ -21148,7 +18731,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21157,8 +18739,8 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -21172,7 +18754,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21181,8 +18762,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -21244,7 +18825,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21253,8 +18833,8 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -21268,7 +18848,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21277,8 +18856,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
@@ -21292,7 +18871,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21302,7 +18880,7 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -21316,7 +18894,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21326,7 +18903,7 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -21389,7 +18966,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21399,7 +18975,7 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -21413,7 +18989,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21423,7 +18998,7 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
@@ -21476,7 +19051,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21485,8 +19059,8 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -21500,7 +19074,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21509,8 +19082,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -21519,6 +19092,28 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutProductInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutProductInput, UserUncheckedCreateWithoutProductInput>
+  }
+
+  export type ViewdProductStoreCreateWithoutProductInput = {
+    id?: string
+    viewedAt?: Date | string
+    user: UserCreateNestedOneWithoutViewdProductStoreInput
+  }
+
+  export type ViewdProductStoreUncheckedCreateWithoutProductInput = {
+    id?: string
+    userId: string
+    viewedAt?: Date | string
+  }
+
+  export type ViewdProductStoreCreateOrConnectWithoutProductInput = {
+    where: ViewdProductStoreWhereUniqueInput
+    create: XOR<ViewdProductStoreCreateWithoutProductInput, ViewdProductStoreUncheckedCreateWithoutProductInput>
+  }
+
+  export type ViewdProductStoreCreateManyProductInputEnvelope = {
+    data: ViewdProductStoreCreateManyProductInput | ViewdProductStoreCreateManyProductInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutProductInput = {
@@ -21540,7 +19135,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21549,8 +19143,8 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -21564,7 +19158,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21573,11 +19166,27 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type ViewdProductStoreUpsertWithWhereUniqueWithoutProductInput = {
+    where: ViewdProductStoreWhereUniqueInput
+    update: XOR<ViewdProductStoreUpdateWithoutProductInput, ViewdProductStoreUncheckedUpdateWithoutProductInput>
+    create: XOR<ViewdProductStoreCreateWithoutProductInput, ViewdProductStoreUncheckedCreateWithoutProductInput>
+  }
+
+  export type ViewdProductStoreUpdateWithWhereUniqueWithoutProductInput = {
+    where: ViewdProductStoreWhereUniqueInput
+    data: XOR<ViewdProductStoreUpdateWithoutProductInput, ViewdProductStoreUncheckedUpdateWithoutProductInput>
+  }
+
+  export type ViewdProductStoreUpdateManyWithWhereWithoutProductInput = {
+    where: ViewdProductStoreScalarWhereInput
+    data: XOR<ViewdProductStoreUpdateManyMutationInput, ViewdProductStoreUncheckedUpdateManyWithoutProductInput>
   }
 
   export type UserCreateWithoutViewdBoardStoreInput = {
@@ -21588,7 +19197,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21597,8 +19205,8 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -21612,7 +19220,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21621,8 +19228,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
@@ -21685,7 +19292,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21694,8 +19300,8 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
@@ -21709,7 +19315,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -21718,8 +19323,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
@@ -21764,182 +19369,7 @@ export namespace Prisma {
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutBoardNestedInput
   }
 
-  export type EssayCreateWithoutChallengeInput = {
-    id?: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type EssayUncheckedCreateWithoutChallengeInput = {
-    id?: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type EssayCreateOrConnectWithoutChallengeInput = {
-    where: EssayWhereUniqueInput
-    create: XOR<EssayCreateWithoutChallengeInput, EssayUncheckedCreateWithoutChallengeInput>
-  }
-
-  export type EssayCreateManyChallengeInputEnvelope = {
-    data: EssayCreateManyChallengeInput | EssayCreateManyChallengeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ChallengeProgressCreateWithoutChallengeInput = {
-    id?: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutChallengeProgressInput
-  }
-
-  export type ChallengeProgressUncheckedCreateWithoutChallengeInput = {
-    id?: string
-    userId: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChallengeProgressCreateOrConnectWithoutChallengeInput = {
-    where: ChallengeProgressWhereUniqueInput
-    create: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput>
-  }
-
-  export type ChallengeProgressCreateManyChallengeInputEnvelope = {
-    data: ChallengeProgressCreateManyChallengeInput | ChallengeProgressCreateManyChallengeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type EssayUpsertWithWhereUniqueWithoutChallengeInput = {
-    where: EssayWhereUniqueInput
-    update: XOR<EssayUpdateWithoutChallengeInput, EssayUncheckedUpdateWithoutChallengeInput>
-    create: XOR<EssayCreateWithoutChallengeInput, EssayUncheckedCreateWithoutChallengeInput>
-  }
-
-  export type EssayUpdateWithWhereUniqueWithoutChallengeInput = {
-    where: EssayWhereUniqueInput
-    data: XOR<EssayUpdateWithoutChallengeInput, EssayUncheckedUpdateWithoutChallengeInput>
-  }
-
-  export type EssayUpdateManyWithWhereWithoutChallengeInput = {
-    where: EssayScalarWhereInput
-    data: XOR<EssayUpdateManyMutationInput, EssayUncheckedUpdateManyWithoutChallengeInput>
-  }
-
-  export type EssayScalarWhereInput = {
-    AND?: EssayScalarWhereInput | EssayScalarWhereInput[]
-    OR?: EssayScalarWhereInput[]
-    NOT?: EssayScalarWhereInput | EssayScalarWhereInput[]
-    id?: StringFilter<"Essay"> | string
-    content?: StringFilter<"Essay"> | string
-    createdAt?: DateTimeFilter<"Essay"> | Date | string
-    updatedAt?: DateTimeFilter<"Essay"> | Date | string
-    challengeId?: StringFilter<"Essay"> | string
-  }
-
-  export type ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput = {
-    where: ChallengeProgressWhereUniqueInput
-    update: XOR<ChallengeProgressUpdateWithoutChallengeInput, ChallengeProgressUncheckedUpdateWithoutChallengeInput>
-    create: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput>
-  }
-
-  export type ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput = {
-    where: ChallengeProgressWhereUniqueInput
-    data: XOR<ChallengeProgressUpdateWithoutChallengeInput, ChallengeProgressUncheckedUpdateWithoutChallengeInput>
-  }
-
-  export type ChallengeProgressUpdateManyWithWhereWithoutChallengeInput = {
-    where: ChallengeProgressScalarWhereInput
-    data: XOR<ChallengeProgressUpdateManyMutationInput, ChallengeProgressUncheckedUpdateManyWithoutChallengeInput>
-  }
-
-  export type ChallengeCreateWithoutEssaysInput = {
-    id?: string
-    title: string
-    description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutChallengeInput
-  }
-
-  export type ChallengeUncheckedCreateWithoutEssaysInput = {
-    id?: string
-    title: string
-    description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutChallengeInput
-  }
-
-  export type ChallengeCreateOrConnectWithoutEssaysInput = {
-    where: ChallengeWhereUniqueInput
-    create: XOR<ChallengeCreateWithoutEssaysInput, ChallengeUncheckedCreateWithoutEssaysInput>
-  }
-
-  export type ChallengeUpsertWithoutEssaysInput = {
-    update: XOR<ChallengeUpdateWithoutEssaysInput, ChallengeUncheckedUpdateWithoutEssaysInput>
-    create: XOR<ChallengeCreateWithoutEssaysInput, ChallengeUncheckedCreateWithoutEssaysInput>
-    where?: ChallengeWhereInput
-  }
-
-  export type ChallengeUpdateToOneWithWhereWithoutEssaysInput = {
-    where?: ChallengeWhereInput
-    data: XOR<ChallengeUpdateWithoutEssaysInput, ChallengeUncheckedUpdateWithoutEssaysInput>
-  }
-
-  export type ChallengeUpdateWithoutEssaysInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeProgress?: ChallengeProgressUpdateManyWithoutChallengeNestedInput
-  }
-
-  export type ChallengeUncheckedUpdateWithoutEssaysInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutChallengeNestedInput
-  }
-
-  export type UserCreateWithoutChallengeProgressInput = {
+  export type UserCreateWithoutViewdProductStoreInput = {
     id?: string
     name?: string | null
     hashedPassword?: string | null
@@ -21947,7 +19377,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21963,7 +19392,7 @@ export namespace Prisma {
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
   }
 
-  export type UserUncheckedCreateWithoutChallengeProgressInput = {
+  export type UserUncheckedCreateWithoutViewdProductStoreInput = {
     id?: string
     name?: string | null
     hashedPassword?: string | null
@@ -21971,7 +19400,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -21987,60 +19415,68 @@ export namespace Prisma {
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
   }
 
-  export type UserCreateOrConnectWithoutChallengeProgressInput = {
+  export type UserCreateOrConnectWithoutViewdProductStoreInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
+    create: XOR<UserCreateWithoutViewdProductStoreInput, UserUncheckedCreateWithoutViewdProductStoreInput>
   }
 
-  export type ChallengeCreateWithoutChallengeProgressInput = {
+  export type ProductCreateWithoutViewdProductStoreInput = {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
+    imageSrc?: ProductCreateimageSrcInput | string[]
+    price: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    essays?: EssayCreateNestedManyWithoutChallengeInput
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
+    user: UserCreateNestedOneWithoutProductInput
   }
 
-  export type ChallengeUncheckedCreateWithoutChallengeProgressInput = {
+  export type ProductUncheckedCreateWithoutViewdProductStoreInput = {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    reward: string
-    category: string
-    period: string
-    progress: number
-    disabled: boolean
-    participants: number
+    imageSrc?: ProductCreateimageSrcInput | string[]
+    userId: string
+    price: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    essays?: EssayUncheckedCreateNestedManyWithoutChallengeInput
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
   }
 
-  export type ChallengeCreateOrConnectWithoutChallengeProgressInput = {
-    where: ChallengeWhereUniqueInput
-    create: XOR<ChallengeCreateWithoutChallengeProgressInput, ChallengeUncheckedCreateWithoutChallengeProgressInput>
+  export type ProductCreateOrConnectWithoutViewdProductStoreInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutViewdProductStoreInput, ProductUncheckedCreateWithoutViewdProductStoreInput>
   }
 
-  export type UserUpsertWithoutChallengeProgressInput = {
-    update: XOR<UserUpdateWithoutChallengeProgressInput, UserUncheckedUpdateWithoutChallengeProgressInput>
-    create: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
+  export type UserUpsertWithoutViewdProductStoreInput = {
+    update: XOR<UserUpdateWithoutViewdProductStoreInput, UserUncheckedUpdateWithoutViewdProductStoreInput>
+    create: XOR<UserCreateWithoutViewdProductStoreInput, UserUncheckedCreateWithoutViewdProductStoreInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutChallengeProgressInput = {
+  export type UserUpdateToOneWithWhereWithoutViewdProductStoreInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutChallengeProgressInput, UserUncheckedUpdateWithoutChallengeProgressInput>
+    data: XOR<UserUpdateWithoutViewdProductStoreInput, UserUncheckedUpdateWithoutViewdProductStoreInput>
   }
 
-  export type UserUpdateWithoutChallengeProgressInput = {
+  export type UserUpdateWithoutViewdProductStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22048,7 +19484,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -22064,7 +19499,7 @@ export namespace Prisma {
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutChallengeProgressInput = {
+  export type UserUncheckedUpdateWithoutViewdProductStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22072,7 +19507,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -22088,47 +19522,55 @@ export namespace Prisma {
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
   }
 
-  export type ChallengeUpsertWithoutChallengeProgressInput = {
-    update: XOR<ChallengeUpdateWithoutChallengeProgressInput, ChallengeUncheckedUpdateWithoutChallengeProgressInput>
-    create: XOR<ChallengeCreateWithoutChallengeProgressInput, ChallengeUncheckedCreateWithoutChallengeProgressInput>
-    where?: ChallengeWhereInput
+  export type ProductUpsertWithoutViewdProductStoreInput = {
+    update: XOR<ProductUpdateWithoutViewdProductStoreInput, ProductUncheckedUpdateWithoutViewdProductStoreInput>
+    create: XOR<ProductCreateWithoutViewdProductStoreInput, ProductUncheckedCreateWithoutViewdProductStoreInput>
+    where?: ProductWhereInput
   }
 
-  export type ChallengeUpdateToOneWithWhereWithoutChallengeProgressInput = {
-    where?: ChallengeWhereInput
-    data: XOR<ChallengeUpdateWithoutChallengeProgressInput, ChallengeUncheckedUpdateWithoutChallengeProgressInput>
+  export type ProductUpdateToOneWithWhereWithoutViewdProductStoreInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutViewdProductStoreInput, ProductUncheckedUpdateWithoutViewdProductStoreInput>
   }
 
-  export type ChallengeUpdateWithoutChallengeProgressInput = {
+  export type ProductUpdateWithoutViewdProductStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
+    imageSrc?: ProductUpdateimageSrcInput | string[]
+    price?: IntFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    essays?: EssayUpdateManyWithoutChallengeNestedInput
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
+    user?: UserUpdateOneRequiredWithoutProductNestedInput
   }
 
-  export type ChallengeUncheckedUpdateWithoutChallengeProgressInput = {
+  export type ProductUncheckedUpdateWithoutViewdProductStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    reward?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    period?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    participants?: IntFieldUpdateOperationsInput | number
+    imageSrc?: ProductUpdateimageSrcInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    essays?: EssayUncheckedUpdateManyWithoutChallengeNestedInput
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
   }
 
   export type UserCreateWithoutConversationsInput = {
@@ -22139,7 +19581,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -22149,8 +19590,8 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
   }
@@ -22163,7 +19604,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -22173,8 +19613,8 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
   }
@@ -22241,7 +19681,6 @@ export namespace Prisma {
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     level?: IntFilter<"User"> | number
-    tier?: StringNullableListFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
@@ -22272,7 +19711,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -22282,8 +19720,8 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
   }
@@ -22296,7 +19734,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -22306,8 +19743,8 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
   }
@@ -22325,7 +19762,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -22335,8 +19771,8 @@ export namespace Prisma {
     Product?: ProductCreateNestedManyWithoutUserInput
     Board?: BoardCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
   }
@@ -22349,7 +19785,6 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     level?: number
-    tier?: UserCreatetierInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userType?: $Enums.UserType
@@ -22359,8 +19794,8 @@ export namespace Prisma {
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
     Board?: BoardUncheckedCreateNestedManyWithoutUserInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    challengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
   }
@@ -22412,7 +19847,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -22422,8 +19856,8 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
   }
@@ -22436,7 +19870,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -22446,8 +19879,8 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
   }
@@ -22471,7 +19904,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -22481,8 +19913,8 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
   }
@@ -22495,7 +19927,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -22505,8 +19936,8 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
   }
@@ -22564,13 +19995,19 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    imageSrc: string
-    category: string
+    imageSrc?: ProductCreateimageSrcInput | string[]
     price: number
-    latitude: number
-    longitude: number
+    latitude?: number | null
+    longitude?: number | null
+    address?: string | null
+    addressDetail?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    sold?: boolean
+    views?: number
+    delivery?: boolean
+    faceToFace?: boolean
+    categories?: ProductCreatecategoriesInput | string[]
   }
 
   export type BoardCreateManyUserInput = {
@@ -22591,20 +20028,17 @@ export namespace Prisma {
     viewedAt?: Date | string
   }
 
+  export type ViewdProductStoreCreateManyUserInput = {
+    id?: string
+    productId: string
+    viewedAt?: Date | string
+  }
+
   export type BoardLikeDisLikeCreateManyUserInput = {
     id?: number
     type: string
     createdAt?: Date | string
     boardId: string
-  }
-
-  export type ChallengeProgressCreateManyUserInput = {
-    id?: string
-    challengeId: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type MessageCreateManySenderInput = {
@@ -22691,39 +20125,59 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    imageSrc?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    imageSrc?: ProductUpdateimageSrcInput | string[]
     price?: IntFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sold?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    faceToFace?: BoolFieldUpdateOperationsInput | boolean
+    categories?: ProductUpdatecategoriesInput | string[]
   }
 
   export type BoardUpdateWithoutUserInput = {
@@ -22784,6 +20238,24 @@ export namespace Prisma {
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ViewdProductStoreUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneRequiredWithoutViewdProductStoreNestedInput
+  }
+
+  export type ViewdProductStoreUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewdProductStoreUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BoardLikeDisLikeUpdateWithoutUserInput = {
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22802,33 +20274,6 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     boardId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ChallengeProgressUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    challenge?: ChallengeUpdateOneRequiredWithoutChallengeProgressNestedInput
-  }
-
-  export type ChallengeProgressUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    challengeId?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeProgressUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    challengeId?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ConversationUpdateWithoutUsersInput = {
@@ -22968,68 +20413,28 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type EssayCreateManyChallengeInput = {
-    id?: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChallengeProgressCreateManyChallengeInput = {
+  export type ViewdProductStoreCreateManyProductInput = {
     id?: string
     userId: string
-    progress: number
-    completed: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    viewedAt?: Date | string
   }
 
-  export type EssayUpdateWithoutChallengeInput = {
+  export type ViewdProductStoreUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutViewdProductStoreNestedInput
   }
 
-  export type EssayUncheckedUpdateWithoutChallengeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EssayUncheckedUpdateManyWithoutChallengeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeProgressUpdateWithoutChallengeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutChallengeProgressNestedInput
-  }
-
-  export type ChallengeProgressUncheckedUpdateWithoutChallengeInput = {
+  export type ViewdProductStoreUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChallengeProgressUncheckedUpdateManyWithoutChallengeInput = {
+  export type ViewdProductStoreUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    progress?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageCreateManyConversationInput = {
@@ -23050,7 +20455,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -23060,8 +20464,8 @@ export namespace Prisma {
     Product?: ProductUpdateManyWithoutUserNestedInput
     Board?: BoardUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
   }
@@ -23074,7 +20478,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -23084,8 +20487,8 @@ export namespace Prisma {
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
     Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
     ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    challengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
   }
@@ -23098,7 +20501,6 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
-    tier?: UserUpdatetierInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -23149,9 +20551,9 @@ export namespace Prisma {
      */
     export type BoardCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = BoardCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use ChallengeCountOutputTypeDefaultArgs instead
+     * @deprecated Use ProductCountOutputTypeDefaultArgs instead
      */
-    export type ChallengeCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ChallengeCountOutputTypeDefaultArgs<ExtArgs>
+    export type ProductCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ProductCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ConversationCountOutputTypeDefaultArgs instead
      */
@@ -23185,21 +20587,13 @@ export namespace Prisma {
      */
     export type ViewdBoardStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ViewdBoardStoreDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use ChallengeDefaultArgs instead
+     * @deprecated Use ViewdProductStoreDefaultArgs instead
      */
-    export type ChallengeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ChallengeDefaultArgs<ExtArgs>
+    export type ViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ViewdProductStoreDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use EssayDefaultArgs instead
+     * @deprecated Use AlertDefaultArgs instead
      */
-    export type EssayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = EssayDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ChallengeProgressDefaultArgs instead
-     */
-    export type ChallengeProgressArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ChallengeProgressDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use DopamineDefaultArgs instead
-     */
-    export type DopamineArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = DopamineDefaultArgs<ExtArgs>
+    export type AlertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = AlertDefaultArgs<ExtArgs>
     /**
      * @deprecated Use VerificationTokenDefaultArgs instead
      */

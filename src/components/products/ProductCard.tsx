@@ -21,18 +21,20 @@ const ProductCard = ({ currentUser, data }: ProductCardProps) => {
         <div className="relative w-full overflow-hidden aspect-square rounded-xl ">
           {" "}
           <Image
-            src={data.imageSrc}
+            src={data.imageSrc[0]}
             fill
             sizes="auto"
             className="object-cover w-full h-full trangition group-hover:scale-110 group-hover:ease-out duration-300"
             alt="product"
           />
-          <div className="absolute top-3 right-3">
-            <HeartButton productId={data.id} currentUser={currentUser} />
-          </div>
+          {currentUser?.id !== data.userId && (
+            <div className="absolute top-3 right-3">
+              <HeartButton productId={data.id} currentUser={currentUser} />
+            </div>
+          )}
         </div>
         <div className="text-lg font-semibold ">{data.title}</div>
-        <div className="font-light text-neutral-500">{data.category}</div>
+        <div className="font-light text-neutral-500">{}</div>
         <div className="flex flex-row justify-between items-center gap-1">
           <div>
             {data.price} <span className="font-light">원</span>

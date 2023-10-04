@@ -137,7 +137,6 @@ exports.Prisma.UserScalarFieldEnum = {
   emailVerified: 'emailVerified',
   image: 'image',
   level: 'level',
-  tier: 'tier',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userType: 'userType',
@@ -170,13 +169,19 @@ exports.Prisma.ProductScalarFieldEnum = {
   title: 'title',
   description: 'description',
   imageSrc: 'imageSrc',
-  category: 'category',
   userId: 'userId',
   price: 'price',
   latitude: 'latitude',
   longitude: 'longitude',
+  address: 'address',
+  addressDetail: 'addressDetail',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  sold: 'sold',
+  views: 'views',
+  delivery: 'delivery',
+  faceToFace: 'faceToFace',
+  categories: 'categories'
 };
 
 exports.Prisma.ViewdBoardStoreScalarFieldEnum = {
@@ -186,41 +191,22 @@ exports.Prisma.ViewdBoardStoreScalarFieldEnum = {
   viewedAt: 'viewedAt'
 };
 
-exports.Prisma.ChallengeScalarFieldEnum = {
+exports.Prisma.ViewdProductStoreScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productId: 'productId',
+  viewedAt: 'viewedAt'
+};
+
+exports.Prisma.AlertScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
   imageSrc: 'imageSrc',
-  reward: 'reward',
   category: 'category',
-  period: 'period',
-  progress: 'progress',
   disabled: 'disabled',
-  participants: 'participants',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
-};
-
-exports.Prisma.EssayScalarFieldEnum = {
-  id: 'id',
-  content: 'content',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  challengeId: 'challengeId'
-};
-
-exports.Prisma.ChallengeProgressScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  challengeId: 'challengeId',
-  progress: 'progress',
-  completed: 'completed',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.DopamineScalarFieldEnum = {
-  dopamine: 'dopamine'
 };
 
 exports.Prisma.VerificationTokenScalarFieldEnum = {
@@ -275,10 +261,8 @@ exports.Prisma.ModelName = {
   BoardLikeDisLike: 'BoardLikeDisLike',
   Product: 'Product',
   ViewdBoardStore: 'ViewdBoardStore',
-  Challenge: 'Challenge',
-  Essay: 'Essay',
-  ChallengeProgress: 'ChallengeProgress',
-  Dopamine: 'Dopamine',
+  ViewdProductStore: 'ViewdProductStore',
+  Alert: 'Alert',
   VerificationToken: 'VerificationToken',
   Conversation: 'Conversation',
   Message: 'Message'
