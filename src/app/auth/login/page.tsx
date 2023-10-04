@@ -4,8 +4,6 @@ import Input from "@/components/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "@/components/Button";
 import Link from "next/link";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 const LoginPage = () => {
@@ -71,7 +69,7 @@ const LoginPage = () => {
           </div>
         </form>
       </section>
-      <button onClick={() => signIn("google")}>google</button>
+      {/* <button onClick={() => signIn("google")}>google</button> */}
     </>
   );
 };
