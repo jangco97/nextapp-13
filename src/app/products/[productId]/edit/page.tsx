@@ -7,9 +7,13 @@ import DaumPostcode from "react-daum-postcode";
 import { Address } from "../../upload/page";
 import Input from "@/components/Input";
 import CategoryInput from "@/components/categories/CategoryInput";
-import { mainCategories } from "@/components/categories/Categories";
+import {
+  mainCategories,
+  subCategories,
+} from "@/components/categories/Categories";
 import dynamic from "next/dynamic";
 import React, { MouseEvent, useEffect, useState } from "react";
+
 import {
   FieldValues,
   SubmitHandler,
@@ -44,7 +48,7 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
       longitude: 126.8,
       address: "",
       addressDetail: "",
-      imageSrc: "",
+      imageSrc: [],
       price: 1,
     },
   });
@@ -75,9 +79,21 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value);
   };
-  const setCategory = (value: string) => {
-    setValue("categories", [value]);
+  const setCategory = (value: [string, string]) => {
+    setValue("categories", [...value]);
   };
+  const setImageSrc = (value: [string]) => {
+    setValue("imageSrc", [...value, ...imageSrc]);
+  };
+  const updateImageSrc = (value: string[]) => {
+    setValue("imageSrc", [...value]);
+  };
+  const FirstCategory = mainCategories.find(
+    (element) => element.categoryId === categories[0]
+  );
+  const SecondCategory = subCategories.find(
+    (element) => element.categoryId === categories[1]
+  );
   const showModal = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setIsModalOpen(true);
@@ -124,7 +140,7 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
         setValue("addressDetail", response.data.addressDetail || "");
         setValue("latitude", response.data.latitude || 33.5563);
         setValue("longitude", response.data.longitude || 126.8);
-        setValue("imageSrc", response.data.imageSrc || "");
+        setValue("imageSrc", response.data.imageSrc || []);
         setValue("price", response.data.price || 1);
       }
     } catch (error) {
@@ -166,8 +182,10 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
             center={false}
           />
           <ImageUpload
-            onChange={(value) => setCustomValue("imageSrc", value)}
-            value={imageSrc}
+            onChange={(value: string) => setImageSrc([value])}
+            imageSrc={imageSrc}
+            //  disabled={isOver}
+            updateImageSrc={(value: string[]) => updateImageSrc(value)}
           />
           <Input
             id="title"
@@ -201,8 +219,7 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
             {mainCategories.map((item) => (
               <div key={item.label} className="col-span-1">
                 <CategoryInput
-                  onClick={(category) => setCategory(category)}
-                  selected={categories[0] === item.categoryId}
+                  onClick={(a: string, b: string) => setCategory([a, b])}
                   label={item.label}
                   categoryId={item.categoryId}
                   secondCategory={item.secondCategory}
