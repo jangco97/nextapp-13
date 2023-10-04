@@ -1,12 +1,9 @@
-import React from 'react'
-import getCurrentUser from '../actions/getCurrentUser'
-import ChatClient from './ChatClient'
-
+import React from "react";
+import ChatClient from "./ChatClient";
+import getCurrentUser from "../actions/getCurrentUser";
 const ChatPage = async () => {
-   const currentUser =  await getCurrentUser()
-  return (
-    <ChatClient currentUser={currentUser}></ChatClient>
-  )
-}
+  const currentUser = await getCurrentUser();
+  return <ChatClient currentUser={currentUser}></ChatClient>;
+};
 
-export default ChatPage
+export default ChatPage;

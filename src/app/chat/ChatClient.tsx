@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { TUserWithChat } from "@/types";
 import Contacts from "@/components/chat/Contacts";
 import Chat from "@/components/chat/Chat";
+import Container from "@/components/Container";
 interface ChatClientProps {
   currentUser?: User | null;
 }
@@ -33,7 +34,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
   console.log(users);
 
   return (
-    <main>
+    <Container>
       <div className="grid grid-cols-[1fr] md:grid-cols-[300px_1fr]">
         <section className={`md:flex ${layout && "hidden"}`}>
           <Contacts
@@ -51,7 +52,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
           />
         </section>
       </div>
-    </main>
+    </Container>
   );
 };
 
