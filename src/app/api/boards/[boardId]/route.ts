@@ -67,7 +67,10 @@ export async function PUT(
   }
 }
 
-export async function DELETE({ params }: { params: Params }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Params }
+) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();
