@@ -35,49 +35,47 @@ export async function PUT(
     return NextResponse.error();
   }
   const body = await request.json();
-  try {
-    const product = await prisma.product.findUnique({
-      where: {
-        id: productId,
-      },
-    });
-    if (!product) {
-      return NextResponse.error();
-    }
-    const {
-      id,
+
+  const product = await prisma.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+  if (!product) {
+    return NextResponse.error();
+  }
+  const {
+    id,
+    title,
+    description,
+    imageSrc,
+    categories,
+    latitude,
+    longitude,
+    price,
+    address,
+    addressDetail,
+  } = body;
+
+  const updatedProduct = await prisma.product.update({
+    where: {
+      id: product.id,
+    },
+    data: {
       title,
       description,
       imageSrc,
       categories,
       latitude,
       longitude,
-      price,
       address,
       addressDetail,
-    } = body;
-
-    const updatedProduct = await prisma.product.update({
-      where: {
-        id: product.id,
-      },
-      data: {
-        title,
-        description,
-        imageSrc,
-        categories,
-        latitude,
-        longitude,
-        address,
-        addressDetail,
-        price: Number(price),
-      },
-    });
-    return NextResponse.json(updatedProduct);
-  } catch (error) {
-    return NextResponse.error();
-  }
+      price: Number(price),
+    },
+  });
+  return NextResponse.json(updatedProduct);
 }
+
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Params }

@@ -56,20 +56,16 @@ export async function POST(request: NextRequest) {
     },
   });
   if (conversation) {
-    try {
-      const message = await prisma.message.create({
-        data: {
-          text: body.text,
-          image: body.image,
-          senderId: body.senderId,
-          receiverId: body.receiverId,
-          conversationId: conversation.id,
-        },
-      });
-      return NextResponse.json(message);
-    } catch (error) {
-      return NextResponse.json(error);
-    }
+    const message = await prisma.message.create({
+      data: {
+        text: body.text,
+        image: body.image,
+        senderId: body.senderId,
+        receiverId: body.receiverId,
+        conversationId: conversation.id,
+      },
+    });
+    return NextResponse.json(message);
   } else {
     const newConversation = await prisma.conversation.create({
       data: {
@@ -87,19 +83,16 @@ export async function POST(request: NextRequest) {
         },
       },
     });
-    try {
-      const message = await prisma.message.create({
-        data: {
-          text: body.text,
-          image: body.image,
-          senderId: body.senderId,
-          receiverId: body.receiverId,
-          conversationId: newConversation.id,
-        },
-      });
-      return NextResponse.json(message);
-    } catch (error) {
-      return NextResponse.json(error);
-    }
+
+    const message = await prisma.message.create({
+      data: {
+        text: body.text,
+        image: body.image,
+        senderId: body.senderId,
+        receiverId: body.receiverId,
+        conversationId: newConversation.id,
+      },
+    });
+    return NextResponse.json(message);
   }
 }
