@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
+  experimental: {
+    appDir: true,
+  },
   images: {
     domains: ["res.cloudinary.com", "via.placeholder.com"], //도메인 허용하기
   },
