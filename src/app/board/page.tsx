@@ -49,7 +49,7 @@ const BoardPage = async ({ searchParams }: BoardProps) => {
                 <hr />
               </div>
 
-              {boards.data.map((board) => (
+              {boards.data.map((board: any) => (
                 <BoardContainer
                   key={board.id}
                   currentUser={currentUser}

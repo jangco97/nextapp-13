@@ -1,6 +1,5 @@
 import { PRODUCTS_PER_PAGE } from "@/constants";
-import prisma from "@/helpers/prismadb";
-
+import prisma from "../../app/libs/prismadb";
 export interface ProductParams {
   latitude?: number;
   longitude?: number;

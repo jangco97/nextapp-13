@@ -1,22 +1,22 @@
-import prisma from '@/helpers/prismadb'
+import prisma from "../../app/libs/prismadb";
 export interface BoardByIdParams {
-    boardId?: string
-  }
+  boardId?: string;
+}
 export default async function getBoardById(params: BoardByIdParams) {
-    try{
-        const {boardId} = params
-        const board = await prisma.board.findUnique({
-            where: {
-                id: boardId
-            },
-            include: {
-                user: true,
-            }
-        })
-        if(!board) return null
+  try {
+    const { boardId } = params;
+    const board = await prisma.board.findUnique({
+      where: {
+        id: boardId,
+      },
+      include: {
+        user: true,
+      },
+    });
+    if (!board) return null;
 
-        return board
-    }catch(error: any){
-        throw new Error(error)
-    }
+    return board;
+  } catch (error: any) {
+    throw new Error(error);
+  }
 }

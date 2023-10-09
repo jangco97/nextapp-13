@@ -1,13 +1,12 @@
 // api/boards.ts (예시 파일 이름)
 import { NextResponse } from "next/server";
-import prisma from "@/helpers/prismadb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import prisma from "../../../app/libs/prismadb";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    return NextResponse.error();
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
+    return new NextResponse("Unauthorized", { status: 401 });
   }
 
   const body = await request.json();
@@ -24,7 +23,7 @@ export async function POST(request: Request) {
       title,
       description,
       category,
-      userId: session.user?.id as string,
+      userId: currentUser.id as string,
     },
   });
 

@@ -1,10 +1,13 @@
+"use client";
 import { PriceContext } from "@/context/pricestate.context";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
-import React, { useContext } from "react";
+import { useRouter } from "next/navigation";
+import React, { use, useContext } from "react";
 
 const NavbarItem = ({ session }: { session: any }) => {
   const { state, dispatch } = useContext(PriceContext);
+  const router = useRouter();
   return (
     <ul
       className={`flex text-md flex-col ml-5 items-start md:mr-2 md:flex-row md:justify-center md:gap-4 md:w-full md:items-center  `}
@@ -46,7 +49,7 @@ const NavbarItem = ({ session }: { session: any }) => {
           onClick={() => dispatch({ type: "0" })}
           className="py-2 text-center border-b-4 cursor-pointer"
         >
-          <button onClick={() => signIn()}>LogIn</button>
+          <button onClick={() => router.push("/auth/login")}>LogIn</button>
         </li>
       )}{" "}
     </ul>

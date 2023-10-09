@@ -4,12 +4,12 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import ToastProvider from "@/components/ToastProvider";
 import { NextAuthProvider } from "./provider";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
 import { SidebarProvider } from "@/context/sidebaropen.context";
 import { PriceProvider } from "@/context/pricestate.context";
-import BgColorContainer from "@/components/sidebar/BgColorContainer";
 import SidebarModal from "@/components/sidebar/SidebarModal";
+import getSession from "./actions/getSession";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +33,7 @@ export default async function RootLayout({
             <Navbar session={session} />
             <ToastProvider />
             <SidebarModal session={session} />
-            <NextAuthProvider>{children}</NextAuthProvider>
+            <NextAuthProvider session={session}>{children}</NextAuthProvider>
           </PriceProvider>
         </SidebarProvider>
         <Script

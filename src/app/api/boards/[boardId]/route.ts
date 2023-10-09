@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "@/helpers/prismadb";
+import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 interface Params {
   boardId?: string;
@@ -42,7 +42,7 @@ export async function PUT(request: Request, { params }: { params: Params }) {
     if (!board) {
       return NextResponse.error();
     }
-    const {title, description, category} = body
+    const { title, description, category } = body;
     const updatedBoard = await prisma.board.update({
       where: {
         id: board.id,
@@ -50,7 +50,7 @@ export async function PUT(request: Request, { params }: { params: Params }) {
       data: {
         title,
         description,
-        category
+        category,
       },
     });
 
@@ -61,31 +61,31 @@ export async function PUT(request: Request, { params }: { params: Params }) {
   }
 }
 
-export async function DELETE(request: Request, {params}: {params: Params}) {
+export async function DELETE(request: Request, { params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();
   }
   const { boardId } = params;
-  if(!boardId) {
-    return NextResponse.error()
+  if (!boardId) {
+    return NextResponse.error();
   }
   try {
     const board = await prisma.board.findUnique({
       where: {
-        id: boardId
-      }
-    })
-    if(!board){
-      return NextResponse.error()
+        id: boardId,
+      },
+    });
+    if (!board) {
+      return NextResponse.error();
     }
     await prisma.board.delete({
-      where:{
-        id: board.id
-      }
-    })
-    return NextResponse.json({message: 'Board deleted successfully'})
-  }catch(error){
-    return NextResponse.error()
+      where: {
+        id: board.id,
+      },
+    });
+    return NextResponse.json({ message: "Board deleted successfully" });
+  } catch (error) {
+    return NextResponse.error();
   }
 }

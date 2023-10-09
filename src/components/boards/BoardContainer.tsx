@@ -34,7 +34,6 @@ const BoardContainer = ({ currentUser, data }: BoardContainerProps) => {
 
           <div className="grid grid-cols-4">
             <span>{data.user.name}</span>
-            <span>{data.user.level}</span>
             <span>{fromNow(data.createdAt)}</span>
           </div>
         </div>

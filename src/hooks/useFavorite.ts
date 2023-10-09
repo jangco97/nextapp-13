@@ -1,11 +1,12 @@
-import { User } from "../../prisma/generated/client";
+"use client";
+
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
 interface UseFavoriteProps {
   productId: string;
-  currentUser?: User | null;
+  currentUser?: any;
 }
 
 const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {

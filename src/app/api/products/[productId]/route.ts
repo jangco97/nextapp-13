@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server";
-import prisma from "@/helpers/prismadb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import prisma from "@/app/libs/prismadb";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 interface Params {
   productId?: string;
 }
 
 export async function GET(request: Request, { params }: { params: Params }) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
     return NextResponse.error();
   }
   const { productId } = params;
@@ -21,8 +20,8 @@ export async function GET(request: Request, { params }: { params: Params }) {
 }
 
 export async function PUT(request: Request, { params }: { params: Params }) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
     return NextResponse.error();
   }
   const { productId } = params;
@@ -74,8 +73,8 @@ export async function PUT(request: Request, { params }: { params: Params }) {
   }
 }
 export async function DELETE(request: Request, { params }: { params: Params }) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
     return NextResponse.error();
   }
   const { productId } = params;

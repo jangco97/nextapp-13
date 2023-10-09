@@ -1,6 +1,5 @@
 "use client";
-import BgColorContainer from "@/components/sidebar/BgColorContainer";
-//navbar의 햄버거 버튼을 클릭하면 모바일 화면에서는 사이드바가 나타도록 context api를 사용
+
 import React, { Dispatch, useReducer, createContext } from "react";
 
 interface State {
