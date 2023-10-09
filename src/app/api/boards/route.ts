@@ -6,7 +6,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return NextResponse.error();
   }
 
   const body = await request.json();
