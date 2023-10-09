@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { email, name, password } = body;
 
     if (!email || !name || !password) {
-      throw new NextResponse("Missing fields", { status: 400 });
+      return NextResponse.error();
     }
     const hashedPassword = await bcrypt.hash(password, 12);
     const user = await prisma.user.create({
@@ -22,12 +22,6 @@ export async function POST(request: Request) {
     return NextResponse.json(user);
   } catch (error: any) {
     console.log(error, "Resgistration error");
-    return new NextResponse(
-      JSON.stringify({
-        status: "error",
-        message: error.message,
-      }),
-      { status: 500 }
-    );
+    return NextResponse.error();
   }
 }
