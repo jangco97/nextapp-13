@@ -1,11 +1,14 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 interface ParamsProps {
   productId?: string;
 }
 
-export async function POST({ params }: { params: ParamsProps }) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: ParamsProps }
+) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -31,7 +34,10 @@ export async function POST({ params }: { params: ParamsProps }) {
   return NextResponse.json(user);
 }
 
-export async function DELETE({ params }: { params: ParamsProps }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: ParamsProps }
+) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {

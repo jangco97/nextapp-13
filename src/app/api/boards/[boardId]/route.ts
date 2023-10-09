@@ -5,7 +5,10 @@ interface Params {
   boardId?: string;
 }
 
-export async function GET({ params }: { params: Params }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Params }
+) {
   const { boardId } = params;
   const board = await prisma.board.findUnique({
     where: {
@@ -20,7 +23,10 @@ export async function GET({ params }: { params: Params }) {
   return NextResponse.json(board);
 }
 
-export async function PUT(request: Request, { params }: { params: Params }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Params }
+) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();

@@ -5,7 +5,10 @@ interface Params {
   productId?: string;
 }
 
-export async function GET({ params }: { params: Params }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Params }
+) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();
@@ -75,7 +78,10 @@ export async function PUT(
     return NextResponse.error();
   }
 }
-export async function DELETE({ params }: { params: Params }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Params }
+) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();

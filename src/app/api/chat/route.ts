@@ -1,7 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
-export async function GET() {
+export async function GET(request: NextRequest) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
