@@ -26,4 +26,4 @@ export async function middleware(req: NextRequest) {
 
   return NextResponse.next(); //원하는 페이지로 이동
 }
-// export const config = { matcher: ["/admin/:path*", "/user"] }
+export const config = { matcher: ["/admin/:path*", "/user"] };

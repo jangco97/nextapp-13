@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.0.18",
     "@lucasmogari/react-pagination": "^1.1.3",
     "@next-auth/prisma-adapter": "^0.4.4-canary.81",
-    "@prisma/client": "^5.4.1",
+    "@prisma/client": "^5.3.1",
     "@react-oauth/google": "^0.11.1",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",
@@ -53,6 +53,6 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "prisma": "^5.4.1"
+    "prisma": "^5.3.1"
   }
 }
