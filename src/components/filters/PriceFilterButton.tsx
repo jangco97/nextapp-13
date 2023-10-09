@@ -1,20 +1,24 @@
-import React, { useContext } from "react";
-import { Fragment, useRef, useState } from "react";
+import React from "react";
+import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";
-import { PriceContext } from "@/context/pricestate.context";
+import { set } from "react-hook-form";
 const PriceFilterButton = () => {
   const params = useSearchParams();
-  const { state, dispatch } = useContext(PriceContext);
+
   let currentQuery = {};
 
   if (params) {
     currentQuery = qs.parse(params?.toString()); //{'category' : 'interior', 'page' : '2'}
   }
+  const [price, setPrice] = useState("0");
 
+  const setPriceHandler = (id: string) => {
+    setPrice(id);
+  };
   const allPirce = {
     ...currentQuery,
     minPrice: 0,
@@ -72,8 +76,8 @@ const PriceFilterButton = () => {
               <div>
                 <Link href={{ query: allPirce }}>
                   <input
-                    checked={"0" === state.pricestate}
-                    onChange={() => dispatch({ type: "0" })}
+                    checked={"0" === price}
+                    onChange={() => setPriceHandler("0")}
                     type="radio"
                     id={"0T"}
                   />
@@ -85,8 +89,8 @@ const PriceFilterButton = () => {
               <div>
                 <Link href={{ query: lowerThan100T }}>
                   <input
-                    checked={"1" === state.pricestate}
-                    onChange={() => dispatch({ type: "1" })}
+                    checked={"1" === price}
+                    onChange={() => setPriceHandler("1")}
                     type="radio"
                     id={"10T"}
                   />
@@ -98,8 +102,8 @@ const PriceFilterButton = () => {
               <div>
                 <Link href={{ query: lowerThan300T }}>
                   <input
-                    checked={"2" === state.pricestate}
-                    onChange={() => dispatch({ type: "2" })}
+                    checked={"2" === price}
+                    onChange={() => setPriceHandler("2")}
                     type="radio"
                     id={"30T"}
                   />
@@ -111,8 +115,8 @@ const PriceFilterButton = () => {
               <div>
                 <Link href={{ query: lowerThan500T }}>
                   <input
-                    checked={"3" === state.pricestate}
-                    onChange={() => dispatch({ type: "3" })}
+                    checked={"3" === price}
+                    onChange={() => setPriceHandler("3")}
                     type="radio"
                     id={"50T"}
                   />
@@ -124,8 +128,8 @@ const PriceFilterButton = () => {
               <div>
                 <Link href={{ query: higherThan500T }}>
                   <input
-                    checked={"4" === state.pricestate}
-                    onChange={() => dispatch({ type: "4" })}
+                    checked={"4" === price}
+                    onChange={() => setPriceHandler("4")}
                     type="radio"
                     id={"100T"}
                   />
