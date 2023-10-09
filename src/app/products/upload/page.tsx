@@ -13,7 +13,9 @@ import React, { MouseEvent, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-
+import { getSession } from "next-auth/react";
+const session = getSession();
+console.log(session, "session");
 export interface Address {
   address: string;
   zonecode: string;
@@ -34,8 +36,8 @@ const ProductUploadPage = () => {
       title: "",
       description: "",
       categories: [],
-      latitude: 33.5563,
-      longitude: 126.8,
+      latitude: 33,
+      longitude: 126,
       address: "",
       addressDetail: "",
       imageSrc: [],

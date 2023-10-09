@@ -1,3 +1,4 @@
+"use client";
 import React, { FormEvent, useRef, useState } from "react";
 import { IoImageOutline } from "react-icons/io5";
 import { RiSendPlaneLine } from "react-icons/ri";
@@ -5,6 +6,7 @@ import { CgClose } from "react-icons/cg";
 import useSWRMutation from "swr/mutation";
 import { previewImage } from "@/helpers/previewImage";
 import { uploadImage } from "@/helpers/uploadImage";
+import Image from "next/image";
 interface InputProps {
   receiverId: string;
   currentUserId: string;
@@ -18,7 +20,7 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
     setImagePreview(null);
     setImage(null);
   };
-  
+
   async function sendRequest(
     url: string,
     {
@@ -53,12 +55,6 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
           receiverId: receiverId,
           senderId: currentUserId,
         });
-        // await axios.post("/api/chat", {
-        //   text: message,
-        //   image: imgUrl,
-        //   receiverId: receiverId,
-        //   senderId: currentUserId,
-        // });
       } catch (error) {
         console.error(error);
       }
@@ -74,8 +70,11 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
     >
       {imagePreview && (
         <div className="absolute right-0 w-full overflow-hidden rounded-md bottom-[4.2rem] max-w-[300px] shadow-md">
-          <img src={imagePreview} alt="대체" />
-          <span onClick={removeImage} className="absolute flex items-center justify-center p-2 text-xl text-white bg-gray-700 cursor-pointer top-[0.4rem] right-[0.4rem] rounded-full opacity-60 hover:opacity-100">
+          <Image src={imagePreview} alt="대체" />
+          <span
+            onClick={removeImage}
+            className="absolute flex items-center justify-center p-2 text-xl text-white bg-gray-700 cursor-pointer top-[0.4rem] right-[0.4rem] rounded-full opacity-60 hover:opacity-100"
+          >
             <CgClose />
           </span>
         </div>
@@ -93,7 +92,7 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
         ref={imageRef}
         accept="image/*"
         multiple={false}
-        onChange= {(e) => previewImage(e, setImagePreview, setImage)}
+        onChange={(e) => previewImage(e, setImagePreview, setImage)}
       />
       <div
         className="text-2xl text-gray-200 cursor-pointer"

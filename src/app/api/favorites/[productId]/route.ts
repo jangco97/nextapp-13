@@ -1,12 +1,12 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import { NextResponse } from "next/server";
-import prisma from "@/helpers/prismadb";
+import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/app/libs/prismadb";
 interface ParamsProps {
   productId?: string;
 }
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: ParamsProps }
 ) {
   const currentUser = await getCurrentUser();
@@ -35,7 +35,7 @@ export async function POST(
 }
 
 export async function DELETE(
-  request: Request,
+  request: NextRequest,
   { params }: { params: ParamsProps }
 ) {
   const currentUser = await getCurrentUser();

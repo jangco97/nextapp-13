@@ -1,10 +1,11 @@
 "use client";
 import { Product, User } from "../../../prisma/generated/client";
 import Image from "next/image";
-import React from "react";
+import React, { use } from "react";
 import { useRouter } from "next/navigation";
 import HeartButton from "../HeartButton";
 import { fromNow } from "@/helpers/dayjs";
+import { useSession } from "next-auth/react";
 
 interface ProductCardProps {
   currentUser?: User | null;
@@ -12,6 +13,8 @@ interface ProductCardProps {
 }
 const ProductCard = ({ currentUser, data }: ProductCardProps) => {
   const router = useRouter();
+  const session = useSession();
+  console.log("session", session);
   return (
     <div
       onClick={() => router.push(`/products/${data.id}`)}

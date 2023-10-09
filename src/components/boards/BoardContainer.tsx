@@ -1,5 +1,5 @@
 "use client";
-import { Board, User } from "../../../prisma/generated/client";
+import { User } from "../../../prisma/generated/client";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { fromNow } from "@/helpers/dayjs";
@@ -34,7 +34,6 @@ const BoardContainer = ({ currentUser, data }: BoardContainerProps) => {
 
           <div className="grid grid-cols-4">
             <span>{data.user.name}</span>
-            <span>{data.user.level}</span>
             <span>{fromNow(data.createdAt)}</span>
           </div>
         </div>

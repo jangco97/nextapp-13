@@ -1,22 +1,20 @@
-import getCurrentUser from '@/app/actions/getCurrentUser';
-import getProductById from '@/app/actions/getProductById'
-import EmptyState from '@/components/EmptyState';
-import React from 'react'
-import ProductClient from './ProductClient';
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import getProductById from "@/app/actions/getProductById";
+import EmptyState from "@/components/EmptyState";
+import React from "react";
+import ProductClient from "./ProductClient";
 
 interface Params {
-  productId?: string
+  productId?: string;
 }
-const ProductPage = async({params}: {params: Params}) => {
+const ProductPage = async ({ params }: { params: Params }) => {
   const product = await getProductById(params);
-  const currentUser = await getCurrentUser()
+  const currentUser = await getCurrentUser();
 
-  if(!product){
-    return <EmptyState />
+  if (!product) {
+    return <EmptyState />;
   }
-  return (
-    <ProductClient product={product} currentUser={currentUser}/>
-  )
-}
+  return <ProductClient product={product} currentUser={currentUser} />;
+};
 
-export default ProductPage
+export default ProductPage;

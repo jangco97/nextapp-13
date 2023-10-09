@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/components/Button";
+
 import Container from "@/components/Container";
 import {
   mainCategories,
@@ -12,6 +12,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React from "react";
 import axios from "axios";
+import Button from "@/components/Button";
+
 interface ProductClientProps {
   product: Product & { user: User }; //user 프로퍼티 안에 유저가 있음
   currentUser?: User | null;

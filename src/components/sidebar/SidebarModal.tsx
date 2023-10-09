@@ -1,8 +1,7 @@
 "use client";
-import styled from "styled-components";
 import { SidebarContext } from "@/context/sidebaropen.context";
-import React, { useState, useContext, Dispatch } from "react";
-import Categories, { mainCategories } from "../categories/Categories";
+import React, { useContext } from "react";
+import { mainCategories } from "../categories/Categories";
 import CategoryBox from "../categories/CategoryBox";
 import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
@@ -12,21 +11,13 @@ const SidebarModal = ({ session }: { session: any }) => {
   const params = useSearchParams();
   const category = params?.get("category");
 
-  const Modal = styled.div`
-    position: fixed;
-    top: 75px;
-    height: calc(100vh - 75px);
-    width: 208.3px;
-    background-color: #f0f0f0;
-    transform: ${state.isSidebarOpen
-      ? "translateX(0)"
-      : "translateX(-100%)"}; //사이드바가 열리면 x축으로 0만큼 이동
-    transition: transform 0.3s ease-in-out;
-    z-index: 20;
-    overflow: auto;
-  `;
   return (
-    <Modal onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`fixed top-[75px] h-[calc(100vh-75px)] w-[208.3px] bg-gray-200 transition-transform duration-300 ease-in-out z-20 overflow-auto ${
+        state.isSidebarOpen ? "" : "-translate-x-full"
+      }`}
+      onClick={(e) => e.stopPropagation()}
+    >
       <div className="py-1 flex flex-col ">
         <div className="block md:hidden">
           <NavbarItem session={session} />
@@ -41,7 +32,7 @@ const SidebarModal = ({ session }: { session: any }) => {
           />
         ))}
       </div>
-    </Modal>
+    </div>
   );
 };
 

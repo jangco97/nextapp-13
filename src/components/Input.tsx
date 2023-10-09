@@ -15,7 +15,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
   id,
   label,
-  type = "text",
+  type,
   disabled,
   formatPrice,
   register,
@@ -27,35 +27,36 @@ const Input: React.FC<InputProps> = ({
       {formatPrice && (
         <span className="absolute text-neutral-700 top-5 left-2">￦</span>
       )}
-      {label === "Description" ? <textarea
-        id={id}
-        disabled={disabled}
-        {...register(id, { required })}
-        placeholder=""
-        name="description"
-        rows={10}
-        cols={40}
-        className={`w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
-        ${ formatPrice ? "pl-9" : "pl-4"}
+      {label === "Description" ? (
+        <textarea
+          id={id}
+          disabled={disabled}
+          {...register(id, { required })}
+          name="description"
+          rows={10}
+          cols={40}
+          className={`w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
+        ${formatPrice ? "pl-9" : "pl-4"}
         ${errors[id] ? "border-rose-500" : "border-neutral-300"} 
         ${errors[id] ? "focus:border-rose-500" : "focus:border-black"}
         `}
-      /> :
-      <input
-      id={id}
-      disabled={disabled}
-      {...register(id, { required })}
-      placeholder=""
-      type={type}
-      className={`w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
-      ${ formatPrice ? "pl-9" : "pl-4"}
+        />
+      ) : (
+        <input
+          id={id}
+          disabled={disabled}
+          {...register(id, { required })}
+          type={type}
+          className={`w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
+      ${formatPrice ? "pl-9" : "pl-4"}
       ${errors[id] ? "border-rose-500" : "border-neutral-300"} 
       ${errors[id] ? "focus:border-rose-500" : "focus:border-black"}
       `}
-    />
-      }
-      
-      <label className={`
+        />
+      )}
+
+      <label
+        className={`
         absolute
         text-md
         duration-150
@@ -64,13 +65,14 @@ const Input: React.FC<InputProps> = ({
         top-5
         z-10
         origin-[0]
-        ${formatPrice ? 'left-9':'left-4'}
+        ${formatPrice ? "left-9" : "left-4"}
         peer-placeholder-shown:scale-100
         peer-placeholder-show:tramslate-y-0
         peer-focus:sacle-75
         peer-focus:-translte-y-4
-        ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
-      `}>
+        ${errors[id] ? "text-rose-500" : "text-zinc-400"}
+      `}
+      >
         {label}
       </label>
     </div>

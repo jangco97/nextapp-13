@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
   if (pathname.startsWith("/user") && !session) {
     return NextResponse.redirect(new URL("/auth/login", req.url)); //세션이 없으면 로그인 페이지로 이동
   }
-  if (pathname.startsWith("/challenge") && !session) {
+  if (pathname.startsWith("/products/upload") && !session) {
     return NextResponse.redirect(new URL("/auth/login", req.url)); //세션이 없으면 로그인 페이지로 이동
   }
   //어드민 유저만 접근 가능한 페이지
@@ -26,4 +26,4 @@ export async function middleware(req: NextRequest) {
 
   return NextResponse.next(); //원하는 페이지로 이동
 }
-// export const config = { matcher: ["/admin/:path*", "/user"] }
+export const config = { matcher: ["/admin/:path*", "/user"] };

@@ -1,11 +1,10 @@
-import { NextResponse } from "next/server";
-import prisma from "@/helpers/prismadb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/app/libs/prismadb";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
-export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
+export async function POST(request: NextRequest) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
     return NextResponse.error();
   }
 
@@ -39,7 +38,7 @@ export async function POST(request: Request) {
       address,
       addressDetail,
       price: Number(price),
-      userId: session.user?.id as string,
+      userId: currentUser.id as string,
     },
   });
   return NextResponse.json(product);

@@ -1,30 +1,22 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import prisma from "@/helpers/prismadb";
+import prisma from "@/app/libs/prismadb";
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { email, name, password } = body;
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  const { email, name, password } = body;
 
-    const hashedPassword = await bcrypt.hash(password, 12);
-
-    const user = await prisma.user.create({
-      data: {
-        email,
-        name,
-        hashedPassword,
-      },
-    });
-
-    return NextResponse.json(user);
-  } catch (error: any) {
-    return new NextResponse(
-      JSON.stringify({
-        status: "error",
-        message: error.message,
-      }),
-      { status: 500 }
-    );
+  if (!email || !name || !password) {
+    return NextResponse.error();
   }
+  const hashedPassword = await bcrypt.hash(password, 12);
+  const user = await prisma.user.create({
+    data: {
+      email,
+      name,
+      hashedPassword,
+    },
+  });
+
+  return NextResponse.json(user);
 }

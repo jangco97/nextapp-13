@@ -107,6 +107,19 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  hashedPassword: 'hashedPassword',
+  email: 'email',
+  emailVerified: 'emailVerified',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userType: 'userType',
+  favoriteIds: 'favoriteIds'
+};
+
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -124,23 +137,21 @@ exports.Prisma.AccountScalarFieldEnum = {
 
 exports.Prisma.SessionScalarFieldEnum = {
   id: 'id',
-  sessionToken: 'sessionToken',
   userId: 'userId',
-  expires: 'expires'
+  sessionToken: 'sessionToken',
+  accessToken: 'accessToken',
+  expires: 'expires',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.VerificationRequestScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  hashedPassword: 'hashedPassword',
-  email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image',
-  level: 'level',
+  identifier: 'identifier',
+  token: 'token',
+  expires: 'expires',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userType: 'userType',
-  favoriteIds: 'favoriteIds'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.BoardScalarFieldEnum = {
@@ -198,23 +209,6 @@ exports.Prisma.ViewdProductStoreScalarFieldEnum = {
   viewedAt: 'viewedAt'
 };
 
-exports.Prisma.AlertScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  imageSrc: 'imageSrc',
-  category: 'category',
-  disabled: 'disabled',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
-};
-
 exports.Prisma.ConversationScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -254,16 +248,15 @@ exports.UserType = exports.$Enums.UserType = {
 };
 
 exports.Prisma.ModelName = {
+  User: 'User',
   Account: 'Account',
   Session: 'Session',
-  User: 'User',
+  VerificationRequest: 'VerificationRequest',
   Board: 'Board',
   BoardLikeDisLike: 'BoardLikeDisLike',
   Product: 'Product',
   ViewdBoardStore: 'ViewdBoardStore',
   ViewdProductStore: 'ViewdProductStore',
-  Alert: 'Alert',
-  VerificationToken: 'VerificationToken',
   Conversation: 'Conversation',
   Message: 'Message'
 };

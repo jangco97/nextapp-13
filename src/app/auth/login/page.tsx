@@ -5,9 +5,13 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import Container from "@/components/Container";
 
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -21,17 +25,38 @@ const LoginPage = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (body) => {
     setIsLoading(true);
-    try {
-      const data = signIn("credentials", body);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
+    signIn("credentials", {
+      redirect: false,
+      email: body.email,
+      password: body.password,
+    })
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error("Invalid credentials");
+        }
+        if (callback?.ok && !callback?.error) {
+          toast.success("Login success");
+          router.push("/");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
+  // const handleSocialLogin = async (action: string) => {
+  //   setIsLoading(true);
+  //   signIn(action, { redirect: false })
+  //     .then((callback) => {
+  //       if (callback?.error) {
+  //         toast.error("Invalid credentials");
+  //       }
+  //       if (callback?.ok && !callback?.error) {
+  //         toast.success("Login success");
+  //         router.push("/");
+  //       }
+  //     })
+  //     .finally(() => setIsLoading(false));
+  // };
   return (
-    <>
+    <Container>
       <section className="grid h-[calc(100vh_-_56px)] place-items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -40,6 +65,7 @@ const LoginPage = () => {
           <h1 className="text-2xl">Login</h1>
           <Input
             id="email"
+            type="email"
             label="Email"
             disabled={isLoading}
             register={register}
@@ -56,6 +82,7 @@ const LoginPage = () => {
             required
           />
           <Button label="Login" />
+          <hr />
           <div className="text-center">
             <p className="text-gray-400">
               You do not have an account?{" "}
@@ -69,8 +96,7 @@ const LoginPage = () => {
           </div>
         </form>
       </section>
-      {/* <button onClick={() => signIn("google")}>google</button> */}
-    </>
+    </Container>
   );
 };
 
