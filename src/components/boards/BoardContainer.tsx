@@ -1,5 +1,5 @@
 "use client";
-import { Board, User } from "../../../prisma/generated/client";
+import { User } from "../../../prisma/generated/client";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { fromNow } from "@/helpers/dayjs";

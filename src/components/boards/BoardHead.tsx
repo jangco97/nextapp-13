@@ -1,6 +1,5 @@
 import { User } from "../../../prisma/generated/client";
 import React from "react";
-import Heading from "../Heading";
 import { formatTime } from "@/helpers/dayjs";
 import { IconType } from "react-icons";
 import BoardCategory from "./BoardCategory";

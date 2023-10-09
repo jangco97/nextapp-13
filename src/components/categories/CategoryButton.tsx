@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import CategoryBox from "./CategoryBox";
