@@ -6,16 +6,14 @@ import Link from "next/link";
 import { SidebarContext } from "@/context/sidebaropen.context";
 import NavbarItem from "./NavbarItem";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import qs from "query-string";
-import { PriceContext } from "@/context/pricestate.context";
 interface NavbarProps {
   session: any;
 }
 const Navbar = ({ session }: NavbarProps) => {
   const { state, dispatch } = useContext(SidebarContext);
-  const { state: pricestate, dispatch: pricedispatch } =
-    useContext(PriceContext);
+
   const router = useRouter();
   const params = useSearchParams();
   // const [isLoading, setIsLoading] = useState(false);
@@ -57,10 +55,7 @@ const Navbar = ({ session }: NavbarProps) => {
             <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
           </svg>
         </button>
-        <div
-          onClick={() => pricedispatch({ type: "0" })}
-          className="flex items-center justify-start h-14 text-xl"
-        >
+        <div className="flex items-center justify-start h-14 text-xl">
           <Link href={"/"}>대학 서사</Link>
         </div>
       </div>

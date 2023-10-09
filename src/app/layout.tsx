@@ -5,9 +5,7 @@ import Script from "next/script";
 import ToastProvider from "@/components/ToastProvider";
 import { NextAuthProvider } from "./provider";
 import { SidebarProvider } from "@/context/sidebaropen.context";
-import { PriceProvider } from "@/context/pricestate.context";
 import SidebarModal from "@/components/sidebar/SidebarModal";
-import getSession from "./actions/getSession";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 
@@ -29,12 +27,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SidebarProvider>
-          <PriceProvider>
-            <Navbar session={session} />
-            <ToastProvider />
-            <SidebarModal session={session} />
-            <NextAuthProvider session={session}>{children}</NextAuthProvider>
-          </PriceProvider>
+          <Navbar session={session} />
+          <ToastProvider />
+          <SidebarModal session={session} />
+          <NextAuthProvider session={session}>{children}</NextAuthProvider>
         </SidebarProvider>
         <Script
           type="text/javascript"
