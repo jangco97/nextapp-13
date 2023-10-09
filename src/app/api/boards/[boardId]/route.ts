@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 interface Params {
   boardId?: string;
 }
 
-export async function GET(request: Request, { params }: { params: Params }) {
+export async function GET({ params }: { params: Params }) {
   const { boardId } = params;
   const board = await prisma.board.findUnique({
     where: {
@@ -61,7 +61,7 @@ export async function PUT(request: Request, { params }: { params: Params }) {
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: Params }) {
+export async function DELETE({ params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();

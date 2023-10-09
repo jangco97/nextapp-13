@@ -1,12 +1,12 @@
 // api/boards.ts (예시 파일 이름)
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return;
   }
 
   const body = await request.json();

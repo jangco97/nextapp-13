@@ -5,10 +5,7 @@ interface ParamsProps {
   productId?: string;
 }
 
-export async function POST(
-  request: Request,
-  { params }: { params: ParamsProps }
-) {
+export async function POST({ params }: { params: ParamsProps }) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -34,10 +31,7 @@ export async function POST(
   return NextResponse.json(user);
 }
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: ParamsProps }
-) {
+export async function DELETE({ params }: { params: ParamsProps }) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {

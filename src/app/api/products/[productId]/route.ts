@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 interface Params {
   productId?: string;
 }
 
-export async function GET(request: Request, { params }: { params: Params }) {
+export async function GET({ params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();
@@ -19,7 +19,10 @@ export async function GET(request: Request, { params }: { params: Params }) {
   return NextResponse.json(products);
 }
 
-export async function PUT(request: Request, { params }: { params: Params }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Params }
+) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();
@@ -72,7 +75,7 @@ export async function PUT(request: Request, { params }: { params: Params }) {
     return NextResponse.error();
   }
 }
-export async function DELETE(request: Request, { params }: { params: Params }) {
+export async function DELETE({ params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.error();

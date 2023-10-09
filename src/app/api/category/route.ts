@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     // // 여러 개의 카테고리 데이터를 정의
     // const categoriesData = await request.json();
