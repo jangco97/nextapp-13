@@ -1,9 +1,9 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { use, useContext } from "react";
+import React from "react";
 
 const NavbarItem = ({ session }: { session: any }) => {
   const router = useRouter();

@@ -5,7 +5,6 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";
-import { set } from "react-hook-form";
 const PriceFilterButton = () => {
   const params = useSearchParams();
 

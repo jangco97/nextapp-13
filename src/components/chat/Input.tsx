@@ -55,12 +55,6 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
           receiverId: receiverId,
           senderId: currentUserId,
         });
-        // await axios.post("/api/chat", {
-        //   text: message,
-        //   image: imgUrl,
-        //   receiverId: receiverId,
-        //   senderId: currentUserId,
-        // });
       } catch (error) {
         console.error(error);
       }

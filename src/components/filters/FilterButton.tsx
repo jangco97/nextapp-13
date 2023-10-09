@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-import { Fragment, useRef, useState } from "react";
+import React from "react";
+import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useSearchParams } from "next/navigation";
