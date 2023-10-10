@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const users = await prisma.user.findMany({
     include: {
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const body = await request.json();
   //이미 존재하는 대화인지 확인하기

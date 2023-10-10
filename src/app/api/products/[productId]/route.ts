@@ -11,7 +11,7 @@ export async function GET(
 ) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const { productId } = params;
   const products = await prisma.product.findUnique({
@@ -28,11 +28,11 @@ export async function PUT(
 ) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const { productId } = params;
   if (!productId) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Product not found" }, { status: 404 });
   }
   const body = await request.json();
 
@@ -42,7 +42,7 @@ export async function PUT(
     },
   });
   if (!product) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Product not found" }, { status: 404 });
   }
   const {
     id,
@@ -82,7 +82,7 @@ export async function DELETE(
 ) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const { productId } = params;
   const product = await prisma.product.delete({

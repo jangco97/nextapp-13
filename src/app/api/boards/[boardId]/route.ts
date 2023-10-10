@@ -17,7 +17,7 @@ export async function GET(
   });
 
   if (!board) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
 
   return NextResponse.json(board);
@@ -29,13 +29,13 @@ export async function PUT(
 ) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
   const { boardId } = params;
   console.log(params, "params");
 
   if (!boardId) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
   const body = await request.json();
 
@@ -46,7 +46,7 @@ export async function PUT(
       },
     });
     if (!board) {
-      return NextResponse.error();
+      return NextResponse.json({ message: "Board not found" }, { status: 404 });
     }
     const { title, description, category } = body;
     const updatedBoard = await prisma.board.update({
@@ -63,7 +63,7 @@ export async function PUT(
     return NextResponse.json(updatedBoard);
   } catch (error) {
     console.log(error);
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
 }
 
@@ -73,11 +73,11 @@ export async function DELETE(
 ) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
   const { boardId } = params;
   if (!boardId) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
   try {
     const board = await prisma.board.findUnique({
@@ -86,7 +86,7 @@ export async function DELETE(
       },
     });
     if (!board) {
-      return NextResponse.error();
+      return NextResponse.json({ message: "Board not found" }, { status: 404 });
     }
     await prisma.board.delete({
       where: {
@@ -95,6 +95,6 @@ export async function DELETE(
     });
     return NextResponse.json({ message: "Board deleted successfully" });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
 }

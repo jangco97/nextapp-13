@@ -5,7 +5,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
 
   const body = await request.json();
@@ -24,7 +24,10 @@ export async function POST(request: NextRequest) {
 
   Object.keys(body).forEach((value) => {
     if (!body[value]) {
-      return NextResponse.error();
+      return NextResponse.json(
+        { message: "Please fill in all fields" },
+        { status: 404 }
+      );
     }
   });
   const product = await prisma.product.create({
