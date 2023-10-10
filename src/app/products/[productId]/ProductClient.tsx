@@ -39,7 +39,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   console.log(product);
   return (
     <Container>
-      <div className="max-w-screen-lg mx-auto">
+      <div className=" mx-auto mt-16 mb-60">
         <div className="flex flex-col gap-6">
           <ProductHead
             productUserId={product.userId}
@@ -66,6 +66,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
             <div className="order-first mb-10 mt-10 md:order-last md:col-span-3">
               {product.latitude && product.longitude && (
                 <KakaoMap
+                  address={product.address || ""}
                   detailPage
                   latitude={product.latitude}
                   longitude={product.longitude}
@@ -75,7 +76,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
           </div>
 
           {currentUser?.id !== product?.user?.id && (
-            <div className="mt-10">
+            <div className="mt-10 ">
               <Button
                 onClick={() =>
                   router.push(

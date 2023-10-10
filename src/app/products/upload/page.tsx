@@ -23,6 +23,7 @@ export interface Address {
 const ProductUploadPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMapBigger, setIsMapBigger] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -123,6 +124,11 @@ const ProductUploadPage = () => {
     console.log(latitude, longitude);
   };
   const isOver = imageSrc.length >= 3;
+  const mapHandler = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsMapBigger(!isMapBigger);
+  };
+  console.log(isMapBigger, "isMapBigger");
   return (
     <Container>
       {isModalOpen && (
@@ -145,7 +151,7 @@ const ProductUploadPage = () => {
           <DaumPostcode onComplete={onCompleteAddressSearch} />
         </Modal>
       )}
-      <div className="max-w-screen-lg mx-auto">
+      <div className="mx-auto">
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
           <Heading
             title="Product Upload"
@@ -227,6 +233,7 @@ const ProductUploadPage = () => {
             longitude={longitude}
           />
           {/* 빌드타임이 아닌 런타임에 불러옴 */}
+
           <Button htmlType="submit">상품 업로드</Button>
         </form>
       </div>
