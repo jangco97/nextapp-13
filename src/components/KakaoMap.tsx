@@ -36,7 +36,7 @@ const KakaoMap = ({
       }
     : {
         width: "100%",
-        height: "360px",
+        height: "500px",
       };
 
   return (
@@ -61,13 +61,13 @@ const KakaoMap = ({
       {!isBigger && (
         <button
           onClick={handleToggleSize}
-          className=" w-2/12 p-2 mr-5 outline-fuchsia-200 rounded-lg mt-10 border-b-violet-100 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
+          className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
         >
           지도확장
         </button>
       )}
       {address && (
-        <button className=" w-2/12 p-2 outline-fuchsia-200 rounded-lg mt-10 border-b-violet-100 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center">
+        <button className=" w-4/12 p-2 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center">
           <a
             href={`https://map.kakao.com/link/map/${address},${latitude},${longitude}`}
             target="_blank"
