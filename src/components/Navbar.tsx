@@ -51,6 +51,7 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
     staleTime: 0,
+    refetchInterval: 1000,
   });
   console.log(chatData, "chatData");
   return (
