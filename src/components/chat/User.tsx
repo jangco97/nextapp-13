@@ -5,17 +5,18 @@ import { fromNow } from "@/helpers/dayjs";
 interface UserProps {
   user: TUserWithChat;
   currentUserId: string;
+  unReadMessage: any;
 }
-const User = ({ user, currentUserId }: UserProps) => {
-  console.log(currentUserId)
-  console.log(user)
+const User = ({ user, currentUserId, unReadMessage }: UserProps) => {
+  console.log(currentUserId);
+  console.log(user);
   const messagesWithCurrentUser = user.conversations.find(
     (conversation: TConversation) =>
       conversation.users.find((user) => user.id === currentUserId)
   );
-  console.log(messagesWithCurrentUser)
+  console.log(messagesWithCurrentUser);
   let latestMessage = messagesWithCurrentUser?.messages.slice(-1)[0];
-  console.log(latestMessage)
+  console.log(latestMessage);
   return (
     <div className="grid grid-cols-[40px_1fr_50px] grid-rows-[40px] gap-3 py-3 px-4 border-b-[1px] hover:cursor-pointer hover:bg-orange-500">
       <div>
@@ -28,12 +29,18 @@ const User = ({ user, currentUserId }: UserProps) => {
             {latestMessage.text}
           </p>
         )}
-        {latestMessage && latestMessage.image && <p className="text-xs font-medium text-gray-600">[이미지]</p>}
-      </div>
-      <div className="flex justify-end text-xs text-gray-500">
-        {latestMessage && (
-          <p>{fromNow(latestMessage.createdAt)}</p>
+        {latestMessage && latestMessage.image && (
+          <p className="text-xs font-medium text-gray-600">[이미지]</p>
         )}
+      </div>
+
+      <div className="flex justify-end text-xs text-gray-500">
+        {unReadMessage.length > 0 ? (
+          <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            {unReadMessage?.length}
+          </div>
+        ) : null}
+        {latestMessage && <p>{fromNow(latestMessage.createdAt)}</p>}
       </div>
     </div>
   );

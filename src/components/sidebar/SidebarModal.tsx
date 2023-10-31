@@ -5,12 +5,28 @@ import { mainCategories } from "../categories/Categories";
 import CategoryBox from "../categories/CategoryBox";
 import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
-
+import { useQuery } from "@tanstack/react-query";
+import { User } from "prisma/generated/client";
 const SidebarModal = ({ session }: { session: any }) => {
   const { state } = useContext(SidebarContext);
   const params = useSearchParams();
   const category = params?.get("category");
+  async function getUser() {
+    const response = await fetch("/api/user");
+    const data = await response.json();
+    return data;
+  }
+  const { data } = useQuery<User>({
+    queryKey: ["user", session?.user?.favoriteIds],
+    queryFn: () => getUser(),
 
+    staleTime: 5 * 1000,
+  });
+  const { data: chatData } = useQuery({
+    queryKey: ["chat"],
+    queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
+    staleTime: 0,
+  });
   return (
     <div
       className={`fixed top-[75px] h-[calc(100vh-75px)] w-[208.3px] bg-gray-200 transition-transform duration-300 ease-in-out z-20 overflow-auto ${
@@ -20,7 +36,7 @@ const SidebarModal = ({ session }: { session: any }) => {
     >
       <div className="py-1 flex flex-col ">
         <div className="block md:hidden">
-          <NavbarItem session={session} />
+          <NavbarItem session={session} data={data} chatData={chatData} />
         </div>
         {mainCategories.map((item) => (
           <CategoryBox

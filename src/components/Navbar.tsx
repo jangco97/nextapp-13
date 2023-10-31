@@ -8,12 +8,16 @@ import NavbarItem from "./NavbarItem";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FieldValues, useForm } from "react-hook-form";
 import qs from "query-string";
+import { useQuery } from "@tanstack/react-query";
+import { User } from "prisma/generated/client";
+
 interface NavbarProps {
   session: any;
+  currentUser: any;
 }
-const Navbar = ({ session }: NavbarProps) => {
-  const { state, dispatch } = useContext(SidebarContext);
 
+const Navbar = ({ session, currentUser }: NavbarProps) => {
+  const { state, dispatch } = useContext(SidebarContext);
   const router = useRouter();
   const params = useSearchParams();
   // const [isLoading, setIsLoading] = useState(false);
@@ -25,8 +29,6 @@ const Navbar = ({ session }: NavbarProps) => {
   console.log(params, "params");
   const {
     register,
-    handleSubmit,
-    setValue,
     watch,
     formState: { errors },
     reset,
@@ -40,6 +42,17 @@ const Navbar = ({ session }: NavbarProps) => {
     ...currentQuery,
     search: search,
   };
+  const { data } = useQuery<User>({
+    queryKey: ["user", currentUser?.favoriteIds],
+    queryFn: () => fetch("/api/user").then((res) => res.json()),
+    staleTime: 5 * 1000 * 60,
+  });
+  const { data: chatData } = useQuery({
+    queryKey: ["chat"],
+    queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
+    staleTime: 0,
+  });
+  console.log(chatData, "chatData");
   return (
     <nav className="fixed right-0 left-0  flex items-center justify-between px-3 h-[75px] z-10  bg-indigo-800/70 text-white">
       <div className="flex">
@@ -56,7 +69,7 @@ const Navbar = ({ session }: NavbarProps) => {
           </svg>
         </button>
         <div className="flex items-center justify-start h-14 text-sm md:text-lg">
-          <Link href={"/"}>대학 서사</Link>
+          <Link href={"/"}>줄건중고</Link>
         </div>
       </div>
       <div>
@@ -79,7 +92,7 @@ const Navbar = ({ session }: NavbarProps) => {
         </form>
       </div>
       <div className="hidden md:block">
-        <NavbarItem session={session} />
+        <NavbarItem session={session} data={data} chatData={chatData} />
       </div>
     </nav>
   );
