@@ -17,26 +17,31 @@ enum UserType {
 }
 
 model User {
-  id                String              @id @default(cuid())
-  name              String?
-  hashedPassword    String?
-  email             String?             @unique
-  emailVerified     DateTime?
-  image             String?
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
-  sessions          Session[]
-  userType          UserType            @default(User)
-  favoriteIds       String[]
-  Product           Product[]
-  Board             Board[]
-  ViewdBoardStore   ViewdBoardStore[]
-  ViewdProductStore ViewdProductStore[]
-  BoardLikeDisLike  BoardLikeDisLike[]
-  accounts          Account[]
-  conversations     Conversation[]
-  sendMessages      Message[]           @relation("sender")
-  receivedMessages  Message[]           @relation("receiver")
+  id                   String              @id @default(cuid())
+  name                 String?
+  hashedPassword       String?
+  email                String?             @unique
+  emailVerified        DateTime?
+  image                String?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  sessions             Session[]
+  userType             UserType            @default(User)
+  favoriteIds          String[]
+  Product              Product[]
+  Board                Board[]
+  ViewdBoardStore      ViewdBoardStore[]
+  ViewdProductStore    ViewdProductStore[]
+  BoardLikeDisLike     BoardLikeDisLike[]
+  accounts             Account[]
+  conversations        Conversation[]
+  sendMessages         Message[]           @relation("sender")
+  receivedMessages     Message[]           @relation("receiver")
+  reviews              Review[]
+  buyer                Buyer[]
+  seller               Seller[]
+  averageRating        Float               @default(0)
+  averageproductRating Float               @default(0)
 }
 
 model Account {
@@ -128,6 +133,26 @@ model Product {
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   categories        String[]            @default(["1"])
   ViewdProductStore ViewdProductStore[]
+  reviews           Review[]
+  purchases         Purchase[]
+  byers             Buyer[]
+  sellers           Seller[]
+  reservations      Reservation[]
+}
+
+model Review {
+  id            String   @id @default(cuid())
+  userId        String
+  sellerId      String
+  productId     String
+  title         String
+  text          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  userRating    Float
+  productRating Float
+  user          User     @relation(fields: [userId], references: [id])
+  product       Product  @relation(fields: [productId], references: [id])
 }
 
 model ViewdBoardStore {
@@ -165,9 +190,60 @@ model Message {
   senderId       String
   receiverId     String
   conversationId String
+  isRead         Boolean      @default(false)
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
   sender         User         @relation(name: "sender", fields: [senderId], references: [id])
   receiver       User         @relation(name: "receiver", fields: [receiverId], references: [id])
   conversation   Conversation @relation(fields: [conversationId], references: [id])
+}
+
+model Purchase {
+  id        String   @id @default(cuid())
+  buyerId   String
+  sellerId  String
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  buyer     Buyer    @relation(fields: [buyerId], references: [id])
+  seller    Seller   @relation(fields: [sellerId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+model Reservation {
+  id         String   @id @default(cuid())
+  buyerId    String
+  sellerId   String
+  productId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  meetTime   DateTime
+  isAccepted Boolean  @default(false)
+  buyer      Buyer    @relation(fields: [buyerId], references: [id])
+  seller     Seller   @relation(fields: [sellerId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+}
+
+model Buyer {
+  id          String        @id @default(cuid())
+  userId      String
+  productId   String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  user        User          @relation(fields: [userId], references: [id])
+  product     Product       @relation(fields: [productId], references: [id])
+  purchase    Purchase[]
+  reservation Reservation[]
+}
+
+model Seller {
+  id          String        @id @default(cuid())
+  userId      String
+  productId   String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  user        User          @relation(fields: [userId], references: [id])
+  product     Product       @relation(fields: [productId], references: [id])
+  purchase    Purchase[]
+  reservation Reservation[]
 }

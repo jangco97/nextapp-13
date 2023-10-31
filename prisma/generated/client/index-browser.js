@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.3.1
- * Query Engine version: 61e140623197a131c2a6189271ffee05a7aa9a59
+ * Prisma Client JS version: 5.5.2
+ * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
  */
 Prisma.prismaVersion = {
-  client: "5.3.1",
-  engine: "61e140623197a131c2a6189271ffee05a7aa9a59"
+  client: "5.5.2",
+  engine: "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -117,7 +117,9 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userType: 'userType',
-  favoriteIds: 'favoriteIds'
+  favoriteIds: 'favoriteIds',
+  averageRating: 'averageRating',
+  averageproductRating: 'averageproductRating'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -195,6 +197,19 @@ exports.Prisma.ProductScalarFieldEnum = {
   categories: 'categories'
 };
 
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sellerId: 'sellerId',
+  productId: 'productId',
+  title: 'title',
+  text: 'text',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userRating: 'userRating',
+  productRating: 'productRating'
+};
+
 exports.Prisma.ViewdBoardStoreScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -224,6 +239,43 @@ exports.Prisma.MessageScalarFieldEnum = {
   senderId: 'senderId',
   receiverId: 'receiverId',
   conversationId: 'conversationId',
+  isRead: 'isRead',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PurchaseScalarFieldEnum = {
+  id: 'id',
+  buyerId: 'buyerId',
+  sellerId: 'sellerId',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ReservationScalarFieldEnum = {
+  id: 'id',
+  buyerId: 'buyerId',
+  sellerId: 'sellerId',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  meetTime: 'meetTime',
+  isAccepted: 'isAccepted'
+};
+
+exports.Prisma.BuyerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SellerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productId: 'productId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -255,10 +307,15 @@ exports.Prisma.ModelName = {
   Board: 'Board',
   BoardLikeDisLike: 'BoardLikeDisLike',
   Product: 'Product',
+  Review: 'Review',
   ViewdBoardStore: 'ViewdBoardStore',
   ViewdProductStore: 'ViewdProductStore',
   Conversation: 'Conversation',
-  Message: 'Message'
+  Message: 'Message',
+  Purchase: 'Purchase',
+  Reservation: 'Reservation',
+  Buyer: 'Buyer',
+  Seller: 'Seller'
 };
 
 /**
