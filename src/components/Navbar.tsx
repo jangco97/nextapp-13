@@ -50,7 +50,7 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
-    staleTime: 0,
+    staleTime: 5 * 1000 * 60,
     refetchInterval: 1000,
   });
   console.log(chatData, "chatData");

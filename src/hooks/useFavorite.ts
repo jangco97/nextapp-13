@@ -11,7 +11,7 @@ interface UseFavoriteProps {
 
 const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
   const router = useRouter();
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
   const hasFavorite = useMemo(() => {
     const list = currentUser?.favoriteIds || [];
     return list.includes(productId);
@@ -31,8 +31,7 @@ const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
         request = () => axios.post(`/api/favorites/${productId}`);
       }
       await request();
-      // 즐겨찾기 토글 후 user 쿼리를 다시 불러와서 업데이트
-      // queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.invalidateQueries({ queryKey: ["user"] });
       router.refresh();
       toast.success("성공적으로 처리되었습니다.");
     } catch (err) {
