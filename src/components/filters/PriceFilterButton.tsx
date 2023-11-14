@@ -67,7 +67,7 @@ const PriceFilterButton = () => {
       >
         <Menu.Items
           className={
-            "absolute right-0 z-10 mt-2 p-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            "absolute left-0 z-10 mt-2 p-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           }
         >
           <div className=" flex flex-col ">

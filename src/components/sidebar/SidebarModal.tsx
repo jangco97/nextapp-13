@@ -1,7 +1,7 @@
 "use client";
 import { SidebarContext } from "@/context/sidebaropen.context";
 import React, { useContext } from "react";
-import { mainCategories } from "../categories/Categories";
+import { mainCategories } from "@/constants";
 import CategoryBox from "../categories/CategoryBox";
 import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
@@ -38,7 +38,7 @@ const SidebarModal = ({ session }: { session: any }) => {
         <div className="block md:hidden">
           <NavbarItem session={session} data={data} chatData={chatData} />
         </div>
-        {mainCategories.map((item) => (
+        {mainCategories.map((item: any) => (
           <CategoryBox
             key={item.label}
             label={item.label}

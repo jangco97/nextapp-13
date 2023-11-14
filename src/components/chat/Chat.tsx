@@ -58,6 +58,16 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
                 receiverName={receiver.receiverName}
                 receiverImage={receiver.receiverImage}
                 senderImage={currentUser?.image}
+                messageType={message?.messageType}
+                isAccepted={message?.isAccepted}
+                messageId={message.id}
+                productId={message?.productId}
+                senderId={message?.senderId}
+                receiverId={message?.receiverId}
+                address={message?.address}
+                addressDetail={message?.addressDetail}
+                latitude={message?.latitude}
+                longitude={message?.longitude}
               />
             );
           })}

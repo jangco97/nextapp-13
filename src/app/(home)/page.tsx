@@ -30,31 +30,34 @@ export default async function Home({ searchParams }: HomeProps) {
   console.log(currentUser, "currentUser");
 
   return (
-    <Container>
+    <>
       {/* {category} */}
       <Categories />
-      {products?.data.length === 0 ? (
-        <EmptyState showReset />
-      ) : (
-        <>
-          <div className="grid  gap-8 pt-12 pb-10 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gird-cols-5 2xl:grid-cols-6">
-            {products.data.map((product: Product) => (
-              <ProductCard
-                key={product.id}
-                data={product}
-                currentUser={currentUser}
-              />
-            ))}
-          </div>
-        </>
-      )}
-      <Pagination
-        page={pageNum}
-        totalItems={products.totalItems}
-        perPage={PRODUCTS_PER_PAGE}
-      />
-      <FloatingButton href={"/products/upload"}>+</FloatingButton>
-      <Bottom />
-    </Container>
+      <Container>
+        {products?.data.length === 0 ? (
+          <EmptyState showReset />
+        ) : (
+          <>
+            <div className="grid  gap-8 pt-12 pb-10 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gird-cols-5 2xl:grid-cols-6">
+              {products.data.map((product: Product) => (
+                <ProductCard
+                  key={product.id}
+                  data={product}
+                  currentUser={currentUser}
+                  status={product?.status}
+                />
+              ))}
+            </div>
+          </>
+        )}
+        <Pagination
+          page={pageNum}
+          totalItems={products.totalItems}
+          perPage={PRODUCTS_PER_PAGE}
+        />
+        <FloatingButton href={"/products/upload"}>+</FloatingButton>
+        <Bottom />
+      </Container>
+    </>
   );
 }

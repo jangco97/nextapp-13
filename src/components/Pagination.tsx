@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import usePagination from "@lucasmogari/react-pagination";
 import React from "react";
 import PaginationLink from "./PaginationLink";
@@ -14,7 +14,7 @@ const Pagination = ({ page, totalItems, perPage }: PaginationProps) => {
     totalItems: totalItems,
     page: page,
     itemsPerPage: perPage,
-    maxPageItems: 3,
+    maxPageItems: 10,
   });
   const firstPage = 1;
 
@@ -27,7 +27,8 @@ const Pagination = ({ page, totalItems, perPage }: PaginationProps) => {
   return (
     <div className="flex items-center justify-center gap-2 mt-4">
       {/* Item {fromItem}-{toItem} */}
-      {[...arr].map((_, index) => {//_는 무시하고 index만 사용함
+      {[...arr].map((_, index) => {
+        //_는 무시하고 index만 사용함
         const { page, disabled, current } = getPageItem(index);
         if (page === "previous") {
           return (
@@ -37,8 +38,8 @@ const Pagination = ({ page, totalItems, perPage }: PaginationProps) => {
           );
         }
 
-        if(page === 'gap'){
-          return (<span key={index}>...</span>)
+        if (page === "gap") {
+          return <span key={index}>...</span>;
         }
         if (page === "next") {
           return (
@@ -47,8 +48,16 @@ const Pagination = ({ page, totalItems, perPage }: PaginationProps) => {
             </PaginationLink>
           );
         }
-        return (<PaginationLink active={current} page={page} key={index} perPage={perPage}>{page}</PaginationLink>)
-        
+        return (
+          <PaginationLink
+            active={current}
+            page={page}
+            key={index}
+            perPage={perPage}
+          >
+            {page}
+          </PaginationLink>
+        );
       })}
     </div>
   );

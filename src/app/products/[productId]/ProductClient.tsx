@@ -1,18 +1,16 @@
 "use client";
 
 import Container from "@/components/Container";
-import {
-  mainCategories,
-  subCategories,
-} from "@/components/categories/Categories";
+import { mainCategories, subCategories } from "@/constants";
 import ProductHead from "@/components/products/ProductHead";
 import ProductInfo from "@/components/products/ProductInfo";
 import { Product, User } from "../../../../prisma/generated/client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { FormEvent } from "react";
 import axios from "axios";
 import Button from "@/components/Button";
+import useSWRMutation from "swr/mutation";
 
 interface ProductClientProps {
   product: Product & { user: User }; //user 프로퍼티 안에 유저가 있음
@@ -36,7 +34,44 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
     await axios.delete(`/api/products/${product.id}`);
     router.push(`/`);
   };
-  console.log(product);
+  async function sendRequest(
+    url: string,
+    {
+      arg,
+    }: {
+      arg: {
+        text: string;
+        image: string;
+        receiverId: string;
+        senderId: string;
+        messageType: string;
+        productId: string;
+      };
+    }
+  ) {
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(arg),
+    }).then((res) => res.json());
+  }
+  const { trigger } = useSWRMutation("/api/chat", sendRequest);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!currentUser) return;
+    try {
+      trigger({
+        text: product.title,
+        image: product.imageSrc[0],
+        receiverId: product.userId,
+        senderId: currentUser?.id,
+        messageType: "reservation",
+        productId: product?.id,
+      });
+      router.push("/chat");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <Container>
       <div className=" mx-auto mt-16 mb-60">
@@ -74,7 +109,14 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
               )}
             </div>
           </div>
-
+          {currentUser?.id !== product?.user?.id &&
+            product.status === "판매중" && (
+              <form onSubmit={handleSubmit}>
+                <div className="mt-10 ">
+                  <Button label="상품 예약하기" />
+                </div>
+              </form>
+            )}
           {currentUser?.id !== product?.user?.id && (
             <div className="mt-10 ">
               <Button

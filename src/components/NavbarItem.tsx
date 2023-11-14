@@ -34,11 +34,11 @@ const NavbarItem = ({
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
         <Link href={"/cart"}>Cart</Link>
         <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
-          {data?.favoriteIds?.length}
+          {data?.favoriteIds?.length | 0}
         </div>
       </li>
       <li className="py-2 text-center border-b-4 cursor-pointer">
-        <Link href={"/user"}>MyPage</Link>
+        <Link href={"/user?products"}>MyPage</Link>
       </li>
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
         <Link href={"/chat"}>chat</Link>

@@ -78,7 +78,7 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
           <input
             id="search"
             {...register("search", { required: true })}
-            className="p-[5px] md:p-[10px] border-s-gray-50 text-sm bg-gray-400/50"
+            className="p-[5px] md:p-[10px] h-[40px] border-s-gray-50 text-sm bg-gray-400/50"
             placeholder="Search"
             // disabled={isLoading}
           />

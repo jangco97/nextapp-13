@@ -10,6 +10,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import Providers from "@/utils/provider";
 import getCurrentUser from "./actions/getCurrentUser";
+import MobileBottom from "@/components/mobilebottom/MobileBottom";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -34,6 +35,7 @@ export default async function RootLayout({
               <ToastProvider />
               <SidebarModal session={session} />
               {children}
+              <MobileBottom currentUser={currentUser} />
             </SidebarProvider>
           </NextAuthProvider>
         </Providers>
