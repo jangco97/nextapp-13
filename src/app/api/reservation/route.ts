@@ -28,7 +28,14 @@ export async function POST(request: NextRequest) {
       name: true,
     },
   });
-
+  const seller = await prisma.user.findUnique({
+    where: {
+      id: sellerId,
+    },
+    select: {
+      name: true,
+    },
+  });
   const address = data?.address;
   const addressDetail = data?.addressDetail;
   const latitude = data?.latitude;
@@ -39,7 +46,7 @@ export async function POST(request: NextRequest) {
       sellerId,
       productId,
       buyerName: buyer?.name as string,
-      sellerName,
+      sellerName: seller?.name as string,
       meetTime,
       address,
       addressDetail,
@@ -109,13 +116,25 @@ export async function PATCH(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   const currentUser = await getCurrentUser();
   const body = await request.json();
-  const { id } = body;
+  const { reservationId, productId } = body;
   if (!currentUser) {
     return NextResponse.json({ message: "권한이 없습니다." }, { status: 404 });
   }
   await prisma.reservation.delete({
     where: {
-      id: id,
+      id: reservationId,
     },
   });
+  await prisma.product.update({
+    where: {
+      id: productId,
+    },
+    data: {
+      status: "판매중",
+    },
+  });
+  return NextResponse.json(
+    { message: "예약이 취소되었습니다." },
+    { status: 200 }
+  );
 }

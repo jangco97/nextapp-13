@@ -62,7 +62,6 @@ const Message = async ({
         productId: productId,
         buyerId: senderId,
         sellerId: receiverId,
-        sellerName: receiverName,
       }),
     });
   };
@@ -99,10 +98,10 @@ const Message = async ({
                 <p className="text-center text-xl">{messageText}</p>
                 <p>해당 상품에 대한 예약 구매 요청이 들어왔습니다</p>
                 {isAccepted === 1 && (
-                  <p className="text-blue-500">수락되었습니다.</p>
+                  <p className="text-blue-500 text-center">수락되었습니다.</p>
                 )}
                 {isAccepted === 2 && (
-                  <p className=" text-red-500">거절되었습니다.</p>
+                  <p className=" text-red-500 text-center">거절되었습니다.</p>
                 )}
                 {!isSender && isAccepted === 0 && (
                   <>
@@ -124,6 +123,22 @@ const Message = async ({
                     </button>
                   </>
                 )}
+              </div>
+            </div>
+          </div>
+        )}
+        {messageType === "cancelReservation" && (
+          <div className="flex items-center gap-2 mb-2 text-sm">
+            <div className="flex flex-col items-center p-10 border-solid border-2 border-indigo-600 rounded-xl">
+              <div
+                className={`p-2 break-all text-white rounded-lg ${
+                  isSender
+                    ? "bg-indigo-600 rounded-tr-none"
+                    : "bg-gray-500 rounded-tl-none"
+                }`}
+              >
+                <p className="text-center text-xl">{messageText}</p>
+                <p>해당 상품에 대한 예약 구매 요청이 취소되었습니다</p>
               </div>
             </div>
           </div>

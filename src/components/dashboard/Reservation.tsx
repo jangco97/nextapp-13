@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ko from "date-fns/locale/ko";
 import UserPurchase from "./UserPurchase";
 import NothingComponents from "../NothingComponents";
-
+import UserReservationDelete from "./UserReservationDelete";
 interface ReservationType {
   products: any;
   setMeetTime: any;
@@ -178,7 +178,16 @@ const Reservation = ({
                 </section>
               )}
             </div>
-
+            {/* 예약 취소 */}
+            <div>
+              <UserReservationDelete
+                reservationId={reservation?.id}
+                buyerId={reservation?.buyerId}
+                sellerId={reservation?.sellerId}
+                reservationType={reservationType}
+                productId={reservation?.productId}
+              />
+            </div>
             <div>
               {reservation?.meetTime && (
                 <UserPurchase
