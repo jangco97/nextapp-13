@@ -63,6 +63,10 @@ export async function POST(request: NextRequest) {
         senderId: body.senderId,
         receiverId: body.receiverId,
         conversationId: conversation.id,
+        messageType: body.messageType,
+        productId: body.productId,
+        address: body.address,
+        addressDetail: body.addressDetail,
       },
     });
     return NextResponse.json(message);
@@ -91,8 +95,29 @@ export async function POST(request: NextRequest) {
         senderId: body.senderId,
         receiverId: body.receiverId,
         conversationId: newConversation.id,
+        messageType: body.messageType,
+        productId: body.productId,
+        address: body.address,
+        addressDetail: body.addressDetail,
       },
     });
     return NextResponse.json(message);
   }
+}
+export async function PATCH(request: NextRequest) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
+  }
+  const body = await request.json();
+  const success = await prisma.message.update({
+    where: {
+      id: body.messageId,
+    },
+    data: {
+      isAccepted: body.isAccepted,
+    },
+  });
+
+  return NextResponse.json(success);
 }
