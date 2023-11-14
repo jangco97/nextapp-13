@@ -6,8 +6,7 @@ import { Modal, Button } from "antd";
 import DaumPostcode from "react-daum-postcode";
 import Input from "@/components/Input";
 import CategoryInput from "@/components/categories/CategoryInput";
-import { mainCategories } from "@/components/categories/Categories";
-import { subCategories } from "@/components/categories/Categories";
+import { mainCategories, subCategories } from "@/constants";
 import dynamic from "next/dynamic";
 import React, { MouseEvent, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -43,6 +42,8 @@ const ProductUploadPage = () => {
       addressDetail: "",
       imageSrc: [],
       price: 1,
+      faceToFace: true,
+      delivery: false,
     },
   });
 
@@ -65,6 +66,8 @@ const ProductUploadPage = () => {
   const latitude = watch("latitude");
   const longitude = watch("longitude");
   const address = watch("address");
+  const faceToFace = watch("faceToFace");
+  const delivery = watch("delivery");
   const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
     ssr: false,
   });
@@ -191,6 +194,8 @@ const ProductUploadPage = () => {
             errors={errors}
             required
           />
+          <hr />
+          {/* <input type="" /> */}
           <hr />
           <div>
             {categories[0] && FirstCategory?.label}{" "}

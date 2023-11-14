@@ -7,10 +7,7 @@ import DaumPostcode from "react-daum-postcode";
 import { Address } from "../../upload/page";
 import Input from "@/components/Input";
 import CategoryInput from "@/components/categories/CategoryInput";
-import {
-  mainCategories,
-  subCategories,
-} from "@/components/categories/Categories";
+import { mainCategories, subCategories } from "@/constants";
 import dynamic from "next/dynamic";
 import React, { MouseEvent, useEffect, useState } from "react";
 
