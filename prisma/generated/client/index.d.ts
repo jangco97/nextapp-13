@@ -2429,94 +2429,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type BuyerCountOutputType
-   */
-
-  export type BuyerCountOutputType = {
-    purchase: number
-    reservation: number
-  }
-
-  export type BuyerCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    purchase?: boolean | BuyerCountOutputTypeCountPurchaseArgs
-    reservation?: boolean | BuyerCountOutputTypeCountReservationArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * BuyerCountOutputType without action
-   */
-  export type BuyerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BuyerCountOutputType
-     */
-    select?: BuyerCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * BuyerCountOutputType without action
-   */
-  export type BuyerCountOutputTypeCountPurchaseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: PurchaseWhereInput
-  }
-
-
-  /**
-   * BuyerCountOutputType without action
-   */
-  export type BuyerCountOutputTypeCountReservationArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ReservationWhereInput
-  }
-
-
-
-  /**
-   * Count Type SellerCountOutputType
-   */
-
-  export type SellerCountOutputType = {
-    purchase: number
-    reservation: number
-  }
-
-  export type SellerCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    purchase?: boolean | SellerCountOutputTypeCountPurchaseArgs
-    reservation?: boolean | SellerCountOutputTypeCountReservationArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * SellerCountOutputType without action
-   */
-  export type SellerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SellerCountOutputType
-     */
-    select?: SellerCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * SellerCountOutputType without action
-   */
-  export type SellerCountOutputTypeCountPurchaseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: PurchaseWhereInput
-  }
-
-
-  /**
-   * SellerCountOutputType without action
-   */
-  export type SellerCountOutputTypeCountReservationArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ReservationWhereInput
-  }
-
-
-
-  /**
    * Models
    */
 
@@ -8815,6 +8727,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     sold: boolean | null
+    status: string | null
     views: number | null
     delivery: boolean | null
     faceToFace: boolean | null
@@ -8833,6 +8746,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     sold: boolean | null
+    status: string | null
     views: number | null
     delivery: boolean | null
     faceToFace: boolean | null
@@ -8852,6 +8766,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     sold: number
+    status: number
     views: number
     delivery: number
     faceToFace: number
@@ -8887,6 +8802,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     sold?: true
+    status?: true
     views?: true
     delivery?: true
     faceToFace?: true
@@ -8905,6 +8821,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     sold?: true
+    status?: true
     views?: true
     delivery?: true
     faceToFace?: true
@@ -8924,6 +8841,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     sold?: true
+    status?: true
     views?: true
     delivery?: true
     faceToFace?: true
@@ -9031,6 +8949,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     sold: boolean
+    status: string | null
     views: number
     delivery: boolean
     faceToFace: boolean
@@ -9070,6 +8989,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     sold?: boolean
+    status?: boolean
     views?: boolean
     delivery?: boolean
     faceToFace?: boolean
@@ -9098,6 +9018,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     sold?: boolean
+    status?: boolean
     views?: boolean
     delivery?: boolean
     faceToFace?: boolean
@@ -9141,6 +9062,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       sold: boolean
+      status: string | null
       views: number
       delivery: boolean
       faceToFace: boolean
@@ -9565,6 +9487,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
     readonly sold: FieldRef<"Product", 'Boolean'>
+    readonly status: FieldRef<"Product", 'String'>
     readonly views: FieldRef<"Product", 'Int'>
     readonly delivery: FieldRef<"Product", 'Boolean'>
     readonly faceToFace: FieldRef<"Product", 'Boolean'>
@@ -13835,8 +13758,22 @@ export namespace Prisma {
 
   export type AggregateMessage = {
     _count: MessageCountAggregateOutputType | null
+    _avg: MessageAvgAggregateOutputType | null
+    _sum: MessageSumAggregateOutputType | null
     _min: MessageMinAggregateOutputType | null
     _max: MessageMaxAggregateOutputType | null
+  }
+
+  export type MessageAvgAggregateOutputType = {
+    isAccepted: number | null
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type MessageSumAggregateOutputType = {
+    isAccepted: number | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type MessageMinAggregateOutputType = {
@@ -13846,9 +13783,16 @@ export namespace Prisma {
     senderId: string | null
     receiverId: string | null
     conversationId: string | null
+    productId: string | null
     isRead: boolean | null
+    messageType: string | null
+    isAccepted: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    address: string | null
+    addressDetail: string | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type MessageMaxAggregateOutputType = {
@@ -13858,9 +13802,16 @@ export namespace Prisma {
     senderId: string | null
     receiverId: string | null
     conversationId: string | null
+    productId: string | null
     isRead: boolean | null
+    messageType: string | null
+    isAccepted: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    address: string | null
+    addressDetail: string | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type MessageCountAggregateOutputType = {
@@ -13870,12 +13821,31 @@ export namespace Prisma {
     senderId: number
     receiverId: number
     conversationId: number
+    productId: number
     isRead: number
+    messageType: number
+    isAccepted: number
     createdAt: number
     updatedAt: number
+    address: number
+    addressDetail: number
+    latitude: number
+    longitude: number
     _all: number
   }
 
+
+  export type MessageAvgAggregateInputType = {
+    isAccepted?: true
+    latitude?: true
+    longitude?: true
+  }
+
+  export type MessageSumAggregateInputType = {
+    isAccepted?: true
+    latitude?: true
+    longitude?: true
+  }
 
   export type MessageMinAggregateInputType = {
     id?: true
@@ -13884,9 +13854,16 @@ export namespace Prisma {
     senderId?: true
     receiverId?: true
     conversationId?: true
+    productId?: true
     isRead?: true
+    messageType?: true
+    isAccepted?: true
     createdAt?: true
     updatedAt?: true
+    address?: true
+    addressDetail?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type MessageMaxAggregateInputType = {
@@ -13896,9 +13873,16 @@ export namespace Prisma {
     senderId?: true
     receiverId?: true
     conversationId?: true
+    productId?: true
     isRead?: true
+    messageType?: true
+    isAccepted?: true
     createdAt?: true
     updatedAt?: true
+    address?: true
+    addressDetail?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type MessageCountAggregateInputType = {
@@ -13908,9 +13892,16 @@ export namespace Prisma {
     senderId?: true
     receiverId?: true
     conversationId?: true
+    productId?: true
     isRead?: true
+    messageType?: true
+    isAccepted?: true
     createdAt?: true
     updatedAt?: true
+    address?: true
+    addressDetail?: true
+    latitude?: true
+    longitude?: true
     _all?: true
   }
 
@@ -13952,6 +13943,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: MessageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MessageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: MessageMinAggregateInputType
@@ -13982,6 +13985,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: MessageCountAggregateInputType | true
+    _avg?: MessageAvgAggregateInputType
+    _sum?: MessageSumAggregateInputType
     _min?: MessageMinAggregateInputType
     _max?: MessageMaxAggregateInputType
   }
@@ -13993,10 +13998,19 @@ export namespace Prisma {
     senderId: string
     receiverId: string
     conversationId: string
+    productId: string | null
     isRead: boolean
+    messageType: string | null
+    isAccepted: number | null
     createdAt: Date
     updatedAt: Date
+    address: string | null
+    addressDetail: string | null
+    latitude: number | null
+    longitude: number | null
     _count: MessageCountAggregateOutputType | null
+    _avg: MessageAvgAggregateOutputType | null
+    _sum: MessageSumAggregateOutputType | null
     _min: MessageMinAggregateOutputType | null
     _max: MessageMaxAggregateOutputType | null
   }
@@ -14022,9 +14036,16 @@ export namespace Prisma {
     senderId?: boolean
     receiverId?: boolean
     conversationId?: boolean
+    productId?: boolean
     isRead?: boolean
+    messageType?: boolean
+    isAccepted?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    address?: boolean
+    addressDetail?: boolean
+    latitude?: boolean
+    longitude?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     receiver?: boolean | UserDefaultArgs<ExtArgs>
     conversation?: boolean | ConversationDefaultArgs<ExtArgs>
@@ -14037,9 +14058,16 @@ export namespace Prisma {
     senderId?: boolean
     receiverId?: boolean
     conversationId?: boolean
+    productId?: boolean
     isRead?: boolean
+    messageType?: boolean
+    isAccepted?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    address?: boolean
+    addressDetail?: boolean
+    latitude?: boolean
+    longitude?: boolean
   }
 
   export type MessageInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -14063,9 +14091,16 @@ export namespace Prisma {
       senderId: string
       receiverId: string
       conversationId: string
+      productId: string | null
       isRead: boolean
+      messageType: string | null
+      isAccepted: number | null
       createdAt: Date
       updatedAt: Date
+      address: string | null
+      addressDetail: string | null
+      latitude: number | null
+      longitude: number | null
     }, ExtArgs["result"]["message"]>
     composites: {}
   }
@@ -14471,9 +14506,16 @@ export namespace Prisma {
     readonly senderId: FieldRef<"Message", 'String'>
     readonly receiverId: FieldRef<"Message", 'String'>
     readonly conversationId: FieldRef<"Message", 'String'>
+    readonly productId: FieldRef<"Message", 'String'>
     readonly isRead: FieldRef<"Message", 'Boolean'>
+    readonly messageType: FieldRef<"Message", 'String'>
+    readonly isAccepted: FieldRef<"Message", 'Int'>
     readonly createdAt: FieldRef<"Message", 'DateTime'>
     readonly updatedAt: FieldRef<"Message", 'DateTime'>
+    readonly address: FieldRef<"Message", 'String'>
+    readonly addressDetail: FieldRef<"Message", 'String'>
+    readonly latitude: FieldRef<"Message", 'Float'>
+    readonly longitude: FieldRef<"Message", 'Float'>
   }
     
 
@@ -14973,8 +15015,6 @@ export namespace Prisma {
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    buyer?: boolean | BuyerDefaultArgs<ExtArgs>
-    seller?: boolean | SellerDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["purchase"]>
 
@@ -14988,8 +15028,6 @@ export namespace Prisma {
   }
 
   export type PurchaseInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    buyer?: boolean | BuyerDefaultArgs<ExtArgs>
-    seller?: boolean | SellerDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }
 
@@ -14997,8 +15035,6 @@ export namespace Prisma {
   export type $PurchasePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "Purchase"
     objects: {
-      buyer: Prisma.$BuyerPayload<ExtArgs>
-      seller: Prisma.$SellerPayload<ExtArgs>
       product: Prisma.$ProductPayload<ExtArgs>
     }
     scalars: $Extensions.GetResult<{
@@ -15373,10 +15409,6 @@ export namespace Prisma {
   export interface Prisma__PurchaseClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    buyer<T extends BuyerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BuyerDefaultArgs<ExtArgs>>): Prisma__BuyerClient<$Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    seller<T extends SellerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SellerDefaultArgs<ExtArgs>>): Prisma__SellerClient<$Result.GetResult<Prisma.$SellerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
@@ -15746,76 +15778,146 @@ export namespace Prisma {
 
   export type AggregateReservation = {
     _count: ReservationCountAggregateOutputType | null
+    _avg: ReservationAvgAggregateOutputType | null
+    _sum: ReservationSumAggregateOutputType | null
     _min: ReservationMinAggregateOutputType | null
     _max: ReservationMaxAggregateOutputType | null
   }
 
+  export type ReservationAvgAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type ReservationSumAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+  }
+
   export type ReservationMinAggregateOutputType = {
     id: string | null
+    buyerName: string | null
+    sellerName: string | null
     buyerId: string | null
     sellerId: string | null
     productId: string | null
     createdAt: Date | null
     updatedAt: Date | null
     meetTime: Date | null
+    address: string | null
+    addressDetail: string | null
+    latitude: number | null
+    longitude: number | null
     isAccepted: boolean | null
+    sellAccept: boolean | null
+    buyAccept: boolean | null
   }
 
   export type ReservationMaxAggregateOutputType = {
     id: string | null
+    buyerName: string | null
+    sellerName: string | null
     buyerId: string | null
     sellerId: string | null
     productId: string | null
     createdAt: Date | null
     updatedAt: Date | null
     meetTime: Date | null
+    address: string | null
+    addressDetail: string | null
+    latitude: number | null
+    longitude: number | null
     isAccepted: boolean | null
+    sellAccept: boolean | null
+    buyAccept: boolean | null
   }
 
   export type ReservationCountAggregateOutputType = {
     id: number
+    buyerName: number
+    sellerName: number
     buyerId: number
     sellerId: number
     productId: number
     createdAt: number
     updatedAt: number
     meetTime: number
+    address: number
+    addressDetail: number
+    latitude: number
+    longitude: number
     isAccepted: number
+    sellAccept: number
+    buyAccept: number
     _all: number
   }
 
 
+  export type ReservationAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
+  export type ReservationSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
   export type ReservationMinAggregateInputType = {
     id?: true
+    buyerName?: true
+    sellerName?: true
     buyerId?: true
     sellerId?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
     meetTime?: true
+    address?: true
+    addressDetail?: true
+    latitude?: true
+    longitude?: true
     isAccepted?: true
+    sellAccept?: true
+    buyAccept?: true
   }
 
   export type ReservationMaxAggregateInputType = {
     id?: true
+    buyerName?: true
+    sellerName?: true
     buyerId?: true
     sellerId?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
     meetTime?: true
+    address?: true
+    addressDetail?: true
+    latitude?: true
+    longitude?: true
     isAccepted?: true
+    sellAccept?: true
+    buyAccept?: true
   }
 
   export type ReservationCountAggregateInputType = {
     id?: true
+    buyerName?: true
+    sellerName?: true
     buyerId?: true
     sellerId?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
     meetTime?: true
+    address?: true
+    addressDetail?: true
+    latitude?: true
+    longitude?: true
     isAccepted?: true
+    sellAccept?: true
+    buyAccept?: true
     _all?: true
   }
 
@@ -15857,6 +15959,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ReservationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReservationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ReservationMinAggregateInputType
@@ -15887,20 +16001,32 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ReservationCountAggregateInputType | true
+    _avg?: ReservationAvgAggregateInputType
+    _sum?: ReservationSumAggregateInputType
     _min?: ReservationMinAggregateInputType
     _max?: ReservationMaxAggregateInputType
   }
 
   export type ReservationGroupByOutputType = {
     id: string
+    buyerName: string
+    sellerName: string
     buyerId: string
     sellerId: string
     productId: string
     createdAt: Date
     updatedAt: Date
-    meetTime: Date
+    meetTime: Date | null
+    address: string | null
+    addressDetail: string | null
+    latitude: number | null
+    longitude: number | null
     isAccepted: boolean
+    sellAccept: boolean
+    buyAccept: boolean
     _count: ReservationCountAggregateOutputType | null
+    _avg: ReservationAvgAggregateOutputType | null
+    _sum: ReservationSumAggregateOutputType | null
     _min: ReservationMinAggregateOutputType | null
     _max: ReservationMaxAggregateOutputType | null
   }
@@ -15921,32 +16047,44 @@ export namespace Prisma {
 
   export type ReservationSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    buyerName?: boolean
+    sellerName?: boolean
     buyerId?: boolean
     sellerId?: boolean
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     meetTime?: boolean
+    address?: boolean
+    addressDetail?: boolean
+    latitude?: boolean
+    longitude?: boolean
     isAccepted?: boolean
-    buyer?: boolean | BuyerDefaultArgs<ExtArgs>
-    seller?: boolean | SellerDefaultArgs<ExtArgs>
+    sellAccept?: boolean
+    buyAccept?: boolean
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectScalar = {
     id?: boolean
+    buyerName?: boolean
+    sellerName?: boolean
     buyerId?: boolean
     sellerId?: boolean
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     meetTime?: boolean
+    address?: boolean
+    addressDetail?: boolean
+    latitude?: boolean
+    longitude?: boolean
     isAccepted?: boolean
+    sellAccept?: boolean
+    buyAccept?: boolean
   }
 
   export type ReservationInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    buyer?: boolean | BuyerDefaultArgs<ExtArgs>
-    seller?: boolean | SellerDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }
 
@@ -15954,19 +16092,25 @@ export namespace Prisma {
   export type $ReservationPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "Reservation"
     objects: {
-      buyer: Prisma.$BuyerPayload<ExtArgs>
-      seller: Prisma.$SellerPayload<ExtArgs>
       product: Prisma.$ProductPayload<ExtArgs>
     }
     scalars: $Extensions.GetResult<{
       id: string
+      buyerName: string
+      sellerName: string
       buyerId: string
       sellerId: string
       productId: string
       createdAt: Date
       updatedAt: Date
-      meetTime: Date
+      meetTime: Date | null
+      address: string | null
+      addressDetail: string | null
+      latitude: number | null
+      longitude: number | null
       isAccepted: boolean
+      sellAccept: boolean
+      buyAccept: boolean
     }, ExtArgs["result"]["reservation"]>
     composites: {}
   }
@@ -16332,10 +16476,6 @@ export namespace Prisma {
   export interface Prisma__ReservationClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    buyer<T extends BuyerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BuyerDefaultArgs<ExtArgs>>): Prisma__BuyerClient<$Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    seller<T extends SellerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SellerDefaultArgs<ExtArgs>>): Prisma__SellerClient<$Result.GetResult<Prisma.$SellerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
@@ -16367,13 +16507,21 @@ export namespace Prisma {
    */ 
   interface ReservationFieldRefs {
     readonly id: FieldRef<"Reservation", 'String'>
+    readonly buyerName: FieldRef<"Reservation", 'String'>
+    readonly sellerName: FieldRef<"Reservation", 'String'>
     readonly buyerId: FieldRef<"Reservation", 'String'>
     readonly sellerId: FieldRef<"Reservation", 'String'>
     readonly productId: FieldRef<"Reservation", 'String'>
     readonly createdAt: FieldRef<"Reservation", 'DateTime'>
     readonly updatedAt: FieldRef<"Reservation", 'DateTime'>
     readonly meetTime: FieldRef<"Reservation", 'DateTime'>
+    readonly address: FieldRef<"Reservation", 'String'>
+    readonly addressDetail: FieldRef<"Reservation", 'String'>
+    readonly latitude: FieldRef<"Reservation", 'Float'>
+    readonly longitude: FieldRef<"Reservation", 'Float'>
     readonly isAccepted: FieldRef<"Reservation", 'Boolean'>
+    readonly sellAccept: FieldRef<"Reservation", 'Boolean'>
+    readonly buyAccept: FieldRef<"Reservation", 'Boolean'>
   }
     
 
@@ -16714,25 +16862,31 @@ export namespace Prisma {
   export type BuyerMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    sellerName: string | null
     productId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    isReviewed: boolean | null
   }
 
   export type BuyerMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    sellerName: string | null
     productId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    isReviewed: boolean | null
   }
 
   export type BuyerCountAggregateOutputType = {
     id: number
     userId: number
+    sellerName: number
     productId: number
     createdAt: number
     updatedAt: number
+    isReviewed: number
     _all: number
   }
 
@@ -16740,25 +16894,31 @@ export namespace Prisma {
   export type BuyerMinAggregateInputType = {
     id?: true
     userId?: true
+    sellerName?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
+    isReviewed?: true
   }
 
   export type BuyerMaxAggregateInputType = {
     id?: true
     userId?: true
+    sellerName?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
+    isReviewed?: true
   }
 
   export type BuyerCountAggregateInputType = {
     id?: true
     userId?: true
+    sellerName?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
+    isReviewed?: true
     _all?: true
   }
 
@@ -16837,9 +16997,11 @@ export namespace Prisma {
   export type BuyerGroupByOutputType = {
     id: string
     userId: string
+    sellerName: string
     productId: string
     createdAt: Date
     updatedAt: Date
+    isReviewed: boolean
     _count: BuyerCountAggregateOutputType | null
     _min: BuyerMinAggregateOutputType | null
     _max: BuyerMaxAggregateOutputType | null
@@ -16862,30 +17024,28 @@ export namespace Prisma {
   export type BuyerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    sellerName?: boolean
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    isReviewed?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
-    purchase?: boolean | Buyer$purchaseArgs<ExtArgs>
-    reservation?: boolean | Buyer$reservationArgs<ExtArgs>
-    _count?: boolean | BuyerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["buyer"]>
 
   export type BuyerSelectScalar = {
     id?: boolean
     userId?: boolean
+    sellerName?: boolean
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    isReviewed?: boolean
   }
 
   export type BuyerInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
-    purchase?: boolean | Buyer$purchaseArgs<ExtArgs>
-    reservation?: boolean | Buyer$reservationArgs<ExtArgs>
-    _count?: boolean | BuyerCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
@@ -16894,15 +17054,15 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       product: Prisma.$ProductPayload<ExtArgs>
-      purchase: Prisma.$PurchasePayload<ExtArgs>[]
-      reservation: Prisma.$ReservationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
       userId: string
+      sellerName: string
       productId: string
       createdAt: Date
       updatedAt: Date
+      isReviewed: boolean
     }, ExtArgs["result"]["buyer"]>
     composites: {}
   }
@@ -17272,10 +17432,6 @@ export namespace Prisma {
 
     product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    purchase<T extends Buyer$purchaseArgs<ExtArgs> = {}>(args?: Subset<T, Buyer$purchaseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    reservation<T extends Buyer$reservationArgs<ExtArgs> = {}>(args?: Subset<T, Buyer$reservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17306,9 +17462,11 @@ export namespace Prisma {
   interface BuyerFieldRefs {
     readonly id: FieldRef<"Buyer", 'String'>
     readonly userId: FieldRef<"Buyer", 'String'>
+    readonly sellerName: FieldRef<"Buyer", 'String'>
     readonly productId: FieldRef<"Buyer", 'String'>
     readonly createdAt: FieldRef<"Buyer", 'DateTime'>
     readonly updatedAt: FieldRef<"Buyer", 'DateTime'>
+    readonly isReviewed: FieldRef<"Buyer", 'Boolean'>
   }
     
 
@@ -17621,48 +17779,6 @@ export namespace Prisma {
 
 
   /**
-   * Buyer.purchase
-   */
-  export type Buyer$purchaseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Purchase
-     */
-    select?: PurchaseSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: PurchaseInclude<ExtArgs> | null
-    where?: PurchaseWhereInput
-    orderBy?: PurchaseOrderByWithRelationInput | PurchaseOrderByWithRelationInput[]
-    cursor?: PurchaseWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PurchaseScalarFieldEnum | PurchaseScalarFieldEnum[]
-  }
-
-
-  /**
-   * Buyer.reservation
-   */
-  export type Buyer$reservationArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Reservation
-     */
-    select?: ReservationSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReservationInclude<ExtArgs> | null
-    where?: ReservationWhereInput
-    orderBy?: ReservationOrderByWithRelationInput | ReservationOrderByWithRelationInput[]
-    cursor?: ReservationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ReservationScalarFieldEnum | ReservationScalarFieldEnum[]
-  }
-
-
-  /**
    * Buyer without action
    */
   export type BuyerDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -17691,6 +17807,7 @@ export namespace Prisma {
   export type SellerMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    buyerName: string | null
     productId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -17699,6 +17816,7 @@ export namespace Prisma {
   export type SellerMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    buyerName: string | null
     productId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -17707,6 +17825,7 @@ export namespace Prisma {
   export type SellerCountAggregateOutputType = {
     id: number
     userId: number
+    buyerName: number
     productId: number
     createdAt: number
     updatedAt: number
@@ -17717,6 +17836,7 @@ export namespace Prisma {
   export type SellerMinAggregateInputType = {
     id?: true
     userId?: true
+    buyerName?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
@@ -17725,6 +17845,7 @@ export namespace Prisma {
   export type SellerMaxAggregateInputType = {
     id?: true
     userId?: true
+    buyerName?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
@@ -17733,6 +17854,7 @@ export namespace Prisma {
   export type SellerCountAggregateInputType = {
     id?: true
     userId?: true
+    buyerName?: true
     productId?: true
     createdAt?: true
     updatedAt?: true
@@ -17814,6 +17936,7 @@ export namespace Prisma {
   export type SellerGroupByOutputType = {
     id: string
     userId: string
+    buyerName: string
     productId: string
     createdAt: Date
     updatedAt: Date
@@ -17839,19 +17962,18 @@ export namespace Prisma {
   export type SellerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    buyerName?: boolean
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
-    purchase?: boolean | Seller$purchaseArgs<ExtArgs>
-    reservation?: boolean | Seller$reservationArgs<ExtArgs>
-    _count?: boolean | SellerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["seller"]>
 
   export type SellerSelectScalar = {
     id?: boolean
     userId?: boolean
+    buyerName?: boolean
     productId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -17860,9 +17982,6 @@ export namespace Prisma {
   export type SellerInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
-    purchase?: boolean | Seller$purchaseArgs<ExtArgs>
-    reservation?: boolean | Seller$reservationArgs<ExtArgs>
-    _count?: boolean | SellerCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
@@ -17871,12 +17990,11 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       product: Prisma.$ProductPayload<ExtArgs>
-      purchase: Prisma.$PurchasePayload<ExtArgs>[]
-      reservation: Prisma.$ReservationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
       userId: string
+      buyerName: string
       productId: string
       createdAt: Date
       updatedAt: Date
@@ -18249,10 +18367,6 @@ export namespace Prisma {
 
     product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    purchase<T extends Seller$purchaseArgs<ExtArgs> = {}>(args?: Subset<T, Seller$purchaseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    reservation<T extends Seller$reservationArgs<ExtArgs> = {}>(args?: Subset<T, Seller$reservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18283,6 +18397,7 @@ export namespace Prisma {
   interface SellerFieldRefs {
     readonly id: FieldRef<"Seller", 'String'>
     readonly userId: FieldRef<"Seller", 'String'>
+    readonly buyerName: FieldRef<"Seller", 'String'>
     readonly productId: FieldRef<"Seller", 'String'>
     readonly createdAt: FieldRef<"Seller", 'DateTime'>
     readonly updatedAt: FieldRef<"Seller", 'DateTime'>
@@ -18598,48 +18713,6 @@ export namespace Prisma {
 
 
   /**
-   * Seller.purchase
-   */
-  export type Seller$purchaseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Purchase
-     */
-    select?: PurchaseSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: PurchaseInclude<ExtArgs> | null
-    where?: PurchaseWhereInput
-    orderBy?: PurchaseOrderByWithRelationInput | PurchaseOrderByWithRelationInput[]
-    cursor?: PurchaseWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PurchaseScalarFieldEnum | PurchaseScalarFieldEnum[]
-  }
-
-
-  /**
-   * Seller.reservation
-   */
-  export type Seller$reservationArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Reservation
-     */
-    select?: ReservationSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReservationInclude<ExtArgs> | null
-    where?: ReservationWhereInput
-    orderBy?: ReservationOrderByWithRelationInput | ReservationOrderByWithRelationInput[]
-    cursor?: ReservationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ReservationScalarFieldEnum | ReservationScalarFieldEnum[]
-  }
-
-
-  /**
    * Seller without action
    */
   export type SellerDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -18771,6 +18844,7 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     sold: 'sold',
+    status: 'status',
     views: 'views',
     delivery: 'delivery',
     faceToFace: 'faceToFace',
@@ -18834,9 +18908,16 @@ export namespace Prisma {
     senderId: 'senderId',
     receiverId: 'receiverId',
     conversationId: 'conversationId',
+    productId: 'productId',
     isRead: 'isRead',
+    messageType: 'messageType',
+    isAccepted: 'isAccepted',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    address: 'address',
+    addressDetail: 'addressDetail',
+    latitude: 'latitude',
+    longitude: 'longitude'
   };
 
   export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
@@ -18856,13 +18937,21 @@ export namespace Prisma {
 
   export const ReservationScalarFieldEnum: {
     id: 'id',
+    buyerName: 'buyerName',
+    sellerName: 'sellerName',
     buyerId: 'buyerId',
     sellerId: 'sellerId',
     productId: 'productId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     meetTime: 'meetTime',
-    isAccepted: 'isAccepted'
+    address: 'address',
+    addressDetail: 'addressDetail',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    isAccepted: 'isAccepted',
+    sellAccept: 'sellAccept',
+    buyAccept: 'buyAccept'
   };
 
   export type ReservationScalarFieldEnum = (typeof ReservationScalarFieldEnum)[keyof typeof ReservationScalarFieldEnum]
@@ -18871,9 +18960,11 @@ export namespace Prisma {
   export const BuyerScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    sellerName: 'sellerName',
     productId: 'productId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    isReviewed: 'isReviewed'
   };
 
   export type BuyerScalarFieldEnum = (typeof BuyerScalarFieldEnum)[keyof typeof BuyerScalarFieldEnum]
@@ -18882,6 +18973,7 @@ export namespace Prisma {
   export const SellerScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    buyerName: 'buyerName',
     productId: 'productId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -19508,6 +19600,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     sold?: BoolFilter<"Product"> | boolean
+    status?: StringNullableFilter<"Product"> | string | null
     views?: IntFilter<"Product"> | number
     delivery?: BoolFilter<"Product"> | boolean
     faceToFace?: BoolFilter<"Product"> | boolean
@@ -19535,6 +19628,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sold?: SortOrder
+    status?: SortOrderInput | SortOrder
     views?: SortOrder
     delivery?: SortOrder
     faceToFace?: SortOrder
@@ -19565,6 +19659,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     sold?: BoolFilter<"Product"> | boolean
+    status?: StringNullableFilter<"Product"> | string | null
     views?: IntFilter<"Product"> | number
     delivery?: BoolFilter<"Product"> | boolean
     faceToFace?: BoolFilter<"Product"> | boolean
@@ -19592,6 +19687,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sold?: SortOrder
+    status?: SortOrderInput | SortOrder
     views?: SortOrder
     delivery?: SortOrder
     faceToFace?: SortOrder
@@ -19620,6 +19716,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     sold?: BoolWithAggregatesFilter<"Product"> | boolean
+    status?: StringNullableWithAggregatesFilter<"Product"> | string | null
     views?: IntWithAggregatesFilter<"Product"> | number
     delivery?: BoolWithAggregatesFilter<"Product"> | boolean
     faceToFace?: BoolWithAggregatesFilter<"Product"> | boolean
@@ -19885,9 +19982,16 @@ export namespace Prisma {
     senderId?: StringFilter<"Message"> | string
     receiverId?: StringFilter<"Message"> | string
     conversationId?: StringFilter<"Message"> | string
+    productId?: StringNullableFilter<"Message"> | string | null
     isRead?: BoolFilter<"Message"> | boolean
+    messageType?: StringNullableFilter<"Message"> | string | null
+    isAccepted?: IntNullableFilter<"Message"> | number | null
     createdAt?: DateTimeFilter<"Message"> | Date | string
     updatedAt?: DateTimeFilter<"Message"> | Date | string
+    address?: StringNullableFilter<"Message"> | string | null
+    addressDetail?: StringNullableFilter<"Message"> | string | null
+    latitude?: FloatNullableFilter<"Message"> | number | null
+    longitude?: FloatNullableFilter<"Message"> | number | null
     sender?: XOR<UserRelationFilter, UserWhereInput>
     receiver?: XOR<UserRelationFilter, UserWhereInput>
     conversation?: XOR<ConversationRelationFilter, ConversationWhereInput>
@@ -19900,9 +20004,16 @@ export namespace Prisma {
     senderId?: SortOrder
     receiverId?: SortOrder
     conversationId?: SortOrder
+    productId?: SortOrderInput | SortOrder
     isRead?: SortOrder
+    messageType?: SortOrderInput | SortOrder
+    isAccepted?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    address?: SortOrderInput | SortOrder
+    addressDetail?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     sender?: UserOrderByWithRelationInput
     receiver?: UserOrderByWithRelationInput
     conversation?: ConversationOrderByWithRelationInput
@@ -19918,9 +20029,16 @@ export namespace Prisma {
     senderId?: StringFilter<"Message"> | string
     receiverId?: StringFilter<"Message"> | string
     conversationId?: StringFilter<"Message"> | string
+    productId?: StringNullableFilter<"Message"> | string | null
     isRead?: BoolFilter<"Message"> | boolean
+    messageType?: StringNullableFilter<"Message"> | string | null
+    isAccepted?: IntNullableFilter<"Message"> | number | null
     createdAt?: DateTimeFilter<"Message"> | Date | string
     updatedAt?: DateTimeFilter<"Message"> | Date | string
+    address?: StringNullableFilter<"Message"> | string | null
+    addressDetail?: StringNullableFilter<"Message"> | string | null
+    latitude?: FloatNullableFilter<"Message"> | number | null
+    longitude?: FloatNullableFilter<"Message"> | number | null
     sender?: XOR<UserRelationFilter, UserWhereInput>
     receiver?: XOR<UserRelationFilter, UserWhereInput>
     conversation?: XOR<ConversationRelationFilter, ConversationWhereInput>
@@ -19933,12 +20051,21 @@ export namespace Prisma {
     senderId?: SortOrder
     receiverId?: SortOrder
     conversationId?: SortOrder
+    productId?: SortOrderInput | SortOrder
     isRead?: SortOrder
+    messageType?: SortOrderInput | SortOrder
+    isAccepted?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    address?: SortOrderInput | SortOrder
+    addressDetail?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     _count?: MessageCountOrderByAggregateInput
+    _avg?: MessageAvgOrderByAggregateInput
     _max?: MessageMaxOrderByAggregateInput
     _min?: MessageMinOrderByAggregateInput
+    _sum?: MessageSumOrderByAggregateInput
   }
 
   export type MessageScalarWhereWithAggregatesInput = {
@@ -19951,9 +20078,16 @@ export namespace Prisma {
     senderId?: StringWithAggregatesFilter<"Message"> | string
     receiverId?: StringWithAggregatesFilter<"Message"> | string
     conversationId?: StringWithAggregatesFilter<"Message"> | string
+    productId?: StringNullableWithAggregatesFilter<"Message"> | string | null
     isRead?: BoolWithAggregatesFilter<"Message"> | boolean
+    messageType?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    isAccepted?: IntNullableWithAggregatesFilter<"Message"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
+    address?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    addressDetail?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    latitude?: FloatNullableWithAggregatesFilter<"Message"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"Message"> | number | null
   }
 
   export type PurchaseWhereInput = {
@@ -19966,8 +20100,6 @@ export namespace Prisma {
     productId?: StringFilter<"Purchase"> | string
     createdAt?: DateTimeFilter<"Purchase"> | Date | string
     updatedAt?: DateTimeFilter<"Purchase"> | Date | string
-    buyer?: XOR<BuyerRelationFilter, BuyerWhereInput>
-    seller?: XOR<SellerRelationFilter, SellerWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }
 
@@ -19978,8 +20110,6 @@ export namespace Prisma {
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    buyer?: BuyerOrderByWithRelationInput
-    seller?: SellerOrderByWithRelationInput
     product?: ProductOrderByWithRelationInput
   }
 
@@ -19993,8 +20123,6 @@ export namespace Prisma {
     productId?: StringFilter<"Purchase"> | string
     createdAt?: DateTimeFilter<"Purchase"> | Date | string
     updatedAt?: DateTimeFilter<"Purchase"> | Date | string
-    buyer?: XOR<BuyerRelationFilter, BuyerWhereInput>
-    seller?: XOR<SellerRelationFilter, SellerWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }, "id">
 
@@ -20027,29 +20155,41 @@ export namespace Prisma {
     OR?: ReservationWhereInput[]
     NOT?: ReservationWhereInput | ReservationWhereInput[]
     id?: StringFilter<"Reservation"> | string
+    buyerName?: StringFilter<"Reservation"> | string
+    sellerName?: StringFilter<"Reservation"> | string
     buyerId?: StringFilter<"Reservation"> | string
     sellerId?: StringFilter<"Reservation"> | string
     productId?: StringFilter<"Reservation"> | string
     createdAt?: DateTimeFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeFilter<"Reservation"> | Date | string
-    meetTime?: DateTimeFilter<"Reservation"> | Date | string
+    meetTime?: DateTimeNullableFilter<"Reservation"> | Date | string | null
+    address?: StringNullableFilter<"Reservation"> | string | null
+    addressDetail?: StringNullableFilter<"Reservation"> | string | null
+    latitude?: FloatNullableFilter<"Reservation"> | number | null
+    longitude?: FloatNullableFilter<"Reservation"> | number | null
     isAccepted?: BoolFilter<"Reservation"> | boolean
-    buyer?: XOR<BuyerRelationFilter, BuyerWhereInput>
-    seller?: XOR<SellerRelationFilter, SellerWhereInput>
+    sellAccept?: BoolFilter<"Reservation"> | boolean
+    buyAccept?: BoolFilter<"Reservation"> | boolean
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }
 
   export type ReservationOrderByWithRelationInput = {
     id?: SortOrder
+    buyerName?: SortOrder
+    sellerName?: SortOrder
     buyerId?: SortOrder
     sellerId?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    meetTime?: SortOrder
+    meetTime?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    addressDetail?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     isAccepted?: SortOrder
-    buyer?: BuyerOrderByWithRelationInput
-    seller?: SellerOrderByWithRelationInput
+    sellAccept?: SortOrder
+    buyAccept?: SortOrder
     product?: ProductOrderByWithRelationInput
   }
 
@@ -20058,30 +20198,46 @@ export namespace Prisma {
     AND?: ReservationWhereInput | ReservationWhereInput[]
     OR?: ReservationWhereInput[]
     NOT?: ReservationWhereInput | ReservationWhereInput[]
+    buyerName?: StringFilter<"Reservation"> | string
+    sellerName?: StringFilter<"Reservation"> | string
     buyerId?: StringFilter<"Reservation"> | string
     sellerId?: StringFilter<"Reservation"> | string
     productId?: StringFilter<"Reservation"> | string
     createdAt?: DateTimeFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeFilter<"Reservation"> | Date | string
-    meetTime?: DateTimeFilter<"Reservation"> | Date | string
+    meetTime?: DateTimeNullableFilter<"Reservation"> | Date | string | null
+    address?: StringNullableFilter<"Reservation"> | string | null
+    addressDetail?: StringNullableFilter<"Reservation"> | string | null
+    latitude?: FloatNullableFilter<"Reservation"> | number | null
+    longitude?: FloatNullableFilter<"Reservation"> | number | null
     isAccepted?: BoolFilter<"Reservation"> | boolean
-    buyer?: XOR<BuyerRelationFilter, BuyerWhereInput>
-    seller?: XOR<SellerRelationFilter, SellerWhereInput>
+    sellAccept?: BoolFilter<"Reservation"> | boolean
+    buyAccept?: BoolFilter<"Reservation"> | boolean
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }, "id">
 
   export type ReservationOrderByWithAggregationInput = {
     id?: SortOrder
+    buyerName?: SortOrder
+    sellerName?: SortOrder
     buyerId?: SortOrder
     sellerId?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    meetTime?: SortOrder
+    meetTime?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    addressDetail?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     isAccepted?: SortOrder
+    sellAccept?: SortOrder
+    buyAccept?: SortOrder
     _count?: ReservationCountOrderByAggregateInput
+    _avg?: ReservationAvgOrderByAggregateInput
     _max?: ReservationMaxOrderByAggregateInput
     _min?: ReservationMinOrderByAggregateInput
+    _sum?: ReservationSumOrderByAggregateInput
   }
 
   export type ReservationScalarWhereWithAggregatesInput = {
@@ -20089,13 +20245,21 @@ export namespace Prisma {
     OR?: ReservationScalarWhereWithAggregatesInput[]
     NOT?: ReservationScalarWhereWithAggregatesInput | ReservationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Reservation"> | string
+    buyerName?: StringWithAggregatesFilter<"Reservation"> | string
+    sellerName?: StringWithAggregatesFilter<"Reservation"> | string
     buyerId?: StringWithAggregatesFilter<"Reservation"> | string
     sellerId?: StringWithAggregatesFilter<"Reservation"> | string
     productId?: StringWithAggregatesFilter<"Reservation"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
-    meetTime?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
+    meetTime?: DateTimeNullableWithAggregatesFilter<"Reservation"> | Date | string | null
+    address?: StringNullableWithAggregatesFilter<"Reservation"> | string | null
+    addressDetail?: StringNullableWithAggregatesFilter<"Reservation"> | string | null
+    latitude?: FloatNullableWithAggregatesFilter<"Reservation"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"Reservation"> | number | null
     isAccepted?: BoolWithAggregatesFilter<"Reservation"> | boolean
+    sellAccept?: BoolWithAggregatesFilter<"Reservation"> | boolean
+    buyAccept?: BoolWithAggregatesFilter<"Reservation"> | boolean
   }
 
   export type BuyerWhereInput = {
@@ -20104,25 +20268,25 @@ export namespace Prisma {
     NOT?: BuyerWhereInput | BuyerWhereInput[]
     id?: StringFilter<"Buyer"> | string
     userId?: StringFilter<"Buyer"> | string
+    sellerName?: StringFilter<"Buyer"> | string
     productId?: StringFilter<"Buyer"> | string
     createdAt?: DateTimeFilter<"Buyer"> | Date | string
     updatedAt?: DateTimeFilter<"Buyer"> | Date | string
+    isReviewed?: BoolFilter<"Buyer"> | boolean
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
-    purchase?: PurchaseListRelationFilter
-    reservation?: ReservationListRelationFilter
   }
 
   export type BuyerOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    isReviewed?: SortOrder
     user?: UserOrderByWithRelationInput
     product?: ProductOrderByWithRelationInput
-    purchase?: PurchaseOrderByRelationAggregateInput
-    reservation?: ReservationOrderByRelationAggregateInput
   }
 
   export type BuyerWhereUniqueInput = Prisma.AtLeast<{
@@ -20131,21 +20295,23 @@ export namespace Prisma {
     OR?: BuyerWhereInput[]
     NOT?: BuyerWhereInput | BuyerWhereInput[]
     userId?: StringFilter<"Buyer"> | string
+    sellerName?: StringFilter<"Buyer"> | string
     productId?: StringFilter<"Buyer"> | string
     createdAt?: DateTimeFilter<"Buyer"> | Date | string
     updatedAt?: DateTimeFilter<"Buyer"> | Date | string
+    isReviewed?: BoolFilter<"Buyer"> | boolean
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
-    purchase?: PurchaseListRelationFilter
-    reservation?: ReservationListRelationFilter
   }, "id">
 
   export type BuyerOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    isReviewed?: SortOrder
     _count?: BuyerCountOrderByAggregateInput
     _max?: BuyerMaxOrderByAggregateInput
     _min?: BuyerMinOrderByAggregateInput
@@ -20157,9 +20323,11 @@ export namespace Prisma {
     NOT?: BuyerScalarWhereWithAggregatesInput | BuyerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Buyer"> | string
     userId?: StringWithAggregatesFilter<"Buyer"> | string
+    sellerName?: StringWithAggregatesFilter<"Buyer"> | string
     productId?: StringWithAggregatesFilter<"Buyer"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Buyer"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Buyer"> | Date | string
+    isReviewed?: BoolWithAggregatesFilter<"Buyer"> | boolean
   }
 
   export type SellerWhereInput = {
@@ -20168,25 +20336,23 @@ export namespace Prisma {
     NOT?: SellerWhereInput | SellerWhereInput[]
     id?: StringFilter<"Seller"> | string
     userId?: StringFilter<"Seller"> | string
+    buyerName?: StringFilter<"Seller"> | string
     productId?: StringFilter<"Seller"> | string
     createdAt?: DateTimeFilter<"Seller"> | Date | string
     updatedAt?: DateTimeFilter<"Seller"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
-    purchase?: PurchaseListRelationFilter
-    reservation?: ReservationListRelationFilter
   }
 
   export type SellerOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     product?: ProductOrderByWithRelationInput
-    purchase?: PurchaseOrderByRelationAggregateInput
-    reservation?: ReservationOrderByRelationAggregateInput
   }
 
   export type SellerWhereUniqueInput = Prisma.AtLeast<{
@@ -20195,18 +20361,18 @@ export namespace Prisma {
     OR?: SellerWhereInput[]
     NOT?: SellerWhereInput | SellerWhereInput[]
     userId?: StringFilter<"Seller"> | string
+    buyerName?: StringFilter<"Seller"> | string
     productId?: StringFilter<"Seller"> | string
     createdAt?: DateTimeFilter<"Seller"> | Date | string
     updatedAt?: DateTimeFilter<"Seller"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
-    purchase?: PurchaseListRelationFilter
-    reservation?: ReservationListRelationFilter
   }, "id">
 
   export type SellerOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -20221,6 +20387,7 @@ export namespace Prisma {
     NOT?: SellerScalarWhereWithAggregatesInput | SellerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Seller"> | string
     userId?: StringWithAggregatesFilter<"Seller"> | string
+    buyerName?: StringWithAggregatesFilter<"Seller"> | string
     productId?: StringWithAggregatesFilter<"Seller"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Seller"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Seller"> | Date | string
@@ -20781,6 +20948,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -20808,6 +20976,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -20833,6 +21002,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -20860,6 +21030,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -20886,6 +21057,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -20905,6 +21077,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -20925,6 +21098,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -21182,9 +21356,16 @@ export namespace Prisma {
     id?: string
     text?: string | null
     image?: string | null
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     sender: UserCreateNestedOneWithoutSendMessagesInput
     receiver: UserCreateNestedOneWithoutReceivedMessagesInput
     conversation: ConversationCreateNestedOneWithoutMessagesInput
@@ -21197,18 +21378,32 @@ export namespace Prisma {
     senderId: string
     receiverId: string
     conversationId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type MessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     sender?: UserUpdateOneRequiredWithoutSendMessagesNestedInput
     receiver?: UserUpdateOneRequiredWithoutReceivedMessagesNestedInput
     conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
@@ -21221,9 +21416,16 @@ export namespace Prisma {
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MessageCreateManyInput = {
@@ -21233,18 +21435,32 @@ export namespace Prisma {
     senderId: string
     receiverId: string
     conversationId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type MessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MessageUncheckedUpdateManyInput = {
@@ -21254,17 +21470,24 @@ export namespace Prisma {
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type PurchaseCreateInput = {
     id?: string
+    buyerId: string
+    sellerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    buyer: BuyerCreateNestedOneWithoutPurchaseInput
-    seller: SellerCreateNestedOneWithoutPurchaseInput
     product: ProductCreateNestedOneWithoutPurchasesInput
   }
 
@@ -21279,10 +21502,10 @@ export namespace Prisma {
 
   export type PurchaseUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    buyer?: BuyerUpdateOneRequiredWithoutPurchaseNestedInput
-    seller?: SellerUpdateOneRequiredWithoutPurchaseNestedInput
     product?: ProductUpdateOneRequiredWithoutPurchasesNestedInput
   }
 
@@ -21306,6 +21529,8 @@ export namespace Prisma {
 
   export type PurchaseUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21321,183 +21546,244 @@ export namespace Prisma {
 
   export type ReservationCreateInput = {
     id?: string
+    buyerName?: string
+    sellerName?: string
+    buyerId: string
+    sellerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    meetTime: Date | string
+    meetTime?: Date | string | null
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     isAccepted?: boolean
-    buyer: BuyerCreateNestedOneWithoutReservationInput
-    seller: SellerCreateNestedOneWithoutReservationInput
+    sellAccept?: boolean
+    buyAccept?: boolean
     product: ProductCreateNestedOneWithoutReservationsInput
   }
 
   export type ReservationUncheckedCreateInput = {
     id?: string
+    buyerName?: string
+    sellerName?: string
     buyerId: string
     sellerId: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    meetTime: Date | string
+    meetTime?: Date | string | null
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     isAccepted?: boolean
+    sellAccept?: boolean
+    buyAccept?: boolean
   }
 
   export type ReservationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
-    buyer?: BuyerUpdateOneRequiredWithoutReservationNestedInput
-    seller?: SellerUpdateOneRequiredWithoutReservationNestedInput
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
     product?: ProductUpdateOneRequiredWithoutReservationsNestedInput
   }
 
   export type ReservationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReservationCreateManyInput = {
     id?: string
+    buyerName?: string
+    sellerName?: string
     buyerId: string
     sellerId: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    meetTime: Date | string
+    meetTime?: Date | string | null
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     isAccepted?: boolean
+    sellAccept?: boolean
+    buyAccept?: boolean
   }
 
   export type ReservationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReservationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type BuyerCreateInput = {
     id?: string
+    sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    isReviewed?: boolean
     user: UserCreateNestedOneWithoutBuyerInput
     product: ProductCreateNestedOneWithoutByersInput
-    purchase?: PurchaseCreateNestedManyWithoutBuyerInput
-    reservation?: ReservationCreateNestedManyWithoutBuyerInput
   }
 
   export type BuyerUncheckedCreateInput = {
     id?: string
     userId: string
+    sellerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutBuyerInput
-    reservation?: ReservationUncheckedCreateNestedManyWithoutBuyerInput
+    isReviewed?: boolean
   }
 
   export type BuyerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutBuyerNestedInput
     product?: ProductUpdateOneRequiredWithoutByersNestedInput
-    purchase?: PurchaseUpdateManyWithoutBuyerNestedInput
-    reservation?: ReservationUpdateManyWithoutBuyerNestedInput
   }
 
   export type BuyerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutBuyerNestedInput
-    reservation?: ReservationUncheckedUpdateManyWithoutBuyerNestedInput
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type BuyerCreateManyInput = {
     id?: string
     userId: string
+    sellerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    isReviewed?: boolean
   }
 
   export type BuyerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type BuyerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SellerCreateInput = {
     id?: string
+    buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSellerInput
     product: ProductCreateNestedOneWithoutSellersInput
-    purchase?: PurchaseCreateNestedManyWithoutSellerInput
-    reservation?: ReservationCreateNestedManyWithoutSellerInput
   }
 
   export type SellerUncheckedCreateInput = {
     id?: string
     userId: string
+    buyerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutSellerInput
-    reservation?: ReservationUncheckedCreateNestedManyWithoutSellerInput
   }
 
   export type SellerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSellerNestedInput
     product?: ProductUpdateOneRequiredWithoutSellersNestedInput
-    purchase?: PurchaseUpdateManyWithoutSellerNestedInput
-    reservation?: ReservationUpdateManyWithoutSellerNestedInput
   }
 
   export type SellerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutSellerNestedInput
-    reservation?: ReservationUncheckedUpdateManyWithoutSellerNestedInput
   }
 
   export type SellerCreateManyInput = {
     id?: string
     userId: string
+    buyerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21505,6 +21791,7 @@ export namespace Prisma {
 
   export type SellerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21512,6 +21799,7 @@ export namespace Prisma {
   export type SellerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22185,6 +22473,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sold?: SortOrder
+    status?: SortOrder
     views?: SortOrder
     delivery?: SortOrder
     faceToFace?: SortOrder
@@ -22211,6 +22500,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sold?: SortOrder
+    status?: SortOrder
     views?: SortOrder
     delivery?: SortOrder
     faceToFace?: SortOrder
@@ -22229,6 +22519,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sold?: SortOrder
+    status?: SortOrder
     views?: SortOrder
     delivery?: SortOrder
     faceToFace?: SortOrder
@@ -22407,9 +22698,22 @@ export namespace Prisma {
     senderId?: SortOrder
     receiverId?: SortOrder
     conversationId?: SortOrder
+    productId?: SortOrder
     isRead?: SortOrder
+    messageType?: SortOrder
+    isAccepted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+  }
+
+  export type MessageAvgOrderByAggregateInput = {
+    isAccepted?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type MessageMaxOrderByAggregateInput = {
@@ -22419,9 +22723,16 @@ export namespace Prisma {
     senderId?: SortOrder
     receiverId?: SortOrder
     conversationId?: SortOrder
+    productId?: SortOrder
     isRead?: SortOrder
+    messageType?: SortOrder
+    isAccepted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type MessageMinOrderByAggregateInput = {
@@ -22431,19 +22742,22 @@ export namespace Prisma {
     senderId?: SortOrder
     receiverId?: SortOrder
     conversationId?: SortOrder
+    productId?: SortOrder
     isRead?: SortOrder
+    messageType?: SortOrder
+    isAccepted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
-  export type BuyerRelationFilter = {
-    is?: BuyerWhereInput
-    isNot?: BuyerWhereInput
-  }
-
-  export type SellerRelationFilter = {
-    is?: SellerWhereInput
-    isNot?: SellerWhereInput
+  export type MessageSumOrderByAggregateInput = {
+    isAccepted?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type PurchaseCountOrderByAggregateInput = {
@@ -22475,64 +22789,105 @@ export namespace Prisma {
 
   export type ReservationCountOrderByAggregateInput = {
     id?: SortOrder
+    buyerName?: SortOrder
+    sellerName?: SortOrder
     buyerId?: SortOrder
     sellerId?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     meetTime?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     isAccepted?: SortOrder
+    sellAccept?: SortOrder
+    buyAccept?: SortOrder
+  }
+
+  export type ReservationAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type ReservationMaxOrderByAggregateInput = {
     id?: SortOrder
+    buyerName?: SortOrder
+    sellerName?: SortOrder
     buyerId?: SortOrder
     sellerId?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     meetTime?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     isAccepted?: SortOrder
+    sellAccept?: SortOrder
+    buyAccept?: SortOrder
   }
 
   export type ReservationMinOrderByAggregateInput = {
     id?: SortOrder
+    buyerName?: SortOrder
+    sellerName?: SortOrder
     buyerId?: SortOrder
     sellerId?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     meetTime?: SortOrder
+    address?: SortOrder
+    addressDetail?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     isAccepted?: SortOrder
+    sellAccept?: SortOrder
+    buyAccept?: SortOrder
+  }
+
+  export type ReservationSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type BuyerCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    isReviewed?: SortOrder
   }
 
   export type BuyerMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    isReviewed?: SortOrder
   }
 
   export type BuyerMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    isReviewed?: SortOrder
   }
 
   export type SellerCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22541,6 +22896,7 @@ export namespace Prisma {
   export type SellerMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22549,6 +22905,7 @@ export namespace Prisma {
   export type SellerMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23807,38 +24164,10 @@ export namespace Prisma {
     update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutMessagesInput, ConversationUpdateWithoutMessagesInput>, ConversationUncheckedUpdateWithoutMessagesInput>
   }
 
-  export type BuyerCreateNestedOneWithoutPurchaseInput = {
-    create?: XOR<BuyerCreateWithoutPurchaseInput, BuyerUncheckedCreateWithoutPurchaseInput>
-    connectOrCreate?: BuyerCreateOrConnectWithoutPurchaseInput
-    connect?: BuyerWhereUniqueInput
-  }
-
-  export type SellerCreateNestedOneWithoutPurchaseInput = {
-    create?: XOR<SellerCreateWithoutPurchaseInput, SellerUncheckedCreateWithoutPurchaseInput>
-    connectOrCreate?: SellerCreateOrConnectWithoutPurchaseInput
-    connect?: SellerWhereUniqueInput
-  }
-
   export type ProductCreateNestedOneWithoutPurchasesInput = {
     create?: XOR<ProductCreateWithoutPurchasesInput, ProductUncheckedCreateWithoutPurchasesInput>
     connectOrCreate?: ProductCreateOrConnectWithoutPurchasesInput
     connect?: ProductWhereUniqueInput
-  }
-
-  export type BuyerUpdateOneRequiredWithoutPurchaseNestedInput = {
-    create?: XOR<BuyerCreateWithoutPurchaseInput, BuyerUncheckedCreateWithoutPurchaseInput>
-    connectOrCreate?: BuyerCreateOrConnectWithoutPurchaseInput
-    upsert?: BuyerUpsertWithoutPurchaseInput
-    connect?: BuyerWhereUniqueInput
-    update?: XOR<XOR<BuyerUpdateToOneWithWhereWithoutPurchaseInput, BuyerUpdateWithoutPurchaseInput>, BuyerUncheckedUpdateWithoutPurchaseInput>
-  }
-
-  export type SellerUpdateOneRequiredWithoutPurchaseNestedInput = {
-    create?: XOR<SellerCreateWithoutPurchaseInput, SellerUncheckedCreateWithoutPurchaseInput>
-    connectOrCreate?: SellerCreateOrConnectWithoutPurchaseInput
-    upsert?: SellerUpsertWithoutPurchaseInput
-    connect?: SellerWhereUniqueInput
-    update?: XOR<XOR<SellerUpdateToOneWithWhereWithoutPurchaseInput, SellerUpdateWithoutPurchaseInput>, SellerUncheckedUpdateWithoutPurchaseInput>
   }
 
   export type ProductUpdateOneRequiredWithoutPurchasesNestedInput = {
@@ -23849,38 +24178,10 @@ export namespace Prisma {
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutPurchasesInput, ProductUpdateWithoutPurchasesInput>, ProductUncheckedUpdateWithoutPurchasesInput>
   }
 
-  export type BuyerCreateNestedOneWithoutReservationInput = {
-    create?: XOR<BuyerCreateWithoutReservationInput, BuyerUncheckedCreateWithoutReservationInput>
-    connectOrCreate?: BuyerCreateOrConnectWithoutReservationInput
-    connect?: BuyerWhereUniqueInput
-  }
-
-  export type SellerCreateNestedOneWithoutReservationInput = {
-    create?: XOR<SellerCreateWithoutReservationInput, SellerUncheckedCreateWithoutReservationInput>
-    connectOrCreate?: SellerCreateOrConnectWithoutReservationInput
-    connect?: SellerWhereUniqueInput
-  }
-
   export type ProductCreateNestedOneWithoutReservationsInput = {
     create?: XOR<ProductCreateWithoutReservationsInput, ProductUncheckedCreateWithoutReservationsInput>
     connectOrCreate?: ProductCreateOrConnectWithoutReservationsInput
     connect?: ProductWhereUniqueInput
-  }
-
-  export type BuyerUpdateOneRequiredWithoutReservationNestedInput = {
-    create?: XOR<BuyerCreateWithoutReservationInput, BuyerUncheckedCreateWithoutReservationInput>
-    connectOrCreate?: BuyerCreateOrConnectWithoutReservationInput
-    upsert?: BuyerUpsertWithoutReservationInput
-    connect?: BuyerWhereUniqueInput
-    update?: XOR<XOR<BuyerUpdateToOneWithWhereWithoutReservationInput, BuyerUpdateWithoutReservationInput>, BuyerUncheckedUpdateWithoutReservationInput>
-  }
-
-  export type SellerUpdateOneRequiredWithoutReservationNestedInput = {
-    create?: XOR<SellerCreateWithoutReservationInput, SellerUncheckedCreateWithoutReservationInput>
-    connectOrCreate?: SellerCreateOrConnectWithoutReservationInput
-    upsert?: SellerUpsertWithoutReservationInput
-    connect?: SellerWhereUniqueInput
-    update?: XOR<XOR<SellerUpdateToOneWithWhereWithoutReservationInput, SellerUpdateWithoutReservationInput>, SellerUncheckedUpdateWithoutReservationInput>
   }
 
   export type ProductUpdateOneRequiredWithoutReservationsNestedInput = {
@@ -23903,34 +24204,6 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput
   }
 
-  export type PurchaseCreateNestedManyWithoutBuyerInput = {
-    create?: XOR<PurchaseCreateWithoutBuyerInput, PurchaseUncheckedCreateWithoutBuyerInput> | PurchaseCreateWithoutBuyerInput[] | PurchaseUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutBuyerInput | PurchaseCreateOrConnectWithoutBuyerInput[]
-    createMany?: PurchaseCreateManyBuyerInputEnvelope
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-  }
-
-  export type ReservationCreateNestedManyWithoutBuyerInput = {
-    create?: XOR<ReservationCreateWithoutBuyerInput, ReservationUncheckedCreateWithoutBuyerInput> | ReservationCreateWithoutBuyerInput[] | ReservationUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutBuyerInput | ReservationCreateOrConnectWithoutBuyerInput[]
-    createMany?: ReservationCreateManyBuyerInputEnvelope
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-  }
-
-  export type PurchaseUncheckedCreateNestedManyWithoutBuyerInput = {
-    create?: XOR<PurchaseCreateWithoutBuyerInput, PurchaseUncheckedCreateWithoutBuyerInput> | PurchaseCreateWithoutBuyerInput[] | PurchaseUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutBuyerInput | PurchaseCreateOrConnectWithoutBuyerInput[]
-    createMany?: PurchaseCreateManyBuyerInputEnvelope
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-  }
-
-  export type ReservationUncheckedCreateNestedManyWithoutBuyerInput = {
-    create?: XOR<ReservationCreateWithoutBuyerInput, ReservationUncheckedCreateWithoutBuyerInput> | ReservationCreateWithoutBuyerInput[] | ReservationUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutBuyerInput | ReservationCreateOrConnectWithoutBuyerInput[]
-    createMany?: ReservationCreateManyBuyerInputEnvelope
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-  }
-
   export type UserUpdateOneRequiredWithoutBuyerNestedInput = {
     create?: XOR<UserCreateWithoutBuyerInput, UserUncheckedCreateWithoutBuyerInput>
     connectOrCreate?: UserCreateOrConnectWithoutBuyerInput
@@ -23947,62 +24220,6 @@ export namespace Prisma {
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutByersInput, ProductUpdateWithoutByersInput>, ProductUncheckedUpdateWithoutByersInput>
   }
 
-  export type PurchaseUpdateManyWithoutBuyerNestedInput = {
-    create?: XOR<PurchaseCreateWithoutBuyerInput, PurchaseUncheckedCreateWithoutBuyerInput> | PurchaseCreateWithoutBuyerInput[] | PurchaseUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutBuyerInput | PurchaseCreateOrConnectWithoutBuyerInput[]
-    upsert?: PurchaseUpsertWithWhereUniqueWithoutBuyerInput | PurchaseUpsertWithWhereUniqueWithoutBuyerInput[]
-    createMany?: PurchaseCreateManyBuyerInputEnvelope
-    set?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    disconnect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    delete?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    update?: PurchaseUpdateWithWhereUniqueWithoutBuyerInput | PurchaseUpdateWithWhereUniqueWithoutBuyerInput[]
-    updateMany?: PurchaseUpdateManyWithWhereWithoutBuyerInput | PurchaseUpdateManyWithWhereWithoutBuyerInput[]
-    deleteMany?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
-  }
-
-  export type ReservationUpdateManyWithoutBuyerNestedInput = {
-    create?: XOR<ReservationCreateWithoutBuyerInput, ReservationUncheckedCreateWithoutBuyerInput> | ReservationCreateWithoutBuyerInput[] | ReservationUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutBuyerInput | ReservationCreateOrConnectWithoutBuyerInput[]
-    upsert?: ReservationUpsertWithWhereUniqueWithoutBuyerInput | ReservationUpsertWithWhereUniqueWithoutBuyerInput[]
-    createMany?: ReservationCreateManyBuyerInputEnvelope
-    set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    update?: ReservationUpdateWithWhereUniqueWithoutBuyerInput | ReservationUpdateWithWhereUniqueWithoutBuyerInput[]
-    updateMany?: ReservationUpdateManyWithWhereWithoutBuyerInput | ReservationUpdateManyWithWhereWithoutBuyerInput[]
-    deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
-  }
-
-  export type PurchaseUncheckedUpdateManyWithoutBuyerNestedInput = {
-    create?: XOR<PurchaseCreateWithoutBuyerInput, PurchaseUncheckedCreateWithoutBuyerInput> | PurchaseCreateWithoutBuyerInput[] | PurchaseUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutBuyerInput | PurchaseCreateOrConnectWithoutBuyerInput[]
-    upsert?: PurchaseUpsertWithWhereUniqueWithoutBuyerInput | PurchaseUpsertWithWhereUniqueWithoutBuyerInput[]
-    createMany?: PurchaseCreateManyBuyerInputEnvelope
-    set?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    disconnect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    delete?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    update?: PurchaseUpdateWithWhereUniqueWithoutBuyerInput | PurchaseUpdateWithWhereUniqueWithoutBuyerInput[]
-    updateMany?: PurchaseUpdateManyWithWhereWithoutBuyerInput | PurchaseUpdateManyWithWhereWithoutBuyerInput[]
-    deleteMany?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
-  }
-
-  export type ReservationUncheckedUpdateManyWithoutBuyerNestedInput = {
-    create?: XOR<ReservationCreateWithoutBuyerInput, ReservationUncheckedCreateWithoutBuyerInput> | ReservationCreateWithoutBuyerInput[] | ReservationUncheckedCreateWithoutBuyerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutBuyerInput | ReservationCreateOrConnectWithoutBuyerInput[]
-    upsert?: ReservationUpsertWithWhereUniqueWithoutBuyerInput | ReservationUpsertWithWhereUniqueWithoutBuyerInput[]
-    createMany?: ReservationCreateManyBuyerInputEnvelope
-    set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    update?: ReservationUpdateWithWhereUniqueWithoutBuyerInput | ReservationUpdateWithWhereUniqueWithoutBuyerInput[]
-    updateMany?: ReservationUpdateManyWithWhereWithoutBuyerInput | ReservationUpdateManyWithWhereWithoutBuyerInput[]
-    deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
-  }
-
   export type UserCreateNestedOneWithoutSellerInput = {
     create?: XOR<UserCreateWithoutSellerInput, UserUncheckedCreateWithoutSellerInput>
     connectOrCreate?: UserCreateOrConnectWithoutSellerInput
@@ -24013,34 +24230,6 @@ export namespace Prisma {
     create?: XOR<ProductCreateWithoutSellersInput, ProductUncheckedCreateWithoutSellersInput>
     connectOrCreate?: ProductCreateOrConnectWithoutSellersInput
     connect?: ProductWhereUniqueInput
-  }
-
-  export type PurchaseCreateNestedManyWithoutSellerInput = {
-    create?: XOR<PurchaseCreateWithoutSellerInput, PurchaseUncheckedCreateWithoutSellerInput> | PurchaseCreateWithoutSellerInput[] | PurchaseUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutSellerInput | PurchaseCreateOrConnectWithoutSellerInput[]
-    createMany?: PurchaseCreateManySellerInputEnvelope
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-  }
-
-  export type ReservationCreateNestedManyWithoutSellerInput = {
-    create?: XOR<ReservationCreateWithoutSellerInput, ReservationUncheckedCreateWithoutSellerInput> | ReservationCreateWithoutSellerInput[] | ReservationUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutSellerInput | ReservationCreateOrConnectWithoutSellerInput[]
-    createMany?: ReservationCreateManySellerInputEnvelope
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-  }
-
-  export type PurchaseUncheckedCreateNestedManyWithoutSellerInput = {
-    create?: XOR<PurchaseCreateWithoutSellerInput, PurchaseUncheckedCreateWithoutSellerInput> | PurchaseCreateWithoutSellerInput[] | PurchaseUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutSellerInput | PurchaseCreateOrConnectWithoutSellerInput[]
-    createMany?: PurchaseCreateManySellerInputEnvelope
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-  }
-
-  export type ReservationUncheckedCreateNestedManyWithoutSellerInput = {
-    create?: XOR<ReservationCreateWithoutSellerInput, ReservationUncheckedCreateWithoutSellerInput> | ReservationCreateWithoutSellerInput[] | ReservationUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutSellerInput | ReservationCreateOrConnectWithoutSellerInput[]
-    createMany?: ReservationCreateManySellerInputEnvelope
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutSellerNestedInput = {
@@ -24057,62 +24246,6 @@ export namespace Prisma {
     upsert?: ProductUpsertWithoutSellersInput
     connect?: ProductWhereUniqueInput
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutSellersInput, ProductUpdateWithoutSellersInput>, ProductUncheckedUpdateWithoutSellersInput>
-  }
-
-  export type PurchaseUpdateManyWithoutSellerNestedInput = {
-    create?: XOR<PurchaseCreateWithoutSellerInput, PurchaseUncheckedCreateWithoutSellerInput> | PurchaseCreateWithoutSellerInput[] | PurchaseUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutSellerInput | PurchaseCreateOrConnectWithoutSellerInput[]
-    upsert?: PurchaseUpsertWithWhereUniqueWithoutSellerInput | PurchaseUpsertWithWhereUniqueWithoutSellerInput[]
-    createMany?: PurchaseCreateManySellerInputEnvelope
-    set?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    disconnect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    delete?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    update?: PurchaseUpdateWithWhereUniqueWithoutSellerInput | PurchaseUpdateWithWhereUniqueWithoutSellerInput[]
-    updateMany?: PurchaseUpdateManyWithWhereWithoutSellerInput | PurchaseUpdateManyWithWhereWithoutSellerInput[]
-    deleteMany?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
-  }
-
-  export type ReservationUpdateManyWithoutSellerNestedInput = {
-    create?: XOR<ReservationCreateWithoutSellerInput, ReservationUncheckedCreateWithoutSellerInput> | ReservationCreateWithoutSellerInput[] | ReservationUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutSellerInput | ReservationCreateOrConnectWithoutSellerInput[]
-    upsert?: ReservationUpsertWithWhereUniqueWithoutSellerInput | ReservationUpsertWithWhereUniqueWithoutSellerInput[]
-    createMany?: ReservationCreateManySellerInputEnvelope
-    set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    update?: ReservationUpdateWithWhereUniqueWithoutSellerInput | ReservationUpdateWithWhereUniqueWithoutSellerInput[]
-    updateMany?: ReservationUpdateManyWithWhereWithoutSellerInput | ReservationUpdateManyWithWhereWithoutSellerInput[]
-    deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
-  }
-
-  export type PurchaseUncheckedUpdateManyWithoutSellerNestedInput = {
-    create?: XOR<PurchaseCreateWithoutSellerInput, PurchaseUncheckedCreateWithoutSellerInput> | PurchaseCreateWithoutSellerInput[] | PurchaseUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: PurchaseCreateOrConnectWithoutSellerInput | PurchaseCreateOrConnectWithoutSellerInput[]
-    upsert?: PurchaseUpsertWithWhereUniqueWithoutSellerInput | PurchaseUpsertWithWhereUniqueWithoutSellerInput[]
-    createMany?: PurchaseCreateManySellerInputEnvelope
-    set?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    disconnect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    delete?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    connect?: PurchaseWhereUniqueInput | PurchaseWhereUniqueInput[]
-    update?: PurchaseUpdateWithWhereUniqueWithoutSellerInput | PurchaseUpdateWithWhereUniqueWithoutSellerInput[]
-    updateMany?: PurchaseUpdateManyWithWhereWithoutSellerInput | PurchaseUpdateManyWithWhereWithoutSellerInput[]
-    deleteMany?: PurchaseScalarWhereInput | PurchaseScalarWhereInput[]
-  }
-
-  export type ReservationUncheckedUpdateManyWithoutSellerNestedInput = {
-    create?: XOR<ReservationCreateWithoutSellerInput, ReservationUncheckedCreateWithoutSellerInput> | ReservationCreateWithoutSellerInput[] | ReservationUncheckedCreateWithoutSellerInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutSellerInput | ReservationCreateOrConnectWithoutSellerInput[]
-    upsert?: ReservationUpsertWithWhereUniqueWithoutSellerInput | ReservationUpsertWithWhereUniqueWithoutSellerInput[]
-    createMany?: ReservationCreateManySellerInputEnvelope
-    set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    update?: ReservationUpdateWithWhereUniqueWithoutSellerInput | ReservationUpdateWithWhereUniqueWithoutSellerInput[]
-    updateMany?: ReservationUpdateManyWithWhereWithoutSellerInput | ReservationUpdateManyWithWhereWithoutSellerInput[]
-    deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -24406,6 +24539,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -24431,6 +24565,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -24623,9 +24758,16 @@ export namespace Prisma {
     id?: string
     text?: string | null
     image?: string | null
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     receiver: UserCreateNestedOneWithoutReceivedMessagesInput
     conversation: ConversationCreateNestedOneWithoutMessagesInput
   }
@@ -24636,9 +24778,16 @@ export namespace Prisma {
     image?: string | null
     receiverId: string
     conversationId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type MessageCreateOrConnectWithoutSenderInput = {
@@ -24655,9 +24804,16 @@ export namespace Prisma {
     id?: string
     text?: string | null
     image?: string | null
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     sender: UserCreateNestedOneWithoutSendMessagesInput
     conversation: ConversationCreateNestedOneWithoutMessagesInput
   }
@@ -24668,9 +24824,16 @@ export namespace Prisma {
     image?: string | null
     senderId: string
     conversationId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type MessageCreateOrConnectWithoutReceiverInput = {
@@ -24719,20 +24882,20 @@ export namespace Prisma {
 
   export type BuyerCreateWithoutUserInput = {
     id?: string
+    sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    isReviewed?: boolean
     product: ProductCreateNestedOneWithoutByersInput
-    purchase?: PurchaseCreateNestedManyWithoutBuyerInput
-    reservation?: ReservationCreateNestedManyWithoutBuyerInput
   }
 
   export type BuyerUncheckedCreateWithoutUserInput = {
     id?: string
+    sellerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutBuyerInput
-    reservation?: ReservationUncheckedCreateNestedManyWithoutBuyerInput
+    isReviewed?: boolean
   }
 
   export type BuyerCreateOrConnectWithoutUserInput = {
@@ -24747,20 +24910,18 @@ export namespace Prisma {
 
   export type SellerCreateWithoutUserInput = {
     id?: string
+    buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     product: ProductCreateNestedOneWithoutSellersInput
-    purchase?: PurchaseCreateNestedManyWithoutSellerInput
-    reservation?: ReservationCreateNestedManyWithoutSellerInput
   }
 
   export type SellerUncheckedCreateWithoutUserInput = {
     id?: string
+    buyerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutSellerInput
-    reservation?: ReservationUncheckedCreateNestedManyWithoutSellerInput
   }
 
   export type SellerCreateOrConnectWithoutUserInput = {
@@ -24835,6 +24996,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     sold?: BoolFilter<"Product"> | boolean
+    status?: StringNullableFilter<"Product"> | string | null
     views?: IntFilter<"Product"> | number
     delivery?: BoolFilter<"Product"> | boolean
     faceToFace?: BoolFilter<"Product"> | boolean
@@ -25039,9 +25201,16 @@ export namespace Prisma {
     senderId?: StringFilter<"Message"> | string
     receiverId?: StringFilter<"Message"> | string
     conversationId?: StringFilter<"Message"> | string
+    productId?: StringNullableFilter<"Message"> | string | null
     isRead?: BoolFilter<"Message"> | boolean
+    messageType?: StringNullableFilter<"Message"> | string | null
+    isAccepted?: IntNullableFilter<"Message"> | number | null
     createdAt?: DateTimeFilter<"Message"> | Date | string
     updatedAt?: DateTimeFilter<"Message"> | Date | string
+    address?: StringNullableFilter<"Message"> | string | null
+    addressDetail?: StringNullableFilter<"Message"> | string | null
+    latitude?: FloatNullableFilter<"Message"> | number | null
+    longitude?: FloatNullableFilter<"Message"> | number | null
   }
 
   export type MessageUpsertWithWhereUniqueWithoutReceiverInput = {
@@ -25114,9 +25283,11 @@ export namespace Prisma {
     NOT?: BuyerScalarWhereInput | BuyerScalarWhereInput[]
     id?: StringFilter<"Buyer"> | string
     userId?: StringFilter<"Buyer"> | string
+    sellerName?: StringFilter<"Buyer"> | string
     productId?: StringFilter<"Buyer"> | string
     createdAt?: DateTimeFilter<"Buyer"> | Date | string
     updatedAt?: DateTimeFilter<"Buyer"> | Date | string
+    isReviewed?: BoolFilter<"Buyer"> | boolean
   }
 
   export type SellerUpsertWithWhereUniqueWithoutUserInput = {
@@ -25141,6 +25312,7 @@ export namespace Prisma {
     NOT?: SellerScalarWhereInput | SellerScalarWhereInput[]
     id?: StringFilter<"Seller"> | string
     userId?: StringFilter<"Seller"> | string
+    buyerName?: StringFilter<"Seller"> | string
     productId?: StringFilter<"Seller"> | string
     createdAt?: DateTimeFilter<"Seller"> | Date | string
     updatedAt?: DateTimeFilter<"Seller"> | Date | string
@@ -25908,10 +26080,10 @@ export namespace Prisma {
 
   export type PurchaseCreateWithoutProductInput = {
     id?: string
+    buyerId: string
+    sellerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    buyer: BuyerCreateNestedOneWithoutPurchaseInput
-    seller: SellerCreateNestedOneWithoutPurchaseInput
   }
 
   export type PurchaseUncheckedCreateWithoutProductInput = {
@@ -25934,20 +26106,20 @@ export namespace Prisma {
 
   export type BuyerCreateWithoutProductInput = {
     id?: string
+    sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    isReviewed?: boolean
     user: UserCreateNestedOneWithoutBuyerInput
-    purchase?: PurchaseCreateNestedManyWithoutBuyerInput
-    reservation?: ReservationCreateNestedManyWithoutBuyerInput
   }
 
   export type BuyerUncheckedCreateWithoutProductInput = {
     id?: string
     userId: string
+    sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutBuyerInput
-    reservation?: ReservationUncheckedCreateNestedManyWithoutBuyerInput
+    isReviewed?: boolean
   }
 
   export type BuyerCreateOrConnectWithoutProductInput = {
@@ -25962,20 +26134,18 @@ export namespace Prisma {
 
   export type SellerCreateWithoutProductInput = {
     id?: string
+    buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSellerInput
-    purchase?: PurchaseCreateNestedManyWithoutSellerInput
-    reservation?: ReservationCreateNestedManyWithoutSellerInput
   }
 
   export type SellerUncheckedCreateWithoutProductInput = {
     id?: string
     userId: string
+    buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutSellerInput
-    reservation?: ReservationUncheckedCreateNestedManyWithoutSellerInput
   }
 
   export type SellerCreateOrConnectWithoutProductInput = {
@@ -25990,22 +26160,38 @@ export namespace Prisma {
 
   export type ReservationCreateWithoutProductInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-    buyer: BuyerCreateNestedOneWithoutReservationInput
-    seller: SellerCreateNestedOneWithoutReservationInput
-  }
-
-  export type ReservationUncheckedCreateWithoutProductInput = {
-    id?: string
+    buyerName?: string
+    sellerName?: string
     buyerId: string
     sellerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    meetTime: Date | string
+    meetTime?: Date | string | null
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     isAccepted?: boolean
+    sellAccept?: boolean
+    buyAccept?: boolean
+  }
+
+  export type ReservationUncheckedCreateWithoutProductInput = {
+    id?: string
+    buyerName?: string
+    sellerName?: string
+    buyerId: string
+    sellerId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetTime?: Date | string | null
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    isAccepted?: boolean
+    sellAccept?: boolean
+    buyAccept?: boolean
   }
 
   export type ReservationCreateOrConnectWithoutProductInput = {
@@ -26196,13 +26382,21 @@ export namespace Prisma {
     OR?: ReservationScalarWhereInput[]
     NOT?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
     id?: StringFilter<"Reservation"> | string
+    buyerName?: StringFilter<"Reservation"> | string
+    sellerName?: StringFilter<"Reservation"> | string
     buyerId?: StringFilter<"Reservation"> | string
     sellerId?: StringFilter<"Reservation"> | string
     productId?: StringFilter<"Reservation"> | string
     createdAt?: DateTimeFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeFilter<"Reservation"> | Date | string
-    meetTime?: DateTimeFilter<"Reservation"> | Date | string
+    meetTime?: DateTimeNullableFilter<"Reservation"> | Date | string | null
+    address?: StringNullableFilter<"Reservation"> | string | null
+    addressDetail?: StringNullableFilter<"Reservation"> | string | null
+    latitude?: FloatNullableFilter<"Reservation"> | number | null
+    longitude?: FloatNullableFilter<"Reservation"> | number | null
     isAccepted?: BoolFilter<"Reservation"> | boolean
+    sellAccept?: BoolFilter<"Reservation"> | boolean
+    buyAccept?: BoolFilter<"Reservation"> | boolean
   }
 
   export type UserCreateWithoutReviewsInput = {
@@ -26277,6 +26471,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -26303,6 +26498,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -26408,6 +26604,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -26434,6 +26631,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -26713,6 +26911,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -26739,6 +26938,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -26844,6 +27044,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -26870,6 +27071,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -26944,9 +27146,16 @@ export namespace Prisma {
     id?: string
     text?: string | null
     image?: string | null
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     sender: UserCreateNestedOneWithoutSendMessagesInput
     receiver: UserCreateNestedOneWithoutReceivedMessagesInput
   }
@@ -26957,9 +27166,16 @@ export namespace Prisma {
     image?: string | null
     senderId: string
     receiverId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type MessageCreateOrConnectWithoutConversationInput = {
@@ -27322,52 +27538,6 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutConversationsNestedInput
   }
 
-  export type BuyerCreateWithoutPurchaseInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutBuyerInput
-    product: ProductCreateNestedOneWithoutByersInput
-    reservation?: ReservationCreateNestedManyWithoutBuyerInput
-  }
-
-  export type BuyerUncheckedCreateWithoutPurchaseInput = {
-    id?: string
-    userId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    reservation?: ReservationUncheckedCreateNestedManyWithoutBuyerInput
-  }
-
-  export type BuyerCreateOrConnectWithoutPurchaseInput = {
-    where: BuyerWhereUniqueInput
-    create: XOR<BuyerCreateWithoutPurchaseInput, BuyerUncheckedCreateWithoutPurchaseInput>
-  }
-
-  export type SellerCreateWithoutPurchaseInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSellerInput
-    product: ProductCreateNestedOneWithoutSellersInput
-    reservation?: ReservationCreateNestedManyWithoutSellerInput
-  }
-
-  export type SellerUncheckedCreateWithoutPurchaseInput = {
-    id?: string
-    userId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    reservation?: ReservationUncheckedCreateNestedManyWithoutSellerInput
-  }
-
-  export type SellerCreateOrConnectWithoutPurchaseInput = {
-    where: SellerWhereUniqueInput
-    create: XOR<SellerCreateWithoutPurchaseInput, SellerUncheckedCreateWithoutPurchaseInput>
-  }
-
   export type ProductCreateWithoutPurchasesInput = {
     id?: string
     title: string
@@ -27381,6 +27551,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -27407,6 +27578,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -27421,64 +27593,6 @@ export namespace Prisma {
   export type ProductCreateOrConnectWithoutPurchasesInput = {
     where: ProductWhereUniqueInput
     create: XOR<ProductCreateWithoutPurchasesInput, ProductUncheckedCreateWithoutPurchasesInput>
-  }
-
-  export type BuyerUpsertWithoutPurchaseInput = {
-    update: XOR<BuyerUpdateWithoutPurchaseInput, BuyerUncheckedUpdateWithoutPurchaseInput>
-    create: XOR<BuyerCreateWithoutPurchaseInput, BuyerUncheckedCreateWithoutPurchaseInput>
-    where?: BuyerWhereInput
-  }
-
-  export type BuyerUpdateToOneWithWhereWithoutPurchaseInput = {
-    where?: BuyerWhereInput
-    data: XOR<BuyerUpdateWithoutPurchaseInput, BuyerUncheckedUpdateWithoutPurchaseInput>
-  }
-
-  export type BuyerUpdateWithoutPurchaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutBuyerNestedInput
-    product?: ProductUpdateOneRequiredWithoutByersNestedInput
-    reservation?: ReservationUpdateManyWithoutBuyerNestedInput
-  }
-
-  export type BuyerUncheckedUpdateWithoutPurchaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    reservation?: ReservationUncheckedUpdateManyWithoutBuyerNestedInput
-  }
-
-  export type SellerUpsertWithoutPurchaseInput = {
-    update: XOR<SellerUpdateWithoutPurchaseInput, SellerUncheckedUpdateWithoutPurchaseInput>
-    create: XOR<SellerCreateWithoutPurchaseInput, SellerUncheckedCreateWithoutPurchaseInput>
-    where?: SellerWhereInput
-  }
-
-  export type SellerUpdateToOneWithWhereWithoutPurchaseInput = {
-    where?: SellerWhereInput
-    data: XOR<SellerUpdateWithoutPurchaseInput, SellerUncheckedUpdateWithoutPurchaseInput>
-  }
-
-  export type SellerUpdateWithoutPurchaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSellerNestedInput
-    product?: ProductUpdateOneRequiredWithoutSellersNestedInput
-    reservation?: ReservationUpdateManyWithoutSellerNestedInput
-  }
-
-  export type SellerUncheckedUpdateWithoutPurchaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    reservation?: ReservationUncheckedUpdateManyWithoutSellerNestedInput
   }
 
   export type ProductUpsertWithoutPurchasesInput = {
@@ -27505,6 +27619,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -27531,6 +27646,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -27540,52 +27656,6 @@ export namespace Prisma {
     byers?: BuyerUncheckedUpdateManyWithoutProductNestedInput
     sellers?: SellerUncheckedUpdateManyWithoutProductNestedInput
     reservations?: ReservationUncheckedUpdateManyWithoutProductNestedInput
-  }
-
-  export type BuyerCreateWithoutReservationInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutBuyerInput
-    product: ProductCreateNestedOneWithoutByersInput
-    purchase?: PurchaseCreateNestedManyWithoutBuyerInput
-  }
-
-  export type BuyerUncheckedCreateWithoutReservationInput = {
-    id?: string
-    userId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutBuyerInput
-  }
-
-  export type BuyerCreateOrConnectWithoutReservationInput = {
-    where: BuyerWhereUniqueInput
-    create: XOR<BuyerCreateWithoutReservationInput, BuyerUncheckedCreateWithoutReservationInput>
-  }
-
-  export type SellerCreateWithoutReservationInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSellerInput
-    product: ProductCreateNestedOneWithoutSellersInput
-    purchase?: PurchaseCreateNestedManyWithoutSellerInput
-  }
-
-  export type SellerUncheckedCreateWithoutReservationInput = {
-    id?: string
-    userId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    purchase?: PurchaseUncheckedCreateNestedManyWithoutSellerInput
-  }
-
-  export type SellerCreateOrConnectWithoutReservationInput = {
-    where: SellerWhereUniqueInput
-    create: XOR<SellerCreateWithoutReservationInput, SellerUncheckedCreateWithoutReservationInput>
   }
 
   export type ProductCreateWithoutReservationsInput = {
@@ -27601,6 +27671,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -27627,6 +27698,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -27641,64 +27713,6 @@ export namespace Prisma {
   export type ProductCreateOrConnectWithoutReservationsInput = {
     where: ProductWhereUniqueInput
     create: XOR<ProductCreateWithoutReservationsInput, ProductUncheckedCreateWithoutReservationsInput>
-  }
-
-  export type BuyerUpsertWithoutReservationInput = {
-    update: XOR<BuyerUpdateWithoutReservationInput, BuyerUncheckedUpdateWithoutReservationInput>
-    create: XOR<BuyerCreateWithoutReservationInput, BuyerUncheckedCreateWithoutReservationInput>
-    where?: BuyerWhereInput
-  }
-
-  export type BuyerUpdateToOneWithWhereWithoutReservationInput = {
-    where?: BuyerWhereInput
-    data: XOR<BuyerUpdateWithoutReservationInput, BuyerUncheckedUpdateWithoutReservationInput>
-  }
-
-  export type BuyerUpdateWithoutReservationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutBuyerNestedInput
-    product?: ProductUpdateOneRequiredWithoutByersNestedInput
-    purchase?: PurchaseUpdateManyWithoutBuyerNestedInput
-  }
-
-  export type BuyerUncheckedUpdateWithoutReservationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutBuyerNestedInput
-  }
-
-  export type SellerUpsertWithoutReservationInput = {
-    update: XOR<SellerUpdateWithoutReservationInput, SellerUncheckedUpdateWithoutReservationInput>
-    create: XOR<SellerCreateWithoutReservationInput, SellerUncheckedCreateWithoutReservationInput>
-    where?: SellerWhereInput
-  }
-
-  export type SellerUpdateToOneWithWhereWithoutReservationInput = {
-    where?: SellerWhereInput
-    data: XOR<SellerUpdateWithoutReservationInput, SellerUncheckedUpdateWithoutReservationInput>
-  }
-
-  export type SellerUpdateWithoutReservationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSellerNestedInput
-    product?: ProductUpdateOneRequiredWithoutSellersNestedInput
-    purchase?: PurchaseUpdateManyWithoutSellerNestedInput
-  }
-
-  export type SellerUncheckedUpdateWithoutReservationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutSellerNestedInput
   }
 
   export type ProductUpsertWithoutReservationsInput = {
@@ -27725,6 +27739,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -27751,6 +27766,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -27834,6 +27850,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -27860,6 +27877,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -27874,62 +27892,6 @@ export namespace Prisma {
   export type ProductCreateOrConnectWithoutByersInput = {
     where: ProductWhereUniqueInput
     create: XOR<ProductCreateWithoutByersInput, ProductUncheckedCreateWithoutByersInput>
-  }
-
-  export type PurchaseCreateWithoutBuyerInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    seller: SellerCreateNestedOneWithoutPurchaseInput
-    product: ProductCreateNestedOneWithoutPurchasesInput
-  }
-
-  export type PurchaseUncheckedCreateWithoutBuyerInput = {
-    id?: string
-    sellerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PurchaseCreateOrConnectWithoutBuyerInput = {
-    where: PurchaseWhereUniqueInput
-    create: XOR<PurchaseCreateWithoutBuyerInput, PurchaseUncheckedCreateWithoutBuyerInput>
-  }
-
-  export type PurchaseCreateManyBuyerInputEnvelope = {
-    data: PurchaseCreateManyBuyerInput | PurchaseCreateManyBuyerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ReservationCreateWithoutBuyerInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-    seller: SellerCreateNestedOneWithoutReservationInput
-    product: ProductCreateNestedOneWithoutReservationsInput
-  }
-
-  export type ReservationUncheckedCreateWithoutBuyerInput = {
-    id?: string
-    sellerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-  }
-
-  export type ReservationCreateOrConnectWithoutBuyerInput = {
-    where: ReservationWhereUniqueInput
-    create: XOR<ReservationCreateWithoutBuyerInput, ReservationUncheckedCreateWithoutBuyerInput>
-  }
-
-  export type ReservationCreateManyBuyerInputEnvelope = {
-    data: ReservationCreateManyBuyerInput | ReservationCreateManyBuyerInput[]
-    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutBuyerInput = {
@@ -28021,6 +27983,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28047,6 +28010,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28056,38 +28020,6 @@ export namespace Prisma {
     purchases?: PurchaseUncheckedUpdateManyWithoutProductNestedInput
     sellers?: SellerUncheckedUpdateManyWithoutProductNestedInput
     reservations?: ReservationUncheckedUpdateManyWithoutProductNestedInput
-  }
-
-  export type PurchaseUpsertWithWhereUniqueWithoutBuyerInput = {
-    where: PurchaseWhereUniqueInput
-    update: XOR<PurchaseUpdateWithoutBuyerInput, PurchaseUncheckedUpdateWithoutBuyerInput>
-    create: XOR<PurchaseCreateWithoutBuyerInput, PurchaseUncheckedCreateWithoutBuyerInput>
-  }
-
-  export type PurchaseUpdateWithWhereUniqueWithoutBuyerInput = {
-    where: PurchaseWhereUniqueInput
-    data: XOR<PurchaseUpdateWithoutBuyerInput, PurchaseUncheckedUpdateWithoutBuyerInput>
-  }
-
-  export type PurchaseUpdateManyWithWhereWithoutBuyerInput = {
-    where: PurchaseScalarWhereInput
-    data: XOR<PurchaseUpdateManyMutationInput, PurchaseUncheckedUpdateManyWithoutBuyerInput>
-  }
-
-  export type ReservationUpsertWithWhereUniqueWithoutBuyerInput = {
-    where: ReservationWhereUniqueInput
-    update: XOR<ReservationUpdateWithoutBuyerInput, ReservationUncheckedUpdateWithoutBuyerInput>
-    create: XOR<ReservationCreateWithoutBuyerInput, ReservationUncheckedCreateWithoutBuyerInput>
-  }
-
-  export type ReservationUpdateWithWhereUniqueWithoutBuyerInput = {
-    where: ReservationWhereUniqueInput
-    data: XOR<ReservationUpdateWithoutBuyerInput, ReservationUncheckedUpdateWithoutBuyerInput>
-  }
-
-  export type ReservationUpdateManyWithWhereWithoutBuyerInput = {
-    where: ReservationScalarWhereInput
-    data: XOR<ReservationUpdateManyMutationInput, ReservationUncheckedUpdateManyWithoutBuyerInput>
   }
 
   export type UserCreateWithoutSellerInput = {
@@ -28162,6 +28094,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -28188,6 +28121,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -28202,62 +28136,6 @@ export namespace Prisma {
   export type ProductCreateOrConnectWithoutSellersInput = {
     where: ProductWhereUniqueInput
     create: XOR<ProductCreateWithoutSellersInput, ProductUncheckedCreateWithoutSellersInput>
-  }
-
-  export type PurchaseCreateWithoutSellerInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    buyer: BuyerCreateNestedOneWithoutPurchaseInput
-    product: ProductCreateNestedOneWithoutPurchasesInput
-  }
-
-  export type PurchaseUncheckedCreateWithoutSellerInput = {
-    id?: string
-    buyerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PurchaseCreateOrConnectWithoutSellerInput = {
-    where: PurchaseWhereUniqueInput
-    create: XOR<PurchaseCreateWithoutSellerInput, PurchaseUncheckedCreateWithoutSellerInput>
-  }
-
-  export type PurchaseCreateManySellerInputEnvelope = {
-    data: PurchaseCreateManySellerInput | PurchaseCreateManySellerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ReservationCreateWithoutSellerInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-    buyer: BuyerCreateNestedOneWithoutReservationInput
-    product: ProductCreateNestedOneWithoutReservationsInput
-  }
-
-  export type ReservationUncheckedCreateWithoutSellerInput = {
-    id?: string
-    buyerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-  }
-
-  export type ReservationCreateOrConnectWithoutSellerInput = {
-    where: ReservationWhereUniqueInput
-    create: XOR<ReservationCreateWithoutSellerInput, ReservationUncheckedCreateWithoutSellerInput>
-  }
-
-  export type ReservationCreateManySellerInputEnvelope = {
-    data: ReservationCreateManySellerInput | ReservationCreateManySellerInput[]
-    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutSellerInput = {
@@ -28349,6 +28227,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28375,6 +28254,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28384,38 +28264,6 @@ export namespace Prisma {
     purchases?: PurchaseUncheckedUpdateManyWithoutProductNestedInput
     byers?: BuyerUncheckedUpdateManyWithoutProductNestedInput
     reservations?: ReservationUncheckedUpdateManyWithoutProductNestedInput
-  }
-
-  export type PurchaseUpsertWithWhereUniqueWithoutSellerInput = {
-    where: PurchaseWhereUniqueInput
-    update: XOR<PurchaseUpdateWithoutSellerInput, PurchaseUncheckedUpdateWithoutSellerInput>
-    create: XOR<PurchaseCreateWithoutSellerInput, PurchaseUncheckedCreateWithoutSellerInput>
-  }
-
-  export type PurchaseUpdateWithWhereUniqueWithoutSellerInput = {
-    where: PurchaseWhereUniqueInput
-    data: XOR<PurchaseUpdateWithoutSellerInput, PurchaseUncheckedUpdateWithoutSellerInput>
-  }
-
-  export type PurchaseUpdateManyWithWhereWithoutSellerInput = {
-    where: PurchaseScalarWhereInput
-    data: XOR<PurchaseUpdateManyMutationInput, PurchaseUncheckedUpdateManyWithoutSellerInput>
-  }
-
-  export type ReservationUpsertWithWhereUniqueWithoutSellerInput = {
-    where: ReservationWhereUniqueInput
-    update: XOR<ReservationUpdateWithoutSellerInput, ReservationUncheckedUpdateWithoutSellerInput>
-    create: XOR<ReservationCreateWithoutSellerInput, ReservationUncheckedCreateWithoutSellerInput>
-  }
-
-  export type ReservationUpdateWithWhereUniqueWithoutSellerInput = {
-    where: ReservationWhereUniqueInput
-    data: XOR<ReservationUpdateWithoutSellerInput, ReservationUncheckedUpdateWithoutSellerInput>
-  }
-
-  export type ReservationUpdateManyWithWhereWithoutSellerInput = {
-    where: ReservationScalarWhereInput
-    data: XOR<ReservationUpdateManyMutationInput, ReservationUncheckedUpdateManyWithoutSellerInput>
   }
 
   export type SessionCreateManyUserInput = {
@@ -28440,6 +28288,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sold?: boolean
+    status?: string | null
     views?: number
     delivery?: boolean
     faceToFace?: boolean
@@ -28497,9 +28346,16 @@ export namespace Prisma {
     image?: string | null
     receiverId: string
     conversationId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type MessageCreateManyReceiverInput = {
@@ -28508,9 +28364,16 @@ export namespace Prisma {
     image?: string | null
     senderId: string
     conversationId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type ReviewCreateManyUserInput = {
@@ -28527,13 +28390,16 @@ export namespace Prisma {
 
   export type BuyerCreateManyUserInput = {
     id?: string
+    sellerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    isReviewed?: boolean
   }
 
   export type SellerCreateManyUserInput = {
     id?: string
+    buyerName?: string
     productId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28579,6 +28445,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28604,6 +28471,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28629,6 +28497,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sold?: BoolFieldUpdateOperationsInput | boolean
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     delivery?: BoolFieldUpdateOperationsInput | boolean
     faceToFace?: BoolFieldUpdateOperationsInput | boolean
@@ -28803,9 +28672,16 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     receiver?: UserUpdateOneRequiredWithoutReceivedMessagesNestedInput
     conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
   }
@@ -28816,9 +28692,16 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     receiverId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MessageUncheckedUpdateManyWithoutSenderInput = {
@@ -28827,18 +28710,32 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     receiverId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MessageUpdateWithoutReceiverInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     sender?: UserUpdateOneRequiredWithoutSendMessagesNestedInput
     conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
   }
@@ -28849,9 +28746,16 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MessageUncheckedUpdateManyWithoutReceiverInput = {
@@ -28860,9 +28764,16 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ReviewUpdateWithoutUserInput = {
@@ -28903,49 +28814,50 @@ export namespace Prisma {
 
   export type BuyerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
     product?: ProductUpdateOneRequiredWithoutByersNestedInput
-    purchase?: PurchaseUpdateManyWithoutBuyerNestedInput
-    reservation?: ReservationUpdateManyWithoutBuyerNestedInput
   }
 
   export type BuyerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutBuyerNestedInput
-    reservation?: ReservationUncheckedUpdateManyWithoutBuyerNestedInput
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type BuyerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SellerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductUpdateOneRequiredWithoutSellersNestedInput
-    purchase?: PurchaseUpdateManyWithoutSellerNestedInput
-    reservation?: ReservationUpdateManyWithoutSellerNestedInput
   }
 
   export type SellerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutSellerNestedInput
-    reservation?: ReservationUncheckedUpdateManyWithoutSellerNestedInput
   }
 
   export type SellerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29031,25 +28943,36 @@ export namespace Prisma {
   export type BuyerCreateManyProductInput = {
     id?: string
     userId: string
+    sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    isReviewed?: boolean
   }
 
   export type SellerCreateManyProductInput = {
     id?: string
     userId: string
+    buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ReservationCreateManyProductInput = {
     id?: string
+    buyerName?: string
+    sellerName?: string
     buyerId: string
     sellerId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    meetTime: Date | string
+    meetTime?: Date | string | null
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
     isAccepted?: boolean
+    sellAccept?: boolean
+    buyAccept?: boolean
   }
 
   export type ViewdProductStoreUpdateWithoutProductInput = {
@@ -29108,10 +29031,10 @@ export namespace Prisma {
 
   export type PurchaseUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    buyer?: BuyerUpdateOneRequiredWithoutPurchaseNestedInput
-    seller?: SellerUpdateOneRequiredWithoutPurchaseNestedInput
   }
 
   export type PurchaseUncheckedUpdateWithoutProductInput = {
@@ -29132,82 +29055,107 @@ export namespace Prisma {
 
   export type BuyerUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutBuyerNestedInput
-    purchase?: PurchaseUpdateManyWithoutBuyerNestedInput
-    reservation?: ReservationUpdateManyWithoutBuyerNestedInput
   }
 
   export type BuyerUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutBuyerNestedInput
-    reservation?: ReservationUncheckedUpdateManyWithoutBuyerNestedInput
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type BuyerUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isReviewed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SellerUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSellerNestedInput
-    purchase?: PurchaseUpdateManyWithoutSellerNestedInput
-    reservation?: ReservationUpdateManyWithoutSellerNestedInput
   }
 
   export type SellerUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    purchase?: PurchaseUncheckedUpdateManyWithoutSellerNestedInput
-    reservation?: ReservationUncheckedUpdateManyWithoutSellerNestedInput
   }
 
   export type SellerUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReservationUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
-    buyer?: BuyerUpdateOneRequiredWithoutReservationNestedInput
-    seller?: SellerUpdateOneRequiredWithoutReservationNestedInput
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReservationUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReservationUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     isAccepted?: BoolFieldUpdateOperationsInput | boolean
+    sellAccept?: BoolFieldUpdateOperationsInput | boolean
+    buyAccept?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MessageCreateManyConversationInput = {
@@ -29216,9 +29164,16 @@ export namespace Prisma {
     image?: string | null
     senderId: string
     receiverId: string
+    productId?: string | null
     isRead?: boolean
+    messageType?: string | null
+    isAccepted?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: string | null
+    addressDetail?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type UserUpdateWithoutConversationsInput = {
@@ -29294,9 +29249,16 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     sender?: UserUpdateOneRequiredWithoutSendMessagesNestedInput
     receiver?: UserUpdateOneRequiredWithoutReceivedMessagesNestedInput
   }
@@ -29307,9 +29269,16 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MessageUncheckedUpdateManyWithoutConversationInput = {
@@ -29318,153 +29287,16 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
+    messageType?: NullableStringFieldUpdateOperationsInput | string | null
+    isAccepted?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PurchaseCreateManyBuyerInput = {
-    id?: string
-    sellerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ReservationCreateManyBuyerInput = {
-    id?: string
-    sellerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-  }
-
-  export type PurchaseUpdateWithoutBuyerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    seller?: SellerUpdateOneRequiredWithoutPurchaseNestedInput
-    product?: ProductUpdateOneRequiredWithoutPurchasesNestedInput
-  }
-
-  export type PurchaseUncheckedUpdateWithoutBuyerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sellerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PurchaseUncheckedUpdateManyWithoutBuyerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sellerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ReservationUpdateWithoutBuyerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    isAccepted?: BoolFieldUpdateOperationsInput | boolean
-    seller?: SellerUpdateOneRequiredWithoutReservationNestedInput
-    product?: ProductUpdateOneRequiredWithoutReservationsNestedInput
-  }
-
-  export type ReservationUncheckedUpdateWithoutBuyerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sellerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    isAccepted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ReservationUncheckedUpdateManyWithoutBuyerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sellerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    isAccepted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type PurchaseCreateManySellerInput = {
-    id?: string
-    buyerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ReservationCreateManySellerInput = {
-    id?: string
-    buyerId: string
-    productId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetTime: Date | string
-    isAccepted?: boolean
-  }
-
-  export type PurchaseUpdateWithoutSellerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    buyer?: BuyerUpdateOneRequiredWithoutPurchaseNestedInput
-    product?: ProductUpdateOneRequiredWithoutPurchasesNestedInput
-  }
-
-  export type PurchaseUncheckedUpdateWithoutSellerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    buyerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PurchaseUncheckedUpdateManyWithoutSellerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    buyerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ReservationUpdateWithoutSellerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    isAccepted?: BoolFieldUpdateOperationsInput | boolean
-    buyer?: BuyerUpdateOneRequiredWithoutReservationNestedInput
-    product?: ProductUpdateOneRequiredWithoutReservationsNestedInput
-  }
-
-  export type ReservationUncheckedUpdateWithoutSellerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    buyerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    isAccepted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ReservationUncheckedUpdateManyWithoutSellerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    buyerId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    isAccepted?: BoolFieldUpdateOperationsInput | boolean
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    addressDetail?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
 
@@ -29488,14 +29320,6 @@ export namespace Prisma {
      * @deprecated Use ConversationCountOutputTypeDefaultArgs instead
      */
     export type ConversationCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ConversationCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use BuyerCountOutputTypeDefaultArgs instead
-     */
-    export type BuyerCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = BuyerCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use SellerCountOutputTypeDefaultArgs instead
-     */
-    export type SellerCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = SellerCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */

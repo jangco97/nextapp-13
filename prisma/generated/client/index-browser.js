@@ -191,6 +191,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   sold: 'sold',
+  status: 'status',
   views: 'views',
   delivery: 'delivery',
   faceToFace: 'faceToFace',
@@ -239,9 +240,16 @@ exports.Prisma.MessageScalarFieldEnum = {
   senderId: 'senderId',
   receiverId: 'receiverId',
   conversationId: 'conversationId',
+  productId: 'productId',
   isRead: 'isRead',
+  messageType: 'messageType',
+  isAccepted: 'isAccepted',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  address: 'address',
+  addressDetail: 'addressDetail',
+  latitude: 'latitude',
+  longitude: 'longitude'
 };
 
 exports.Prisma.PurchaseScalarFieldEnum = {
@@ -255,26 +263,37 @@ exports.Prisma.PurchaseScalarFieldEnum = {
 
 exports.Prisma.ReservationScalarFieldEnum = {
   id: 'id',
+  buyerName: 'buyerName',
+  sellerName: 'sellerName',
   buyerId: 'buyerId',
   sellerId: 'sellerId',
   productId: 'productId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   meetTime: 'meetTime',
-  isAccepted: 'isAccepted'
+  address: 'address',
+  addressDetail: 'addressDetail',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  isAccepted: 'isAccepted',
+  sellAccept: 'sellAccept',
+  buyAccept: 'buyAccept'
 };
 
 exports.Prisma.BuyerScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  sellerName: 'sellerName',
   productId: 'productId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isReviewed: 'isReviewed'
 };
 
 exports.Prisma.SellerScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  buyerName: 'buyerName',
   productId: 'productId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

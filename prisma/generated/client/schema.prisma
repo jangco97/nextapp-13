@@ -127,6 +127,7 @@ model Product {
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
   sold              Boolean             @default(false)
+  status            String?             @default("판매중")
   views             Int                 @default(0)
   delivery          Boolean             @default(true)
   faceToFace        Boolean             @default(true)
@@ -190,9 +191,16 @@ model Message {
   senderId       String
   receiverId     String
   conversationId String
+  productId      String?      @default("")
   isRead         Boolean      @default(false)
+  messageType    String?      @default("text")
+  isAccepted     Int?         @default(0)
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
+  address        String?      @default("")
+  addressDetail  String?      @default("")
+  latitude       Float?       @default(0)
+  longitude      Float?       @default(0)
   sender         User         @relation(name: "sender", fields: [senderId], references: [id])
   receiver       User         @relation(name: "receiver", fields: [receiverId], references: [id])
   conversation   Conversation @relation(fields: [conversationId], references: [id])
@@ -205,45 +213,48 @@ model Purchase {
   productId String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  buyer     Buyer    @relation(fields: [buyerId], references: [id])
-  seller    Seller   @relation(fields: [sellerId], references: [id])
   product   Product  @relation(fields: [productId], references: [id])
 }
 
 model Reservation {
-  id         String   @id @default(cuid())
-  buyerId    String
-  sellerId   String
-  productId  String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  meetTime   DateTime
-  isAccepted Boolean  @default(false)
-  buyer      Buyer    @relation(fields: [buyerId], references: [id])
-  seller     Seller   @relation(fields: [sellerId], references: [id])
-  product    Product  @relation(fields: [productId], references: [id])
+  id            String    @id @default(cuid())
+  buyerName     String    @default("")
+  sellerName    String    @default("")
+  buyerId       String
+  sellerId      String
+  productId     String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  meetTime      DateTime?
+  address       String?   @default("")
+  addressDetail String?   @default("")
+  latitude      Float?    @default(0)
+  longitude     Float?    @default(0)
+  isAccepted    Boolean   @default(false)
+  sellAccept    Boolean   @default(false)
+  buyAccept     Boolean   @default(false)
+  product       Product   @relation(fields: [productId], references: [id])
 }
 
 model Buyer {
-  id          String        @id @default(cuid())
-  userId      String
-  productId   String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  user        User          @relation(fields: [userId], references: [id])
-  product     Product       @relation(fields: [productId], references: [id])
-  purchase    Purchase[]
-  reservation Reservation[]
+  id         String   @id @default(cuid())
+  userId     String
+  sellerName String   @default("")
+  productId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isReviewed Boolean  @default(false)
+  user       User     @relation(fields: [userId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
 }
 
 model Seller {
-  id          String        @id @default(cuid())
-  userId      String
-  productId   String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  user        User          @relation(fields: [userId], references: [id])
-  product     Product       @relation(fields: [productId], references: [id])
-  purchase    Purchase[]
-  reservation Reservation[]
+  id        String   @id @default(cuid())
+  userId    String
+  buyerName String   @default("")
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
 }
