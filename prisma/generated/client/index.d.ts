@@ -13779,6 +13779,7 @@ export namespace Prisma {
   export type MessageMinAggregateOutputType = {
     id: string | null
     text: string | null
+    productTitle: string | null
     image: string | null
     senderId: string | null
     receiverId: string | null
@@ -13798,6 +13799,7 @@ export namespace Prisma {
   export type MessageMaxAggregateOutputType = {
     id: string | null
     text: string | null
+    productTitle: string | null
     image: string | null
     senderId: string | null
     receiverId: string | null
@@ -13817,6 +13819,7 @@ export namespace Prisma {
   export type MessageCountAggregateOutputType = {
     id: number
     text: number
+    productTitle: number
     image: number
     senderId: number
     receiverId: number
@@ -13850,6 +13853,7 @@ export namespace Prisma {
   export type MessageMinAggregateInputType = {
     id?: true
     text?: true
+    productTitle?: true
     image?: true
     senderId?: true
     receiverId?: true
@@ -13869,6 +13873,7 @@ export namespace Prisma {
   export type MessageMaxAggregateInputType = {
     id?: true
     text?: true
+    productTitle?: true
     image?: true
     senderId?: true
     receiverId?: true
@@ -13888,6 +13893,7 @@ export namespace Prisma {
   export type MessageCountAggregateInputType = {
     id?: true
     text?: true
+    productTitle?: true
     image?: true
     senderId?: true
     receiverId?: true
@@ -13994,6 +14000,7 @@ export namespace Prisma {
   export type MessageGroupByOutputType = {
     id: string
     text: string | null
+    productTitle: string | null
     image: string | null
     senderId: string
     receiverId: string
@@ -14032,6 +14039,7 @@ export namespace Prisma {
   export type MessageSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
+    productTitle?: boolean
     image?: boolean
     senderId?: boolean
     receiverId?: boolean
@@ -14054,6 +14062,7 @@ export namespace Prisma {
   export type MessageSelectScalar = {
     id?: boolean
     text?: boolean
+    productTitle?: boolean
     image?: boolean
     senderId?: boolean
     receiverId?: boolean
@@ -14087,6 +14096,7 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       id: string
       text: string | null
+      productTitle: string | null
       image: string | null
       senderId: string
       receiverId: string
@@ -14502,6 +14512,7 @@ export namespace Prisma {
   interface MessageFieldRefs {
     readonly id: FieldRef<"Message", 'String'>
     readonly text: FieldRef<"Message", 'String'>
+    readonly productTitle: FieldRef<"Message", 'String'>
     readonly image: FieldRef<"Message", 'String'>
     readonly senderId: FieldRef<"Message", 'String'>
     readonly receiverId: FieldRef<"Message", 'String'>
@@ -18904,6 +18915,7 @@ export namespace Prisma {
   export const MessageScalarFieldEnum: {
     id: 'id',
     text: 'text',
+    productTitle: 'productTitle',
     image: 'image',
     senderId: 'senderId',
     receiverId: 'receiverId',
@@ -19978,6 +19990,7 @@ export namespace Prisma {
     NOT?: MessageWhereInput | MessageWhereInput[]
     id?: StringFilter<"Message"> | string
     text?: StringNullableFilter<"Message"> | string | null
+    productTitle?: StringNullableFilter<"Message"> | string | null
     image?: StringNullableFilter<"Message"> | string | null
     senderId?: StringFilter<"Message"> | string
     receiverId?: StringFilter<"Message"> | string
@@ -20000,6 +20013,7 @@ export namespace Prisma {
   export type MessageOrderByWithRelationInput = {
     id?: SortOrder
     text?: SortOrderInput | SortOrder
+    productTitle?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
@@ -20025,6 +20039,7 @@ export namespace Prisma {
     OR?: MessageWhereInput[]
     NOT?: MessageWhereInput | MessageWhereInput[]
     text?: StringNullableFilter<"Message"> | string | null
+    productTitle?: StringNullableFilter<"Message"> | string | null
     image?: StringNullableFilter<"Message"> | string | null
     senderId?: StringFilter<"Message"> | string
     receiverId?: StringFilter<"Message"> | string
@@ -20047,6 +20062,7 @@ export namespace Prisma {
   export type MessageOrderByWithAggregationInput = {
     id?: SortOrder
     text?: SortOrderInput | SortOrder
+    productTitle?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
@@ -20074,6 +20090,7 @@ export namespace Prisma {
     NOT?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Message"> | string
     text?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    productTitle?: StringNullableWithAggregatesFilter<"Message"> | string | null
     image?: StringNullableWithAggregatesFilter<"Message"> | string | null
     senderId?: StringWithAggregatesFilter<"Message"> | string
     receiverId?: StringWithAggregatesFilter<"Message"> | string
@@ -21355,6 +21372,7 @@ export namespace Prisma {
   export type MessageCreateInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     productId?: string | null
     isRead?: boolean
@@ -21374,6 +21392,7 @@ export namespace Prisma {
   export type MessageUncheckedCreateInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     senderId: string
     receiverId: string
@@ -21393,6 +21412,7 @@ export namespace Prisma {
   export type MessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
@@ -21412,6 +21432,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
@@ -21431,6 +21452,7 @@ export namespace Prisma {
   export type MessageCreateManyInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     senderId: string
     receiverId: string
@@ -21450,6 +21472,7 @@ export namespace Prisma {
   export type MessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
@@ -21466,6 +21489,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
@@ -22694,6 +22718,7 @@ export namespace Prisma {
   export type MessageCountOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
+    productTitle?: SortOrder
     image?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
@@ -22719,6 +22744,7 @@ export namespace Prisma {
   export type MessageMaxOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
+    productTitle?: SortOrder
     image?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
@@ -22738,6 +22764,7 @@ export namespace Prisma {
   export type MessageMinOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
+    productTitle?: SortOrder
     image?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
@@ -24757,6 +24784,7 @@ export namespace Prisma {
   export type MessageCreateWithoutSenderInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     productId?: string | null
     isRead?: boolean
@@ -24775,6 +24803,7 @@ export namespace Prisma {
   export type MessageUncheckedCreateWithoutSenderInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     receiverId: string
     conversationId: string
@@ -24803,6 +24832,7 @@ export namespace Prisma {
   export type MessageCreateWithoutReceiverInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     productId?: string | null
     isRead?: boolean
@@ -24821,6 +24851,7 @@ export namespace Prisma {
   export type MessageUncheckedCreateWithoutReceiverInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     senderId: string
     conversationId: string
@@ -25197,6 +25228,7 @@ export namespace Prisma {
     NOT?: MessageScalarWhereInput | MessageScalarWhereInput[]
     id?: StringFilter<"Message"> | string
     text?: StringNullableFilter<"Message"> | string | null
+    productTitle?: StringNullableFilter<"Message"> | string | null
     image?: StringNullableFilter<"Message"> | string | null
     senderId?: StringFilter<"Message"> | string
     receiverId?: StringFilter<"Message"> | string
@@ -27145,6 +27177,7 @@ export namespace Prisma {
   export type MessageCreateWithoutConversationInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     productId?: string | null
     isRead?: boolean
@@ -27163,6 +27196,7 @@ export namespace Prisma {
   export type MessageUncheckedCreateWithoutConversationInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     senderId: string
     receiverId: string
@@ -28343,6 +28377,7 @@ export namespace Prisma {
   export type MessageCreateManySenderInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     receiverId: string
     conversationId: string
@@ -28361,6 +28396,7 @@ export namespace Prisma {
   export type MessageCreateManyReceiverInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     senderId: string
     conversationId: string
@@ -28671,6 +28707,7 @@ export namespace Prisma {
   export type MessageUpdateWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
@@ -28689,6 +28726,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     receiverId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
@@ -28707,6 +28745,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateManyWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     receiverId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
@@ -28725,6 +28764,7 @@ export namespace Prisma {
   export type MessageUpdateWithoutReceiverInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
@@ -28743,6 +28783,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateWithoutReceiverInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
@@ -28761,6 +28802,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateManyWithoutReceiverInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
@@ -29161,6 +29203,7 @@ export namespace Prisma {
   export type MessageCreateManyConversationInput = {
     id?: string
     text?: string | null
+    productTitle?: string | null
     image?: string | null
     senderId: string
     receiverId: string
@@ -29248,6 +29291,7 @@ export namespace Prisma {
   export type MessageUpdateWithoutConversationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: NullableStringFieldUpdateOperationsInput | string | null
     isRead?: BoolFieldUpdateOperationsInput | boolean
@@ -29266,6 +29310,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateWithoutConversationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
@@ -29284,6 +29329,7 @@ export namespace Prisma {
   export type MessageUncheckedUpdateManyWithoutConversationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string

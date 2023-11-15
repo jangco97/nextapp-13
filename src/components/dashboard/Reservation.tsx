@@ -72,6 +72,7 @@ const Reservation = ({
                     sellerId={reservation?.sellerId}
                     reservationType={reservationType}
                     productId={reservation?.productId}
+                    productTitle={reservation?.product?.title}
                   />
                 </div>
               </div>

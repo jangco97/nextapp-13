@@ -53,7 +53,7 @@ const Contacts = ({
       <h1 className="m-4 text-2xl font-semibold">채팅</h1>
       <hr />
       <div className="flex flex-col">
-        {users.length > 0 &&
+        {users?.length > 0 &&
           users
             .filter((user) => user.id !== currentUser?.id)
             .map((user) => {

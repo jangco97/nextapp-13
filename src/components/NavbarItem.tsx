@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 const NavbarItem = ({
-  session,
+  currentUser,
   data,
   chatData,
 }: {
-  session: any;
+  currentUser: any;
   data: any;
   chatData: any;
 }) => {
@@ -17,6 +17,7 @@ const NavbarItem = ({
   const unReadMessage = chatData?.receivedMessages?.filter(
     (message: any) => message.isRead === false
   );
+
   return (
     <ul
       className={`flex text-md flex-col ml-5 items-start md:mr-2 md:flex-row md:justify-center md:gap-4 md:w-full md:items-center  `}
@@ -46,7 +47,7 @@ const NavbarItem = ({
           {unReadMessage?.length}
         </div>
       </li>
-      {session ? (
+      {currentUser?.id ? (
         <li className="py-2 text-center border-b-4 cursor-pointer">
           <button onClick={() => signOut()}>LogOut</button>
         </li>

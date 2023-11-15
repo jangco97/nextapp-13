@@ -37,6 +37,7 @@ const LoginPage = () => {
         if (callback?.ok && !callback?.error) {
           toast.success("Login success");
           router.push("/");
+          router.refresh();
         }
       })
       .finally(() => setIsLoading(false));

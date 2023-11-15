@@ -20,6 +20,7 @@ interface MessageProps {
   addressDetail?: string | null;
   latitude?: number | null;
   longitude?: number | null;
+  productTitle?: string | null;
 }
 const Message = async ({
   isSender,
@@ -39,6 +40,7 @@ const Message = async ({
   addressDetail,
   latitude,
   longitude,
+  productTitle,
 }: MessageProps) => {
   const patchAccepted = async (num: number) => {
     await fetch(`/api/chat`, {
@@ -82,7 +84,7 @@ const Message = async ({
         </div>
         {messageType === "reservation" && (
           <div className="flex items-center gap-2 mb-2 text-sm">
-            <div className="flex flex-col items-center p-10 border-solid border-2 border-indigo-600 rounded-xl">
+            <div className="flex flex-col items-center p-10 ">
               {messageImage && (
                 <div className="rounded-full mx-p[0.6rem] max-w-[80%] mb-5">
                   <Image src={messageImage} width={200} height={200} alt="" />
@@ -129,7 +131,7 @@ const Message = async ({
         )}
         {messageType === "cancelReservation" && (
           <div className="flex items-center gap-2 mb-2 text-sm">
-            <div className="flex flex-col items-center p-10 border-solid border-2 border-indigo-600 rounded-xl">
+            <div className="flex flex-col items-center p-10 ">
               <div
                 className={`p-2 break-all text-white rounded-lg ${
                   isSender
@@ -138,14 +140,16 @@ const Message = async ({
                 }`}
               >
                 <p className="text-center text-xl">{messageText}</p>
-                <p>해당 상품에 대한 예약 구매 요청이 취소되었습니다</p>
+                <p>
+                  {productTitle} 상품에 대한 예약 구매 요청이 취소되었습니다
+                </p>
               </div>
             </div>
           </div>
         )}
         {messageType === "meetTime" && (
           <div className="flex items-center gap-2 mb-2 text-sm">
-            <div className="flex flex-col items-center p-10 border-solid border-2 border-indigo-600 rounded-xl">
+            <div className="flex flex-col items-center p-10 border-solid border-2 border-slate-600 rounded-xl">
               <div
                 className={`p-2 break-all text-white rounded-lg ${
                   isSender

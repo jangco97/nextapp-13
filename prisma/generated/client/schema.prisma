@@ -187,6 +187,7 @@ model Conversation {
 model Message {
   id             String       @id @default(cuid())
   text           String?
+  productTitle   String?      @default("")
   image          String?
   senderId       String
   receiverId     String

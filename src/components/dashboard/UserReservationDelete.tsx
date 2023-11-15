@@ -7,6 +7,7 @@ interface ReservationDelete {
   sellerId: string;
   reservationType: string;
   productId: string;
+  productTitle: string;
 }
 
 const UserReservationDelete = ({
@@ -15,6 +16,7 @@ const UserReservationDelete = ({
   sellerId,
   reservationType,
   productId,
+  productTitle,
 }: ReservationDelete) => {
   async function sendRequest(
     url: string,
@@ -27,6 +29,7 @@ const UserReservationDelete = ({
         senderId: string;
         productId: string;
         messageType: string;
+        productTitle: string;
       };
     }
   ) {
@@ -57,10 +60,11 @@ const UserReservationDelete = ({
     try {
       trigger({
         text: "예약이 취소되었습니다.",
-        receiverId: `${reservationType === "구매예약" ? buyerId : sellerId}`,
-        senderId: `${reservationType === "구매예약" ? sellerId : buyerId}`,
+        receiverId: `${reservationType === "구매예약" ? sellerId : buyerId}`,
+        senderId: `${reservationType === "구매예약" ? buyerId : sellerId}`,
         productId: productId,
         messageType: "cancelReservation",
+        productTitle: productTitle,
       });
     } catch (error: any) {
       console.error(error);

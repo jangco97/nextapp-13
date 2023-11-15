@@ -68,6 +68,7 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
                 addressDetail={message?.addressDetail}
                 latitude={message?.latitude}
                 longitude={message?.longitude}
+                productTitle={message?.productTitle}
               />
             );
           })}
