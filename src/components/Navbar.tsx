@@ -93,7 +93,7 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
         </form>
       </div>
       <div className="hidden md:block">
-        <NavbarItem currentUser={currentUser} data={data} chatData={chatData} />
+        <NavbarItem session={session} data={data} chatData={chatData} />
       </div>
     </nav>
   );

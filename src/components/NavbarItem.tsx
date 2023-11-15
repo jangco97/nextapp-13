@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 const NavbarItem = ({
-  currentUser,
+  session,
   data,
   chatData,
 }: {
-  currentUser: any;
+  session: any;
   data: any;
   chatData: any;
 }) => {
@@ -47,7 +47,7 @@ const NavbarItem = ({
           {unReadMessage?.length}
         </div>
       </li>
-      {currentUser?.id ? (
+      {session?.data ? (
         <li className="py-2 text-center border-b-4 cursor-pointer">
           <button onClick={() => signOut()}>LogOut</button>
         </li>
