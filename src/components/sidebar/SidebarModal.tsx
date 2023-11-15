@@ -29,7 +29,7 @@ const SidebarModal = ({ session }: { session: any }) => {
   });
   return (
     <div
-      className={`fixed top-[75px] h-[calc(100vh-75px)] w-[208.3px] bg-gray-200 transition-transform duration-300 ease-in-out z-20 overflow-auto ${
+      className={`fixed top-[75px] h-[calc(100vh-75px)] w-[208.3px]  bg-gradient-to-r from-gray-400 via-gray-300 to-gray-200/90 transition-transform duration-300 ease-in-out z-20 overflow-auto ${
         state.isSidebarOpen ? "" : "-translate-x-full"
       }`}
       onClick={(e) => e.stopPropagation()}

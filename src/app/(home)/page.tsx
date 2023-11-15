@@ -9,7 +9,6 @@ import Categories from "@/components/categories/Categories";
 import Pagination from "@/components/Pagination";
 import { Product } from "../../../prisma/generated/client";
 import { PRODUCTS_PER_PAGE } from "@/constants";
-import Bottom from "@/components/bottom/Bottom";
 
 interface HomeProps {
   searchParams: ProductParams;
@@ -56,7 +55,6 @@ export default async function Home({ searchParams }: HomeProps) {
           perPage={PRODUCTS_PER_PAGE}
         />
         <FloatingButton href={"/products/upload"}>+</FloatingButton>
-        <Bottom />
       </Container>
     </>
   );

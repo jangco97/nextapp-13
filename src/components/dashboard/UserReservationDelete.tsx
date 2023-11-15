@@ -78,10 +78,12 @@ const UserReservationDelete = ({
   return (
     <div>
       <button
-        className="w-4/12 p-2 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
+        className="m-4 p-1 rounded-full bg-gradient-to-r from-rose-400 via-red-500 to-indigo-500"
         onClick={handleCancelClick}
       >
-        예약취소
+        <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+          예약취소
+        </span>
       </button>
     </div>
   );

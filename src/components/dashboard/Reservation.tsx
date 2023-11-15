@@ -7,6 +7,7 @@ import ko from "date-fns/locale/ko";
 import UserPurchase from "./UserPurchase";
 import NothingComponents from "../NothingComponents";
 import UserReservationDelete from "./UserReservationDelete";
+import { XMarkIcon } from "@heroicons/react/20/solid";
 interface ReservationType {
   products: any;
   setMeetTime: any;
@@ -53,10 +54,10 @@ const Reservation = ({
         {products?.map((reservation: any) => (
           <div
             key={reservation.id}
-            className="border-slate-500 border-2 p-1 rounded-xl  bg-indigo-300/40"
+            className=" border-rose-500/40 border-4 p-2 rounded-xl bg-gradient-to-r from-indigo-400/60 via-indigo-500/70 to-indigo-600/75"
           >
-            <div className="flex flex-col md:w-full md:grid md:grid-cols-6 md:items-center">
-              <div>
+            <div className="flex flex-col md:w-full md:grid md:grid-cols-6 md:items-center text-neutral-600 font-bold">
+              <div className="relative">
                 <Image
                   src={reservation.product?.imageSrc[0]}
                   width={100}
@@ -64,66 +65,77 @@ const Reservation = ({
                   className="object-cover rounded-xl"
                   alt="productImage"
                 />
+                <div className="absolute right-1 top-1">
+                  <UserReservationDelete
+                    reservationId={reservation?.id}
+                    buyerId={reservation?.buyerId}
+                    sellerId={reservation?.sellerId}
+                    reservationType={reservationType}
+                    productId={reservation?.productId}
+                  />
+                </div>
               </div>
               {reservationType === "구매예약" && (
-                <div>
-                  <span className=" text-slate-500">판매자:</span>
-                  <span className=" text-emerald-800">
-                    {reservation.sellerName}
-                  </span>
+                <div className="text-white">
+                  <span>판매자:</span>
+                  <span>{reservation.sellerName}</span>
                 </div>
               )}
               {reservationType === "판매예약" && (
-                <div>
-                  <span className=" text-slate-500">구매자:</span>
-                  <span className=" text-emerald-800">
-                    {reservation.buyerName}
-                  </span>
+                <div className=" ">
+                  <span>구매자:</span>
+                  <span>{reservation.buyerName}</span>
                 </div>
               )}
               <div>
-                <span className=" text-slate-500">상품명:</span>
-                <span className=" text-emerald-800">
-                  {reservation.product?.title}
-                </span>
+                <span>상품명:</span>
+                <span>{reservation.product?.title}</span>
               </div>
               <div>
-                <span className=" text-slate-500">가격:</span>
-                <span className=" text-emerald-800">
-                  {reservation.product?.price}
-                </span>
+                <span>가격:</span>
+                <span>{reservation.product?.price}</span>
               </div>
 
               <div>
                 <div>
-                  <span className=" text-slate-500">주소:</span>
-                  <span className="text-emerald-800">
-                    {reservation?.address}
-                  </span>
+                  <span>주소:</span>
+                  <span>{reservation?.address}</span>
                 </div>
                 <div>
-                  <span className=" text-slate-500">상세주소:</span>
-                  <span className="text-emerald-800">
-                    {reservation?.addressDetail}
-                  </span>
+                  <span>상세주소:</span>
+                  <span>{reservation?.addressDetail}</span>
+                  <div className="flex justify-around">
+                    {" "}
+                    <button className="m-4 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+                      <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+                        <a
+                          href={`https://map.kakao.com/link/map/${reservation?.address},${reservation?.latitude},${reservation?.longitude}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          지도보기
+                        </a>
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <span className=" text-slate-500">직거래 시간:</span>
-                <span className="text-emerald-800">
+              <div className=" text-neutral-700">
+                <span>직거래 시간:</span>
+                <span>
                   {reservation?.meetTime
                     ? formatTime(reservation?.meetTime)
                     : "시간이 정해지지 않았습니다."}
                 </span>
               </div>
               {currentUser?.id === reservation?.sellerId && (
-                <section className="border-2 border-slate-500 p-1  md:border-none">
+                <section className="border-2 border-indigo-500 rounded-lg p-1  md:border-none">
                   {" "}
-                  <div className="text-sm flex justify-center text-slate text-bold">
+                  <div className="text-md flex justify-center text-white font-bold">
                     아래 날짜를 클릭해 거래 시간을 정하세요.
                   </div>
-                  <div className="flex items-center md:flex-col md:items-start">
+                  <div className="flex items-center justify-center md:flex-col md:items-start">
                     {" "}
                     <div>
                       <DatePicker
@@ -139,13 +151,13 @@ const Reservation = ({
                         }
                         minDate={new Date()}
                         customInput={
-                          <input className=" border-indigo-500 border-2 rounded-xl p-1 text-white bg-slate-500 text-sm" />
+                          <input className="text-white m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
                         }
                       />
                     </div>
                     <div>
                       <button
-                        className="mr-2 border-2 text-white bg-indigo-400 rounded-xl p-2 text-sm"
+                        className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
                         onClick={() =>
                           setMeetTime(
                             reservation?.id,
@@ -159,19 +171,10 @@ const Reservation = ({
                           )
                         }
                       >
-                        시간변경
-                      </button>
-                    </div>
-                    <div>
-                      {" "}
-                      <button className=" w-4/12 p-2 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center">
-                        <a
-                          href={`https://map.kakao.com/link/map/${reservation?.address},${reservation?.latitude},${reservation?.longitude}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          큰지도보기
-                        </a>
+                        <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+                          {" "}
+                          시간변경
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -179,30 +182,22 @@ const Reservation = ({
               )}
             </div>
             {/* 예약 취소 */}
-            <div>
-              <UserReservationDelete
-                reservationId={reservation?.id}
-                buyerId={reservation?.buyerId}
-                sellerId={reservation?.sellerId}
-                reservationType={reservationType}
-                productId={reservation?.productId}
-              />
+            <div className="flex flex-col">
+              <div>
+                {reservation?.meetTime && (
+                  <UserPurchase
+                    meetTime={new Date(reservation?.meetTime)}
+                    reservationType={reservationType}
+                    buyerId={reservation?.buyerId}
+                    sellerId={reservation?.sellerId}
+                    reservationId={reservation?.id}
+                    productId={reservation?.productId}
+                    sellerName={reservation?.sellerName}
+                    buyerName={reservation?.buyerName}
+                  />
+                )}
+              </div>
             </div>
-            <div>
-              {reservation?.meetTime && (
-                <UserPurchase
-                  meetTime={new Date(reservation?.meetTime)}
-                  reservationType={reservationType}
-                  buyerId={reservation?.buyerId}
-                  sellerId={reservation?.sellerId}
-                  reservationId={reservation?.id}
-                  productId={reservation?.productId}
-                  sellerName={reservation?.sellerName}
-                  buyerName={reservation?.buyerName}
-                />
-              )}
-            </div>
-            <hr />
           </div>
         ))}
         {products?.length === 0 && (
@@ -216,8 +211,6 @@ const Reservation = ({
           />
         )}
       </div>
-
-      <hr />
     </>
   );
 };

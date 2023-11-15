@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+
 const UserPurchase = ({
   meetTime,
   reservationType,
@@ -107,22 +108,10 @@ const UserPurchase = ({
   const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
   return (
-    <>
-      {isWithinTime && (
-        <>
-          <button
-            className="mr-2 border-2 text-white bg-indigo-400 rounded-xl p-2 mb-2"
-            onClick={() => {
-              purchase(reservationType);
-            }}
-          >
-            {reservationType === "구매예약" ? "구매확정" : "판매확정"}
-          </button>
-        </>
-      )}
-      <div className="w-full">
+    <div className="flex justify-center items-center">
+      <div>
         {timeRemaining > 0 ? (
-          <span className="border-indigo-500 border-2 rounded-lg p-1 text-white bg-slate-500 text-sm">
+          <span className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
             <span>
               남은시간:{days !== 0 && days + "일"}{" "}
               {hours !== 0 && hours + "시간"} {minutes !== 0 && minutes + "분"}{" "}
@@ -130,12 +119,27 @@ const UserPurchase = ({
             </span>
           </span>
         ) : (
-          <span className="border-indigo-500 border-2 rounded-lg p-1 text-white bg-slate-500 text-sm">
+          <span className="m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
             거래 시간이 만료되었습니다.
           </span>
         )}
       </div>
-    </>
+      {isWithinTime && (
+        <div>
+          <button
+            className="m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white"
+            onClick={() => {
+              purchase(reservationType);
+            }}
+          >
+            <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+              {" "}
+              {reservationType === "구매예약" ? "구매확정" : "판매확정"}
+            </span>
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 
