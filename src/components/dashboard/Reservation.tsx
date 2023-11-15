@@ -37,20 +37,6 @@ const Reservation = ({
   return (
     <>
       <div className="flex flex-col gap-5 ">
-        <div className="hidden md:block">
-          {" "}
-          <hr />
-          <div className="w-full grid grid-cols-6">
-            <div>이미지</div>
-            <div>상품명</div>
-            <div>가격</div>
-            <div>주소</div>
-            <div>직거래 시간</div>
-            <div>날짜 및 시간 변경</div>
-          </div>
-          <hr />
-        </div>
-
         {products?.map((reservation: any) => (
           <div
             key={reservation.id}

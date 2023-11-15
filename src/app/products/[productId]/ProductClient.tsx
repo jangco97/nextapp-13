@@ -67,6 +67,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
         messageType: "reservation",
         productId: product?.id,
       });
+      alert("예약이 완료되었습니다.");
       router.push("/chat");
     } catch (error) {
       console.error(error);

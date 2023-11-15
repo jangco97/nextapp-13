@@ -69,6 +69,7 @@ export async function POST(request: NextRequest) {
         addressDetail: body.addressDetail,
         latitude: body.latitude,
         longitude: body.longitude,
+        productTitle: body.productTitle,
       },
     });
     return NextResponse.json(message);
@@ -103,6 +104,7 @@ export async function POST(request: NextRequest) {
         addressDetail: body.addressDetail,
         latitude: body.latitude,
         longitude: body.longitude,
+        productTitle: body.productTitle,
       },
     });
     return NextResponse.json(message);

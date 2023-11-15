@@ -52,7 +52,7 @@ const UserReservationDelete = ({
         }),
       });
 
-      alert("예약이 취소되었습니다.");
+      alert("예약이 취소되었습니다");
       location.reload();
     } catch (error: any) {
       alert(`An error occurred: ${error.message}`);
