@@ -140,9 +140,7 @@ const Message = async ({
                 }`}
               >
                 <p className="text-center text-xl">{messageText}</p>
-                <p>
-                  {productTitle} 상품에 대한 예약 구매 요청이 취소되었습니다
-                </p>
+                <p>{productTitle} 상품에 대한 예약을 취소합니다.</p>
               </div>
             </div>
           </div>
