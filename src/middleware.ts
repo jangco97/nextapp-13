@@ -14,11 +14,12 @@ export async function middleware(req: NextRequest) {
   if (pathname.startsWith("/products/upload") && !session) {
     return NextResponse.redirect(new URL("/auth/login", req.url)); //세션이 없으면 로그인 페이지로 이동
   }
-  //어드민 유저만 접근 가능한 페이지
-  if (pathname.startsWith("/admin") && (!session || session.role !== "Admin")) {
-    return NextResponse.redirect(new URL("/", req.url));
+  if (pathname.startsWith("/chat") && !session) {
+    return NextResponse.redirect(new URL("/auth/login", req.url));
   }
-
+  if (pathname.startsWith("/cart") && !session) {
+    return NextResponse.redirect(new URL("/auth/login", req.url));
+  }
   //로그인된 유저는 로그인, 회원가입 페이지에 접근x
   if (pathname.startsWith("/auth") && session) {
     return NextResponse.redirect(new URL("/", req.url));
@@ -26,4 +27,6 @@ export async function middleware(req: NextRequest) {
 
   return NextResponse.next(); //원하는 페이지로 이동
 }
-export const config = { matcher: ["/admin/:path*", "/user"] };
+export const config = {
+  matcher: ["/admin/:path*", "/user", "/products/upload", "/chat", "/cart"],
+};
