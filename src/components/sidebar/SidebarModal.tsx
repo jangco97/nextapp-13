@@ -7,7 +7,13 @@ import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
 import { useQuery } from "@tanstack/react-query";
 import { User } from "prisma/generated/client";
-const SidebarModal = ({ session }: { session: any }) => {
+const SidebarModal = ({
+  session,
+  currentUser,
+}: {
+  session: any;
+  currentUser: any;
+}) => {
   const { state } = useContext(SidebarContext);
   const params = useSearchParams();
   const category = params?.get("category");
@@ -36,7 +42,11 @@ const SidebarModal = ({ session }: { session: any }) => {
     >
       <div className="py-1 flex flex-col ">
         <div className="block md:hidden">
-          <NavbarItem session={session} data={data} chatData={chatData} />
+          <NavbarItem
+            currentUser={currentUser}
+            data={data}
+            chatData={chatData}
+          />
         </div>
         {mainCategories.map((item: any) => (
           <CategoryBox

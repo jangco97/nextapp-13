@@ -33,7 +33,7 @@ export default async function RootLayout({
             <SidebarProvider>
               <Navbar session={session} currentUser={currentUser} />
               <ToastProvider />
-              <SidebarModal session={session} />
+              <SidebarModal session={session} currentUser={currentUser} />
               {children}
               <MobileBottom currentUser={currentUser} />
             </SidebarProvider>
