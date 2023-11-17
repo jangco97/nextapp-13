@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import HeartButton from "../HeartButton";
 import { fromNow } from "@/helpers/dayjs";
 import { useSession } from "next-auth/react";
+import { FaLocationDot } from "react-icons/fa6";
 
 interface ProductCardProps {
   currentUser?: User | null;
@@ -51,6 +52,10 @@ const ProductCard = ({ currentUser, data, status }: ProductCardProps) => {
             {data.title}
           </div>
           {/* <div className="font-light text-neutral-500">{}</div> */}
+          <div className="flex">
+            <FaLocationDot className="text-indigo-500/70" />
+            {data.address}
+          </div>
           <div className="flex flex-row justify-between items-center gap-1">
             <div>
               {data.price} <span className="font-light">원</span>

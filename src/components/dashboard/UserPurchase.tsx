@@ -127,15 +127,15 @@ const UserPurchase = ({
       {isWithinTime && (
         <div>
           <button
-            className="m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white"
+            className="p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white"
             onClick={() => {
               purchase(reservationType);
             }}
           >
-            <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+            <div className="block text-gray-200 px-1 py-1 font-semibold rounded-full bg-gray-300/40">
               {" "}
               {reservationType === "구매예약" ? "구매확정" : "판매확정"}
-            </span>
+            </div>
           </button>
         </div>
       )}

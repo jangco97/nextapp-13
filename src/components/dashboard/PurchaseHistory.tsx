@@ -9,9 +9,12 @@ const PurchaseHistory = ({
   historyType: string;
 }) => {
   return (
-    <div>
+    <div className="grid gap-10 md:grid md:grid-cols-2 md:gap-10">
       {histories?.map((history: any) => (
-        <div key={history?.id}>
+        <div
+          key={history?.id}
+          className="border-2 border-gray-300 p-2 rounded-xl flex flex-col gap-2"
+        >
           <div>
             <Image
               src={history.product?.imageSrc[0]}

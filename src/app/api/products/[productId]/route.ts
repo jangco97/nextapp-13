@@ -40,6 +40,9 @@ export async function PUT(
     where: {
       id: productId,
     },
+    include: {
+      reservations: true,
+    },
   });
   if (!product) {
     return NextResponse.json({ message: "Product not found" }, { status: 404 });
@@ -73,6 +76,21 @@ export async function PUT(
       price: Number(price),
     },
   });
+
+  if (product?.reservations[0]) {
+    await prisma.reservation.update({
+      where: {
+        id: product.reservations[0].id,
+      },
+      data: {
+        address,
+        addressDetail,
+        latitude,
+        longitude,
+      },
+    });
+  }
+
   return NextResponse.json(updatedProduct);
 }
 

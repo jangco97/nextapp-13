@@ -18,7 +18,6 @@ const KakaoMap = ({
   detailPage = false,
 }: KakaoMapProps) => {
   const [isBigger, setIsBigger] = useState(false);
-
   const handleClick = (mouseEvent: kakao.maps.event.MouseEvent) => {
     if (detailPage || isBigger) return;
     setCustomValue!("latitude", mouseEvent.latLng.getLat());

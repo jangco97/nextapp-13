@@ -3,7 +3,8 @@ import { useSearchParams } from "next/navigation";
 import FilterButton from "../filters/FilterButton";
 import PriceFilterButton from "../filters/PriceFilterButton";
 import CategoryCircle from "./CategoryCircle";
-
+import AreaFilter from "../areafilter/AreaFilter";
+import LocationComponent from "../myposition/LocationComponent";
 const Categories = () => {
   const params = useSearchParams();
   const category = params?.get("category");
@@ -30,14 +31,22 @@ const Categories = () => {
             <div>
               <CategoryCircle currentLabel={label} />
             </div>
-            <div className="flex justify-evenly items-center h-full">
-              <div className="">
-                <PriceFilterButton />
+            <div className="flex flex-col gap-3 items-center w-full h-full">
+              <div className="grid grid-cols-2 gap-3 place-items-center">
+                <div>
+                  <PriceFilterButton />
+                </div>
+                <div>
+                  {" "}
+                  <FilterButton />
+                </div>
               </div>
-              <div>
-                {" "}
-                <FilterButton />
+              <div className="grid grid-cols-2 gap-3 place-items-center">
+                <AreaFilter />
               </div>
+            </div>
+            <div>
+              <LocationComponent />
             </div>
           </div>
         </div>

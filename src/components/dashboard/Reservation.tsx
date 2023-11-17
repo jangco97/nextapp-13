@@ -8,6 +8,7 @@ import UserPurchase from "./UserPurchase";
 import NothingComponents from "../NothingComponents";
 import UserReservationDelete from "./UserReservationDelete";
 import { XMarkIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 interface ReservationType {
   products: any;
   setMeetTime: any;
@@ -36,13 +37,23 @@ const Reservation = ({
 
   return (
     <>
-      <div className="flex flex-col gap-5 ">
+      {products?.length === 0 && (
+        <NothingComponents
+          title={
+            reservationType === "구매예약"
+              ? "구매 예약한 상품"
+              : "판매 예약한 상품"
+          }
+          pageType="reservation"
+        />
+      )}
+      <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
         {products?.map((reservation: any) => (
           <div
             key={reservation.id}
-            className=" border-rose-500/40 border-4 p-2 rounded-xl bg-gradient-to-r from-indigo-400/60 via-indigo-500/70 to-indigo-600/75"
+            className=" border-rose-500/40 border-4 p-2 rounded-xl bg-gradient-to-r from-indigo-200/80 via-indigo-200/70 to-indigo-200/80"
           >
-            <div className="flex flex-col md:w-full md:grid md:grid-cols-6 md:items-center text-neutral-600 font-bold">
+            <div className="flex flex-col md:w-full text-neutral-600 font-bold">
               <div className="relative">
                 <Image
                   src={reservation.product?.imageSrc[0]}
@@ -104,6 +115,13 @@ const Reservation = ({
                         </a>
                       </span>
                     </button>
+                    <button className="m-4 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+                      <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+                        <Link href={`products/${reservation?.productId}/edit`}>
+                          위치 수정
+                        </Link>
+                      </span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -117,12 +135,12 @@ const Reservation = ({
                 </span>
               </div>
               {currentUser?.id === reservation?.sellerId && (
-                <section className="border-2 border-indigo-500 rounded-lg p-1  md:border-none">
+                <section className="border-2 border-indigo-500/80 rounded-lg p-1">
                   {" "}
-                  <div className="text-md flex justify-center text-white font-bold">
+                  <div className="text-md flex justify-center text-neutral-600 font-bold">
                     아래 날짜를 클릭해 거래 시간을 정하세요.
                   </div>
-                  <div className="flex items-center justify-center md:flex-col md:items-start">
+                  <div className="flex items-center justify-center">
                     {" "}
                     <div>
                       <DatePicker
@@ -138,13 +156,13 @@ const Reservation = ({
                         }
                         minDate={new Date()}
                         customInput={
-                          <input className="text-white m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
+                          <input className="text-white p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
                         }
                       />
                     </div>
                     <div>
                       <button
-                        className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
+                        className=" p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
                         onClick={() =>
                           setMeetTime(
                             reservation?.id,
@@ -158,45 +176,35 @@ const Reservation = ({
                           )
                         }
                       >
-                        <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+                        <div className="block text-gray-200 px-1 py-1 font-semibold rounded-full bg-gray-300/40">
                           {" "}
                           시간변경
-                        </span>
+                        </div>
                       </button>
+                    </div>
+                  </div>
+                  {/* 예약 취소 */}
+                  <div className="flex flex-col">
+                    <div>
+                      {reservation?.meetTime && (
+                        <UserPurchase
+                          meetTime={new Date(reservation?.meetTime)}
+                          reservationType={reservationType}
+                          buyerId={reservation?.buyerId}
+                          sellerId={reservation?.sellerId}
+                          reservationId={reservation?.id}
+                          productId={reservation?.productId}
+                          sellerName={reservation?.sellerName}
+                          buyerName={reservation?.buyerName}
+                        />
+                      )}
                     </div>
                   </div>
                 </section>
               )}
             </div>
-            {/* 예약 취소 */}
-            <div className="flex flex-col">
-              <div>
-                {reservation?.meetTime && (
-                  <UserPurchase
-                    meetTime={new Date(reservation?.meetTime)}
-                    reservationType={reservationType}
-                    buyerId={reservation?.buyerId}
-                    sellerId={reservation?.sellerId}
-                    reservationId={reservation?.id}
-                    productId={reservation?.productId}
-                    sellerName={reservation?.sellerName}
-                    buyerName={reservation?.buyerName}
-                  />
-                )}
-              </div>
-            </div>
           </div>
         ))}
-        {products?.length === 0 && (
-          <NothingComponents
-            title={
-              reservationType === "구매예약"
-                ? "구매 예약한 상품"
-                : "판매 예약한 상품"
-            }
-            pageType="reservation"
-          />
-        )}
       </div>
     </>
   );

@@ -7,7 +7,7 @@ import Link from "next/link";
 import CartPage from "@/app/cart/page";
 import Image from "next/image";
 import HeartButton from "@/components/HeartButton";
-import { User } from "prisma/generated/client";
+import { FaLocationDot } from "react-icons/fa6";
 const UserFavorites = ({
   carts,
   currentUser,
@@ -30,11 +30,25 @@ const UserFavorites = ({
   return (
     isAlive && (
       <div>
-        <h1>Cart</h1>
         <div className="flex flex-col content-between ">
+          <hr className="mb-5" />
+          <div className="grid grid-cols-4 gap-4 place-items-center text-gray">
+            <p>이미지</p>
+            <p className="flex">
+              {" "}
+              <FaLocationDot />
+              주소
+            </p>
+            <p>상품이름</p>
+            <p>가격</p>
+          </div>
+          <hr className="mt-5 mb-5" />
           {carts?.map((cart: any) => (
             <>
-              <div key={cart.id} className=" flex justify-around items-center">
+              <div
+                key={cart.id}
+                className="grid grid-cols-4 gap-4 place-items-center "
+              >
                 <div className="relative w-20 h-20 overflow-hidden aspect-square rounded-xl">
                   {" "}
                   <Image
@@ -53,16 +67,16 @@ const UserFavorites = ({
                     </div>
                   )}
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <Link href={`/products/${cart.id}`}>
-                    {" "}
-                    <h2>{cart.title}</h2>
-                  </Link>
+                <div>{cart.address}</div>
 
-                  <p>{cart.price}</p>
-                </div>
+                <Link href={`/products/${cart.id}`}>
+                  {" "}
+                  <h2 className=" text-blue-500">{cart.title}</h2>
+                </Link>
+
+                <p>{cart.price}</p>
               </div>
-              <hr />
+              <hr className="mb-5 mt-5" />
             </>
           ))}
         </div>

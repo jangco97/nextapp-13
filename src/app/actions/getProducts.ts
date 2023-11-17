@@ -3,6 +3,8 @@ import prisma from "../../app/libs/prismadb";
 export interface ProductParams {
   latitude?: number;
   longitude?: number;
+  sido?: string;
+  sigugun?: string;
   category?: string;
   page?: number;
   skip?: number;
@@ -10,6 +12,7 @@ export interface ProductParams {
   sort?: string;
   minPrice?: number | null;
   maxPrice?: number | null;
+  distance?: number;
 }
 export default async function getProducts(params: ProductParams) {
   console.log(params, "params");
@@ -17,12 +20,15 @@ export default async function getProducts(params: ProductParams) {
     const {
       latitude,
       longitude,
+      sido,
+      sigugun,
       category,
       skip,
       search,
       sort = "DATE_DESC",
       minPrice,
       maxPrice,
+      distance,
     } = params;
 
     let query: any = {};
@@ -41,6 +47,26 @@ export default async function getProducts(params: ProductParams) {
       query.price = {
         gte: Number(minPrice),
         lte: Number(maxPrice),
+      };
+    }
+    if (latitude && longitude) {
+      query.latitude = {
+        gte: Number(latitude) - Number(distance),
+        lte: Number(latitude) + Number(distance),
+      };
+      query.longitude = {
+        gte: Number(longitude) - Number(distance),
+        lte: Number(longitude) + Number(distance),
+      };
+    }
+
+    if (sido && sigugun) {
+      query.address = {
+        contains: sigugun,
+      };
+    } else if (sido) {
+      query.address = {
+        contains: sido,
       };
     }
     const totalItems = await prisma.product.count({
