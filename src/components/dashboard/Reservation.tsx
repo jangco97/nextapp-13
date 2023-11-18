@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, MouseEvent } from "react";
 import DatePicker from "react-datepicker";
 import { formatTime } from "@/helpers/dayjs";
 import Image from "next/image";
@@ -7,7 +7,8 @@ import ko from "date-fns/locale/ko";
 import UserPurchase from "./UserPurchase";
 import NothingComponents from "../NothingComponents";
 import UserReservationDelete from "./UserReservationDelete";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+import { Modal, Button } from "antd";
+
 import Link from "next/link";
 interface ReservationType {
   products: any;
@@ -34,7 +35,11 @@ const Reservation = ({
       return product?.sellAccept !== true;
     });
   }
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleCancel = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsModalOpen(false);
+  };
   return (
     <>
       {products?.length === 0 && (
@@ -141,47 +146,64 @@ const Reservation = ({
                     아래 날짜를 클릭해 거래 시간을 정하세요.
                   </div>
                   <div className="flex items-center justify-center">
-                    {" "}
-                    <div>
-                      <DatePicker
-                        shouldCloseOnSelect
-                        className="datepicker"
-                        locale={ko}
-                        dateFormat="yyyy년 MM월 dd일 hh시 mm분"
-                        selected={selectedDates[reservation?.id] || new Date()}
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        onChange={(date) =>
-                          handleDateChange(date, reservation.id)
-                        }
-                        minDate={new Date()}
-                        customInput={
-                          <input className="text-white p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
-                        }
-                      />
-                    </div>
-                    <div>
-                      <button
-                        className=" p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
-                        onClick={() =>
-                          setMeetTime(
-                            reservation?.id,
-                            reservation?.buyerId,
-                            reservation?.sellerId,
-                            reservation?.productId,
-                            reservation?.address,
-                            reservation?.addressDetail,
-                            reservation?.latitude,
-                            reservation?.longitude
-                          )
-                        }
+                    <button
+                      className=" gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      날짜 및 시간 정하기
+                    </button>{" "}
+                    {isModalOpen && (
+                      <Modal
+                        title="날짜 및 시간 정하기"
+                        open={true}
+                        onCancel={handleCancel}
+                        cancelText="취소"
+                        footer={[
+                          <Button key="back" onClick={handleCancel}>
+                            취소
+                          </Button>,
+                        ]}
                       >
-                        <div className="block text-gray-200 px-1 py-1 font-semibold rounded-full bg-gray-300/40">
-                          {" "}
-                          시간변경
+                        <div className="flex justify-evenly">
+                          <DatePicker
+                            shouldCloseOnSelect
+                            className="datepicker"
+                            locale={ko}
+                            dateFormat="yyyy년 MM월 dd일 hh시 mm분"
+                            selected={
+                              selectedDates[reservation?.id] || new Date()
+                            }
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            onChange={(date) =>
+                              handleDateChange(date, reservation.id)
+                            }
+                            minDate={new Date()}
+                            customInput={
+                              <input className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer" />
+                            }
+                          />
+                          <button
+                            className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer"
+                            onClick={() => {
+                              setMeetTime(
+                                reservation?.id,
+                                reservation?.buyerId,
+                                reservation?.sellerId,
+                                reservation?.productId,
+                                reservation?.address,
+                                reservation?.addressDetail,
+                                reservation?.latitude,
+                                reservation?.longitude
+                              );
+                              setIsModalOpen(false);
+                            }}
+                          >
+                            시간변경
+                          </button>
                         </div>
-                      </button>
-                    </div>
+                      </Modal>
+                    )}
                   </div>
                   {/* 예약 취소 */}
                   <div className="flex flex-col">

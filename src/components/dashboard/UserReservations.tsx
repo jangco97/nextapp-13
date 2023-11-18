@@ -173,13 +173,13 @@ const UserReservation = ({
 
         {/* 구매 내역 */}
         {status === "구매내역" && (
-          <PurchaseHistory histories={buyingHistory} historyType={"구매예약"} />
+          <PurchaseHistory histories={buyingHistory} historyType={"구매내역"} />
         )}
 
         {status === "판매내역" && (
           <PurchaseHistory
             histories={sellingHistory}
-            historyType={"구매예약"}
+            historyType={"판매내역"}
           />
         )}
       </div>

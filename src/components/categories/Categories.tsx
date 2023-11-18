@@ -27,11 +27,11 @@ const Categories = () => {
           )}
         </div>
         <div>
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <div>
               <CategoryCircle currentLabel={label} />
             </div>
-            <div className="flex flex-col gap-3 items-center w-full h-full">
+            <div className=" flex flex-col gap-3 items-center w-full h-full">
               <div className="grid grid-cols-2 gap-3 place-items-center">
                 <div>
                   <PriceFilterButton />
@@ -44,9 +44,9 @@ const Categories = () => {
               <div className="grid grid-cols-2 gap-3 place-items-center">
                 <AreaFilter />
               </div>
-            </div>
-            <div>
-              <LocationComponent />
+              <div>
+                <LocationComponent />
+              </div>
             </div>
           </div>
         </div>
