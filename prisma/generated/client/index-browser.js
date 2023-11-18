@@ -207,8 +207,7 @@ exports.Prisma.ReviewScalarFieldEnum = {
   text: 'text',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userRating: 'userRating',
-  productRating: 'productRating'
+  userRating: 'userRating'
 };
 
 exports.Prisma.ViewdBoardStoreScalarFieldEnum = {

@@ -9959,12 +9959,10 @@ export namespace Prisma {
 
   export type ReviewAvgAggregateOutputType = {
     userRating: number | null
-    productRating: number | null
   }
 
   export type ReviewSumAggregateOutputType = {
     userRating: number | null
-    productRating: number | null
   }
 
   export type ReviewMinAggregateOutputType = {
@@ -9977,7 +9975,6 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     userRating: number | null
-    productRating: number | null
   }
 
   export type ReviewMaxAggregateOutputType = {
@@ -9990,7 +9987,6 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     userRating: number | null
-    productRating: number | null
   }
 
   export type ReviewCountAggregateOutputType = {
@@ -10003,19 +9999,16 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     userRating: number
-    productRating: number
     _all: number
   }
 
 
   export type ReviewAvgAggregateInputType = {
     userRating?: true
-    productRating?: true
   }
 
   export type ReviewSumAggregateInputType = {
     userRating?: true
-    productRating?: true
   }
 
   export type ReviewMinAggregateInputType = {
@@ -10028,7 +10021,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userRating?: true
-    productRating?: true
   }
 
   export type ReviewMaxAggregateInputType = {
@@ -10041,7 +10033,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userRating?: true
-    productRating?: true
   }
 
   export type ReviewCountAggregateInputType = {
@@ -10054,7 +10045,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userRating?: true
-    productRating?: true
     _all?: true
   }
 
@@ -10154,7 +10144,6 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     userRating: number
-    productRating: number
     _count: ReviewCountAggregateOutputType | null
     _avg: ReviewAvgAggregateOutputType | null
     _sum: ReviewSumAggregateOutputType | null
@@ -10186,7 +10175,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userRating?: boolean
-    productRating?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
@@ -10201,7 +10189,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userRating?: boolean
-    productRating?: boolean
   }
 
   export type ReviewInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -10226,7 +10213,6 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       userRating: number
-      productRating: number
     }, ExtArgs["result"]["review"]>
     composites: {}
   }
@@ -10633,7 +10619,6 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Review", 'DateTime'>
     readonly updatedAt: FieldRef<"Review", 'DateTime'>
     readonly userRating: FieldRef<"Review", 'Float'>
-    readonly productRating: FieldRef<"Review", 'Float'>
   }
     
 
@@ -18874,8 +18859,7 @@ export namespace Prisma {
     text: 'text',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    userRating: 'userRating',
-    productRating: 'productRating'
+    userRating: 'userRating'
   };
 
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -19748,7 +19732,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
     userRating?: FloatFilter<"Review"> | number
-    productRating?: FloatFilter<"Review"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }
@@ -19763,7 +19746,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userRating?: SortOrder
-    productRating?: SortOrder
     user?: UserOrderByWithRelationInput
     product?: ProductOrderByWithRelationInput
   }
@@ -19781,7 +19763,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
     userRating?: FloatFilter<"Review"> | number
-    productRating?: FloatFilter<"Review"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }, "id">
@@ -19796,7 +19777,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userRating?: SortOrder
-    productRating?: SortOrder
     _count?: ReviewCountOrderByAggregateInput
     _avg?: ReviewAvgOrderByAggregateInput
     _max?: ReviewMaxOrderByAggregateInput
@@ -19817,7 +19797,6 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     userRating?: FloatWithAggregatesFilter<"Review"> | number
-    productRating?: FloatWithAggregatesFilter<"Review"> | number
   }
 
   export type ViewdBoardStoreWhereInput = {
@@ -21130,7 +21109,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
     user: UserCreateNestedOneWithoutReviewsInput
     product: ProductCreateNestedOneWithoutReviewsInput
   }
@@ -21145,7 +21123,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
   }
 
   export type ReviewUpdateInput = {
@@ -21156,7 +21133,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
     product?: ProductUpdateOneRequiredWithoutReviewsNestedInput
   }
@@ -21171,7 +21147,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ReviewCreateManyInput = {
@@ -21184,7 +21159,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
   }
 
   export type ReviewUpdateManyMutationInput = {
@@ -21195,7 +21169,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ReviewUncheckedUpdateManyInput = {
@@ -21208,7 +21181,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ViewdBoardStoreCreateInput = {
@@ -22595,12 +22567,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userRating?: SortOrder
-    productRating?: SortOrder
   }
 
   export type ReviewAvgOrderByAggregateInput = {
     userRating?: SortOrder
-    productRating?: SortOrder
   }
 
   export type ReviewMaxOrderByAggregateInput = {
@@ -22613,7 +22583,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userRating?: SortOrder
-    productRating?: SortOrder
   }
 
   export type ReviewMinOrderByAggregateInput = {
@@ -22626,12 +22595,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userRating?: SortOrder
-    productRating?: SortOrder
   }
 
   export type ReviewSumOrderByAggregateInput = {
     userRating?: SortOrder
-    productRating?: SortOrder
   }
 
   export type ViewdBoardStoreCountOrderByAggregateInput = {
@@ -24885,7 +24852,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
     product: ProductCreateNestedOneWithoutReviewsInput
   }
 
@@ -24898,7 +24864,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
   }
 
   export type ReviewCreateOrConnectWithoutUserInput = {
@@ -25290,7 +25255,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
     userRating?: FloatFilter<"Review"> | number
-    productRating?: FloatFilter<"Review"> | number
   }
 
   export type BuyerUpsertWithWhereUniqueWithoutUserInput = {
@@ -26084,7 +26048,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
     user: UserCreateNestedOneWithoutReviewsInput
   }
 
@@ -26097,7 +26060,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
   }
 
   export type ReviewCreateOrConnectWithoutProductInput = {
@@ -28421,7 +28383,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
   }
 
   export type BuyerCreateManyUserInput = {
@@ -28826,7 +28787,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
     product?: ProductUpdateOneRequiredWithoutReviewsNestedInput
   }
 
@@ -28839,7 +28799,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ReviewUncheckedUpdateManyWithoutUserInput = {
@@ -28851,7 +28810,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type BuyerUpdateWithoutUserInput = {
@@ -28971,7 +28929,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userRating: number
-    productRating: number
   }
 
   export type PurchaseCreateManyProductInput = {
@@ -29043,7 +29000,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
   }
 
@@ -29056,7 +29012,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ReviewUncheckedUpdateManyWithoutProductInput = {
@@ -29068,7 +29023,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-    productRating?: FloatFieldUpdateOperationsInput | number
   }
 
   export type PurchaseUpdateWithoutProductInput = {
