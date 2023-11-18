@@ -1,12 +1,16 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import KakaoMapCircle from "../KaKaoMapCircle";
+import { CiMapPin } from "react-icons/ci";
+import { Modal, Button } from "antd";
 const LocationComponent = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [distance, setDistace] = useState(0.05);
+  const [isClicked, setIsCliked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const params = useSearchParams();
   let currentQuery = {};
   if (params) {
@@ -20,6 +24,10 @@ const LocationComponent = () => {
     });
   };
 
+  const showModal = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsModalOpen(true);
+  };
   const showError = (error: any) => {
     switch (error.code) {
       case error.PERMISSION_DENIED:
@@ -40,20 +48,43 @@ const LocationComponent = () => {
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
+      return true;
     } else {
       alert("Geolocation is not supported by this browser.");
+      return false;
     }
   };
 
+  const handleCancel = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsModalOpen(false);
+  };
   return (
-    <div>
-      <h1>내 위치 정보</h1>
-      <p>위도: {location.latitude}</p>
-      <p>경도: {location.longitude}</p>
-      <button onClick={getLocation}>위치 정보 가져오기</button>
-      {distance && <p>{distance * 110}km 범위 내 검색</p>}
-      {location?.latitude && location?.longitude && (
-        <>
+    <div className="flex flex-col items-center">
+      <button
+        className="flex gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        onClick={() => {
+          const response = getLocation();
+          if (response) {
+            setIsModalOpen(true);
+          }
+        }}
+      >
+        <CiMapPin />
+        위치 정보기반 검색
+      </button>
+      {location?.latitude && location?.longitude && isModalOpen && (
+        <Modal
+          title="위치 정보기반 검색"
+          open={true}
+          onCancel={handleCancel}
+          cancelText="취소"
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              취소
+            </Button>,
+          ]}
+        >
           <Link
             href={{
               query: {
@@ -64,24 +95,55 @@ const LocationComponent = () => {
               },
             }}
           >
-            검색하기
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            >
+              검색하기
+            </button>
+            {distance && <p>{distance * 110}km 범위 내 검색</p>}
           </Link>
-          <input
-            type="range"
-            min="0.05"
-            max="0.15"
-            step="0.01"
-            value={distance}
-            onChange={(e) => setDistace(Number(e.target.value))}
-          />
           <div>
+            {" "}
+            <div className="flex justify-between">
+              <span>5.5km</span>
+              <span>11km</span>
+              <span>16.5km</span>
+            </div>{" "}
+            <input
+              type="range"
+              min="0.05"
+              max="0.15"
+              step="0.01"
+              value={distance}
+              className="w-full"
+              onChange={(e) => setDistace(Number(e.target.value))}
+            />
+          </div>
+          {isClicked ? (
+            <button
+              className="bgap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              onClick={() => setIsCliked(false)}
+            >
+              지도 닫기
+            </button>
+          ) : (
+            <button
+              className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              onClick={(prev) => setIsCliked(true)}
+            >
+              지도 켜기
+            </button>
+          )}{" "}
+          <div className="w-full">
             <KakaoMapCircle
               latitude={Number(location?.latitude)}
               longitude={Number(location?.longitude)}
               distance={Number(distance)}
+              isClicked={isClicked}
             />
           </div>
-        </>
+        </Modal>
       )}
     </div>
   );
