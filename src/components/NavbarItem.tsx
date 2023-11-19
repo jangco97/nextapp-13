@@ -24,37 +24,42 @@ const NavbarItem = ({
     >
       {" "}
       <li className="py-2 text-center border-b-4 cursor-pointer">
-        <Link href={"/"}>Shop</Link>
+        <Link href={"/"}>홈</Link>
       </li>
-      <li className="py-2 text-center border-b-4 cursor-pointer">
+      {/* <li className="py-2 text-center border-b-4 cursor-pointer">
         <Link href={"/pricechart"}>시세조회</Link>
-      </li>
-      <li className="py-2 text-center border-b-4 cursor-pointer">
-        <Link href={"/board"}>Community</Link>
+      </li> */}
+      <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
+        <Link href={"/cart"}>판매하기</Link>
       </li>
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
-        <Link href={"/cart"}>Cart</Link>
+        <Link href={"/cart"}>장바구니</Link>
         <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
           {data?.favoriteIds?.length | 0}
         </div>
       </li>
       <li className="py-2 text-center border-b-4 cursor-pointer">
-        <Link href={"/user?products"}>MyPage</Link>
+        <Link href={"/user?products"}>마이페이지</Link>
       </li>
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
-        <Link href={"/chat"}>chat</Link>
+        <Link href={"/chat"}>채팅</Link>
         <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
           {unReadMessage?.length}
         </div>
       </li>
       {currentUser?.id ? (
         <li className="py-2 text-center border-b-4 cursor-pointer">
-          <button onClick={() => signOut()}>LogOut</button>
+          <button onClick={() => signOut()}>로그아웃</button>
         </li>
       ) : (
-        <li className="py-2 text-center border-b-4 cursor-pointer">
-          <button onClick={() => router.push("/auth/login")}>LogIn</button>
-        </li>
+        <>
+          <li className="py-2 text-center border-b-4 cursor-pointer">
+            <button onClick={() => router.push("/auth/login")}>로그인</button>
+          </li>
+          <li className="py-2 text-center border-b-4 cursor-pointer">
+            <button onClick={() => router.push("/auth/login")}>회원가입</button>
+          </li>
+        </>
       )}{" "}
     </ul>
   );
