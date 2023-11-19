@@ -4,13 +4,22 @@ export interface Params {
   status?: string | undefined;
   sort?: string;
 }
-export default async function getUserProducts(params: Params) {
+export default async function getUserProducts({
+  searchParams,
+  params,
+}: {
+  searchParams: Params;
+  params?: { userId?: string };
+}) {
   const currentUser = await getCurrentUser();
-  if (!currentUser) return null;
+  let currentUserId = currentUser?.id;
+  if (params?.userId) {
+    currentUserId = params?.userId;
+  }
   let orderBy = {};
   let product = {};
   try {
-    const { status = "전체", sort = "DATE_DESC" } = params;
+    const { status = "전체", sort = "DATE_DESC" } = searchParams;
     if (sort === "PRICE_ASC") {
       orderBy = {
         price: "asc",
@@ -28,14 +37,14 @@ export default async function getUserProducts(params: Params) {
     if (status === "전체") {
       product = await prisma.product.findMany({
         where: {
-          userId: currentUser?.id as string,
+          userId: currentUserId,
         },
         orderBy: orderBy,
       });
     } else {
       product = await prisma.product.findMany({
         where: {
-          userId: currentUser?.id as string,
+          userId: currentUserId,
           status: status,
         },
         orderBy: orderBy,

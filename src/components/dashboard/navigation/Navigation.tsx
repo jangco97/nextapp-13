@@ -3,7 +3,7 @@ import React from "react";
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";
-const Navigation = () => {
+const Navigation = ({ isGuest }: { isGuest: boolean }) => {
   const params = useSearchParams();
   const currentQuery = qs.parse(params?.toString());
   return (
@@ -26,24 +26,28 @@ const Navigation = () => {
           리뷰
         </button>
       </Link>
-      <Link href={{ query: "favorites" }}>
-        <button
-          className={`w-full border-r-4 h-10 ${
-            "favorites" in currentQuery && "bg-indigo-800/70"
-          }`}
-        >
-          찜
-        </button>
-      </Link>
-      <Link href={{ query: "reservations" }}>
-        <button
-          className={`w-full border-r-4 h-10 ${
-            "reservations" in currentQuery && "bg-indigo-800/70"
-          }`}
-        >
-          예약
-        </button>
-      </Link>
+      {isGuest ? null : (
+        <>
+          <Link href={{ query: "favorites" }}>
+            <button
+              className={`w-full border-r-4 h-10 ${
+                "favorites" in currentQuery && "bg-indigo-800/70"
+              }`}
+            >
+              찜
+            </button>
+          </Link>
+          <Link href={{ query: "reservations" }}>
+            <button
+              className={`w-full border-r-4 h-10 ${
+                "reservations" in currentQuery && "bg-indigo-800/70"
+              }`}
+            >
+              예약
+            </button>
+          </Link>{" "}
+        </>
+      )}
     </div>
   );
 };

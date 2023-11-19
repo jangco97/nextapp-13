@@ -3,6 +3,7 @@ import React from "react";
 import Avatar from "../Avatar";
 import ProductCategory from "./ProductCategory";
 import { formatTime } from "@/helpers/dayjs";
+import Link from "next/link";
 interface ProductInfoProps {
   user: User;
   category:
@@ -38,7 +39,9 @@ const ProductInfo = ({
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 text-xl font-semibold">
           <Avatar src={user?.image} />
-          <p>{user?.name}</p>
+          <Link href={`/user/${user?.id}`}>
+            <p>{user?.name}</p>
+          </Link>
         </div>
         <div>{formatTime(createdAt)}</div>
         <hr />

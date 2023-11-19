@@ -7,7 +7,7 @@ interface InputProps {
   type?: string;
   disabled?: boolean;
   formatPrice?: boolean;
-  required?: boolean;
+  required?: string | boolean;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
 }
@@ -42,17 +42,19 @@ const Input: React.FC<InputProps> = ({
         `}
         />
       ) : (
-        <input
-          id={id}
-          disabled={disabled}
-          {...register(id, { required })}
-          type={type}
-          className={`w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
+        <>
+          <input
+            id={id}
+            disabled={disabled}
+            {...register(id, { required })}
+            type={type}
+            className={`w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
       ${formatPrice ? "pl-9" : "pl-4"}
       ${errors[id] ? "border-rose-500" : "border-neutral-300"} 
       ${errors[id] ? "focus:border-rose-500" : "focus:border-black"}
       `}
-        />
+          />
+        </>
       )}
 
       <label

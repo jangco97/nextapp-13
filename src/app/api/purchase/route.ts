@@ -23,7 +23,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   const body = await request.json();
-  const { buyerId, sellerId, reservationId, productId } = body;
+  const { buyerId, sellerId, reservationId, productId, sellerName, buyerName } =
+    body;
 
   if (!currentUser) {
     return NextResponse.json({ message: "권한이 없습니다." }, { status: 404 });
@@ -43,7 +44,9 @@ export async function POST(request: NextRequest) {
     await prisma.buyer.create({
       data: {
         userId: buyerId,
+        sellerId: sellerId,
         productId,
+        sellerName,
       },
     });
     // Check if both buyAccept and sellAccept are true
@@ -68,7 +71,9 @@ export async function POST(request: NextRequest) {
     await prisma.seller.create({
       data: {
         userId: sellerId,
+        buyerId: buyerId,
         productId,
+        buyerName,
       },
     });
     await prisma.product.update({

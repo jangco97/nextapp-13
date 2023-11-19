@@ -4,6 +4,7 @@ import { formatTime } from "@/helpers/dayjs";
 import Image from "next/image";
 import { Modal, Button } from "antd";
 import PurchaseReview from "./PurchaseReview";
+import Link from "next/link";
 const PurchaseHistory = ({
   histories,
   historyType,
@@ -38,9 +39,10 @@ const PurchaseHistory = ({
                 ]}
               >
                 <PurchaseReview
+                  id={history?.id}
                   setIsModalOpen={setIsModalOpen}
-                  userId={history?.buyerId}
-                  sellerId={history?.sellerId}
+                  userId={history?.userId}
+                  sellerId={history?.product?.userId}
                   productId={history?.product?.id}
                 />
               </Modal>
@@ -61,9 +63,11 @@ const PurchaseHistory = ({
               {historyType === "구매내역" && (
                 <div>
                   <span className=" text-slate-500">판매자:</span>
-                  <span className=" text-emerald-800">
-                    {history.product?.sellerName}
-                  </span>
+                  <Link href={`/user/${history.sellerId}`}>
+                    <span className=" text-emerald-800">
+                      {history.product?.sellerName}
+                    </span>
+                  </Link>
                   {history?.isReviewd ? (
                     <div className="gap-x-1.5 rounded-md bg-gray-500/50 m-3 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer">
                       리뷰완료
@@ -83,9 +87,11 @@ const PurchaseHistory = ({
               {historyType === "판매내역" && (
                 <div>
                   <span className=" text-slate-500">구매자:</span>
+                  {/* <Link href={`/user/${}`}> */}
                   <span className=" text-emerald-800">
                     {history.product?.buyerName}
                   </span>
+                  {/* </Link> */}
                 </div>
               )}
               <div>

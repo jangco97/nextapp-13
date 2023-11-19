@@ -10,19 +10,16 @@ import getCurrentCarts from "../actions/getCurrentCarts";
 import getBuyingHistory from "../actions/getBuyingHistory";
 import getSellingHistory from "../actions/getSellingHistory";
 import Navigation from "@/components/dashboard/navigation/Navigation";
-import Image from "next/image";
+import getUserReviews from "../actions/getUserReviews";
 import Avatar from "@/components/Avatar";
-interface MyPageProps {
-  searchParams: Params;
-}
 
-const UserPage = async ({ searchParams }: MyPageProps) => {
+const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const carts = await getCurrentCarts();
   const currentUser = await getCurrentUser();
-  const userProducts = await getUserProducts(searchParams);
+  const userProducts = await getUserProducts({ searchParams });
   const buyingHistory = await getBuyingHistory();
   const sellingHistory = await getSellingHistory();
-
+  const userReviews = await getUserReviews(currentUser?.id);
   // const reservations = await getReservations();
   return (
     <>
@@ -32,17 +29,17 @@ const UserPage = async ({ searchParams }: MyPageProps) => {
           <div className="text-lg text-slate-500 ml-3">{currentUser?.name}</div>
         </header>
         <header>
-          <Navigation />
+          <Navigation isGuest={false} />
         </header>
       </section>
       {/* 상품 전용 섹션 */}
       <Container>
         <section>
-          <UserProducts userProducts={userProducts} />
+          <UserProducts userProducts={userProducts} isGuest={false} />
         </section>
         {/* 리뷰 전용 */}
         <section>
-          <UserReviews />
+          <UserReviews userReviews={userReviews} />
         </section>
         {/* 찜 전용 */}
         <section>

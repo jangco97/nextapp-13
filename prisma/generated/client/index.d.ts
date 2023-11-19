@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model ActivateToken
+ * 
+ */
+export type ActivateToken = $Result.DefaultSelection<Prisma.$ActivateTokenPayload>
+/**
  * Model Account
  * 
  */
@@ -34,16 +39,6 @@ export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
  */
 export type VerificationRequest = $Result.DefaultSelection<Prisma.$VerificationRequestPayload>
 /**
- * Model Board
- * 
- */
-export type Board = $Result.DefaultSelection<Prisma.$BoardPayload>
-/**
- * Model BoardLikeDisLike
- * 
- */
-export type BoardLikeDisLike = $Result.DefaultSelection<Prisma.$BoardLikeDisLikePayload>
-/**
  * Model Product
  * 
  */
@@ -53,11 +48,6 @@ export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
  * 
  */
 export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
-/**
- * Model ViewdBoardStore
- * 
- */
-export type ViewdBoardStore = $Result.DefaultSelection<Prisma.$ViewdBoardStorePayload>
 /**
  * Model ViewdProductStore
  * 
@@ -244,6 +234,16 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs>;
 
   /**
+   * `prisma.activateToken`: Exposes CRUD operations for the **ActivateToken** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ActivateTokens
+    * const activateTokens = await prisma.activateToken.findMany()
+    * ```
+    */
+  get activateToken(): Prisma.ActivateTokenDelegate<ExtArgs>;
+
+  /**
    * `prisma.account`: Exposes CRUD operations for the **Account** model.
     * Example usage:
     * ```ts
@@ -274,26 +274,6 @@ export class PrismaClient<
   get verificationRequest(): Prisma.VerificationRequestDelegate<ExtArgs>;
 
   /**
-   * `prisma.board`: Exposes CRUD operations for the **Board** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Boards
-    * const boards = await prisma.board.findMany()
-    * ```
-    */
-  get board(): Prisma.BoardDelegate<ExtArgs>;
-
-  /**
-   * `prisma.boardLikeDisLike`: Exposes CRUD operations for the **BoardLikeDisLike** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BoardLikeDisLikes
-    * const boardLikeDisLikes = await prisma.boardLikeDisLike.findMany()
-    * ```
-    */
-  get boardLikeDisLike(): Prisma.BoardLikeDisLikeDelegate<ExtArgs>;
-
-  /**
    * `prisma.product`: Exposes CRUD operations for the **Product** model.
     * Example usage:
     * ```ts
@@ -312,16 +292,6 @@ export class PrismaClient<
     * ```
     */
   get review(): Prisma.ReviewDelegate<ExtArgs>;
-
-  /**
-   * `prisma.viewdBoardStore`: Exposes CRUD operations for the **ViewdBoardStore** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ViewdBoardStores
-    * const viewdBoardStores = await prisma.viewdBoardStore.findMany()
-    * ```
-    */
-  get viewdBoardStore(): Prisma.ViewdBoardStoreDelegate<ExtArgs>;
 
   /**
    * `prisma.viewdProductStore`: Exposes CRUD operations for the **ViewdProductStore** model.
@@ -863,14 +833,12 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
+    ActivateToken: 'ActivateToken',
     Account: 'Account',
     Session: 'Session',
     VerificationRequest: 'VerificationRequest',
-    Board: 'Board',
-    BoardLikeDisLike: 'BoardLikeDisLike',
     Product: 'Product',
     Review: 'Review',
-    ViewdBoardStore: 'ViewdBoardStore',
     ViewdProductStore: 'ViewdProductStore',
     Conversation: 'Conversation',
     Message: 'Message',
@@ -894,7 +862,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'account' | 'session' | 'verificationRequest' | 'board' | 'boardLikeDisLike' | 'product' | 'review' | 'viewdBoardStore' | 'viewdProductStore' | 'conversation' | 'message' | 'purchase' | 'reservation' | 'buyer' | 'seller'
+      modelProps: 'user' | 'activateToken' | 'account' | 'session' | 'verificationRequest' | 'product' | 'review' | 'viewdProductStore' | 'conversation' | 'message' | 'purchase' | 'reservation' | 'buyer' | 'seller'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -961,6 +929,72 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>,
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      ActivateToken: {
+        payload: Prisma.$ActivateTokenPayload<ExtArgs>
+        fields: Prisma.ActivateTokenFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ActivateTokenFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ActivateTokenFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>
+          }
+          findFirst: {
+            args: Prisma.ActivateTokenFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ActivateTokenFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>
+          }
+          findMany: {
+            args: Prisma.ActivateTokenFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>[]
+          }
+          create: {
+            args: Prisma.ActivateTokenCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>
+          }
+          createMany: {
+            args: Prisma.ActivateTokenCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ActivateTokenDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>
+          }
+          update: {
+            args: Prisma.ActivateTokenUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>
+          }
+          deleteMany: {
+            args: Prisma.ActivateTokenDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ActivateTokenUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ActivateTokenUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActivateTokenPayload>
+          }
+          aggregate: {
+            args: Prisma.ActivateTokenAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateActivateToken>
+          }
+          groupBy: {
+            args: Prisma.ActivateTokenGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ActivateTokenGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ActivateTokenCountArgs<ExtArgs>,
+            result: $Utils.Optional<ActivateTokenCountAggregateOutputType> | number
           }
         }
       }
@@ -1162,138 +1196,6 @@ export namespace Prisma {
           }
         }
       }
-      Board: {
-        payload: Prisma.$BoardPayload<ExtArgs>
-        fields: Prisma.BoardFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BoardFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BoardFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          findFirst: {
-            args: Prisma.BoardFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BoardFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          findMany: {
-            args: Prisma.BoardFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>[]
-          }
-          create: {
-            args: Prisma.BoardCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          createMany: {
-            args: Prisma.BoardCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.BoardDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          update: {
-            args: Prisma.BoardUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          deleteMany: {
-            args: Prisma.BoardDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BoardUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.BoardUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          aggregate: {
-            args: Prisma.BoardAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateBoard>
-          }
-          groupBy: {
-            args: Prisma.BoardGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<BoardGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BoardCountArgs<ExtArgs>,
-            result: $Utils.Optional<BoardCountAggregateOutputType> | number
-          }
-        }
-      }
-      BoardLikeDisLike: {
-        payload: Prisma.$BoardLikeDisLikePayload<ExtArgs>
-        fields: Prisma.BoardLikeDisLikeFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BoardLikeDisLikeFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BoardLikeDisLikeFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>
-          }
-          findFirst: {
-            args: Prisma.BoardLikeDisLikeFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BoardLikeDisLikeFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>
-          }
-          findMany: {
-            args: Prisma.BoardLikeDisLikeFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>[]
-          }
-          create: {
-            args: Prisma.BoardLikeDisLikeCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>
-          }
-          createMany: {
-            args: Prisma.BoardLikeDisLikeCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.BoardLikeDisLikeDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>
-          }
-          update: {
-            args: Prisma.BoardLikeDisLikeUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>
-          }
-          deleteMany: {
-            args: Prisma.BoardLikeDisLikeDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BoardLikeDisLikeUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.BoardLikeDisLikeUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BoardLikeDisLikePayload>
-          }
-          aggregate: {
-            args: Prisma.BoardLikeDisLikeAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateBoardLikeDisLike>
-          }
-          groupBy: {
-            args: Prisma.BoardLikeDisLikeGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<BoardLikeDisLikeGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BoardLikeDisLikeCountArgs<ExtArgs>,
-            result: $Utils.Optional<BoardLikeDisLikeCountAggregateOutputType> | number
-          }
-        }
-      }
       Product: {
         payload: Prisma.$ProductPayload<ExtArgs>
         fields: Prisma.ProductFieldRefs
@@ -1423,72 +1325,6 @@ export namespace Prisma {
           count: {
             args: Prisma.ReviewCountArgs<ExtArgs>,
             result: $Utils.Optional<ReviewCountAggregateOutputType> | number
-          }
-        }
-      }
-      ViewdBoardStore: {
-        payload: Prisma.$ViewdBoardStorePayload<ExtArgs>
-        fields: Prisma.ViewdBoardStoreFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ViewdBoardStoreFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ViewdBoardStoreFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>
-          }
-          findFirst: {
-            args: Prisma.ViewdBoardStoreFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ViewdBoardStoreFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>
-          }
-          findMany: {
-            args: Prisma.ViewdBoardStoreFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>[]
-          }
-          create: {
-            args: Prisma.ViewdBoardStoreCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>
-          }
-          createMany: {
-            args: Prisma.ViewdBoardStoreCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.ViewdBoardStoreDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>
-          }
-          update: {
-            args: Prisma.ViewdBoardStoreUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>
-          }
-          deleteMany: {
-            args: Prisma.ViewdBoardStoreDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ViewdBoardStoreUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ViewdBoardStoreUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ViewdBoardStorePayload>
-          }
-          aggregate: {
-            args: Prisma.ViewdBoardStoreAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateViewdBoardStore>
-          }
-          groupBy: {
-            args: Prisma.ViewdBoardStoreGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ViewdBoardStoreGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ViewdBoardStoreCountArgs<ExtArgs>,
-            result: $Utils.Optional<ViewdBoardStoreCountAggregateOutputType> | number
           }
         }
       }
@@ -2109,10 +1945,7 @@ export namespace Prisma {
   export type UserCountOutputType = {
     sessions: number
     Product: number
-    Board: number
-    ViewdBoardStore: number
     ViewdProductStore: number
-    BoardLikeDisLike: number
     accounts: number
     conversations: number
     sendMessages: number
@@ -2120,15 +1953,13 @@ export namespace Prisma {
     reviews: number
     buyer: number
     seller: number
+    ActivateToken: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     Product?: boolean | UserCountOutputTypeCountProductArgs
-    Board?: boolean | UserCountOutputTypeCountBoardArgs
-    ViewdBoardStore?: boolean | UserCountOutputTypeCountViewdBoardStoreArgs
     ViewdProductStore?: boolean | UserCountOutputTypeCountViewdProductStoreArgs
-    BoardLikeDisLike?: boolean | UserCountOutputTypeCountBoardLikeDisLikeArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     conversations?: boolean | UserCountOutputTypeCountConversationsArgs
     sendMessages?: boolean | UserCountOutputTypeCountSendMessagesArgs
@@ -2136,6 +1967,7 @@ export namespace Prisma {
     reviews?: boolean | UserCountOutputTypeCountReviewsArgs
     buyer?: boolean | UserCountOutputTypeCountBuyerArgs
     seller?: boolean | UserCountOutputTypeCountSellerArgs
+    ActivateToken?: boolean | UserCountOutputTypeCountActivateTokenArgs
   }
 
   // Custom InputTypes
@@ -2170,32 +2002,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountBoardArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: BoardWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountViewdBoardStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ViewdBoardStoreWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: ViewdProductStoreWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountBoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: BoardLikeDisLikeWhereInput
   }
 
 
@@ -2255,47 +2063,11 @@ export namespace Prisma {
   }
 
 
-
   /**
-   * Count Type BoardCountOutputType
+   * UserCountOutputType without action
    */
-
-  export type BoardCountOutputType = {
-    ViewdBoardStore: number
-    BoardLikeDisLike: number
-  }
-
-  export type BoardCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    ViewdBoardStore?: boolean | BoardCountOutputTypeCountViewdBoardStoreArgs
-    BoardLikeDisLike?: boolean | BoardCountOutputTypeCountBoardLikeDisLikeArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * BoardCountOutputType without action
-   */
-  export type BoardCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardCountOutputType
-     */
-    select?: BoardCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * BoardCountOutputType without action
-   */
-  export type BoardCountOutputTypeCountViewdBoardStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ViewdBoardStoreWhereInput
-  }
-
-
-  /**
-   * BoardCountOutputType without action
-   */
-  export type BoardCountOutputTypeCountBoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: BoardLikeDisLikeWhereInput
+  export type UserCountOutputTypeCountActivateTokenArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ActivateTokenWhereInput
   }
 
 
@@ -2459,7 +2231,7 @@ export namespace Prisma {
     name: string | null
     hashedPassword: string | null
     email: string | null
-    emailVerified: Date | null
+    emailVerified: boolean | null
     image: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2473,7 +2245,7 @@ export namespace Prisma {
     name: string | null
     hashedPassword: string | null
     email: string | null
-    emailVerified: Date | null
+    emailVerified: boolean | null
     image: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2641,10 +2413,10 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    name: string | null
-    hashedPassword: string | null
-    email: string | null
-    emailVerified: Date | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified: boolean
     image: string | null
     createdAt: Date
     updatedAt: Date
@@ -2688,10 +2460,7 @@ export namespace Prisma {
     averageproductRating?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     Product?: boolean | User$ProductArgs<ExtArgs>
-    Board?: boolean | User$BoardArgs<ExtArgs>
-    ViewdBoardStore?: boolean | User$ViewdBoardStoreArgs<ExtArgs>
     ViewdProductStore?: boolean | User$ViewdProductStoreArgs<ExtArgs>
-    BoardLikeDisLike?: boolean | User$BoardLikeDisLikeArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     conversations?: boolean | User$conversationsArgs<ExtArgs>
     sendMessages?: boolean | User$sendMessagesArgs<ExtArgs>
@@ -2699,6 +2468,7 @@ export namespace Prisma {
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     buyer?: boolean | User$buyerArgs<ExtArgs>
     seller?: boolean | User$sellerArgs<ExtArgs>
+    ActivateToken?: boolean | User$ActivateTokenArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2720,10 +2490,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     Product?: boolean | User$ProductArgs<ExtArgs>
-    Board?: boolean | User$BoardArgs<ExtArgs>
-    ViewdBoardStore?: boolean | User$ViewdBoardStoreArgs<ExtArgs>
     ViewdProductStore?: boolean | User$ViewdProductStoreArgs<ExtArgs>
-    BoardLikeDisLike?: boolean | User$BoardLikeDisLikeArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     conversations?: boolean | User$conversationsArgs<ExtArgs>
     sendMessages?: boolean | User$sendMessagesArgs<ExtArgs>
@@ -2731,6 +2498,7 @@ export namespace Prisma {
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     buyer?: boolean | User$buyerArgs<ExtArgs>
     seller?: boolean | User$sellerArgs<ExtArgs>
+    ActivateToken?: boolean | User$ActivateTokenArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2740,10 +2508,7 @@ export namespace Prisma {
     objects: {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       Product: Prisma.$ProductPayload<ExtArgs>[]
-      Board: Prisma.$BoardPayload<ExtArgs>[]
-      ViewdBoardStore: Prisma.$ViewdBoardStorePayload<ExtArgs>[]
       ViewdProductStore: Prisma.$ViewdProductStorePayload<ExtArgs>[]
-      BoardLikeDisLike: Prisma.$BoardLikeDisLikePayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       conversations: Prisma.$ConversationPayload<ExtArgs>[]
       sendMessages: Prisma.$MessagePayload<ExtArgs>[]
@@ -2751,13 +2516,14 @@ export namespace Prisma {
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       buyer: Prisma.$BuyerPayload<ExtArgs>[]
       seller: Prisma.$SellerPayload<ExtArgs>[]
+      ActivateToken: Prisma.$ActivateTokenPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
-      name: string | null
-      hashedPassword: string | null
-      email: string | null
-      emailVerified: Date | null
+      name: string
+      hashedPassword: string
+      email: string
+      emailVerified: boolean
       image: string | null
       createdAt: Date
       updatedAt: Date
@@ -3134,13 +2900,7 @@ export namespace Prisma {
 
     Product<T extends User$ProductArgs<ExtArgs> = {}>(args?: Subset<T, User$ProductArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    Board<T extends User$BoardArgs<ExtArgs> = {}>(args?: Subset<T, User$BoardArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ViewdBoardStore<T extends User$ViewdBoardStoreArgs<ExtArgs> = {}>(args?: Subset<T, User$ViewdBoardStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findMany'> | Null>;
-
     ViewdProductStore<T extends User$ViewdProductStoreArgs<ExtArgs> = {}>(args?: Subset<T, User$ViewdProductStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdProductStorePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    BoardLikeDisLike<T extends User$BoardLikeDisLikeArgs<ExtArgs> = {}>(args?: Subset<T, User$BoardLikeDisLikeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -3155,6 +2915,8 @@ export namespace Prisma {
     buyer<T extends User$buyerArgs<ExtArgs> = {}>(args?: Subset<T, User$buyerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BuyerPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     seller<T extends User$sellerArgs<ExtArgs> = {}>(args?: Subset<T, User$sellerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SellerPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    ActivateToken<T extends User$ActivateTokenArgs<ExtArgs> = {}>(args?: Subset<T, User$ActivateTokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3188,7 +2950,7 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly hashedPassword: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly emailVerified: FieldRef<"User", 'DateTime'>
+    readonly emailVerified: FieldRef<"User", 'Boolean'>
     readonly image: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -3550,48 +3312,6 @@ export namespace Prisma {
 
 
   /**
-   * User.Board
-   */
-  export type User$BoardArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    where?: BoardWhereInput
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    cursor?: BoardWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.ViewdBoardStore
-   */
-  export type User$ViewdBoardStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    where?: ViewdBoardStoreWhereInput
-    orderBy?: ViewdBoardStoreOrderByWithRelationInput | ViewdBoardStoreOrderByWithRelationInput[]
-    cursor?: ViewdBoardStoreWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ViewdBoardStoreScalarFieldEnum | ViewdBoardStoreScalarFieldEnum[]
-  }
-
-
-  /**
    * User.ViewdProductStore
    */
   export type User$ViewdProductStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -3609,27 +3329,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ViewdProductStoreScalarFieldEnum | ViewdProductStoreScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.BoardLikeDisLike
-   */
-  export type User$BoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    where?: BoardLikeDisLikeWhereInput
-    orderBy?: BoardLikeDisLikeOrderByWithRelationInput | BoardLikeDisLikeOrderByWithRelationInput[]
-    cursor?: BoardLikeDisLikeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BoardLikeDisLikeScalarFieldEnum | BoardLikeDisLikeScalarFieldEnum[]
   }
 
 
@@ -3781,6 +3480,27 @@ export namespace Prisma {
 
 
   /**
+   * User.ActivateToken
+   */
+  export type User$ActivateTokenArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    where?: ActivateTokenWhereInput
+    orderBy?: ActivateTokenOrderByWithRelationInput | ActivateTokenOrderByWithRelationInput[]
+    cursor?: ActivateTokenWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ActivateTokenScalarFieldEnum | ActivateTokenScalarFieldEnum[]
+  }
+
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -3792,6 +3512,935 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model ActivateToken
+   */
+
+  export type AggregateActivateToken = {
+    _count: ActivateTokenCountAggregateOutputType | null
+    _min: ActivateTokenMinAggregateOutputType | null
+    _max: ActivateTokenMaxAggregateOutputType | null
+  }
+
+  export type ActivateTokenMinAggregateOutputType = {
+    id: string | null
+    token: string | null
+    activatedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+  }
+
+  export type ActivateTokenMaxAggregateOutputType = {
+    id: string | null
+    token: string | null
+    activatedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+  }
+
+  export type ActivateTokenCountAggregateOutputType = {
+    id: number
+    token: number
+    activatedAt: number
+    createdAt: number
+    updatedAt: number
+    userId: number
+    _all: number
+  }
+
+
+  export type ActivateTokenMinAggregateInputType = {
+    id?: true
+    token?: true
+    activatedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+  }
+
+  export type ActivateTokenMaxAggregateInputType = {
+    id?: true
+    token?: true
+    activatedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+  }
+
+  export type ActivateTokenCountAggregateInputType = {
+    id?: true
+    token?: true
+    activatedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type ActivateTokenAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ActivateToken to aggregate.
+     */
+    where?: ActivateTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ActivateTokens to fetch.
+     */
+    orderBy?: ActivateTokenOrderByWithRelationInput | ActivateTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ActivateTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ActivateTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ActivateTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ActivateTokens
+    **/
+    _count?: true | ActivateTokenCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ActivateTokenMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ActivateTokenMaxAggregateInputType
+  }
+
+  export type GetActivateTokenAggregateType<T extends ActivateTokenAggregateArgs> = {
+        [P in keyof T & keyof AggregateActivateToken]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateActivateToken[P]>
+      : GetScalarType<T[P], AggregateActivateToken[P]>
+  }
+
+
+
+
+  export type ActivateTokenGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ActivateTokenWhereInput
+    orderBy?: ActivateTokenOrderByWithAggregationInput | ActivateTokenOrderByWithAggregationInput[]
+    by: ActivateTokenScalarFieldEnum[] | ActivateTokenScalarFieldEnum
+    having?: ActivateTokenScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ActivateTokenCountAggregateInputType | true
+    _min?: ActivateTokenMinAggregateInputType
+    _max?: ActivateTokenMaxAggregateInputType
+  }
+
+  export type ActivateTokenGroupByOutputType = {
+    id: string
+    token: string
+    activatedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    userId: string
+    _count: ActivateTokenCountAggregateOutputType | null
+    _min: ActivateTokenMinAggregateOutputType | null
+    _max: ActivateTokenMaxAggregateOutputType | null
+  }
+
+  type GetActivateTokenGroupByPayload<T extends ActivateTokenGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ActivateTokenGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ActivateTokenGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ActivateTokenGroupByOutputType[P]>
+            : GetScalarType<T[P], ActivateTokenGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ActivateTokenSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    activatedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["activateToken"]>
+
+  export type ActivateTokenSelectScalar = {
+    id?: boolean
+    token?: boolean
+    activatedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+  }
+
+  export type ActivateTokenInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+
+  export type $ActivateTokenPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "ActivateToken"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetResult<{
+      id: string
+      token: string
+      activatedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+      userId: string
+    }, ExtArgs["result"]["activateToken"]>
+    composites: {}
+  }
+
+
+  type ActivateTokenGetPayload<S extends boolean | null | undefined | ActivateTokenDefaultArgs> = $Result.GetResult<Prisma.$ActivateTokenPayload, S>
+
+  type ActivateTokenCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<ActivateTokenFindManyArgs, 'select' | 'include'> & {
+      select?: ActivateTokenCountAggregateInputType | true
+    }
+
+  export interface ActivateTokenDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ActivateToken'], meta: { name: 'ActivateToken' } }
+    /**
+     * Find zero or one ActivateToken that matches the filter.
+     * @param {ActivateTokenFindUniqueArgs} args - Arguments to find a ActivateToken
+     * @example
+     * // Get one ActivateToken
+     * const activateToken = await prisma.activateToken.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ActivateTokenFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ActivateTokenFindUniqueArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one ActivateToken that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ActivateTokenFindUniqueOrThrowArgs} args - Arguments to find a ActivateToken
+     * @example
+     * // Get one ActivateToken
+     * const activateToken = await prisma.activateToken.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ActivateTokenFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActivateTokenFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first ActivateToken that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenFindFirstArgs} args - Arguments to find a ActivateToken
+     * @example
+     * // Get one ActivateToken
+     * const activateToken = await prisma.activateToken.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ActivateTokenFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActivateTokenFindFirstArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first ActivateToken that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenFindFirstOrThrowArgs} args - Arguments to find a ActivateToken
+     * @example
+     * // Get one ActivateToken
+     * const activateToken = await prisma.activateToken.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ActivateTokenFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActivateTokenFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more ActivateTokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ActivateTokens
+     * const activateTokens = await prisma.activateToken.findMany()
+     * 
+     * // Get first 10 ActivateTokens
+     * const activateTokens = await prisma.activateToken.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const activateTokenWithIdOnly = await prisma.activateToken.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ActivateTokenFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActivateTokenFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a ActivateToken.
+     * @param {ActivateTokenCreateArgs} args - Arguments to create a ActivateToken.
+     * @example
+     * // Create one ActivateToken
+     * const ActivateToken = await prisma.activateToken.create({
+     *   data: {
+     *     // ... data to create a ActivateToken
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ActivateTokenCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ActivateTokenCreateArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many ActivateTokens.
+     *     @param {ActivateTokenCreateManyArgs} args - Arguments to create many ActivateTokens.
+     *     @example
+     *     // Create many ActivateTokens
+     *     const activateToken = await prisma.activateToken.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ActivateTokenCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActivateTokenCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ActivateToken.
+     * @param {ActivateTokenDeleteArgs} args - Arguments to delete one ActivateToken.
+     * @example
+     * // Delete one ActivateToken
+     * const ActivateToken = await prisma.activateToken.delete({
+     *   where: {
+     *     // ... filter to delete one ActivateToken
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ActivateTokenDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ActivateTokenDeleteArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one ActivateToken.
+     * @param {ActivateTokenUpdateArgs} args - Arguments to update one ActivateToken.
+     * @example
+     * // Update one ActivateToken
+     * const activateToken = await prisma.activateToken.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ActivateTokenUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ActivateTokenUpdateArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ActivateTokens.
+     * @param {ActivateTokenDeleteManyArgs} args - Arguments to filter ActivateTokens to delete.
+     * @example
+     * // Delete a few ActivateTokens
+     * const { count } = await prisma.activateToken.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ActivateTokenDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActivateTokenDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ActivateTokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ActivateTokens
+     * const activateToken = await prisma.activateToken.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ActivateTokenUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ActivateTokenUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ActivateToken.
+     * @param {ActivateTokenUpsertArgs} args - Arguments to update or create a ActivateToken.
+     * @example
+     * // Update or create a ActivateToken
+     * const activateToken = await prisma.activateToken.upsert({
+     *   create: {
+     *     // ... data to create a ActivateToken
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ActivateToken we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ActivateTokenUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ActivateTokenUpsertArgs<ExtArgs>>
+    ): Prisma__ActivateTokenClient<$Result.GetResult<Prisma.$ActivateTokenPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of ActivateTokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenCountArgs} args - Arguments to filter ActivateTokens to count.
+     * @example
+     * // Count the number of ActivateTokens
+     * const count = await prisma.activateToken.count({
+     *   where: {
+     *     // ... the filter for the ActivateTokens we want to count
+     *   }
+     * })
+    **/
+    count<T extends ActivateTokenCountArgs>(
+      args?: Subset<T, ActivateTokenCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ActivateTokenCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ActivateToken.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ActivateTokenAggregateArgs>(args: Subset<T, ActivateTokenAggregateArgs>): Prisma.PrismaPromise<GetActivateTokenAggregateType<T>>
+
+    /**
+     * Group by ActivateToken.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivateTokenGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ActivateTokenGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ActivateTokenGroupByArgs['orderBy'] }
+        : { orderBy?: ActivateTokenGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ActivateTokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetActivateTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ActivateToken model
+   */
+  readonly fields: ActivateTokenFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ActivateToken.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ActivateTokenClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the ActivateToken model
+   */ 
+  interface ActivateTokenFieldRefs {
+    readonly id: FieldRef<"ActivateToken", 'String'>
+    readonly token: FieldRef<"ActivateToken", 'String'>
+    readonly activatedAt: FieldRef<"ActivateToken", 'DateTime'>
+    readonly createdAt: FieldRef<"ActivateToken", 'DateTime'>
+    readonly updatedAt: FieldRef<"ActivateToken", 'DateTime'>
+    readonly userId: FieldRef<"ActivateToken", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * ActivateToken findUnique
+   */
+  export type ActivateTokenFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which ActivateToken to fetch.
+     */
+    where: ActivateTokenWhereUniqueInput
+  }
+
+
+  /**
+   * ActivateToken findUniqueOrThrow
+   */
+  export type ActivateTokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which ActivateToken to fetch.
+     */
+    where: ActivateTokenWhereUniqueInput
+  }
+
+
+  /**
+   * ActivateToken findFirst
+   */
+  export type ActivateTokenFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which ActivateToken to fetch.
+     */
+    where?: ActivateTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ActivateTokens to fetch.
+     */
+    orderBy?: ActivateTokenOrderByWithRelationInput | ActivateTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ActivateTokens.
+     */
+    cursor?: ActivateTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ActivateTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ActivateTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ActivateTokens.
+     */
+    distinct?: ActivateTokenScalarFieldEnum | ActivateTokenScalarFieldEnum[]
+  }
+
+
+  /**
+   * ActivateToken findFirstOrThrow
+   */
+  export type ActivateTokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which ActivateToken to fetch.
+     */
+    where?: ActivateTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ActivateTokens to fetch.
+     */
+    orderBy?: ActivateTokenOrderByWithRelationInput | ActivateTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ActivateTokens.
+     */
+    cursor?: ActivateTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ActivateTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ActivateTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ActivateTokens.
+     */
+    distinct?: ActivateTokenScalarFieldEnum | ActivateTokenScalarFieldEnum[]
+  }
+
+
+  /**
+   * ActivateToken findMany
+   */
+  export type ActivateTokenFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which ActivateTokens to fetch.
+     */
+    where?: ActivateTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ActivateTokens to fetch.
+     */
+    orderBy?: ActivateTokenOrderByWithRelationInput | ActivateTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ActivateTokens.
+     */
+    cursor?: ActivateTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ActivateTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ActivateTokens.
+     */
+    skip?: number
+    distinct?: ActivateTokenScalarFieldEnum | ActivateTokenScalarFieldEnum[]
+  }
+
+
+  /**
+   * ActivateToken create
+   */
+  export type ActivateTokenCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ActivateToken.
+     */
+    data: XOR<ActivateTokenCreateInput, ActivateTokenUncheckedCreateInput>
+  }
+
+
+  /**
+   * ActivateToken createMany
+   */
+  export type ActivateTokenCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ActivateTokens.
+     */
+    data: ActivateTokenCreateManyInput | ActivateTokenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * ActivateToken update
+   */
+  export type ActivateTokenUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ActivateToken.
+     */
+    data: XOR<ActivateTokenUpdateInput, ActivateTokenUncheckedUpdateInput>
+    /**
+     * Choose, which ActivateToken to update.
+     */
+    where: ActivateTokenWhereUniqueInput
+  }
+
+
+  /**
+   * ActivateToken updateMany
+   */
+  export type ActivateTokenUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ActivateTokens.
+     */
+    data: XOR<ActivateTokenUpdateManyMutationInput, ActivateTokenUncheckedUpdateManyInput>
+    /**
+     * Filter which ActivateTokens to update
+     */
+    where?: ActivateTokenWhereInput
+  }
+
+
+  /**
+   * ActivateToken upsert
+   */
+  export type ActivateTokenUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ActivateToken to update in case it exists.
+     */
+    where: ActivateTokenWhereUniqueInput
+    /**
+     * In case the ActivateToken found by the `where` argument doesn't exist, create a new ActivateToken with this data.
+     */
+    create: XOR<ActivateTokenCreateInput, ActivateTokenUncheckedCreateInput>
+    /**
+     * In case the ActivateToken was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ActivateTokenUpdateInput, ActivateTokenUncheckedUpdateInput>
+  }
+
+
+  /**
+   * ActivateToken delete
+   */
+  export type ActivateTokenDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
+    /**
+     * Filter which ActivateToken to delete.
+     */
+    where: ActivateTokenWhereUniqueInput
+  }
+
+
+  /**
+   * ActivateToken deleteMany
+   */
+  export type ActivateTokenDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ActivateTokens to delete
+     */
+    where?: ActivateTokenWhereInput
+  }
+
+
+  /**
+   * ActivateToken without action
+   */
+  export type ActivateTokenDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActivateToken
+     */
+    select?: ActivateTokenSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ActivateTokenInclude<ExtArgs> | null
   }
 
 
@@ -6663,2032 +7312,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Board
-   */
-
-  export type AggregateBoard = {
-    _count: BoardCountAggregateOutputType | null
-    _avg: BoardAvgAggregateOutputType | null
-    _sum: BoardSumAggregateOutputType | null
-    _min: BoardMinAggregateOutputType | null
-    _max: BoardMaxAggregateOutputType | null
-  }
-
-  export type BoardAvgAggregateOutputType = {
-    likes: number | null
-    dislikes: number | null
-    views: number | null
-  }
-
-  export type BoardSumAggregateOutputType = {
-    likes: number | null
-    dislikes: number | null
-    views: number | null
-  }
-
-  export type BoardMinAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    category: string | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    likes: number | null
-    dislikes: number | null
-    views: number | null
-  }
-
-  export type BoardMaxAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    category: string | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    likes: number | null
-    dislikes: number | null
-    views: number | null
-  }
-
-  export type BoardCountAggregateOutputType = {
-    id: number
-    title: number
-    description: number
-    category: number
-    userId: number
-    createdAt: number
-    updatedAt: number
-    likes: number
-    dislikes: number
-    views: number
-    _all: number
-  }
-
-
-  export type BoardAvgAggregateInputType = {
-    likes?: true
-    dislikes?: true
-    views?: true
-  }
-
-  export type BoardSumAggregateInputType = {
-    likes?: true
-    dislikes?: true
-    views?: true
-  }
-
-  export type BoardMinAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    category?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
-    likes?: true
-    dislikes?: true
-    views?: true
-  }
-
-  export type BoardMaxAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    category?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
-    likes?: true
-    dislikes?: true
-    views?: true
-  }
-
-  export type BoardCountAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    category?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
-    likes?: true
-    dislikes?: true
-    views?: true
-    _all?: true
-  }
-
-  export type BoardAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Board to aggregate.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Boards
-    **/
-    _count?: true | BoardCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: BoardAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BoardSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BoardMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BoardMaxAggregateInputType
-  }
-
-  export type GetBoardAggregateType<T extends BoardAggregateArgs> = {
-        [P in keyof T & keyof AggregateBoard]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBoard[P]>
-      : GetScalarType<T[P], AggregateBoard[P]>
-  }
-
-
-
-
-  export type BoardGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: BoardWhereInput
-    orderBy?: BoardOrderByWithAggregationInput | BoardOrderByWithAggregationInput[]
-    by: BoardScalarFieldEnum[] | BoardScalarFieldEnum
-    having?: BoardScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BoardCountAggregateInputType | true
-    _avg?: BoardAvgAggregateInputType
-    _sum?: BoardSumAggregateInputType
-    _min?: BoardMinAggregateInputType
-    _max?: BoardMaxAggregateInputType
-  }
-
-  export type BoardGroupByOutputType = {
-    id: string
-    title: string
-    description: string
-    category: string
-    userId: string
-    createdAt: Date
-    updatedAt: Date
-    likes: number
-    dislikes: number
-    views: number
-    _count: BoardCountAggregateOutputType | null
-    _avg: BoardAvgAggregateOutputType | null
-    _sum: BoardSumAggregateOutputType | null
-    _min: BoardMinAggregateOutputType | null
-    _max: BoardMaxAggregateOutputType | null
-  }
-
-  type GetBoardGroupByPayload<T extends BoardGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BoardGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BoardGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BoardGroupByOutputType[P]>
-            : GetScalarType<T[P], BoardGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BoardSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    category?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    likes?: boolean
-    dislikes?: boolean
-    views?: boolean
-    ViewdBoardStore?: boolean | Board$ViewdBoardStoreArgs<ExtArgs>
-    BoardLikeDisLike?: boolean | Board$BoardLikeDisLikeArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    _count?: boolean | BoardCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["board"]>
-
-  export type BoardSelectScalar = {
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    category?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    likes?: boolean
-    dislikes?: boolean
-    views?: boolean
-  }
-
-  export type BoardInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    ViewdBoardStore?: boolean | Board$ViewdBoardStoreArgs<ExtArgs>
-    BoardLikeDisLike?: boolean | Board$BoardLikeDisLikeArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    _count?: boolean | BoardCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-
-  export type $BoardPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "Board"
-    objects: {
-      ViewdBoardStore: Prisma.$ViewdBoardStorePayload<ExtArgs>[]
-      BoardLikeDisLike: Prisma.$BoardLikeDisLikePayload<ExtArgs>[]
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetResult<{
-      id: string
-      title: string
-      description: string
-      category: string
-      userId: string
-      createdAt: Date
-      updatedAt: Date
-      likes: number
-      dislikes: number
-      views: number
-    }, ExtArgs["result"]["board"]>
-    composites: {}
-  }
-
-
-  type BoardGetPayload<S extends boolean | null | undefined | BoardDefaultArgs> = $Result.GetResult<Prisma.$BoardPayload, S>
-
-  type BoardCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<BoardFindManyArgs, 'select' | 'include'> & {
-      select?: BoardCountAggregateInputType | true
-    }
-
-  export interface BoardDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Board'], meta: { name: 'Board' } }
-    /**
-     * Find zero or one Board that matches the filter.
-     * @param {BoardFindUniqueArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends BoardFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardFindUniqueArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Board that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {BoardFindUniqueOrThrowArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends BoardFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Board that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardFindFirstArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends BoardFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardFindFirstArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Board that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardFindFirstOrThrowArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends BoardFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Boards that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Boards
-     * const boards = await prisma.board.findMany()
-     * 
-     * // Get first 10 Boards
-     * const boards = await prisma.board.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const boardWithIdOnly = await prisma.board.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends BoardFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Board.
-     * @param {BoardCreateArgs} args - Arguments to create a Board.
-     * @example
-     * // Create one Board
-     * const Board = await prisma.board.create({
-     *   data: {
-     *     // ... data to create a Board
-     *   }
-     * })
-     * 
-    **/
-    create<T extends BoardCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardCreateArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Boards.
-     *     @param {BoardCreateManyArgs} args - Arguments to create many Boards.
-     *     @example
-     *     // Create many Boards
-     *     const board = await prisma.board.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends BoardCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Board.
-     * @param {BoardDeleteArgs} args - Arguments to delete one Board.
-     * @example
-     * // Delete one Board
-     * const Board = await prisma.board.delete({
-     *   where: {
-     *     // ... filter to delete one Board
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends BoardDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardDeleteArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Board.
-     * @param {BoardUpdateArgs} args - Arguments to update one Board.
-     * @example
-     * // Update one Board
-     * const board = await prisma.board.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends BoardUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardUpdateArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Boards.
-     * @param {BoardDeleteManyArgs} args - Arguments to filter Boards to delete.
-     * @example
-     * // Delete a few Boards
-     * const { count } = await prisma.board.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends BoardDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Boards.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Boards
-     * const board = await prisma.board.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends BoardUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Board.
-     * @param {BoardUpsertArgs} args - Arguments to update or create a Board.
-     * @example
-     * // Update or create a Board
-     * const board = await prisma.board.upsert({
-     *   create: {
-     *     // ... data to create a Board
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Board we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends BoardUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardUpsertArgs<ExtArgs>>
-    ): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Boards.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardCountArgs} args - Arguments to filter Boards to count.
-     * @example
-     * // Count the number of Boards
-     * const count = await prisma.board.count({
-     *   where: {
-     *     // ... the filter for the Boards we want to count
-     *   }
-     * })
-    **/
-    count<T extends BoardCountArgs>(
-      args?: Subset<T, BoardCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BoardCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Board.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BoardAggregateArgs>(args: Subset<T, BoardAggregateArgs>): Prisma.PrismaPromise<GetBoardAggregateType<T>>
-
-    /**
-     * Group by Board.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BoardGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BoardGroupByArgs['orderBy'] }
-        : { orderBy?: BoardGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BoardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBoardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Board model
-   */
-  readonly fields: BoardFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Board.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BoardClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    ViewdBoardStore<T extends Board$ViewdBoardStoreArgs<ExtArgs> = {}>(args?: Subset<T, Board$ViewdBoardStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    BoardLikeDisLike<T extends Board$BoardLikeDisLikeArgs<ExtArgs> = {}>(args?: Subset<T, Board$BoardLikeDisLikeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the Board model
-   */ 
-  interface BoardFieldRefs {
-    readonly id: FieldRef<"Board", 'String'>
-    readonly title: FieldRef<"Board", 'String'>
-    readonly description: FieldRef<"Board", 'String'>
-    readonly category: FieldRef<"Board", 'String'>
-    readonly userId: FieldRef<"Board", 'String'>
-    readonly createdAt: FieldRef<"Board", 'DateTime'>
-    readonly updatedAt: FieldRef<"Board", 'DateTime'>
-    readonly likes: FieldRef<"Board", 'Int'>
-    readonly dislikes: FieldRef<"Board", 'Int'>
-    readonly views: FieldRef<"Board", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * Board findUnique
-   */
-  export type BoardFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-
-  /**
-   * Board findUniqueOrThrow
-   */
-  export type BoardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-
-  /**
-   * Board findFirst
-   */
-  export type BoardFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Boards.
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Boards.
-     */
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-
-  /**
-   * Board findFirstOrThrow
-   */
-  export type BoardFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Boards.
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Boards.
-     */
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-
-  /**
-   * Board findMany
-   */
-  export type BoardFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * Filter, which Boards to fetch.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Boards.
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-
-  /**
-   * Board create
-   */
-  export type BoardCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Board.
-     */
-    data: XOR<BoardCreateInput, BoardUncheckedCreateInput>
-  }
-
-
-  /**
-   * Board createMany
-   */
-  export type BoardCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Boards.
-     */
-    data: BoardCreateManyInput | BoardCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * Board update
-   */
-  export type BoardUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Board.
-     */
-    data: XOR<BoardUpdateInput, BoardUncheckedUpdateInput>
-    /**
-     * Choose, which Board to update.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-
-  /**
-   * Board updateMany
-   */
-  export type BoardUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Boards.
-     */
-    data: XOR<BoardUpdateManyMutationInput, BoardUncheckedUpdateManyInput>
-    /**
-     * Filter which Boards to update
-     */
-    where?: BoardWhereInput
-  }
-
-
-  /**
-   * Board upsert
-   */
-  export type BoardUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Board to update in case it exists.
-     */
-    where: BoardWhereUniqueInput
-    /**
-     * In case the Board found by the `where` argument doesn't exist, create a new Board with this data.
-     */
-    create: XOR<BoardCreateInput, BoardUncheckedCreateInput>
-    /**
-     * In case the Board was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BoardUpdateInput, BoardUncheckedUpdateInput>
-  }
-
-
-  /**
-   * Board delete
-   */
-  export type BoardDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-    /**
-     * Filter which Board to delete.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-
-  /**
-   * Board deleteMany
-   */
-  export type BoardDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Boards to delete
-     */
-    where?: BoardWhereInput
-  }
-
-
-  /**
-   * Board.ViewdBoardStore
-   */
-  export type Board$ViewdBoardStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    where?: ViewdBoardStoreWhereInput
-    orderBy?: ViewdBoardStoreOrderByWithRelationInput | ViewdBoardStoreOrderByWithRelationInput[]
-    cursor?: ViewdBoardStoreWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ViewdBoardStoreScalarFieldEnum | ViewdBoardStoreScalarFieldEnum[]
-  }
-
-
-  /**
-   * Board.BoardLikeDisLike
-   */
-  export type Board$BoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    where?: BoardLikeDisLikeWhereInput
-    orderBy?: BoardLikeDisLikeOrderByWithRelationInput | BoardLikeDisLikeOrderByWithRelationInput[]
-    cursor?: BoardLikeDisLikeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BoardLikeDisLikeScalarFieldEnum | BoardLikeDisLikeScalarFieldEnum[]
-  }
-
-
-  /**
-   * Board without action
-   */
-  export type BoardDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardInclude<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model BoardLikeDisLike
-   */
-
-  export type AggregateBoardLikeDisLike = {
-    _count: BoardLikeDisLikeCountAggregateOutputType | null
-    _avg: BoardLikeDisLikeAvgAggregateOutputType | null
-    _sum: BoardLikeDisLikeSumAggregateOutputType | null
-    _min: BoardLikeDisLikeMinAggregateOutputType | null
-    _max: BoardLikeDisLikeMaxAggregateOutputType | null
-  }
-
-  export type BoardLikeDisLikeAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type BoardLikeDisLikeSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type BoardLikeDisLikeMinAggregateOutputType = {
-    id: number | null
-    type: string | null
-    createdAt: Date | null
-    userId: string | null
-    boardId: string | null
-  }
-
-  export type BoardLikeDisLikeMaxAggregateOutputType = {
-    id: number | null
-    type: string | null
-    createdAt: Date | null
-    userId: string | null
-    boardId: string | null
-  }
-
-  export type BoardLikeDisLikeCountAggregateOutputType = {
-    id: number
-    type: number
-    createdAt: number
-    userId: number
-    boardId: number
-    _all: number
-  }
-
-
-  export type BoardLikeDisLikeAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type BoardLikeDisLikeSumAggregateInputType = {
-    id?: true
-  }
-
-  export type BoardLikeDisLikeMinAggregateInputType = {
-    id?: true
-    type?: true
-    createdAt?: true
-    userId?: true
-    boardId?: true
-  }
-
-  export type BoardLikeDisLikeMaxAggregateInputType = {
-    id?: true
-    type?: true
-    createdAt?: true
-    userId?: true
-    boardId?: true
-  }
-
-  export type BoardLikeDisLikeCountAggregateInputType = {
-    id?: true
-    type?: true
-    createdAt?: true
-    userId?: true
-    boardId?: true
-    _all?: true
-  }
-
-  export type BoardLikeDisLikeAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BoardLikeDisLike to aggregate.
-     */
-    where?: BoardLikeDisLikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BoardLikeDisLikes to fetch.
-     */
-    orderBy?: BoardLikeDisLikeOrderByWithRelationInput | BoardLikeDisLikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BoardLikeDisLikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BoardLikeDisLikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BoardLikeDisLikes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned BoardLikeDisLikes
-    **/
-    _count?: true | BoardLikeDisLikeCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: BoardLikeDisLikeAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BoardLikeDisLikeSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BoardLikeDisLikeMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BoardLikeDisLikeMaxAggregateInputType
-  }
-
-  export type GetBoardLikeDisLikeAggregateType<T extends BoardLikeDisLikeAggregateArgs> = {
-        [P in keyof T & keyof AggregateBoardLikeDisLike]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBoardLikeDisLike[P]>
-      : GetScalarType<T[P], AggregateBoardLikeDisLike[P]>
-  }
-
-
-
-
-  export type BoardLikeDisLikeGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: BoardLikeDisLikeWhereInput
-    orderBy?: BoardLikeDisLikeOrderByWithAggregationInput | BoardLikeDisLikeOrderByWithAggregationInput[]
-    by: BoardLikeDisLikeScalarFieldEnum[] | BoardLikeDisLikeScalarFieldEnum
-    having?: BoardLikeDisLikeScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BoardLikeDisLikeCountAggregateInputType | true
-    _avg?: BoardLikeDisLikeAvgAggregateInputType
-    _sum?: BoardLikeDisLikeSumAggregateInputType
-    _min?: BoardLikeDisLikeMinAggregateInputType
-    _max?: BoardLikeDisLikeMaxAggregateInputType
-  }
-
-  export type BoardLikeDisLikeGroupByOutputType = {
-    id: number
-    type: string
-    createdAt: Date
-    userId: string
-    boardId: string
-    _count: BoardLikeDisLikeCountAggregateOutputType | null
-    _avg: BoardLikeDisLikeAvgAggregateOutputType | null
-    _sum: BoardLikeDisLikeSumAggregateOutputType | null
-    _min: BoardLikeDisLikeMinAggregateOutputType | null
-    _max: BoardLikeDisLikeMaxAggregateOutputType | null
-  }
-
-  type GetBoardLikeDisLikeGroupByPayload<T extends BoardLikeDisLikeGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BoardLikeDisLikeGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BoardLikeDisLikeGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BoardLikeDisLikeGroupByOutputType[P]>
-            : GetScalarType<T[P], BoardLikeDisLikeGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BoardLikeDisLikeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    type?: boolean
-    createdAt?: boolean
-    userId?: boolean
-    boardId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    board?: boolean | BoardDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["boardLikeDisLike"]>
-
-  export type BoardLikeDisLikeSelectScalar = {
-    id?: boolean
-    type?: boolean
-    createdAt?: boolean
-    userId?: boolean
-    boardId?: boolean
-  }
-
-  export type BoardLikeDisLikeInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    board?: boolean | BoardDefaultArgs<ExtArgs>
-  }
-
-
-  export type $BoardLikeDisLikePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "BoardLikeDisLike"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      board: Prisma.$BoardPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetResult<{
-      id: number
-      type: string
-      createdAt: Date
-      userId: string
-      boardId: string
-    }, ExtArgs["result"]["boardLikeDisLike"]>
-    composites: {}
-  }
-
-
-  type BoardLikeDisLikeGetPayload<S extends boolean | null | undefined | BoardLikeDisLikeDefaultArgs> = $Result.GetResult<Prisma.$BoardLikeDisLikePayload, S>
-
-  type BoardLikeDisLikeCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<BoardLikeDisLikeFindManyArgs, 'select' | 'include'> & {
-      select?: BoardLikeDisLikeCountAggregateInputType | true
-    }
-
-  export interface BoardLikeDisLikeDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BoardLikeDisLike'], meta: { name: 'BoardLikeDisLike' } }
-    /**
-     * Find zero or one BoardLikeDisLike that matches the filter.
-     * @param {BoardLikeDisLikeFindUniqueArgs} args - Arguments to find a BoardLikeDisLike
-     * @example
-     * // Get one BoardLikeDisLike
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends BoardLikeDisLikeFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardLikeDisLikeFindUniqueArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one BoardLikeDisLike that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {BoardLikeDisLikeFindUniqueOrThrowArgs} args - Arguments to find a BoardLikeDisLike
-     * @example
-     * // Get one BoardLikeDisLike
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends BoardLikeDisLikeFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardLikeDisLikeFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first BoardLikeDisLike that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeFindFirstArgs} args - Arguments to find a BoardLikeDisLike
-     * @example
-     * // Get one BoardLikeDisLike
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends BoardLikeDisLikeFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardLikeDisLikeFindFirstArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first BoardLikeDisLike that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeFindFirstOrThrowArgs} args - Arguments to find a BoardLikeDisLike
-     * @example
-     * // Get one BoardLikeDisLike
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends BoardLikeDisLikeFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardLikeDisLikeFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more BoardLikeDisLikes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all BoardLikeDisLikes
-     * const boardLikeDisLikes = await prisma.boardLikeDisLike.findMany()
-     * 
-     * // Get first 10 BoardLikeDisLikes
-     * const boardLikeDisLikes = await prisma.boardLikeDisLike.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const boardLikeDisLikeWithIdOnly = await prisma.boardLikeDisLike.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends BoardLikeDisLikeFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardLikeDisLikeFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a BoardLikeDisLike.
-     * @param {BoardLikeDisLikeCreateArgs} args - Arguments to create a BoardLikeDisLike.
-     * @example
-     * // Create one BoardLikeDisLike
-     * const BoardLikeDisLike = await prisma.boardLikeDisLike.create({
-     *   data: {
-     *     // ... data to create a BoardLikeDisLike
-     *   }
-     * })
-     * 
-    **/
-    create<T extends BoardLikeDisLikeCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardLikeDisLikeCreateArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many BoardLikeDisLikes.
-     *     @param {BoardLikeDisLikeCreateManyArgs} args - Arguments to create many BoardLikeDisLikes.
-     *     @example
-     *     // Create many BoardLikeDisLikes
-     *     const boardLikeDisLike = await prisma.boardLikeDisLike.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends BoardLikeDisLikeCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardLikeDisLikeCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a BoardLikeDisLike.
-     * @param {BoardLikeDisLikeDeleteArgs} args - Arguments to delete one BoardLikeDisLike.
-     * @example
-     * // Delete one BoardLikeDisLike
-     * const BoardLikeDisLike = await prisma.boardLikeDisLike.delete({
-     *   where: {
-     *     // ... filter to delete one BoardLikeDisLike
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends BoardLikeDisLikeDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardLikeDisLikeDeleteArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one BoardLikeDisLike.
-     * @param {BoardLikeDisLikeUpdateArgs} args - Arguments to update one BoardLikeDisLike.
-     * @example
-     * // Update one BoardLikeDisLike
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends BoardLikeDisLikeUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardLikeDisLikeUpdateArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more BoardLikeDisLikes.
-     * @param {BoardLikeDisLikeDeleteManyArgs} args - Arguments to filter BoardLikeDisLikes to delete.
-     * @example
-     * // Delete a few BoardLikeDisLikes
-     * const { count } = await prisma.boardLikeDisLike.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends BoardLikeDisLikeDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BoardLikeDisLikeDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BoardLikeDisLikes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many BoardLikeDisLikes
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends BoardLikeDisLikeUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardLikeDisLikeUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one BoardLikeDisLike.
-     * @param {BoardLikeDisLikeUpsertArgs} args - Arguments to update or create a BoardLikeDisLike.
-     * @example
-     * // Update or create a BoardLikeDisLike
-     * const boardLikeDisLike = await prisma.boardLikeDisLike.upsert({
-     *   create: {
-     *     // ... data to create a BoardLikeDisLike
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the BoardLikeDisLike we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends BoardLikeDisLikeUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, BoardLikeDisLikeUpsertArgs<ExtArgs>>
-    ): Prisma__BoardLikeDisLikeClient<$Result.GetResult<Prisma.$BoardLikeDisLikePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of BoardLikeDisLikes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeCountArgs} args - Arguments to filter BoardLikeDisLikes to count.
-     * @example
-     * // Count the number of BoardLikeDisLikes
-     * const count = await prisma.boardLikeDisLike.count({
-     *   where: {
-     *     // ... the filter for the BoardLikeDisLikes we want to count
-     *   }
-     * })
-    **/
-    count<T extends BoardLikeDisLikeCountArgs>(
-      args?: Subset<T, BoardLikeDisLikeCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BoardLikeDisLikeCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a BoardLikeDisLike.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BoardLikeDisLikeAggregateArgs>(args: Subset<T, BoardLikeDisLikeAggregateArgs>): Prisma.PrismaPromise<GetBoardLikeDisLikeAggregateType<T>>
-
-    /**
-     * Group by BoardLikeDisLike.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardLikeDisLikeGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BoardLikeDisLikeGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BoardLikeDisLikeGroupByArgs['orderBy'] }
-        : { orderBy?: BoardLikeDisLikeGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BoardLikeDisLikeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBoardLikeDisLikeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the BoardLikeDisLike model
-   */
-  readonly fields: BoardLikeDisLikeFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for BoardLikeDisLike.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BoardLikeDisLikeClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    board<T extends BoardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BoardDefaultArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the BoardLikeDisLike model
-   */ 
-  interface BoardLikeDisLikeFieldRefs {
-    readonly id: FieldRef<"BoardLikeDisLike", 'Int'>
-    readonly type: FieldRef<"BoardLikeDisLike", 'String'>
-    readonly createdAt: FieldRef<"BoardLikeDisLike", 'DateTime'>
-    readonly userId: FieldRef<"BoardLikeDisLike", 'String'>
-    readonly boardId: FieldRef<"BoardLikeDisLike", 'String'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * BoardLikeDisLike findUnique
-   */
-  export type BoardLikeDisLikeFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * Filter, which BoardLikeDisLike to fetch.
-     */
-    where: BoardLikeDisLikeWhereUniqueInput
-  }
-
-
-  /**
-   * BoardLikeDisLike findUniqueOrThrow
-   */
-  export type BoardLikeDisLikeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * Filter, which BoardLikeDisLike to fetch.
-     */
-    where: BoardLikeDisLikeWhereUniqueInput
-  }
-
-
-  /**
-   * BoardLikeDisLike findFirst
-   */
-  export type BoardLikeDisLikeFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * Filter, which BoardLikeDisLike to fetch.
-     */
-    where?: BoardLikeDisLikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BoardLikeDisLikes to fetch.
-     */
-    orderBy?: BoardLikeDisLikeOrderByWithRelationInput | BoardLikeDisLikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BoardLikeDisLikes.
-     */
-    cursor?: BoardLikeDisLikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BoardLikeDisLikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BoardLikeDisLikes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BoardLikeDisLikes.
-     */
-    distinct?: BoardLikeDisLikeScalarFieldEnum | BoardLikeDisLikeScalarFieldEnum[]
-  }
-
-
-  /**
-   * BoardLikeDisLike findFirstOrThrow
-   */
-  export type BoardLikeDisLikeFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * Filter, which BoardLikeDisLike to fetch.
-     */
-    where?: BoardLikeDisLikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BoardLikeDisLikes to fetch.
-     */
-    orderBy?: BoardLikeDisLikeOrderByWithRelationInput | BoardLikeDisLikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BoardLikeDisLikes.
-     */
-    cursor?: BoardLikeDisLikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BoardLikeDisLikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BoardLikeDisLikes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BoardLikeDisLikes.
-     */
-    distinct?: BoardLikeDisLikeScalarFieldEnum | BoardLikeDisLikeScalarFieldEnum[]
-  }
-
-
-  /**
-   * BoardLikeDisLike findMany
-   */
-  export type BoardLikeDisLikeFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * Filter, which BoardLikeDisLikes to fetch.
-     */
-    where?: BoardLikeDisLikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BoardLikeDisLikes to fetch.
-     */
-    orderBy?: BoardLikeDisLikeOrderByWithRelationInput | BoardLikeDisLikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing BoardLikeDisLikes.
-     */
-    cursor?: BoardLikeDisLikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BoardLikeDisLikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BoardLikeDisLikes.
-     */
-    skip?: number
-    distinct?: BoardLikeDisLikeScalarFieldEnum | BoardLikeDisLikeScalarFieldEnum[]
-  }
-
-
-  /**
-   * BoardLikeDisLike create
-   */
-  export type BoardLikeDisLikeCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * The data needed to create a BoardLikeDisLike.
-     */
-    data: XOR<BoardLikeDisLikeCreateInput, BoardLikeDisLikeUncheckedCreateInput>
-  }
-
-
-  /**
-   * BoardLikeDisLike createMany
-   */
-  export type BoardLikeDisLikeCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many BoardLikeDisLikes.
-     */
-    data: BoardLikeDisLikeCreateManyInput | BoardLikeDisLikeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * BoardLikeDisLike update
-   */
-  export type BoardLikeDisLikeUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * The data needed to update a BoardLikeDisLike.
-     */
-    data: XOR<BoardLikeDisLikeUpdateInput, BoardLikeDisLikeUncheckedUpdateInput>
-    /**
-     * Choose, which BoardLikeDisLike to update.
-     */
-    where: BoardLikeDisLikeWhereUniqueInput
-  }
-
-
-  /**
-   * BoardLikeDisLike updateMany
-   */
-  export type BoardLikeDisLikeUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update BoardLikeDisLikes.
-     */
-    data: XOR<BoardLikeDisLikeUpdateManyMutationInput, BoardLikeDisLikeUncheckedUpdateManyInput>
-    /**
-     * Filter which BoardLikeDisLikes to update
-     */
-    where?: BoardLikeDisLikeWhereInput
-  }
-
-
-  /**
-   * BoardLikeDisLike upsert
-   */
-  export type BoardLikeDisLikeUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * The filter to search for the BoardLikeDisLike to update in case it exists.
-     */
-    where: BoardLikeDisLikeWhereUniqueInput
-    /**
-     * In case the BoardLikeDisLike found by the `where` argument doesn't exist, create a new BoardLikeDisLike with this data.
-     */
-    create: XOR<BoardLikeDisLikeCreateInput, BoardLikeDisLikeUncheckedCreateInput>
-    /**
-     * In case the BoardLikeDisLike was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BoardLikeDisLikeUpdateInput, BoardLikeDisLikeUncheckedUpdateInput>
-  }
-
-
-  /**
-   * BoardLikeDisLike delete
-   */
-  export type BoardLikeDisLikeDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-    /**
-     * Filter which BoardLikeDisLike to delete.
-     */
-    where: BoardLikeDisLikeWhereUniqueInput
-  }
-
-
-  /**
-   * BoardLikeDisLike deleteMany
-   */
-  export type BoardLikeDisLikeDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BoardLikeDisLikes to delete
-     */
-    where?: BoardLikeDisLikeWhereInput
-  }
-
-
-  /**
-   * BoardLikeDisLike without action
-   */
-  export type BoardLikeDisLikeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BoardLikeDisLike
-     */
-    select?: BoardLikeDisLikeSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BoardLikeDisLikeInclude<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model Product
    */
 
@@ -9969,6 +8592,7 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     sellerId: string | null
+    sellerName: string | null
     productId: string | null
     title: string | null
     text: string | null
@@ -9981,6 +8605,7 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     sellerId: string | null
+    sellerName: string | null
     productId: string | null
     title: string | null
     text: string | null
@@ -9993,6 +8618,7 @@ export namespace Prisma {
     id: number
     userId: number
     sellerId: number
+    sellerName: number
     productId: number
     title: number
     text: number
@@ -10015,6 +8641,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     sellerId?: true
+    sellerName?: true
     productId?: true
     title?: true
     text?: true
@@ -10027,6 +8654,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     sellerId?: true
+    sellerName?: true
     productId?: true
     title?: true
     text?: true
@@ -10039,6 +8667,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     sellerId?: true
+    sellerName?: true
     productId?: true
     title?: true
     text?: true
@@ -10138,6 +8767,7 @@ export namespace Prisma {
     id: string
     userId: string
     sellerId: string
+    sellerName: string
     productId: string
     title: string
     text: string
@@ -10169,6 +8799,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     sellerId?: boolean
+    sellerName?: boolean
     productId?: boolean
     title?: boolean
     text?: boolean
@@ -10183,6 +8814,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     sellerId?: boolean
+    sellerName?: boolean
     productId?: boolean
     title?: boolean
     text?: boolean
@@ -10207,6 +8839,7 @@ export namespace Prisma {
       id: string
       userId: string
       sellerId: string
+      sellerName: string
       productId: string
       title: string
       text: string
@@ -10613,6 +9246,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Review", 'String'>
     readonly userId: FieldRef<"Review", 'String'>
     readonly sellerId: FieldRef<"Review", 'String'>
+    readonly sellerName: FieldRef<"Review", 'String'>
     readonly productId: FieldRef<"Review", 'String'>
     readonly title: FieldRef<"Review", 'String'>
     readonly text: FieldRef<"Review", 'String'>
@@ -10942,918 +9576,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: ReviewInclude<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model ViewdBoardStore
-   */
-
-  export type AggregateViewdBoardStore = {
-    _count: ViewdBoardStoreCountAggregateOutputType | null
-    _min: ViewdBoardStoreMinAggregateOutputType | null
-    _max: ViewdBoardStoreMaxAggregateOutputType | null
-  }
-
-  export type ViewdBoardStoreMinAggregateOutputType = {
-    id: string | null
-    userId: string | null
-    boardId: string | null
-    viewedAt: Date | null
-  }
-
-  export type ViewdBoardStoreMaxAggregateOutputType = {
-    id: string | null
-    userId: string | null
-    boardId: string | null
-    viewedAt: Date | null
-  }
-
-  export type ViewdBoardStoreCountAggregateOutputType = {
-    id: number
-    userId: number
-    boardId: number
-    viewedAt: number
-    _all: number
-  }
-
-
-  export type ViewdBoardStoreMinAggregateInputType = {
-    id?: true
-    userId?: true
-    boardId?: true
-    viewedAt?: true
-  }
-
-  export type ViewdBoardStoreMaxAggregateInputType = {
-    id?: true
-    userId?: true
-    boardId?: true
-    viewedAt?: true
-  }
-
-  export type ViewdBoardStoreCountAggregateInputType = {
-    id?: true
-    userId?: true
-    boardId?: true
-    viewedAt?: true
-    _all?: true
-  }
-
-  export type ViewdBoardStoreAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ViewdBoardStore to aggregate.
-     */
-    where?: ViewdBoardStoreWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ViewdBoardStores to fetch.
-     */
-    orderBy?: ViewdBoardStoreOrderByWithRelationInput | ViewdBoardStoreOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ViewdBoardStoreWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ViewdBoardStores from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ViewdBoardStores.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ViewdBoardStores
-    **/
-    _count?: true | ViewdBoardStoreCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ViewdBoardStoreMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ViewdBoardStoreMaxAggregateInputType
-  }
-
-  export type GetViewdBoardStoreAggregateType<T extends ViewdBoardStoreAggregateArgs> = {
-        [P in keyof T & keyof AggregateViewdBoardStore]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateViewdBoardStore[P]>
-      : GetScalarType<T[P], AggregateViewdBoardStore[P]>
-  }
-
-
-
-
-  export type ViewdBoardStoreGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ViewdBoardStoreWhereInput
-    orderBy?: ViewdBoardStoreOrderByWithAggregationInput | ViewdBoardStoreOrderByWithAggregationInput[]
-    by: ViewdBoardStoreScalarFieldEnum[] | ViewdBoardStoreScalarFieldEnum
-    having?: ViewdBoardStoreScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ViewdBoardStoreCountAggregateInputType | true
-    _min?: ViewdBoardStoreMinAggregateInputType
-    _max?: ViewdBoardStoreMaxAggregateInputType
-  }
-
-  export type ViewdBoardStoreGroupByOutputType = {
-    id: string
-    userId: string
-    boardId: string
-    viewedAt: Date
-    _count: ViewdBoardStoreCountAggregateOutputType | null
-    _min: ViewdBoardStoreMinAggregateOutputType | null
-    _max: ViewdBoardStoreMaxAggregateOutputType | null
-  }
-
-  type GetViewdBoardStoreGroupByPayload<T extends ViewdBoardStoreGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ViewdBoardStoreGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ViewdBoardStoreGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ViewdBoardStoreGroupByOutputType[P]>
-            : GetScalarType<T[P], ViewdBoardStoreGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ViewdBoardStoreSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    boardId?: boolean
-    viewedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    board?: boolean | BoardDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["viewdBoardStore"]>
-
-  export type ViewdBoardStoreSelectScalar = {
-    id?: boolean
-    userId?: boolean
-    boardId?: boolean
-    viewedAt?: boolean
-  }
-
-  export type ViewdBoardStoreInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    board?: boolean | BoardDefaultArgs<ExtArgs>
-  }
-
-
-  export type $ViewdBoardStorePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "ViewdBoardStore"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      board: Prisma.$BoardPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetResult<{
-      id: string
-      userId: string
-      boardId: string
-      viewedAt: Date
-    }, ExtArgs["result"]["viewdBoardStore"]>
-    composites: {}
-  }
-
-
-  type ViewdBoardStoreGetPayload<S extends boolean | null | undefined | ViewdBoardStoreDefaultArgs> = $Result.GetResult<Prisma.$ViewdBoardStorePayload, S>
-
-  type ViewdBoardStoreCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<ViewdBoardStoreFindManyArgs, 'select' | 'include'> & {
-      select?: ViewdBoardStoreCountAggregateInputType | true
-    }
-
-  export interface ViewdBoardStoreDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ViewdBoardStore'], meta: { name: 'ViewdBoardStore' } }
-    /**
-     * Find zero or one ViewdBoardStore that matches the filter.
-     * @param {ViewdBoardStoreFindUniqueArgs} args - Arguments to find a ViewdBoardStore
-     * @example
-     * // Get one ViewdBoardStore
-     * const viewdBoardStore = await prisma.viewdBoardStore.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ViewdBoardStoreFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ViewdBoardStoreFindUniqueArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one ViewdBoardStore that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {ViewdBoardStoreFindUniqueOrThrowArgs} args - Arguments to find a ViewdBoardStore
-     * @example
-     * // Get one ViewdBoardStore
-     * const viewdBoardStore = await prisma.viewdBoardStore.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ViewdBoardStoreFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ViewdBoardStoreFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first ViewdBoardStore that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreFindFirstArgs} args - Arguments to find a ViewdBoardStore
-     * @example
-     * // Get one ViewdBoardStore
-     * const viewdBoardStore = await prisma.viewdBoardStore.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ViewdBoardStoreFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ViewdBoardStoreFindFirstArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first ViewdBoardStore that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreFindFirstOrThrowArgs} args - Arguments to find a ViewdBoardStore
-     * @example
-     * // Get one ViewdBoardStore
-     * const viewdBoardStore = await prisma.viewdBoardStore.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ViewdBoardStoreFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ViewdBoardStoreFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more ViewdBoardStores that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ViewdBoardStores
-     * const viewdBoardStores = await prisma.viewdBoardStore.findMany()
-     * 
-     * // Get first 10 ViewdBoardStores
-     * const viewdBoardStores = await prisma.viewdBoardStore.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const viewdBoardStoreWithIdOnly = await prisma.viewdBoardStore.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends ViewdBoardStoreFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ViewdBoardStoreFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a ViewdBoardStore.
-     * @param {ViewdBoardStoreCreateArgs} args - Arguments to create a ViewdBoardStore.
-     * @example
-     * // Create one ViewdBoardStore
-     * const ViewdBoardStore = await prisma.viewdBoardStore.create({
-     *   data: {
-     *     // ... data to create a ViewdBoardStore
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ViewdBoardStoreCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ViewdBoardStoreCreateArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many ViewdBoardStores.
-     *     @param {ViewdBoardStoreCreateManyArgs} args - Arguments to create many ViewdBoardStores.
-     *     @example
-     *     // Create many ViewdBoardStores
-     *     const viewdBoardStore = await prisma.viewdBoardStore.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends ViewdBoardStoreCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ViewdBoardStoreCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a ViewdBoardStore.
-     * @param {ViewdBoardStoreDeleteArgs} args - Arguments to delete one ViewdBoardStore.
-     * @example
-     * // Delete one ViewdBoardStore
-     * const ViewdBoardStore = await prisma.viewdBoardStore.delete({
-     *   where: {
-     *     // ... filter to delete one ViewdBoardStore
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ViewdBoardStoreDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ViewdBoardStoreDeleteArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one ViewdBoardStore.
-     * @param {ViewdBoardStoreUpdateArgs} args - Arguments to update one ViewdBoardStore.
-     * @example
-     * // Update one ViewdBoardStore
-     * const viewdBoardStore = await prisma.viewdBoardStore.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ViewdBoardStoreUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ViewdBoardStoreUpdateArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more ViewdBoardStores.
-     * @param {ViewdBoardStoreDeleteManyArgs} args - Arguments to filter ViewdBoardStores to delete.
-     * @example
-     * // Delete a few ViewdBoardStores
-     * const { count } = await prisma.viewdBoardStore.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ViewdBoardStoreDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ViewdBoardStoreDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ViewdBoardStores.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ViewdBoardStores
-     * const viewdBoardStore = await prisma.viewdBoardStore.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ViewdBoardStoreUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ViewdBoardStoreUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ViewdBoardStore.
-     * @param {ViewdBoardStoreUpsertArgs} args - Arguments to update or create a ViewdBoardStore.
-     * @example
-     * // Update or create a ViewdBoardStore
-     * const viewdBoardStore = await prisma.viewdBoardStore.upsert({
-     *   create: {
-     *     // ... data to create a ViewdBoardStore
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ViewdBoardStore we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ViewdBoardStoreUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ViewdBoardStoreUpsertArgs<ExtArgs>>
-    ): Prisma__ViewdBoardStoreClient<$Result.GetResult<Prisma.$ViewdBoardStorePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of ViewdBoardStores.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreCountArgs} args - Arguments to filter ViewdBoardStores to count.
-     * @example
-     * // Count the number of ViewdBoardStores
-     * const count = await prisma.viewdBoardStore.count({
-     *   where: {
-     *     // ... the filter for the ViewdBoardStores we want to count
-     *   }
-     * })
-    **/
-    count<T extends ViewdBoardStoreCountArgs>(
-      args?: Subset<T, ViewdBoardStoreCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ViewdBoardStoreCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ViewdBoardStore.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ViewdBoardStoreAggregateArgs>(args: Subset<T, ViewdBoardStoreAggregateArgs>): Prisma.PrismaPromise<GetViewdBoardStoreAggregateType<T>>
-
-    /**
-     * Group by ViewdBoardStore.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewdBoardStoreGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ViewdBoardStoreGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ViewdBoardStoreGroupByArgs['orderBy'] }
-        : { orderBy?: ViewdBoardStoreGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ViewdBoardStoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetViewdBoardStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ViewdBoardStore model
-   */
-  readonly fields: ViewdBoardStoreFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ViewdBoardStore.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ViewdBoardStoreClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    board<T extends BoardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BoardDefaultArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the ViewdBoardStore model
-   */ 
-  interface ViewdBoardStoreFieldRefs {
-    readonly id: FieldRef<"ViewdBoardStore", 'String'>
-    readonly userId: FieldRef<"ViewdBoardStore", 'String'>
-    readonly boardId: FieldRef<"ViewdBoardStore", 'String'>
-    readonly viewedAt: FieldRef<"ViewdBoardStore", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * ViewdBoardStore findUnique
-   */
-  export type ViewdBoardStoreFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * Filter, which ViewdBoardStore to fetch.
-     */
-    where: ViewdBoardStoreWhereUniqueInput
-  }
-
-
-  /**
-   * ViewdBoardStore findUniqueOrThrow
-   */
-  export type ViewdBoardStoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * Filter, which ViewdBoardStore to fetch.
-     */
-    where: ViewdBoardStoreWhereUniqueInput
-  }
-
-
-  /**
-   * ViewdBoardStore findFirst
-   */
-  export type ViewdBoardStoreFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * Filter, which ViewdBoardStore to fetch.
-     */
-    where?: ViewdBoardStoreWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ViewdBoardStores to fetch.
-     */
-    orderBy?: ViewdBoardStoreOrderByWithRelationInput | ViewdBoardStoreOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ViewdBoardStores.
-     */
-    cursor?: ViewdBoardStoreWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ViewdBoardStores from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ViewdBoardStores.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ViewdBoardStores.
-     */
-    distinct?: ViewdBoardStoreScalarFieldEnum | ViewdBoardStoreScalarFieldEnum[]
-  }
-
-
-  /**
-   * ViewdBoardStore findFirstOrThrow
-   */
-  export type ViewdBoardStoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * Filter, which ViewdBoardStore to fetch.
-     */
-    where?: ViewdBoardStoreWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ViewdBoardStores to fetch.
-     */
-    orderBy?: ViewdBoardStoreOrderByWithRelationInput | ViewdBoardStoreOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ViewdBoardStores.
-     */
-    cursor?: ViewdBoardStoreWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ViewdBoardStores from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ViewdBoardStores.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ViewdBoardStores.
-     */
-    distinct?: ViewdBoardStoreScalarFieldEnum | ViewdBoardStoreScalarFieldEnum[]
-  }
-
-
-  /**
-   * ViewdBoardStore findMany
-   */
-  export type ViewdBoardStoreFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * Filter, which ViewdBoardStores to fetch.
-     */
-    where?: ViewdBoardStoreWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ViewdBoardStores to fetch.
-     */
-    orderBy?: ViewdBoardStoreOrderByWithRelationInput | ViewdBoardStoreOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ViewdBoardStores.
-     */
-    cursor?: ViewdBoardStoreWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ViewdBoardStores from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ViewdBoardStores.
-     */
-    skip?: number
-    distinct?: ViewdBoardStoreScalarFieldEnum | ViewdBoardStoreScalarFieldEnum[]
-  }
-
-
-  /**
-   * ViewdBoardStore create
-   */
-  export type ViewdBoardStoreCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ViewdBoardStore.
-     */
-    data: XOR<ViewdBoardStoreCreateInput, ViewdBoardStoreUncheckedCreateInput>
-  }
-
-
-  /**
-   * ViewdBoardStore createMany
-   */
-  export type ViewdBoardStoreCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ViewdBoardStores.
-     */
-    data: ViewdBoardStoreCreateManyInput | ViewdBoardStoreCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * ViewdBoardStore update
-   */
-  export type ViewdBoardStoreUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ViewdBoardStore.
-     */
-    data: XOR<ViewdBoardStoreUpdateInput, ViewdBoardStoreUncheckedUpdateInput>
-    /**
-     * Choose, which ViewdBoardStore to update.
-     */
-    where: ViewdBoardStoreWhereUniqueInput
-  }
-
-
-  /**
-   * ViewdBoardStore updateMany
-   */
-  export type ViewdBoardStoreUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ViewdBoardStores.
-     */
-    data: XOR<ViewdBoardStoreUpdateManyMutationInput, ViewdBoardStoreUncheckedUpdateManyInput>
-    /**
-     * Filter which ViewdBoardStores to update
-     */
-    where?: ViewdBoardStoreWhereInput
-  }
-
-
-  /**
-   * ViewdBoardStore upsert
-   */
-  export type ViewdBoardStoreUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ViewdBoardStore to update in case it exists.
-     */
-    where: ViewdBoardStoreWhereUniqueInput
-    /**
-     * In case the ViewdBoardStore found by the `where` argument doesn't exist, create a new ViewdBoardStore with this data.
-     */
-    create: XOR<ViewdBoardStoreCreateInput, ViewdBoardStoreUncheckedCreateInput>
-    /**
-     * In case the ViewdBoardStore was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ViewdBoardStoreUpdateInput, ViewdBoardStoreUncheckedUpdateInput>
-  }
-
-
-  /**
-   * ViewdBoardStore delete
-   */
-  export type ViewdBoardStoreDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
-    /**
-     * Filter which ViewdBoardStore to delete.
-     */
-    where: ViewdBoardStoreWhereUniqueInput
-  }
-
-
-  /**
-   * ViewdBoardStore deleteMany
-   */
-  export type ViewdBoardStoreDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ViewdBoardStores to delete
-     */
-    where?: ViewdBoardStoreWhereInput
-  }
-
-
-  /**
-   * ViewdBoardStore without action
-   */
-  export type ViewdBoardStoreDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ViewdBoardStore
-     */
-    select?: ViewdBoardStoreSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ViewdBoardStoreInclude<ExtArgs> | null
   }
 
 
@@ -16858,6 +14580,7 @@ export namespace Prisma {
   export type BuyerMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    sellerId: string | null
     sellerName: string | null
     productId: string | null
     createdAt: Date | null
@@ -16868,6 +14591,7 @@ export namespace Prisma {
   export type BuyerMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    sellerId: string | null
     sellerName: string | null
     productId: string | null
     createdAt: Date | null
@@ -16878,6 +14602,7 @@ export namespace Prisma {
   export type BuyerCountAggregateOutputType = {
     id: number
     userId: number
+    sellerId: number
     sellerName: number
     productId: number
     createdAt: number
@@ -16890,6 +14615,7 @@ export namespace Prisma {
   export type BuyerMinAggregateInputType = {
     id?: true
     userId?: true
+    sellerId?: true
     sellerName?: true
     productId?: true
     createdAt?: true
@@ -16900,6 +14626,7 @@ export namespace Prisma {
   export type BuyerMaxAggregateInputType = {
     id?: true
     userId?: true
+    sellerId?: true
     sellerName?: true
     productId?: true
     createdAt?: true
@@ -16910,6 +14637,7 @@ export namespace Prisma {
   export type BuyerCountAggregateInputType = {
     id?: true
     userId?: true
+    sellerId?: true
     sellerName?: true
     productId?: true
     createdAt?: true
@@ -16993,6 +14721,7 @@ export namespace Prisma {
   export type BuyerGroupByOutputType = {
     id: string
     userId: string
+    sellerId: string
     sellerName: string
     productId: string
     createdAt: Date
@@ -17020,6 +14749,7 @@ export namespace Prisma {
   export type BuyerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    sellerId?: boolean
     sellerName?: boolean
     productId?: boolean
     createdAt?: boolean
@@ -17032,6 +14762,7 @@ export namespace Prisma {
   export type BuyerSelectScalar = {
     id?: boolean
     userId?: boolean
+    sellerId?: boolean
     sellerName?: boolean
     productId?: boolean
     createdAt?: boolean
@@ -17054,6 +14785,7 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       id: string
       userId: string
+      sellerId: string
       sellerName: string
       productId: string
       createdAt: Date
@@ -17458,6 +15190,7 @@ export namespace Prisma {
   interface BuyerFieldRefs {
     readonly id: FieldRef<"Buyer", 'String'>
     readonly userId: FieldRef<"Buyer", 'String'>
+    readonly sellerId: FieldRef<"Buyer", 'String'>
     readonly sellerName: FieldRef<"Buyer", 'String'>
     readonly productId: FieldRef<"Buyer", 'String'>
     readonly createdAt: FieldRef<"Buyer", 'DateTime'>
@@ -17803,6 +15536,7 @@ export namespace Prisma {
   export type SellerMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    buyerId: string | null
     buyerName: string | null
     productId: string | null
     createdAt: Date | null
@@ -17812,6 +15546,7 @@ export namespace Prisma {
   export type SellerMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    buyerId: string | null
     buyerName: string | null
     productId: string | null
     createdAt: Date | null
@@ -17821,6 +15556,7 @@ export namespace Prisma {
   export type SellerCountAggregateOutputType = {
     id: number
     userId: number
+    buyerId: number
     buyerName: number
     productId: number
     createdAt: number
@@ -17832,6 +15568,7 @@ export namespace Prisma {
   export type SellerMinAggregateInputType = {
     id?: true
     userId?: true
+    buyerId?: true
     buyerName?: true
     productId?: true
     createdAt?: true
@@ -17841,6 +15578,7 @@ export namespace Prisma {
   export type SellerMaxAggregateInputType = {
     id?: true
     userId?: true
+    buyerId?: true
     buyerName?: true
     productId?: true
     createdAt?: true
@@ -17850,6 +15588,7 @@ export namespace Prisma {
   export type SellerCountAggregateInputType = {
     id?: true
     userId?: true
+    buyerId?: true
     buyerName?: true
     productId?: true
     createdAt?: true
@@ -17932,6 +15671,7 @@ export namespace Prisma {
   export type SellerGroupByOutputType = {
     id: string
     userId: string
+    buyerId: string
     buyerName: string
     productId: string
     createdAt: Date
@@ -17958,6 +15698,7 @@ export namespace Prisma {
   export type SellerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    buyerId?: boolean
     buyerName?: boolean
     productId?: boolean
     createdAt?: boolean
@@ -17969,6 +15710,7 @@ export namespace Prisma {
   export type SellerSelectScalar = {
     id?: boolean
     userId?: boolean
+    buyerId?: boolean
     buyerName?: boolean
     productId?: boolean
     createdAt?: boolean
@@ -17990,6 +15732,7 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       id: string
       userId: string
+      buyerId: string
       buyerName: string
       productId: string
       createdAt: Date
@@ -18393,6 +16136,7 @@ export namespace Prisma {
   interface SellerFieldRefs {
     readonly id: FieldRef<"Seller", 'String'>
     readonly userId: FieldRef<"Seller", 'String'>
+    readonly buyerId: FieldRef<"Seller", 'String'>
     readonly buyerName: FieldRef<"Seller", 'String'>
     readonly productId: FieldRef<"Seller", 'String'>
     readonly createdAt: FieldRef<"Seller", 'DateTime'>
@@ -18756,6 +16500,18 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+  export const ActivateTokenScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    activatedAt: 'activatedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId'
+  };
+
+  export type ActivateTokenScalarFieldEnum = (typeof ActivateTokenScalarFieldEnum)[keyof typeof ActivateTokenScalarFieldEnum]
+
+
   export const AccountScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
@@ -18799,33 +16555,6 @@ export namespace Prisma {
   export type VerificationRequestScalarFieldEnum = (typeof VerificationRequestScalarFieldEnum)[keyof typeof VerificationRequestScalarFieldEnum]
 
 
-  export const BoardScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    category: 'category',
-    userId: 'userId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    likes: 'likes',
-    dislikes: 'dislikes',
-    views: 'views'
-  };
-
-  export type BoardScalarFieldEnum = (typeof BoardScalarFieldEnum)[keyof typeof BoardScalarFieldEnum]
-
-
-  export const BoardLikeDisLikeScalarFieldEnum: {
-    id: 'id',
-    type: 'type',
-    createdAt: 'createdAt',
-    userId: 'userId',
-    boardId: 'boardId'
-  };
-
-  export type BoardLikeDisLikeScalarFieldEnum = (typeof BoardLikeDisLikeScalarFieldEnum)[keyof typeof BoardLikeDisLikeScalarFieldEnum]
-
-
   export const ProductScalarFieldEnum: {
     id: 'id',
     title: 'title',
@@ -18854,6 +16583,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     sellerId: 'sellerId',
+    sellerName: 'sellerName',
     productId: 'productId',
     title: 'title',
     text: 'text',
@@ -18863,16 +16593,6 @@ export namespace Prisma {
   };
 
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
-
-
-  export const ViewdBoardStoreScalarFieldEnum: {
-    id: 'id',
-    userId: 'userId',
-    boardId: 'boardId',
-    viewedAt: 'viewedAt'
-  };
-
-  export type ViewdBoardStoreScalarFieldEnum = (typeof ViewdBoardStoreScalarFieldEnum)[keyof typeof ViewdBoardStoreScalarFieldEnum]
 
 
   export const ViewdProductStoreScalarFieldEnum: {
@@ -18956,6 +16676,7 @@ export namespace Prisma {
   export const BuyerScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    sellerId: 'sellerId',
     sellerName: 'sellerName',
     productId: 'productId',
     createdAt: 'createdAt',
@@ -18969,6 +16690,7 @@ export namespace Prisma {
   export const SellerScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    buyerId: 'buyerId',
     buyerName: 'buyerName',
     productId: 'productId',
     createdAt: 'createdAt',
@@ -19018,6 +16740,13 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -19075,13 +16804,6 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
   /**
    * Deep Input Types
    */
@@ -19092,10 +16814,10 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    hashedPassword?: StringNullableFilter<"User"> | string | null
-    email?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    name?: StringFilter<"User"> | string
+    hashedPassword?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -19105,10 +16827,7 @@ export namespace Prisma {
     averageproductRating?: FloatFilter<"User"> | number
     sessions?: SessionListRelationFilter
     Product?: ProductListRelationFilter
-    Board?: BoardListRelationFilter
-    ViewdBoardStore?: ViewdBoardStoreListRelationFilter
     ViewdProductStore?: ViewdProductStoreListRelationFilter
-    BoardLikeDisLike?: BoardLikeDisLikeListRelationFilter
     accounts?: AccountListRelationFilter
     conversations?: ConversationListRelationFilter
     sendMessages?: MessageListRelationFilter
@@ -19116,14 +16835,15 @@ export namespace Prisma {
     reviews?: ReviewListRelationFilter
     buyer?: BuyerListRelationFilter
     seller?: SellerListRelationFilter
+    ActivateToken?: ActivateTokenListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrderInput | SortOrder
-    hashedPassword?: SortOrderInput | SortOrder
-    email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
+    name?: SortOrder
+    hashedPassword?: SortOrder
+    email?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19133,10 +16853,7 @@ export namespace Prisma {
     averageproductRating?: SortOrder
     sessions?: SessionOrderByRelationAggregateInput
     Product?: ProductOrderByRelationAggregateInput
-    Board?: BoardOrderByRelationAggregateInput
-    ViewdBoardStore?: ViewdBoardStoreOrderByRelationAggregateInput
     ViewdProductStore?: ViewdProductStoreOrderByRelationAggregateInput
-    BoardLikeDisLike?: BoardLikeDisLikeOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     conversations?: ConversationOrderByRelationAggregateInput
     sendMessages?: MessageOrderByRelationAggregateInput
@@ -19144,17 +16861,18 @@ export namespace Prisma {
     reviews?: ReviewOrderByRelationAggregateInput
     buyer?: BuyerOrderByRelationAggregateInput
     seller?: SellerOrderByRelationAggregateInput
+    ActivateToken?: ActivateTokenOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringNullableFilter<"User"> | string | null
-    hashedPassword?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    hashedPassword?: StringFilter<"User"> | string
+    emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -19164,10 +16882,7 @@ export namespace Prisma {
     averageproductRating?: FloatFilter<"User"> | number
     sessions?: SessionListRelationFilter
     Product?: ProductListRelationFilter
-    Board?: BoardListRelationFilter
-    ViewdBoardStore?: ViewdBoardStoreListRelationFilter
     ViewdProductStore?: ViewdProductStoreListRelationFilter
-    BoardLikeDisLike?: BoardLikeDisLikeListRelationFilter
     accounts?: AccountListRelationFilter
     conversations?: ConversationListRelationFilter
     sendMessages?: MessageListRelationFilter
@@ -19175,14 +16890,15 @@ export namespace Prisma {
     reviews?: ReviewListRelationFilter
     buyer?: BuyerListRelationFilter
     seller?: SellerListRelationFilter
-  }, "id" | "email">
+    ActivateToken?: ActivateTokenListRelationFilter
+  }, "id" | "name" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrderInput | SortOrder
-    hashedPassword?: SortOrderInput | SortOrder
-    email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
+    name?: SortOrder
+    hashedPassword?: SortOrder
+    email?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19202,10 +16918,10 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    hashedPassword?: StringNullableWithAggregatesFilter<"User"> | string | null
-    email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    name?: StringWithAggregatesFilter<"User"> | string
+    hashedPassword?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
+    emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -19213,6 +16929,66 @@ export namespace Prisma {
     favoriteIds?: StringNullableListFilter<"User">
     averageRating?: FloatWithAggregatesFilter<"User"> | number
     averageproductRating?: FloatWithAggregatesFilter<"User"> | number
+  }
+
+  export type ActivateTokenWhereInput = {
+    AND?: ActivateTokenWhereInput | ActivateTokenWhereInput[]
+    OR?: ActivateTokenWhereInput[]
+    NOT?: ActivateTokenWhereInput | ActivateTokenWhereInput[]
+    id?: StringFilter<"ActivateToken"> | string
+    token?: StringFilter<"ActivateToken"> | string
+    activatedAt?: DateTimeNullableFilter<"ActivateToken"> | Date | string | null
+    createdAt?: DateTimeFilter<"ActivateToken"> | Date | string
+    updatedAt?: DateTimeFilter<"ActivateToken"> | Date | string
+    userId?: StringFilter<"ActivateToken"> | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type ActivateTokenOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    activatedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ActivateTokenWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    token?: string
+    AND?: ActivateTokenWhereInput | ActivateTokenWhereInput[]
+    OR?: ActivateTokenWhereInput[]
+    NOT?: ActivateTokenWhereInput | ActivateTokenWhereInput[]
+    activatedAt?: DateTimeNullableFilter<"ActivateToken"> | Date | string | null
+    createdAt?: DateTimeFilter<"ActivateToken"> | Date | string
+    updatedAt?: DateTimeFilter<"ActivateToken"> | Date | string
+    userId?: StringFilter<"ActivateToken"> | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "token">
+
+  export type ActivateTokenOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    activatedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    _count?: ActivateTokenCountOrderByAggregateInput
+    _max?: ActivateTokenMaxOrderByAggregateInput
+    _min?: ActivateTokenMinOrderByAggregateInput
+  }
+
+  export type ActivateTokenScalarWhereWithAggregatesInput = {
+    AND?: ActivateTokenScalarWhereWithAggregatesInput | ActivateTokenScalarWhereWithAggregatesInput[]
+    OR?: ActivateTokenScalarWhereWithAggregatesInput[]
+    NOT?: ActivateTokenScalarWhereWithAggregatesInput | ActivateTokenScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ActivateToken"> | string
+    token?: StringWithAggregatesFilter<"ActivateToken"> | string
+    activatedAt?: DateTimeNullableWithAggregatesFilter<"ActivateToken"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ActivateToken"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ActivateToken"> | Date | string
+    userId?: StringWithAggregatesFilter<"ActivateToken"> | string
   }
 
   export type AccountWhereInput = {
@@ -19431,154 +17207,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"VerificationRequest"> | Date | string
   }
 
-  export type BoardWhereInput = {
-    AND?: BoardWhereInput | BoardWhereInput[]
-    OR?: BoardWhereInput[]
-    NOT?: BoardWhereInput | BoardWhereInput[]
-    id?: StringFilter<"Board"> | string
-    title?: StringFilter<"Board"> | string
-    description?: StringFilter<"Board"> | string
-    category?: StringFilter<"Board"> | string
-    userId?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
-    updatedAt?: DateTimeFilter<"Board"> | Date | string
-    likes?: IntFilter<"Board"> | number
-    dislikes?: IntFilter<"Board"> | number
-    views?: IntFilter<"Board"> | number
-    ViewdBoardStore?: ViewdBoardStoreListRelationFilter
-    BoardLikeDisLike?: BoardLikeDisLikeListRelationFilter
-    user?: XOR<UserRelationFilter, UserWhereInput>
-  }
-
-  export type BoardOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    category?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-    ViewdBoardStore?: ViewdBoardStoreOrderByRelationAggregateInput
-    BoardLikeDisLike?: BoardLikeDisLikeOrderByRelationAggregateInput
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type BoardWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: BoardWhereInput | BoardWhereInput[]
-    OR?: BoardWhereInput[]
-    NOT?: BoardWhereInput | BoardWhereInput[]
-    title?: StringFilter<"Board"> | string
-    description?: StringFilter<"Board"> | string
-    category?: StringFilter<"Board"> | string
-    userId?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
-    updatedAt?: DateTimeFilter<"Board"> | Date | string
-    likes?: IntFilter<"Board"> | number
-    dislikes?: IntFilter<"Board"> | number
-    views?: IntFilter<"Board"> | number
-    ViewdBoardStore?: ViewdBoardStoreListRelationFilter
-    BoardLikeDisLike?: BoardLikeDisLikeListRelationFilter
-    user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id">
-
-  export type BoardOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    category?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-    _count?: BoardCountOrderByAggregateInput
-    _avg?: BoardAvgOrderByAggregateInput
-    _max?: BoardMaxOrderByAggregateInput
-    _min?: BoardMinOrderByAggregateInput
-    _sum?: BoardSumOrderByAggregateInput
-  }
-
-  export type BoardScalarWhereWithAggregatesInput = {
-    AND?: BoardScalarWhereWithAggregatesInput | BoardScalarWhereWithAggregatesInput[]
-    OR?: BoardScalarWhereWithAggregatesInput[]
-    NOT?: BoardScalarWhereWithAggregatesInput | BoardScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Board"> | string
-    title?: StringWithAggregatesFilter<"Board"> | string
-    description?: StringWithAggregatesFilter<"Board"> | string
-    category?: StringWithAggregatesFilter<"Board"> | string
-    userId?: StringWithAggregatesFilter<"Board"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Board"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Board"> | Date | string
-    likes?: IntWithAggregatesFilter<"Board"> | number
-    dislikes?: IntWithAggregatesFilter<"Board"> | number
-    views?: IntWithAggregatesFilter<"Board"> | number
-  }
-
-  export type BoardLikeDisLikeWhereInput = {
-    AND?: BoardLikeDisLikeWhereInput | BoardLikeDisLikeWhereInput[]
-    OR?: BoardLikeDisLikeWhereInput[]
-    NOT?: BoardLikeDisLikeWhereInput | BoardLikeDisLikeWhereInput[]
-    id?: IntFilter<"BoardLikeDisLike"> | number
-    type?: StringFilter<"BoardLikeDisLike"> | string
-    createdAt?: DateTimeFilter<"BoardLikeDisLike"> | Date | string
-    userId?: StringFilter<"BoardLikeDisLike"> | string
-    boardId?: StringFilter<"BoardLikeDisLike"> | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    board?: XOR<BoardRelationFilter, BoardWhereInput>
-  }
-
-  export type BoardLikeDisLikeOrderByWithRelationInput = {
-    id?: SortOrder
-    type?: SortOrder
-    createdAt?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    user?: UserOrderByWithRelationInput
-    board?: BoardOrderByWithRelationInput
-  }
-
-  export type BoardLikeDisLikeWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: BoardLikeDisLikeWhereInput | BoardLikeDisLikeWhereInput[]
-    OR?: BoardLikeDisLikeWhereInput[]
-    NOT?: BoardLikeDisLikeWhereInput | BoardLikeDisLikeWhereInput[]
-    type?: StringFilter<"BoardLikeDisLike"> | string
-    createdAt?: DateTimeFilter<"BoardLikeDisLike"> | Date | string
-    userId?: StringFilter<"BoardLikeDisLike"> | string
-    boardId?: StringFilter<"BoardLikeDisLike"> | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    board?: XOR<BoardRelationFilter, BoardWhereInput>
-  }, "id">
-
-  export type BoardLikeDisLikeOrderByWithAggregationInput = {
-    id?: SortOrder
-    type?: SortOrder
-    createdAt?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    _count?: BoardLikeDisLikeCountOrderByAggregateInput
-    _avg?: BoardLikeDisLikeAvgOrderByAggregateInput
-    _max?: BoardLikeDisLikeMaxOrderByAggregateInput
-    _min?: BoardLikeDisLikeMinOrderByAggregateInput
-    _sum?: BoardLikeDisLikeSumOrderByAggregateInput
-  }
-
-  export type BoardLikeDisLikeScalarWhereWithAggregatesInput = {
-    AND?: BoardLikeDisLikeScalarWhereWithAggregatesInput | BoardLikeDisLikeScalarWhereWithAggregatesInput[]
-    OR?: BoardLikeDisLikeScalarWhereWithAggregatesInput[]
-    NOT?: BoardLikeDisLikeScalarWhereWithAggregatesInput | BoardLikeDisLikeScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"BoardLikeDisLike"> | number
-    type?: StringWithAggregatesFilter<"BoardLikeDisLike"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"BoardLikeDisLike"> | Date | string
-    userId?: StringWithAggregatesFilter<"BoardLikeDisLike"> | string
-    boardId?: StringWithAggregatesFilter<"BoardLikeDisLike"> | string
-  }
-
   export type ProductWhereInput = {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
@@ -19726,6 +17354,7 @@ export namespace Prisma {
     id?: StringFilter<"Review"> | string
     userId?: StringFilter<"Review"> | string
     sellerId?: StringFilter<"Review"> | string
+    sellerName?: StringFilter<"Review"> | string
     productId?: StringFilter<"Review"> | string
     title?: StringFilter<"Review"> | string
     text?: StringFilter<"Review"> | string
@@ -19740,6 +17369,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -19757,6 +17387,7 @@ export namespace Prisma {
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     userId?: StringFilter<"Review"> | string
     sellerId?: StringFilter<"Review"> | string
+    sellerName?: StringFilter<"Review"> | string
     productId?: StringFilter<"Review"> | string
     title?: StringFilter<"Review"> | string
     text?: StringFilter<"Review"> | string
@@ -19771,6 +17402,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -19791,65 +17423,13 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Review"> | string
     userId?: StringWithAggregatesFilter<"Review"> | string
     sellerId?: StringWithAggregatesFilter<"Review"> | string
+    sellerName?: StringWithAggregatesFilter<"Review"> | string
     productId?: StringWithAggregatesFilter<"Review"> | string
     title?: StringWithAggregatesFilter<"Review"> | string
     text?: StringWithAggregatesFilter<"Review"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     userRating?: FloatWithAggregatesFilter<"Review"> | number
-  }
-
-  export type ViewdBoardStoreWhereInput = {
-    AND?: ViewdBoardStoreWhereInput | ViewdBoardStoreWhereInput[]
-    OR?: ViewdBoardStoreWhereInput[]
-    NOT?: ViewdBoardStoreWhereInput | ViewdBoardStoreWhereInput[]
-    id?: StringFilter<"ViewdBoardStore"> | string
-    userId?: StringFilter<"ViewdBoardStore"> | string
-    boardId?: StringFilter<"ViewdBoardStore"> | string
-    viewedAt?: DateTimeFilter<"ViewdBoardStore"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    board?: XOR<BoardRelationFilter, BoardWhereInput>
-  }
-
-  export type ViewdBoardStoreOrderByWithRelationInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    viewedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-    board?: BoardOrderByWithRelationInput
-  }
-
-  export type ViewdBoardStoreWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: ViewdBoardStoreWhereInput | ViewdBoardStoreWhereInput[]
-    OR?: ViewdBoardStoreWhereInput[]
-    NOT?: ViewdBoardStoreWhereInput | ViewdBoardStoreWhereInput[]
-    userId?: StringFilter<"ViewdBoardStore"> | string
-    boardId?: StringFilter<"ViewdBoardStore"> | string
-    viewedAt?: DateTimeFilter<"ViewdBoardStore"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    board?: XOR<BoardRelationFilter, BoardWhereInput>
-  }, "id">
-
-  export type ViewdBoardStoreOrderByWithAggregationInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    viewedAt?: SortOrder
-    _count?: ViewdBoardStoreCountOrderByAggregateInput
-    _max?: ViewdBoardStoreMaxOrderByAggregateInput
-    _min?: ViewdBoardStoreMinOrderByAggregateInput
-  }
-
-  export type ViewdBoardStoreScalarWhereWithAggregatesInput = {
-    AND?: ViewdBoardStoreScalarWhereWithAggregatesInput | ViewdBoardStoreScalarWhereWithAggregatesInput[]
-    OR?: ViewdBoardStoreScalarWhereWithAggregatesInput[]
-    NOT?: ViewdBoardStoreScalarWhereWithAggregatesInput | ViewdBoardStoreScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ViewdBoardStore"> | string
-    userId?: StringWithAggregatesFilter<"ViewdBoardStore"> | string
-    boardId?: StringWithAggregatesFilter<"ViewdBoardStore"> | string
-    viewedAt?: DateTimeWithAggregatesFilter<"ViewdBoardStore"> | Date | string
   }
 
   export type ViewdProductStoreWhereInput = {
@@ -20264,6 +17844,7 @@ export namespace Prisma {
     NOT?: BuyerWhereInput | BuyerWhereInput[]
     id?: StringFilter<"Buyer"> | string
     userId?: StringFilter<"Buyer"> | string
+    sellerId?: StringFilter<"Buyer"> | string
     sellerName?: StringFilter<"Buyer"> | string
     productId?: StringFilter<"Buyer"> | string
     createdAt?: DateTimeFilter<"Buyer"> | Date | string
@@ -20276,6 +17857,7 @@ export namespace Prisma {
   export type BuyerOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerId?: SortOrder
     sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -20291,6 +17873,7 @@ export namespace Prisma {
     OR?: BuyerWhereInput[]
     NOT?: BuyerWhereInput | BuyerWhereInput[]
     userId?: StringFilter<"Buyer"> | string
+    sellerId?: StringFilter<"Buyer"> | string
     sellerName?: StringFilter<"Buyer"> | string
     productId?: StringFilter<"Buyer"> | string
     createdAt?: DateTimeFilter<"Buyer"> | Date | string
@@ -20303,6 +17886,7 @@ export namespace Prisma {
   export type BuyerOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerId?: SortOrder
     sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -20319,6 +17903,7 @@ export namespace Prisma {
     NOT?: BuyerScalarWhereWithAggregatesInput | BuyerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Buyer"> | string
     userId?: StringWithAggregatesFilter<"Buyer"> | string
+    sellerId?: StringWithAggregatesFilter<"Buyer"> | string
     sellerName?: StringWithAggregatesFilter<"Buyer"> | string
     productId?: StringWithAggregatesFilter<"Buyer"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Buyer"> | Date | string
@@ -20332,6 +17917,7 @@ export namespace Prisma {
     NOT?: SellerWhereInput | SellerWhereInput[]
     id?: StringFilter<"Seller"> | string
     userId?: StringFilter<"Seller"> | string
+    buyerId?: StringFilter<"Seller"> | string
     buyerName?: StringFilter<"Seller"> | string
     productId?: StringFilter<"Seller"> | string
     createdAt?: DateTimeFilter<"Seller"> | Date | string
@@ -20343,6 +17929,7 @@ export namespace Prisma {
   export type SellerOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerId?: SortOrder
     buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -20357,6 +17944,7 @@ export namespace Prisma {
     OR?: SellerWhereInput[]
     NOT?: SellerWhereInput | SellerWhereInput[]
     userId?: StringFilter<"Seller"> | string
+    buyerId?: StringFilter<"Seller"> | string
     buyerName?: StringFilter<"Seller"> | string
     productId?: StringFilter<"Seller"> | string
     createdAt?: DateTimeFilter<"Seller"> | Date | string
@@ -20368,6 +17956,7 @@ export namespace Prisma {
   export type SellerOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerId?: SortOrder
     buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -20383,6 +17972,7 @@ export namespace Prisma {
     NOT?: SellerScalarWhereWithAggregatesInput | SellerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Seller"> | string
     userId?: StringWithAggregatesFilter<"Seller"> | string
+    buyerId?: StringWithAggregatesFilter<"Seller"> | string
     buyerName?: StringWithAggregatesFilter<"Seller"> | string
     productId?: StringWithAggregatesFilter<"Seller"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Seller"> | Date | string
@@ -20391,10 +17981,10 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20404,10 +17994,7 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
@@ -20415,14 +18002,15 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20432,10 +18020,7 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -20443,14 +18028,15 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20460,10 +18046,7 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
@@ -20471,14 +18054,15 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20488,10 +18072,7 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -20499,14 +18080,15 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20518,10 +18100,10 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20533,10 +18115,10 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20544,6 +18126,68 @@ export namespace Prisma {
     favoriteIds?: UserUpdatefavoriteIdsInput | string[]
     averageRating?: FloatFieldUpdateOperationsInput | number
     averageproductRating?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ActivateTokenCreateInput = {
+    id?: string
+    token: string
+    activatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutActivateTokenInput
+  }
+
+  export type ActivateTokenUncheckedCreateInput = {
+    id?: string
+    token: string
+    activatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+  }
+
+  export type ActivateTokenUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutActivateTokenNestedInput
+  }
+
+  export type ActivateTokenUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActivateTokenCreateManyInput = {
+    id?: string
+    token: string
+    activatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+  }
+
+  export type ActivateTokenUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ActivateTokenUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AccountCreateInput = {
@@ -20782,155 +18426,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BoardCreateInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutBoardInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutBoardInput
-    user: UserCreateNestedOneWithoutBoardInput
-  }
-
-  export type BoardUncheckedCreateInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutBoardInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutBoardInput
-  }
-
-  export type BoardUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutBoardNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutBoardNestedInput
-    user?: UserUpdateOneRequiredWithoutBoardNestedInput
-  }
-
-  export type BoardUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutBoardNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutBoardNestedInput
-  }
-
-  export type BoardCreateManyInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-  }
-
-  export type BoardUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type BoardUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type BoardLikeDisLikeCreateInput = {
-    type: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutBoardLikeDisLikeInput
-    board: BoardCreateNestedOneWithoutBoardLikeDisLikeInput
-  }
-
-  export type BoardLikeDisLikeUncheckedCreateInput = {
-    id?: number
-    type: string
-    createdAt?: Date | string
-    userId: string
-    boardId: string
-  }
-
-  export type BoardLikeDisLikeUpdateInput = {
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutBoardLikeDisLikeNestedInput
-    board?: BoardUpdateOneRequiredWithoutBoardLikeDisLikeNestedInput
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    boardId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BoardLikeDisLikeCreateManyInput = {
-    id?: number
-    type: string
-    createdAt?: Date | string
-    userId: string
-    boardId: string
-  }
-
-  export type BoardLikeDisLikeUpdateManyMutationInput = {
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    boardId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type ProductCreateInput = {
     id?: string
     title: string
@@ -21104,6 +18599,7 @@ export namespace Prisma {
   export type ReviewCreateInput = {
     id?: string
     sellerId: string
+    sellerName?: string
     title: string
     text: string
     createdAt?: Date | string
@@ -21117,6 +18613,7 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
+    sellerName?: string
     productId: string
     title: string
     text: string
@@ -21128,6 +18625,7 @@ export namespace Prisma {
   export type ReviewUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21141,6 +18639,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
@@ -21153,6 +18652,7 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
+    sellerName?: string
     productId: string
     title: string
     text: string
@@ -21164,6 +18664,7 @@ export namespace Prisma {
   export type ReviewUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21175,59 +18676,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userRating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type ViewdBoardStoreCreateInput = {
-    id?: string
-    viewedAt?: Date | string
-    user: UserCreateNestedOneWithoutViewdBoardStoreInput
-    board: BoardCreateNestedOneWithoutViewdBoardStoreInput
-  }
-
-  export type ViewdBoardStoreUncheckedCreateInput = {
-    id?: string
-    userId: string
-    boardId: string
-    viewedAt?: Date | string
-  }
-
-  export type ViewdBoardStoreUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutViewdBoardStoreNestedInput
-    board?: BoardUpdateOneRequiredWithoutViewdBoardStoreNestedInput
-  }
-
-  export type ViewdBoardStoreUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    boardId?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ViewdBoardStoreCreateManyInput = {
-    id?: string
-    userId: string
-    boardId: string
-    viewedAt?: Date | string
-  }
-
-  export type ViewdBoardStoreUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ViewdBoardStoreUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    boardId?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ViewdProductStoreCreateInput = {
@@ -21674,6 +19129,7 @@ export namespace Prisma {
 
   export type BuyerCreateInput = {
     id?: string
+    sellerId?: string
     sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21685,6 +19141,7 @@ export namespace Prisma {
   export type BuyerUncheckedCreateInput = {
     id?: string
     userId: string
+    sellerId?: string
     sellerName?: string
     productId: string
     createdAt?: Date | string
@@ -21694,6 +19151,7 @@ export namespace Prisma {
 
   export type BuyerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21705,6 +19163,7 @@ export namespace Prisma {
   export type BuyerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21715,6 +19174,7 @@ export namespace Prisma {
   export type BuyerCreateManyInput = {
     id?: string
     userId: string
+    sellerId?: string
     sellerName?: string
     productId: string
     createdAt?: Date | string
@@ -21724,6 +19184,7 @@ export namespace Prisma {
 
   export type BuyerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21733,6 +19194,7 @@ export namespace Prisma {
   export type BuyerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21742,6 +19204,7 @@ export namespace Prisma {
 
   export type SellerCreateInput = {
     id?: string
+    buyerId?: string
     buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21752,6 +19215,7 @@ export namespace Prisma {
   export type SellerUncheckedCreateInput = {
     id?: string
     userId: string
+    buyerId?: string
     buyerName?: string
     productId: string
     createdAt?: Date | string
@@ -21760,6 +19224,7 @@ export namespace Prisma {
 
   export type SellerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21770,6 +19235,7 @@ export namespace Prisma {
   export type SellerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21779,6 +19245,7 @@ export namespace Prisma {
   export type SellerCreateManyInput = {
     id?: string
     userId: string
+    buyerId?: string
     buyerName?: string
     productId: string
     createdAt?: Date | string
@@ -21787,6 +19254,7 @@ export namespace Prisma {
 
   export type SellerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21795,6 +19263,7 @@ export namespace Prisma {
   export type SellerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21816,6 +19285,11 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -21829,17 +19303,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -21891,28 +19354,10 @@ export namespace Prisma {
     none?: ProductWhereInput
   }
 
-  export type BoardListRelationFilter = {
-    every?: BoardWhereInput
-    some?: BoardWhereInput
-    none?: BoardWhereInput
-  }
-
-  export type ViewdBoardStoreListRelationFilter = {
-    every?: ViewdBoardStoreWhereInput
-    some?: ViewdBoardStoreWhereInput
-    none?: ViewdBoardStoreWhereInput
-  }
-
   export type ViewdProductStoreListRelationFilter = {
     every?: ViewdProductStoreWhereInput
     some?: ViewdProductStoreWhereInput
     none?: ViewdProductStoreWhereInput
-  }
-
-  export type BoardLikeDisLikeListRelationFilter = {
-    every?: BoardLikeDisLikeWhereInput
-    some?: BoardLikeDisLikeWhereInput
-    none?: BoardLikeDisLikeWhereInput
   }
 
   export type AccountListRelationFilter = {
@@ -21951,6 +19396,12 @@ export namespace Prisma {
     none?: SellerWhereInput
   }
 
+  export type ActivateTokenListRelationFilter = {
+    every?: ActivateTokenWhereInput
+    some?: ActivateTokenWhereInput
+    none?: ActivateTokenWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -21964,19 +19415,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type BoardOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ViewdBoardStoreOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type ViewdProductStoreOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type BoardLikeDisLikeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22001,6 +19440,10 @@ export namespace Prisma {
   }
 
   export type SellerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ActivateTokenOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22075,6 +19518,14 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -22091,20 +19542,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -22147,6 +19584,63 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type ActivateTokenCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    activatedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ActivateTokenMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    activatedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ActivateTokenMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    activatedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -22156,11 +19650,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type AccountProviderProviderAccountIdCompoundUniqueInput = {
@@ -22315,110 +19804,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type BoardCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    category?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-  }
-
-  export type BoardAvgOrderByAggregateInput = {
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-  }
-
-  export type BoardMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    category?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-  }
-
-  export type BoardMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    category?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-  }
-
-  export type BoardSumOrderByAggregateInput = {
-    likes?: SortOrder
-    dislikes?: SortOrder
-    views?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type BoardRelationFilter = {
-    is?: BoardWhereInput
-    isNot?: BoardWhereInput
-  }
-
-  export type BoardLikeDisLikeCountOrderByAggregateInput = {
-    id?: SortOrder
-    type?: SortOrder
-    createdAt?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-  }
-
-  export type BoardLikeDisLikeAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type BoardLikeDisLikeMaxOrderByAggregateInput = {
-    id?: SortOrder
-    type?: SortOrder
-    createdAt?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-  }
-
-  export type BoardLikeDisLikeMinOrderByAggregateInput = {
-    id?: SortOrder
-    type?: SortOrder
-    createdAt?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-  }
-
-  export type BoardLikeDisLikeSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type FloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -22428,11 +19813,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type PurchaseListRelationFilter = {
@@ -22528,6 +19908,22 @@ export namespace Prisma {
     views?: SortOrder
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -22544,14 +19940,6 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type ProductRelationFilter = {
     is?: ProductWhereInput
     isNot?: ProductWhereInput
@@ -22561,6 +19949,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -22577,6 +19966,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -22589,6 +19979,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
+    sellerName?: SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -22599,27 +19990,6 @@ export namespace Prisma {
 
   export type ReviewSumOrderByAggregateInput = {
     userRating?: SortOrder
-  }
-
-  export type ViewdBoardStoreCountOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    viewedAt?: SortOrder
-  }
-
-  export type ViewdBoardStoreMaxOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    viewedAt?: SortOrder
-  }
-
-  export type ViewdBoardStoreMinOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    boardId?: SortOrder
-    viewedAt?: SortOrder
   }
 
   export type ViewdProductStoreCountOrderByAggregateInput = {
@@ -22851,6 +20221,7 @@ export namespace Prisma {
   export type BuyerCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerId?: SortOrder
     sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -22861,6 +20232,7 @@ export namespace Prisma {
   export type BuyerMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerId?: SortOrder
     sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -22871,6 +20243,7 @@ export namespace Prisma {
   export type BuyerMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    sellerId?: SortOrder
     sellerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -22881,6 +20254,7 @@ export namespace Prisma {
   export type SellerCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerId?: SortOrder
     buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -22890,6 +20264,7 @@ export namespace Prisma {
   export type SellerMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerId?: SortOrder
     buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -22899,6 +20274,7 @@ export namespace Prisma {
   export type SellerMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    buyerId?: SortOrder
     buyerName?: SortOrder
     productId?: SortOrder
     createdAt?: SortOrder
@@ -22923,32 +20299,11 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
   }
 
-  export type BoardCreateNestedManyWithoutUserInput = {
-    create?: XOR<BoardCreateWithoutUserInput, BoardUncheckedCreateWithoutUserInput> | BoardCreateWithoutUserInput[] | BoardUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardCreateOrConnectWithoutUserInput | BoardCreateOrConnectWithoutUserInput[]
-    createMany?: BoardCreateManyUserInputEnvelope
-    connect?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-  }
-
-  export type ViewdBoardStoreCreateNestedManyWithoutUserInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutUserInput, ViewdBoardStoreUncheckedCreateWithoutUserInput> | ViewdBoardStoreCreateWithoutUserInput[] | ViewdBoardStoreUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutUserInput | ViewdBoardStoreCreateOrConnectWithoutUserInput[]
-    createMany?: ViewdBoardStoreCreateManyUserInputEnvelope
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-  }
-
   export type ViewdProductStoreCreateNestedManyWithoutUserInput = {
     create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
     createMany?: ViewdProductStoreCreateManyUserInputEnvelope
     connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
-  }
-
-  export type BoardLikeDisLikeCreateNestedManyWithoutUserInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
-    createMany?: BoardLikeDisLikeCreateManyUserInputEnvelope
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -22999,6 +20354,13 @@ export namespace Prisma {
     connect?: SellerWhereUniqueInput | SellerWhereUniqueInput[]
   }
 
+  export type ActivateTokenCreateNestedManyWithoutUserInput = {
+    create?: XOR<ActivateTokenCreateWithoutUserInput, ActivateTokenUncheckedCreateWithoutUserInput> | ActivateTokenCreateWithoutUserInput[] | ActivateTokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ActivateTokenCreateOrConnectWithoutUserInput | ActivateTokenCreateOrConnectWithoutUserInput[]
+    createMany?: ActivateTokenCreateManyUserInputEnvelope
+    connect?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -23013,32 +20375,11 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
   }
 
-  export type BoardUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<BoardCreateWithoutUserInput, BoardUncheckedCreateWithoutUserInput> | BoardCreateWithoutUserInput[] | BoardUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardCreateOrConnectWithoutUserInput | BoardCreateOrConnectWithoutUserInput[]
-    createMany?: BoardCreateManyUserInputEnvelope
-    connect?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-  }
-
-  export type ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutUserInput, ViewdBoardStoreUncheckedCreateWithoutUserInput> | ViewdBoardStoreCreateWithoutUserInput[] | ViewdBoardStoreUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutUserInput | ViewdBoardStoreCreateOrConnectWithoutUserInput[]
-    createMany?: ViewdBoardStoreCreateManyUserInputEnvelope
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-  }
-
   export type ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
     createMany?: ViewdProductStoreCreateManyUserInputEnvelope
     connect?: ViewdProductStoreWhereUniqueInput | ViewdProductStoreWhereUniqueInput[]
-  }
-
-  export type BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
-    createMany?: BoardLikeDisLikeCreateManyUserInputEnvelope
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
   }
 
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
@@ -23089,16 +20430,23 @@ export namespace Prisma {
     connect?: SellerWhereUniqueInput | SellerWhereUniqueInput[]
   }
 
+  export type ActivateTokenUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ActivateTokenCreateWithoutUserInput, ActivateTokenUncheckedCreateWithoutUserInput> | ActivateTokenCreateWithoutUserInput[] | ActivateTokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ActivateTokenCreateOrConnectWithoutUserInput | ActivateTokenCreateOrConnectWithoutUserInput[]
+    createMany?: ActivateTokenCreateManyUserInputEnvelope
+    connect?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -23150,34 +20498,6 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
-  export type BoardUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BoardCreateWithoutUserInput, BoardUncheckedCreateWithoutUserInput> | BoardCreateWithoutUserInput[] | BoardUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardCreateOrConnectWithoutUserInput | BoardCreateOrConnectWithoutUserInput[]
-    upsert?: BoardUpsertWithWhereUniqueWithoutUserInput | BoardUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BoardCreateManyUserInputEnvelope
-    set?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    disconnect?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    delete?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    connect?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    update?: BoardUpdateWithWhereUniqueWithoutUserInput | BoardUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BoardUpdateManyWithWhereWithoutUserInput | BoardUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BoardScalarWhereInput | BoardScalarWhereInput[]
-  }
-
-  export type ViewdBoardStoreUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutUserInput, ViewdBoardStoreUncheckedCreateWithoutUserInput> | ViewdBoardStoreCreateWithoutUserInput[] | ViewdBoardStoreUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutUserInput | ViewdBoardStoreCreateOrConnectWithoutUserInput[]
-    upsert?: ViewdBoardStoreUpsertWithWhereUniqueWithoutUserInput | ViewdBoardStoreUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ViewdBoardStoreCreateManyUserInputEnvelope
-    set?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    disconnect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    delete?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    update?: ViewdBoardStoreUpdateWithWhereUniqueWithoutUserInput | ViewdBoardStoreUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ViewdBoardStoreUpdateManyWithWhereWithoutUserInput | ViewdBoardStoreUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
-  }
-
   export type ViewdProductStoreUpdateManyWithoutUserNestedInput = {
     create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
@@ -23190,20 +20510,6 @@ export namespace Prisma {
     update?: ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput | ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ViewdProductStoreUpdateManyWithWhereWithoutUserInput | ViewdProductStoreUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
-  }
-
-  export type BoardLikeDisLikeUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
-    upsert?: BoardLikeDisLikeUpsertWithWhereUniqueWithoutUserInput | BoardLikeDisLikeUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BoardLikeDisLikeCreateManyUserInputEnvelope
-    set?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    disconnect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    delete?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    update?: BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput | BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput | BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -23303,6 +20609,20 @@ export namespace Prisma {
     deleteMany?: SellerScalarWhereInput | SellerScalarWhereInput[]
   }
 
+  export type ActivateTokenUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ActivateTokenCreateWithoutUserInput, ActivateTokenUncheckedCreateWithoutUserInput> | ActivateTokenCreateWithoutUserInput[] | ActivateTokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ActivateTokenCreateOrConnectWithoutUserInput | ActivateTokenCreateOrConnectWithoutUserInput[]
+    upsert?: ActivateTokenUpsertWithWhereUniqueWithoutUserInput | ActivateTokenUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ActivateTokenCreateManyUserInputEnvelope
+    set?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    disconnect?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    delete?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    connect?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    update?: ActivateTokenUpdateWithWhereUniqueWithoutUserInput | ActivateTokenUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ActivateTokenUpdateManyWithWhereWithoutUserInput | ActivateTokenUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ActivateTokenScalarWhereInput | ActivateTokenScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -23331,34 +20651,6 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
-  export type BoardUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BoardCreateWithoutUserInput, BoardUncheckedCreateWithoutUserInput> | BoardCreateWithoutUserInput[] | BoardUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardCreateOrConnectWithoutUserInput | BoardCreateOrConnectWithoutUserInput[]
-    upsert?: BoardUpsertWithWhereUniqueWithoutUserInput | BoardUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BoardCreateManyUserInputEnvelope
-    set?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    disconnect?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    delete?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    connect?: BoardWhereUniqueInput | BoardWhereUniqueInput[]
-    update?: BoardUpdateWithWhereUniqueWithoutUserInput | BoardUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BoardUpdateManyWithWhereWithoutUserInput | BoardUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BoardScalarWhereInput | BoardScalarWhereInput[]
-  }
-
-  export type ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutUserInput, ViewdBoardStoreUncheckedCreateWithoutUserInput> | ViewdBoardStoreCreateWithoutUserInput[] | ViewdBoardStoreUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutUserInput | ViewdBoardStoreCreateOrConnectWithoutUserInput[]
-    upsert?: ViewdBoardStoreUpsertWithWhereUniqueWithoutUserInput | ViewdBoardStoreUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ViewdBoardStoreCreateManyUserInputEnvelope
-    set?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    disconnect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    delete?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    update?: ViewdBoardStoreUpdateWithWhereUniqueWithoutUserInput | ViewdBoardStoreUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ViewdBoardStoreUpdateManyWithWhereWithoutUserInput | ViewdBoardStoreUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
-  }
-
   export type ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ViewdProductStoreCreateWithoutUserInput, ViewdProductStoreUncheckedCreateWithoutUserInput> | ViewdProductStoreCreateWithoutUserInput[] | ViewdProductStoreUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ViewdProductStoreCreateOrConnectWithoutUserInput | ViewdProductStoreCreateOrConnectWithoutUserInput[]
@@ -23371,20 +20663,6 @@ export namespace Prisma {
     update?: ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput | ViewdProductStoreUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ViewdProductStoreUpdateManyWithWhereWithoutUserInput | ViewdProductStoreUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ViewdProductStoreScalarWhereInput | ViewdProductStoreScalarWhereInput[]
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput> | BoardLikeDisLikeCreateWithoutUserInput[] | BoardLikeDisLikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutUserInput | BoardLikeDisLikeCreateOrConnectWithoutUserInput[]
-    upsert?: BoardLikeDisLikeUpsertWithWhereUniqueWithoutUserInput | BoardLikeDisLikeUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BoardLikeDisLikeCreateManyUserInputEnvelope
-    set?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    disconnect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    delete?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    update?: BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput | BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput | BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
   }
 
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
@@ -23484,6 +20762,38 @@ export namespace Prisma {
     deleteMany?: SellerScalarWhereInput | SellerScalarWhereInput[]
   }
 
+  export type ActivateTokenUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ActivateTokenCreateWithoutUserInput, ActivateTokenUncheckedCreateWithoutUserInput> | ActivateTokenCreateWithoutUserInput[] | ActivateTokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ActivateTokenCreateOrConnectWithoutUserInput | ActivateTokenCreateOrConnectWithoutUserInput[]
+    upsert?: ActivateTokenUpsertWithWhereUniqueWithoutUserInput | ActivateTokenUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ActivateTokenCreateManyUserInputEnvelope
+    set?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    disconnect?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    delete?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    connect?: ActivateTokenWhereUniqueInput | ActivateTokenWhereUniqueInput[]
+    update?: ActivateTokenUpdateWithWhereUniqueWithoutUserInput | ActivateTokenUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ActivateTokenUpdateManyWithWhereWithoutUserInput | ActivateTokenUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ActivateTokenScalarWhereInput | ActivateTokenScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutActivateTokenInput = {
+    create?: XOR<UserCreateWithoutActivateTokenInput, UserUncheckedCreateWithoutActivateTokenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutActivateTokenInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type UserUpdateOneRequiredWithoutActivateTokenNestedInput = {
+    create?: XOR<UserCreateWithoutActivateTokenInput, UserUncheckedCreateWithoutActivateTokenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutActivateTokenInput
+    upsert?: UserUpsertWithoutActivateTokenInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutActivateTokenInput, UserUpdateWithoutActivateTokenInput>, UserUncheckedUpdateWithoutActivateTokenInput>
+  }
+
   export type UserCreateNestedOneWithoutAccountsInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -23520,140 +20830,6 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
-  }
-
-  export type ViewdBoardStoreCreateNestedManyWithoutBoardInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutBoardInput, ViewdBoardStoreUncheckedCreateWithoutBoardInput> | ViewdBoardStoreCreateWithoutBoardInput[] | ViewdBoardStoreUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutBoardInput | ViewdBoardStoreCreateOrConnectWithoutBoardInput[]
-    createMany?: ViewdBoardStoreCreateManyBoardInputEnvelope
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-  }
-
-  export type BoardLikeDisLikeCreateNestedManyWithoutBoardInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutBoardInput, BoardLikeDisLikeUncheckedCreateWithoutBoardInput> | BoardLikeDisLikeCreateWithoutBoardInput[] | BoardLikeDisLikeUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutBoardInput | BoardLikeDisLikeCreateOrConnectWithoutBoardInput[]
-    createMany?: BoardLikeDisLikeCreateManyBoardInputEnvelope
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-  }
-
-  export type UserCreateNestedOneWithoutBoardInput = {
-    create?: XOR<UserCreateWithoutBoardInput, UserUncheckedCreateWithoutBoardInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBoardInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type ViewdBoardStoreUncheckedCreateNestedManyWithoutBoardInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutBoardInput, ViewdBoardStoreUncheckedCreateWithoutBoardInput> | ViewdBoardStoreCreateWithoutBoardInput[] | ViewdBoardStoreUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutBoardInput | ViewdBoardStoreCreateOrConnectWithoutBoardInput[]
-    createMany?: ViewdBoardStoreCreateManyBoardInputEnvelope
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-  }
-
-  export type BoardLikeDisLikeUncheckedCreateNestedManyWithoutBoardInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutBoardInput, BoardLikeDisLikeUncheckedCreateWithoutBoardInput> | BoardLikeDisLikeCreateWithoutBoardInput[] | BoardLikeDisLikeUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutBoardInput | BoardLikeDisLikeCreateOrConnectWithoutBoardInput[]
-    createMany?: BoardLikeDisLikeCreateManyBoardInputEnvelope
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type ViewdBoardStoreUpdateManyWithoutBoardNestedInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutBoardInput, ViewdBoardStoreUncheckedCreateWithoutBoardInput> | ViewdBoardStoreCreateWithoutBoardInput[] | ViewdBoardStoreUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutBoardInput | ViewdBoardStoreCreateOrConnectWithoutBoardInput[]
-    upsert?: ViewdBoardStoreUpsertWithWhereUniqueWithoutBoardInput | ViewdBoardStoreUpsertWithWhereUniqueWithoutBoardInput[]
-    createMany?: ViewdBoardStoreCreateManyBoardInputEnvelope
-    set?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    disconnect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    delete?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    update?: ViewdBoardStoreUpdateWithWhereUniqueWithoutBoardInput | ViewdBoardStoreUpdateWithWhereUniqueWithoutBoardInput[]
-    updateMany?: ViewdBoardStoreUpdateManyWithWhereWithoutBoardInput | ViewdBoardStoreUpdateManyWithWhereWithoutBoardInput[]
-    deleteMany?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
-  }
-
-  export type BoardLikeDisLikeUpdateManyWithoutBoardNestedInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutBoardInput, BoardLikeDisLikeUncheckedCreateWithoutBoardInput> | BoardLikeDisLikeCreateWithoutBoardInput[] | BoardLikeDisLikeUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutBoardInput | BoardLikeDisLikeCreateOrConnectWithoutBoardInput[]
-    upsert?: BoardLikeDisLikeUpsertWithWhereUniqueWithoutBoardInput | BoardLikeDisLikeUpsertWithWhereUniqueWithoutBoardInput[]
-    createMany?: BoardLikeDisLikeCreateManyBoardInputEnvelope
-    set?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    disconnect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    delete?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    update?: BoardLikeDisLikeUpdateWithWhereUniqueWithoutBoardInput | BoardLikeDisLikeUpdateWithWhereUniqueWithoutBoardInput[]
-    updateMany?: BoardLikeDisLikeUpdateManyWithWhereWithoutBoardInput | BoardLikeDisLikeUpdateManyWithWhereWithoutBoardInput[]
-    deleteMany?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
-  }
-
-  export type UserUpdateOneRequiredWithoutBoardNestedInput = {
-    create?: XOR<UserCreateWithoutBoardInput, UserUncheckedCreateWithoutBoardInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBoardInput
-    upsert?: UserUpsertWithoutBoardInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBoardInput, UserUpdateWithoutBoardInput>, UserUncheckedUpdateWithoutBoardInput>
-  }
-
-  export type ViewdBoardStoreUncheckedUpdateManyWithoutBoardNestedInput = {
-    create?: XOR<ViewdBoardStoreCreateWithoutBoardInput, ViewdBoardStoreUncheckedCreateWithoutBoardInput> | ViewdBoardStoreCreateWithoutBoardInput[] | ViewdBoardStoreUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: ViewdBoardStoreCreateOrConnectWithoutBoardInput | ViewdBoardStoreCreateOrConnectWithoutBoardInput[]
-    upsert?: ViewdBoardStoreUpsertWithWhereUniqueWithoutBoardInput | ViewdBoardStoreUpsertWithWhereUniqueWithoutBoardInput[]
-    createMany?: ViewdBoardStoreCreateManyBoardInputEnvelope
-    set?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    disconnect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    delete?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    connect?: ViewdBoardStoreWhereUniqueInput | ViewdBoardStoreWhereUniqueInput[]
-    update?: ViewdBoardStoreUpdateWithWhereUniqueWithoutBoardInput | ViewdBoardStoreUpdateWithWhereUniqueWithoutBoardInput[]
-    updateMany?: ViewdBoardStoreUpdateManyWithWhereWithoutBoardInput | ViewdBoardStoreUpdateManyWithWhereWithoutBoardInput[]
-    deleteMany?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateManyWithoutBoardNestedInput = {
-    create?: XOR<BoardLikeDisLikeCreateWithoutBoardInput, BoardLikeDisLikeUncheckedCreateWithoutBoardInput> | BoardLikeDisLikeCreateWithoutBoardInput[] | BoardLikeDisLikeUncheckedCreateWithoutBoardInput[]
-    connectOrCreate?: BoardLikeDisLikeCreateOrConnectWithoutBoardInput | BoardLikeDisLikeCreateOrConnectWithoutBoardInput[]
-    upsert?: BoardLikeDisLikeUpsertWithWhereUniqueWithoutBoardInput | BoardLikeDisLikeUpsertWithWhereUniqueWithoutBoardInput[]
-    createMany?: BoardLikeDisLikeCreateManyBoardInputEnvelope
-    set?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    disconnect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    delete?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    connect?: BoardLikeDisLikeWhereUniqueInput | BoardLikeDisLikeWhereUniqueInput[]
-    update?: BoardLikeDisLikeUpdateWithWhereUniqueWithoutBoardInput | BoardLikeDisLikeUpdateWithWhereUniqueWithoutBoardInput[]
-    updateMany?: BoardLikeDisLikeUpdateManyWithWhereWithoutBoardInput | BoardLikeDisLikeUpdateManyWithWhereWithoutBoardInput[]
-    deleteMany?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutBoardLikeDisLikeInput = {
-    create?: XOR<UserCreateWithoutBoardLikeDisLikeInput, UserUncheckedCreateWithoutBoardLikeDisLikeInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBoardLikeDisLikeInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type BoardCreateNestedOneWithoutBoardLikeDisLikeInput = {
-    create?: XOR<BoardCreateWithoutBoardLikeDisLikeInput, BoardUncheckedCreateWithoutBoardLikeDisLikeInput>
-    connectOrCreate?: BoardCreateOrConnectWithoutBoardLikeDisLikeInput
-    connect?: BoardWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutBoardLikeDisLikeNestedInput = {
-    create?: XOR<UserCreateWithoutBoardLikeDisLikeInput, UserUncheckedCreateWithoutBoardLikeDisLikeInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBoardLikeDisLikeInput
-    upsert?: UserUpsertWithoutBoardLikeDisLikeInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBoardLikeDisLikeInput, UserUpdateWithoutBoardLikeDisLikeInput>, UserUncheckedUpdateWithoutBoardLikeDisLikeInput>
-  }
-
-  export type BoardUpdateOneRequiredWithoutBoardLikeDisLikeNestedInput = {
-    create?: XOR<BoardCreateWithoutBoardLikeDisLikeInput, BoardUncheckedCreateWithoutBoardLikeDisLikeInput>
-    connectOrCreate?: BoardCreateOrConnectWithoutBoardLikeDisLikeInput
-    upsert?: BoardUpsertWithoutBoardLikeDisLikeInput
-    connect?: BoardWhereUniqueInput
-    update?: XOR<XOR<BoardUpdateToOneWithWhereWithoutBoardLikeDisLikeInput, BoardUpdateWithoutBoardLikeDisLikeInput>, BoardUncheckedUpdateWithoutBoardLikeDisLikeInput>
   }
 
   export type ProductCreateimageSrcInput = {
@@ -23759,16 +20935,20 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type ProductUpdatecategoriesInput = {
@@ -23978,34 +21158,6 @@ export namespace Prisma {
     upsert?: ProductUpsertWithoutReviewsInput
     connect?: ProductWhereUniqueInput
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutReviewsInput, ProductUpdateWithoutReviewsInput>, ProductUncheckedUpdateWithoutReviewsInput>
-  }
-
-  export type UserCreateNestedOneWithoutViewdBoardStoreInput = {
-    create?: XOR<UserCreateWithoutViewdBoardStoreInput, UserUncheckedCreateWithoutViewdBoardStoreInput>
-    connectOrCreate?: UserCreateOrConnectWithoutViewdBoardStoreInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type BoardCreateNestedOneWithoutViewdBoardStoreInput = {
-    create?: XOR<BoardCreateWithoutViewdBoardStoreInput, BoardUncheckedCreateWithoutViewdBoardStoreInput>
-    connectOrCreate?: BoardCreateOrConnectWithoutViewdBoardStoreInput
-    connect?: BoardWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutViewdBoardStoreNestedInput = {
-    create?: XOR<UserCreateWithoutViewdBoardStoreInput, UserUncheckedCreateWithoutViewdBoardStoreInput>
-    connectOrCreate?: UserCreateOrConnectWithoutViewdBoardStoreInput
-    upsert?: UserUpsertWithoutViewdBoardStoreInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutViewdBoardStoreInput, UserUpdateWithoutViewdBoardStoreInput>, UserUncheckedUpdateWithoutViewdBoardStoreInput>
-  }
-
-  export type BoardUpdateOneRequiredWithoutViewdBoardStoreNestedInput = {
-    create?: XOR<BoardCreateWithoutViewdBoardStoreInput, BoardUncheckedCreateWithoutViewdBoardStoreInput>
-    connectOrCreate?: BoardCreateOrConnectWithoutViewdBoardStoreInput
-    upsert?: BoardUpsertWithoutViewdBoardStoreInput
-    connect?: BoardWhereUniqueInput
-    update?: XOR<XOR<BoardUpdateToOneWithWhereWithoutViewdBoardStoreInput, BoardUpdateWithoutViewdBoardStoreInput>, BoardUncheckedUpdateWithoutViewdBoardStoreInput>
   }
 
   export type UserCreateNestedOneWithoutViewdProductStoreInput = {
@@ -24256,6 +21408,11 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -24268,17 +21425,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -24338,6 +21484,14 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -24364,20 +21518,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -24418,6 +21558,31 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -24463,11 +21628,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -24482,14 +21642,6 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -24582,66 +21734,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BoardCreateWithoutUserInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutBoardInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutBoardInput
-  }
-
-  export type BoardUncheckedCreateWithoutUserInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutBoardInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutBoardInput
-  }
-
-  export type BoardCreateOrConnectWithoutUserInput = {
-    where: BoardWhereUniqueInput
-    create: XOR<BoardCreateWithoutUserInput, BoardUncheckedCreateWithoutUserInput>
-  }
-
-  export type BoardCreateManyUserInputEnvelope = {
-    data: BoardCreateManyUserInput | BoardCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ViewdBoardStoreCreateWithoutUserInput = {
-    id?: string
-    viewedAt?: Date | string
-    board: BoardCreateNestedOneWithoutViewdBoardStoreInput
-  }
-
-  export type ViewdBoardStoreUncheckedCreateWithoutUserInput = {
-    id?: string
-    boardId: string
-    viewedAt?: Date | string
-  }
-
-  export type ViewdBoardStoreCreateOrConnectWithoutUserInput = {
-    where: ViewdBoardStoreWhereUniqueInput
-    create: XOR<ViewdBoardStoreCreateWithoutUserInput, ViewdBoardStoreUncheckedCreateWithoutUserInput>
-  }
-
-  export type ViewdBoardStoreCreateManyUserInputEnvelope = {
-    data: ViewdBoardStoreCreateManyUserInput | ViewdBoardStoreCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ViewdProductStoreCreateWithoutUserInput = {
     id?: string
     viewedAt?: Date | string
@@ -24661,29 +21753,6 @@ export namespace Prisma {
 
   export type ViewdProductStoreCreateManyUserInputEnvelope = {
     data: ViewdProductStoreCreateManyUserInput | ViewdProductStoreCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type BoardLikeDisLikeCreateWithoutUserInput = {
-    type: string
-    createdAt?: Date | string
-    board: BoardCreateNestedOneWithoutBoardLikeDisLikeInput
-  }
-
-  export type BoardLikeDisLikeUncheckedCreateWithoutUserInput = {
-    id?: number
-    type: string
-    createdAt?: Date | string
-    boardId: string
-  }
-
-  export type BoardLikeDisLikeCreateOrConnectWithoutUserInput = {
-    where: BoardLikeDisLikeWhereUniqueInput
-    create: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput>
-  }
-
-  export type BoardLikeDisLikeCreateManyUserInputEnvelope = {
-    data: BoardLikeDisLikeCreateManyUserInput | BoardLikeDisLikeCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -24847,6 +21916,7 @@ export namespace Prisma {
   export type ReviewCreateWithoutUserInput = {
     id?: string
     sellerId: string
+    sellerName?: string
     title: string
     text: string
     createdAt?: Date | string
@@ -24858,6 +21928,7 @@ export namespace Prisma {
   export type ReviewUncheckedCreateWithoutUserInput = {
     id?: string
     sellerId: string
+    sellerName?: string
     productId: string
     title: string
     text: string
@@ -24878,6 +21949,7 @@ export namespace Prisma {
 
   export type BuyerCreateWithoutUserInput = {
     id?: string
+    sellerId?: string
     sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24887,6 +21959,7 @@ export namespace Prisma {
 
   export type BuyerUncheckedCreateWithoutUserInput = {
     id?: string
+    sellerId?: string
     sellerName?: string
     productId: string
     createdAt?: Date | string
@@ -24906,6 +21979,7 @@ export namespace Prisma {
 
   export type SellerCreateWithoutUserInput = {
     id?: string
+    buyerId?: string
     buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24914,6 +21988,7 @@ export namespace Prisma {
 
   export type SellerUncheckedCreateWithoutUserInput = {
     id?: string
+    buyerId?: string
     buyerName?: string
     productId: string
     createdAt?: Date | string
@@ -24927,6 +22002,32 @@ export namespace Prisma {
 
   export type SellerCreateManyUserInputEnvelope = {
     data: SellerCreateManyUserInput | SellerCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ActivateTokenCreateWithoutUserInput = {
+    id?: string
+    token: string
+    activatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ActivateTokenUncheckedCreateWithoutUserInput = {
+    id?: string
+    token: string
+    activatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ActivateTokenCreateOrConnectWithoutUserInput = {
+    where: ActivateTokenWhereUniqueInput
+    create: XOR<ActivateTokenCreateWithoutUserInput, ActivateTokenUncheckedCreateWithoutUserInput>
+  }
+
+  export type ActivateTokenCreateManyUserInputEnvelope = {
+    data: ActivateTokenCreateManyUserInput | ActivateTokenCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -24999,64 +22100,6 @@ export namespace Prisma {
     categories?: StringNullableListFilter<"Product">
   }
 
-  export type BoardUpsertWithWhereUniqueWithoutUserInput = {
-    where: BoardWhereUniqueInput
-    update: XOR<BoardUpdateWithoutUserInput, BoardUncheckedUpdateWithoutUserInput>
-    create: XOR<BoardCreateWithoutUserInput, BoardUncheckedCreateWithoutUserInput>
-  }
-
-  export type BoardUpdateWithWhereUniqueWithoutUserInput = {
-    where: BoardWhereUniqueInput
-    data: XOR<BoardUpdateWithoutUserInput, BoardUncheckedUpdateWithoutUserInput>
-  }
-
-  export type BoardUpdateManyWithWhereWithoutUserInput = {
-    where: BoardScalarWhereInput
-    data: XOR<BoardUpdateManyMutationInput, BoardUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type BoardScalarWhereInput = {
-    AND?: BoardScalarWhereInput | BoardScalarWhereInput[]
-    OR?: BoardScalarWhereInput[]
-    NOT?: BoardScalarWhereInput | BoardScalarWhereInput[]
-    id?: StringFilter<"Board"> | string
-    title?: StringFilter<"Board"> | string
-    description?: StringFilter<"Board"> | string
-    category?: StringFilter<"Board"> | string
-    userId?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
-    updatedAt?: DateTimeFilter<"Board"> | Date | string
-    likes?: IntFilter<"Board"> | number
-    dislikes?: IntFilter<"Board"> | number
-    views?: IntFilter<"Board"> | number
-  }
-
-  export type ViewdBoardStoreUpsertWithWhereUniqueWithoutUserInput = {
-    where: ViewdBoardStoreWhereUniqueInput
-    update: XOR<ViewdBoardStoreUpdateWithoutUserInput, ViewdBoardStoreUncheckedUpdateWithoutUserInput>
-    create: XOR<ViewdBoardStoreCreateWithoutUserInput, ViewdBoardStoreUncheckedCreateWithoutUserInput>
-  }
-
-  export type ViewdBoardStoreUpdateWithWhereUniqueWithoutUserInput = {
-    where: ViewdBoardStoreWhereUniqueInput
-    data: XOR<ViewdBoardStoreUpdateWithoutUserInput, ViewdBoardStoreUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ViewdBoardStoreUpdateManyWithWhereWithoutUserInput = {
-    where: ViewdBoardStoreScalarWhereInput
-    data: XOR<ViewdBoardStoreUpdateManyMutationInput, ViewdBoardStoreUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type ViewdBoardStoreScalarWhereInput = {
-    AND?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
-    OR?: ViewdBoardStoreScalarWhereInput[]
-    NOT?: ViewdBoardStoreScalarWhereInput | ViewdBoardStoreScalarWhereInput[]
-    id?: StringFilter<"ViewdBoardStore"> | string
-    userId?: StringFilter<"ViewdBoardStore"> | string
-    boardId?: StringFilter<"ViewdBoardStore"> | string
-    viewedAt?: DateTimeFilter<"ViewdBoardStore"> | Date | string
-  }
-
   export type ViewdProductStoreUpsertWithWhereUniqueWithoutUserInput = {
     where: ViewdProductStoreWhereUniqueInput
     update: XOR<ViewdProductStoreUpdateWithoutUserInput, ViewdProductStoreUncheckedUpdateWithoutUserInput>
@@ -25081,33 +22124,6 @@ export namespace Prisma {
     userId?: StringFilter<"ViewdProductStore"> | string
     productId?: StringFilter<"ViewdProductStore"> | string
     viewedAt?: DateTimeFilter<"ViewdProductStore"> | Date | string
-  }
-
-  export type BoardLikeDisLikeUpsertWithWhereUniqueWithoutUserInput = {
-    where: BoardLikeDisLikeWhereUniqueInput
-    update: XOR<BoardLikeDisLikeUpdateWithoutUserInput, BoardLikeDisLikeUncheckedUpdateWithoutUserInput>
-    create: XOR<BoardLikeDisLikeCreateWithoutUserInput, BoardLikeDisLikeUncheckedCreateWithoutUserInput>
-  }
-
-  export type BoardLikeDisLikeUpdateWithWhereUniqueWithoutUserInput = {
-    where: BoardLikeDisLikeWhereUniqueInput
-    data: XOR<BoardLikeDisLikeUpdateWithoutUserInput, BoardLikeDisLikeUncheckedUpdateWithoutUserInput>
-  }
-
-  export type BoardLikeDisLikeUpdateManyWithWhereWithoutUserInput = {
-    where: BoardLikeDisLikeScalarWhereInput
-    data: XOR<BoardLikeDisLikeUpdateManyMutationInput, BoardLikeDisLikeUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type BoardLikeDisLikeScalarWhereInput = {
-    AND?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
-    OR?: BoardLikeDisLikeScalarWhereInput[]
-    NOT?: BoardLikeDisLikeScalarWhereInput | BoardLikeDisLikeScalarWhereInput[]
-    id?: IntFilter<"BoardLikeDisLike"> | number
-    type?: StringFilter<"BoardLikeDisLike"> | string
-    createdAt?: DateTimeFilter<"BoardLikeDisLike"> | Date | string
-    userId?: StringFilter<"BoardLikeDisLike"> | string
-    boardId?: StringFilter<"BoardLikeDisLike"> | string
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -25249,6 +22265,7 @@ export namespace Prisma {
     id?: StringFilter<"Review"> | string
     userId?: StringFilter<"Review"> | string
     sellerId?: StringFilter<"Review"> | string
+    sellerName?: StringFilter<"Review"> | string
     productId?: StringFilter<"Review"> | string
     title?: StringFilter<"Review"> | string
     text?: StringFilter<"Review"> | string
@@ -25279,6 +22296,7 @@ export namespace Prisma {
     NOT?: BuyerScalarWhereInput | BuyerScalarWhereInput[]
     id?: StringFilter<"Buyer"> | string
     userId?: StringFilter<"Buyer"> | string
+    sellerId?: StringFilter<"Buyer"> | string
     sellerName?: StringFilter<"Buyer"> | string
     productId?: StringFilter<"Buyer"> | string
     createdAt?: DateTimeFilter<"Buyer"> | Date | string
@@ -25308,18 +22326,47 @@ export namespace Prisma {
     NOT?: SellerScalarWhereInput | SellerScalarWhereInput[]
     id?: StringFilter<"Seller"> | string
     userId?: StringFilter<"Seller"> | string
+    buyerId?: StringFilter<"Seller"> | string
     buyerName?: StringFilter<"Seller"> | string
     productId?: StringFilter<"Seller"> | string
     createdAt?: DateTimeFilter<"Seller"> | Date | string
     updatedAt?: DateTimeFilter<"Seller"> | Date | string
   }
 
-  export type UserCreateWithoutAccountsInput = {
+  export type ActivateTokenUpsertWithWhereUniqueWithoutUserInput = {
+    where: ActivateTokenWhereUniqueInput
+    update: XOR<ActivateTokenUpdateWithoutUserInput, ActivateTokenUncheckedUpdateWithoutUserInput>
+    create: XOR<ActivateTokenCreateWithoutUserInput, ActivateTokenUncheckedCreateWithoutUserInput>
+  }
+
+  export type ActivateTokenUpdateWithWhereUniqueWithoutUserInput = {
+    where: ActivateTokenWhereUniqueInput
+    data: XOR<ActivateTokenUpdateWithoutUserInput, ActivateTokenUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ActivateTokenUpdateManyWithWhereWithoutUserInput = {
+    where: ActivateTokenScalarWhereInput
+    data: XOR<ActivateTokenUpdateManyMutationInput, ActivateTokenUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ActivateTokenScalarWhereInput = {
+    AND?: ActivateTokenScalarWhereInput | ActivateTokenScalarWhereInput[]
+    OR?: ActivateTokenScalarWhereInput[]
+    NOT?: ActivateTokenScalarWhereInput | ActivateTokenScalarWhereInput[]
+    id?: StringFilter<"ActivateToken"> | string
+    token?: StringFilter<"ActivateToken"> | string
+    activatedAt?: DateTimeNullableFilter<"ActivateToken"> | Date | string | null
+    createdAt?: DateTimeFilter<"ActivateToken"> | Date | string
+    updatedAt?: DateTimeFilter<"ActivateToken"> | Date | string
+    userId?: StringFilter<"ActivateToken"> | string
+  }
+
+  export type UserCreateWithoutActivateTokenInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25329,10 +22376,8 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
@@ -25341,12 +22386,12 @@ export namespace Prisma {
     seller?: SellerCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutAccountsInput = {
+  export type UserUncheckedCreateWithoutActivateTokenInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25356,16 +22401,130 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutActivateTokenInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutActivateTokenInput, UserUncheckedCreateWithoutActivateTokenInput>
+  }
+
+  export type UserUpsertWithoutActivateTokenInput = {
+    update: XOR<UserUpdateWithoutActivateTokenInput, UserUncheckedUpdateWithoutActivateTokenInput>
+    create: XOR<UserCreateWithoutActivateTokenInput, UserUncheckedCreateWithoutActivateTokenInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutActivateTokenInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutActivateTokenInput, UserUncheckedUpdateWithoutActivateTokenInput>
+  }
+
+  export type UserUpdateWithoutActivateTokenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
+    averageRating?: FloatFieldUpdateOperationsInput | number
+    averageproductRating?: FloatFieldUpdateOperationsInput | number
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    Product?: ProductUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    conversations?: ConversationUpdateManyWithoutUsersNestedInput
+    sendMessages?: MessageUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    buyer?: BuyerUpdateManyWithoutUserNestedInput
+    seller?: SellerUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutActivateTokenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
+    averageRating?: FloatFieldUpdateOperationsInput | number
+    averageproductRating?: FloatFieldUpdateOperationsInput | number
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
+    sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
+    seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutAccountsInput = {
+    id?: string
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userType?: $Enums.UserType
+    favoriteIds?: UserCreatefavoriteIdsInput | string[]
+    averageRating?: number
+    averageproductRating?: number
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    Product?: ProductCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
+    conversations?: ConversationCreateNestedManyWithoutUsersInput
+    sendMessages?: MessageCreateNestedManyWithoutSenderInput
+    receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    buyer?: BuyerCreateNestedManyWithoutUserInput
+    seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAccountsInput = {
+    id?: string
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userType?: $Enums.UserType
+    favoriteIds?: UserCreatefavoriteIdsInput | string[]
+    averageRating?: number
+    averageproductRating?: number
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    Product?: ProductUncheckedCreateNestedManyWithoutUserInput
+    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
+    conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
+    sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
+    seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -25386,10 +22545,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25399,24 +22558,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25426,24 +22583,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25452,10 +22607,7 @@ export namespace Prisma {
     averageRating?: number
     averageproductRating?: number
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
@@ -25463,14 +22615,15 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25479,10 +22632,7 @@ export namespace Prisma {
     averageRating?: number
     averageproductRating?: number
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -25490,6 +22640,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -25510,10 +22661,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25522,10 +22673,7 @@ export namespace Prisma {
     averageRating?: FloatFieldUpdateOperationsInput | number
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
@@ -25533,14 +22681,15 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25549,367 +22698,6 @@ export namespace Prisma {
     averageRating?: FloatFieldUpdateOperationsInput | number
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
-    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
-    sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
-    seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type ViewdBoardStoreCreateWithoutBoardInput = {
-    id?: string
-    viewedAt?: Date | string
-    user: UserCreateNestedOneWithoutViewdBoardStoreInput
-  }
-
-  export type ViewdBoardStoreUncheckedCreateWithoutBoardInput = {
-    id?: string
-    userId: string
-    viewedAt?: Date | string
-  }
-
-  export type ViewdBoardStoreCreateOrConnectWithoutBoardInput = {
-    where: ViewdBoardStoreWhereUniqueInput
-    create: XOR<ViewdBoardStoreCreateWithoutBoardInput, ViewdBoardStoreUncheckedCreateWithoutBoardInput>
-  }
-
-  export type ViewdBoardStoreCreateManyBoardInputEnvelope = {
-    data: ViewdBoardStoreCreateManyBoardInput | ViewdBoardStoreCreateManyBoardInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type BoardLikeDisLikeCreateWithoutBoardInput = {
-    type: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutBoardLikeDisLikeInput
-  }
-
-  export type BoardLikeDisLikeUncheckedCreateWithoutBoardInput = {
-    id?: number
-    type: string
-    createdAt?: Date | string
-    userId: string
-  }
-
-  export type BoardLikeDisLikeCreateOrConnectWithoutBoardInput = {
-    where: BoardLikeDisLikeWhereUniqueInput
-    create: XOR<BoardLikeDisLikeCreateWithoutBoardInput, BoardLikeDisLikeUncheckedCreateWithoutBoardInput>
-  }
-
-  export type BoardLikeDisLikeCreateManyBoardInputEnvelope = {
-    data: BoardLikeDisLikeCreateManyBoardInput | BoardLikeDisLikeCreateManyBoardInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserCreateWithoutBoardInput = {
-    id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userType?: $Enums.UserType
-    favoriteIds?: UserCreatefavoriteIdsInput | string[]
-    averageRating?: number
-    averageproductRating?: number
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    Product?: ProductCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
-    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    conversations?: ConversationCreateNestedManyWithoutUsersInput
-    sendMessages?: MessageCreateNestedManyWithoutSenderInput
-    receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    buyer?: BuyerCreateNestedManyWithoutUserInput
-    seller?: SellerCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutBoardInput = {
-    id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userType?: $Enums.UserType
-    favoriteIds?: UserCreatefavoriteIdsInput | string[]
-    averageRating?: number
-    averageproductRating?: number
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
-    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
-    sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
-    seller?: SellerUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutBoardInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutBoardInput, UserUncheckedCreateWithoutBoardInput>
-  }
-
-  export type ViewdBoardStoreUpsertWithWhereUniqueWithoutBoardInput = {
-    where: ViewdBoardStoreWhereUniqueInput
-    update: XOR<ViewdBoardStoreUpdateWithoutBoardInput, ViewdBoardStoreUncheckedUpdateWithoutBoardInput>
-    create: XOR<ViewdBoardStoreCreateWithoutBoardInput, ViewdBoardStoreUncheckedCreateWithoutBoardInput>
-  }
-
-  export type ViewdBoardStoreUpdateWithWhereUniqueWithoutBoardInput = {
-    where: ViewdBoardStoreWhereUniqueInput
-    data: XOR<ViewdBoardStoreUpdateWithoutBoardInput, ViewdBoardStoreUncheckedUpdateWithoutBoardInput>
-  }
-
-  export type ViewdBoardStoreUpdateManyWithWhereWithoutBoardInput = {
-    where: ViewdBoardStoreScalarWhereInput
-    data: XOR<ViewdBoardStoreUpdateManyMutationInput, ViewdBoardStoreUncheckedUpdateManyWithoutBoardInput>
-  }
-
-  export type BoardLikeDisLikeUpsertWithWhereUniqueWithoutBoardInput = {
-    where: BoardLikeDisLikeWhereUniqueInput
-    update: XOR<BoardLikeDisLikeUpdateWithoutBoardInput, BoardLikeDisLikeUncheckedUpdateWithoutBoardInput>
-    create: XOR<BoardLikeDisLikeCreateWithoutBoardInput, BoardLikeDisLikeUncheckedCreateWithoutBoardInput>
-  }
-
-  export type BoardLikeDisLikeUpdateWithWhereUniqueWithoutBoardInput = {
-    where: BoardLikeDisLikeWhereUniqueInput
-    data: XOR<BoardLikeDisLikeUpdateWithoutBoardInput, BoardLikeDisLikeUncheckedUpdateWithoutBoardInput>
-  }
-
-  export type BoardLikeDisLikeUpdateManyWithWhereWithoutBoardInput = {
-    where: BoardLikeDisLikeScalarWhereInput
-    data: XOR<BoardLikeDisLikeUpdateManyMutationInput, BoardLikeDisLikeUncheckedUpdateManyWithoutBoardInput>
-  }
-
-  export type UserUpsertWithoutBoardInput = {
-    update: XOR<UserUpdateWithoutBoardInput, UserUncheckedUpdateWithoutBoardInput>
-    create: XOR<UserCreateWithoutBoardInput, UserUncheckedCreateWithoutBoardInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutBoardInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutBoardInput, UserUncheckedUpdateWithoutBoardInput>
-  }
-
-  export type UserUpdateWithoutBoardInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
-    averageRating?: FloatFieldUpdateOperationsInput | number
-    averageproductRating?: FloatFieldUpdateOperationsInput | number
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    Product?: ProductUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
-    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    conversations?: ConversationUpdateManyWithoutUsersNestedInput
-    sendMessages?: MessageUpdateManyWithoutSenderNestedInput
-    receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    buyer?: BuyerUpdateManyWithoutUserNestedInput
-    seller?: SellerUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutBoardInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
-    averageRating?: FloatFieldUpdateOperationsInput | number
-    averageproductRating?: FloatFieldUpdateOperationsInput | number
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
-    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
-    sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
-    seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserCreateWithoutBoardLikeDisLikeInput = {
-    id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userType?: $Enums.UserType
-    favoriteIds?: UserCreatefavoriteIdsInput | string[]
-    averageRating?: number
-    averageproductRating?: number
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
-    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    conversations?: ConversationCreateNestedManyWithoutUsersInput
-    sendMessages?: MessageCreateNestedManyWithoutSenderInput
-    receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    buyer?: BuyerCreateNestedManyWithoutUserInput
-    seller?: SellerCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutBoardLikeDisLikeInput = {
-    id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userType?: $Enums.UserType
-    favoriteIds?: UserCreatefavoriteIdsInput | string[]
-    averageRating?: number
-    averageproductRating?: number
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
-    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
-    sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
-    seller?: SellerUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutBoardLikeDisLikeInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutBoardLikeDisLikeInput, UserUncheckedCreateWithoutBoardLikeDisLikeInput>
-  }
-
-  export type BoardCreateWithoutBoardLikeDisLikeInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutBoardInput
-    user: UserCreateNestedOneWithoutBoardInput
-  }
-
-  export type BoardUncheckedCreateWithoutBoardLikeDisLikeInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutBoardInput
-  }
-
-  export type BoardCreateOrConnectWithoutBoardLikeDisLikeInput = {
-    where: BoardWhereUniqueInput
-    create: XOR<BoardCreateWithoutBoardLikeDisLikeInput, BoardUncheckedCreateWithoutBoardLikeDisLikeInput>
-  }
-
-  export type UserUpsertWithoutBoardLikeDisLikeInput = {
-    update: XOR<UserUpdateWithoutBoardLikeDisLikeInput, UserUncheckedUpdateWithoutBoardLikeDisLikeInput>
-    create: XOR<UserCreateWithoutBoardLikeDisLikeInput, UserUncheckedCreateWithoutBoardLikeDisLikeInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutBoardLikeDisLikeInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutBoardLikeDisLikeInput, UserUncheckedUpdateWithoutBoardLikeDisLikeInput>
-  }
-
-  export type UserUpdateWithoutBoardLikeDisLikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
-    averageRating?: FloatFieldUpdateOperationsInput | number
-    averageproductRating?: FloatFieldUpdateOperationsInput | number
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
-    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    conversations?: ConversationUpdateManyWithoutUsersNestedInput
-    sendMessages?: MessageUpdateManyWithoutSenderNestedInput
-    receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    buyer?: BuyerUpdateManyWithoutUserNestedInput
-    seller?: SellerUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutBoardLikeDisLikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
-    averageRating?: FloatFieldUpdateOperationsInput | number
-    averageproductRating?: FloatFieldUpdateOperationsInput | number
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
@@ -25918,53 +22706,15 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type BoardUpsertWithoutBoardLikeDisLikeInput = {
-    update: XOR<BoardUpdateWithoutBoardLikeDisLikeInput, BoardUncheckedUpdateWithoutBoardLikeDisLikeInput>
-    create: XOR<BoardCreateWithoutBoardLikeDisLikeInput, BoardUncheckedCreateWithoutBoardLikeDisLikeInput>
-    where?: BoardWhereInput
-  }
-
-  export type BoardUpdateToOneWithWhereWithoutBoardLikeDisLikeInput = {
-    where?: BoardWhereInput
-    data: XOR<BoardUpdateWithoutBoardLikeDisLikeInput, BoardUncheckedUpdateWithoutBoardLikeDisLikeInput>
-  }
-
-  export type BoardUpdateWithoutBoardLikeDisLikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutBoardNestedInput
-    user?: UserUpdateOneRequiredWithoutBoardNestedInput
-  }
-
-  export type BoardUncheckedUpdateWithoutBoardLikeDisLikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutBoardNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutProductInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25973,10 +22723,7 @@ export namespace Prisma {
     averageRating?: number
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
@@ -25984,14 +22731,15 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProductInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26000,10 +22748,7 @@ export namespace Prisma {
     averageRating?: number
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -26011,6 +22756,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProductInput = {
@@ -26043,6 +22789,7 @@ export namespace Prisma {
   export type ReviewCreateWithoutProductInput = {
     id?: string
     sellerId: string
+    sellerName?: string
     title: string
     text: string
     createdAt?: Date | string
@@ -26055,6 +22802,7 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
+    sellerName?: string
     title: string
     text: string
     createdAt?: Date | string
@@ -26100,6 +22848,7 @@ export namespace Prisma {
 
   export type BuyerCreateWithoutProductInput = {
     id?: string
+    sellerId?: string
     sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26110,6 +22859,7 @@ export namespace Prisma {
   export type BuyerUncheckedCreateWithoutProductInput = {
     id?: string
     userId: string
+    sellerId?: string
     sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26128,6 +22878,7 @@ export namespace Prisma {
 
   export type SellerCreateWithoutProductInput = {
     id?: string
+    buyerId?: string
     buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26137,6 +22888,7 @@ export namespace Prisma {
   export type SellerUncheckedCreateWithoutProductInput = {
     id?: string
     userId: string
+    buyerId?: string
     buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26211,10 +22963,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26223,10 +22975,7 @@ export namespace Prisma {
     averageRating?: FloatFieldUpdateOperationsInput | number
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
@@ -26234,14 +22983,15 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26250,10 +23000,7 @@ export namespace Prisma {
     averageRating?: FloatFieldUpdateOperationsInput | number
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -26261,6 +23008,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ViewdProductStoreUpsertWithWhereUniqueWithoutProductInput = {
@@ -26395,10 +23143,10 @@ export namespace Prisma {
 
   export type UserCreateWithoutReviewsInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26408,24 +23156,22 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReviewsInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26435,16 +23181,14 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReviewsInput = {
@@ -26522,10 +23266,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26535,24 +23279,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26562,16 +23304,14 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProductUpsertWithoutReviewsInput = {
@@ -26637,208 +23377,12 @@ export namespace Prisma {
     reservations?: ReservationUncheckedUpdateManyWithoutProductNestedInput
   }
 
-  export type UserCreateWithoutViewdBoardStoreInput = {
-    id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userType?: $Enums.UserType
-    favoriteIds?: UserCreatefavoriteIdsInput | string[]
-    averageRating?: number
-    averageproductRating?: number
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    conversations?: ConversationCreateNestedManyWithoutUsersInput
-    sendMessages?: MessageCreateNestedManyWithoutSenderInput
-    receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    buyer?: BuyerCreateNestedManyWithoutUserInput
-    seller?: SellerCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutViewdBoardStoreInput = {
-    id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userType?: $Enums.UserType
-    favoriteIds?: UserCreatefavoriteIdsInput | string[]
-    averageRating?: number
-    averageproductRating?: number
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
-    sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
-    seller?: SellerUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutViewdBoardStoreInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutViewdBoardStoreInput, UserUncheckedCreateWithoutViewdBoardStoreInput>
-  }
-
-  export type BoardCreateWithoutViewdBoardStoreInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutBoardInput
-    user: UserCreateNestedOneWithoutBoardInput
-  }
-
-  export type BoardUncheckedCreateWithoutViewdBoardStoreInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutBoardInput
-  }
-
-  export type BoardCreateOrConnectWithoutViewdBoardStoreInput = {
-    where: BoardWhereUniqueInput
-    create: XOR<BoardCreateWithoutViewdBoardStoreInput, BoardUncheckedCreateWithoutViewdBoardStoreInput>
-  }
-
-  export type UserUpsertWithoutViewdBoardStoreInput = {
-    update: XOR<UserUpdateWithoutViewdBoardStoreInput, UserUncheckedUpdateWithoutViewdBoardStoreInput>
-    create: XOR<UserCreateWithoutViewdBoardStoreInput, UserUncheckedCreateWithoutViewdBoardStoreInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutViewdBoardStoreInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutViewdBoardStoreInput, UserUncheckedUpdateWithoutViewdBoardStoreInput>
-  }
-
-  export type UserUpdateWithoutViewdBoardStoreInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
-    averageRating?: FloatFieldUpdateOperationsInput | number
-    averageproductRating?: FloatFieldUpdateOperationsInput | number
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    conversations?: ConversationUpdateManyWithoutUsersNestedInput
-    sendMessages?: MessageUpdateManyWithoutSenderNestedInput
-    receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    buyer?: BuyerUpdateManyWithoutUserNestedInput
-    seller?: SellerUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutViewdBoardStoreInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    favoriteIds?: UserUpdatefavoriteIdsInput | string[]
-    averageRating?: FloatFieldUpdateOperationsInput | number
-    averageproductRating?: FloatFieldUpdateOperationsInput | number
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
-    sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
-    seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type BoardUpsertWithoutViewdBoardStoreInput = {
-    update: XOR<BoardUpdateWithoutViewdBoardStoreInput, BoardUncheckedUpdateWithoutViewdBoardStoreInput>
-    create: XOR<BoardCreateWithoutViewdBoardStoreInput, BoardUncheckedCreateWithoutViewdBoardStoreInput>
-    where?: BoardWhereInput
-  }
-
-  export type BoardUpdateToOneWithWhereWithoutViewdBoardStoreInput = {
-    where?: BoardWhereInput
-    data: XOR<BoardUpdateWithoutViewdBoardStoreInput, BoardUncheckedUpdateWithoutViewdBoardStoreInput>
-  }
-
-  export type BoardUpdateWithoutViewdBoardStoreInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutBoardNestedInput
-    user?: UserUpdateOneRequiredWithoutBoardNestedInput
-  }
-
-  export type BoardUncheckedUpdateWithoutViewdBoardStoreInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutBoardNestedInput
-  }
-
   export type UserCreateWithoutViewdProductStoreInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26848,9 +23392,6 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
@@ -26858,14 +23399,15 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutViewdProductStoreInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26875,9 +23417,6 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -26885,6 +23424,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutViewdProductStoreInput = {
@@ -26962,10 +23502,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutViewdProductStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26975,9 +23515,6 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
@@ -26985,14 +23522,15 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutViewdProductStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27002,9 +23540,6 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -27012,6 +23547,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProductUpsertWithoutViewdProductStoreInput = {
@@ -27079,10 +23615,10 @@ export namespace Prisma {
 
   export type UserCreateWithoutConversationsInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27092,24 +23628,22 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutConversationsInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27119,16 +23653,14 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutConversationsInput = {
@@ -27205,10 +23737,10 @@ export namespace Prisma {
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
     id?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    hashedPassword?: StringNullableFilter<"User"> | string | null
-    email?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    name?: StringFilter<"User"> | string
+    hashedPassword?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -27236,10 +23768,10 @@ export namespace Prisma {
 
   export type UserCreateWithoutSendMessagesInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27249,24 +23781,22 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSendMessagesInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27276,16 +23806,14 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSendMessagesInput = {
@@ -27295,10 +23823,10 @@ export namespace Prisma {
 
   export type UserCreateWithoutReceivedMessagesInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27308,24 +23836,22 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReceivedMessagesInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27335,16 +23861,14 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReceivedMessagesInput = {
@@ -27388,10 +23912,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutSendMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27401,24 +23925,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSendMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27428,16 +23950,14 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutReceivedMessagesInput = {
@@ -27453,10 +23973,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutReceivedMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27466,24 +23986,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27493,16 +24011,14 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ConversationUpsertWithoutMessagesInput = {
@@ -27776,10 +24292,10 @@ export namespace Prisma {
 
   export type UserCreateWithoutBuyerInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27789,24 +24305,22 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     seller?: SellerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBuyerInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27816,16 +24330,14 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     seller?: SellerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBuyerInput = {
@@ -27903,10 +24415,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutBuyerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27916,24 +24428,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBuyerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27943,16 +24453,14 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProductUpsertWithoutByersInput = {
@@ -28020,10 +24528,10 @@ export namespace Prisma {
 
   export type UserCreateWithoutSellerInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28033,24 +24541,22 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionCreateNestedManyWithoutUserInput
     Product?: ProductCreateNestedManyWithoutUserInput
-    Board?: BoardCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     conversations?: ConversationCreateNestedManyWithoutUsersInput
     sendMessages?: MessageCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageCreateNestedManyWithoutReceiverInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     buyer?: BuyerCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSellerInput = {
     id?: string
-    name?: string | null
-    hashedPassword?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
+    name: string
+    hashedPassword: string
+    email: string
+    emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28060,16 +24566,14 @@ export namespace Prisma {
     averageproductRating?: number
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Product?: ProductUncheckedCreateNestedManyWithoutUserInput
-    Board?: BoardUncheckedCreateNestedManyWithoutUserInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedCreateNestedManyWithoutUserInput
     ViewdProductStore?: ViewdProductStoreUncheckedCreateNestedManyWithoutUserInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     conversations?: ConversationUncheckedCreateNestedManyWithoutUsersInput
     sendMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     receivedMessages?: MessageUncheckedCreateNestedManyWithoutReceiverInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     buyer?: BuyerUncheckedCreateNestedManyWithoutUserInput
+    ActivateToken?: ActivateTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSellerInput = {
@@ -28147,10 +24651,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutSellerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28160,24 +24664,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     conversations?: ConversationUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSellerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28187,16 +24689,14 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     conversations?: ConversationUncheckedUpdateManyWithoutUsersNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProductUpsertWithoutSellersInput = {
@@ -28291,35 +24791,10 @@ export namespace Prisma {
     categories?: ProductCreatecategoriesInput | string[]
   }
 
-  export type BoardCreateManyUserInput = {
-    id?: string
-    title: string
-    description: string
-    category?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    likes?: number
-    dislikes?: number
-    views?: number
-  }
-
-  export type ViewdBoardStoreCreateManyUserInput = {
-    id?: string
-    boardId: string
-    viewedAt?: Date | string
-  }
-
   export type ViewdProductStoreCreateManyUserInput = {
     id?: string
     productId: string
     viewedAt?: Date | string
-  }
-
-  export type BoardLikeDisLikeCreateManyUserInput = {
-    id?: number
-    type: string
-    createdAt?: Date | string
-    boardId: string
   }
 
   export type AccountCreateManyUserInput = {
@@ -28377,6 +24852,7 @@ export namespace Prisma {
   export type ReviewCreateManyUserInput = {
     id?: string
     sellerId: string
+    sellerName?: string
     productId: string
     title: string
     text: string
@@ -28387,6 +24863,7 @@ export namespace Prisma {
 
   export type BuyerCreateManyUserInput = {
     id?: string
+    sellerId?: string
     sellerName?: string
     productId: string
     createdAt?: Date | string
@@ -28396,8 +24873,17 @@ export namespace Prisma {
 
   export type SellerCreateManyUserInput = {
     id?: string
+    buyerId?: string
     buyerName?: string
     productId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ActivateTokenCreateManyUserInput = {
+    id?: string
+    token: string
+    activatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28501,64 +24987,6 @@ export namespace Prisma {
     categories?: ProductUpdatecategoriesInput | string[]
   }
 
-  export type BoardUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutBoardNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutBoardNestedInput
-  }
-
-  export type BoardUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutBoardNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutBoardNestedInput
-  }
-
-  export type BoardUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    views?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type ViewdBoardStoreUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    board?: BoardUpdateOneRequiredWithoutViewdBoardStoreNestedInput
-  }
-
-  export type ViewdBoardStoreUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    boardId?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ViewdBoardStoreUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    boardId?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type ViewdProductStoreUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28575,26 +25003,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BoardLikeDisLikeUpdateWithoutUserInput = {
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    board?: BoardUpdateOneRequiredWithoutBoardLikeDisLikeNestedInput
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    boardId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    boardId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -28782,6 +25190,7 @@ export namespace Prisma {
   export type ReviewUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28793,6 +25202,7 @@ export namespace Prisma {
   export type ReviewUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
@@ -28804,6 +25214,7 @@ export namespace Prisma {
   export type ReviewUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
@@ -28814,6 +25225,7 @@ export namespace Prisma {
 
   export type BuyerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28823,6 +25235,7 @@ export namespace Prisma {
 
   export type BuyerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28832,6 +25245,7 @@ export namespace Prisma {
 
   export type BuyerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28841,6 +25255,7 @@ export namespace Prisma {
 
   export type SellerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28849,6 +25264,7 @@ export namespace Prisma {
 
   export type SellerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28857,61 +25273,35 @@ export namespace Prisma {
 
   export type SellerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ViewdBoardStoreCreateManyBoardInput = {
-    id?: string
-    userId: string
-    viewedAt?: Date | string
-  }
-
-  export type BoardLikeDisLikeCreateManyBoardInput = {
-    id?: number
-    type: string
-    createdAt?: Date | string
-    userId: string
-  }
-
-  export type ViewdBoardStoreUpdateWithoutBoardInput = {
+  export type ActivateTokenUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutViewdBoardStoreNestedInput
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ViewdBoardStoreUncheckedUpdateWithoutBoardInput = {
+  export type ActivateTokenUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ViewdBoardStoreUncheckedUpdateManyWithoutBoardInput = {
+  export type ActivateTokenUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BoardLikeDisLikeUpdateWithoutBoardInput = {
-    type?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    activatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutBoardLikeDisLikeNestedInput
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateWithoutBoardInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BoardLikeDisLikeUncheckedUpdateManyWithoutBoardInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ViewdProductStoreCreateManyProductInput = {
@@ -28924,6 +25314,7 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
+    sellerName?: string
     title: string
     text: string
     createdAt?: Date | string
@@ -28942,6 +25333,7 @@ export namespace Prisma {
   export type BuyerCreateManyProductInput = {
     id?: string
     userId: string
+    sellerId?: string
     sellerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28951,6 +25343,7 @@ export namespace Prisma {
   export type SellerCreateManyProductInput = {
     id?: string
     userId: string
+    buyerId?: string
     buyerName?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28995,6 +25388,7 @@ export namespace Prisma {
   export type ReviewUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29007,6 +25401,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29018,6 +25413,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
+    sellerName?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29051,6 +25447,7 @@ export namespace Prisma {
 
   export type BuyerUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29061,6 +25458,7 @@ export namespace Prisma {
   export type BuyerUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29070,6 +25468,7 @@ export namespace Prisma {
   export type BuyerUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    sellerId?: StringFieldUpdateOperationsInput | string
     sellerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29078,6 +25477,7 @@ export namespace Prisma {
 
   export type SellerUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29087,6 +25487,7 @@ export namespace Prisma {
   export type SellerUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29095,6 +25496,7 @@ export namespace Prisma {
   export type SellerUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    buyerId?: StringFieldUpdateOperationsInput | string
     buyerName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29175,10 +25577,10 @@ export namespace Prisma {
 
   export type UserUpdateWithoutConversationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29188,24 +25590,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Product?: ProductUpdateManyWithoutUserNestedInput
-    Board?: BoardUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sendMessages?: MessageUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     buyer?: BuyerUpdateManyWithoutUserNestedInput
     seller?: SellerUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutConversationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29215,24 +25615,22 @@ export namespace Prisma {
     averageproductRating?: FloatFieldUpdateOperationsInput | number
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Product?: ProductUncheckedUpdateManyWithoutUserNestedInput
-    Board?: BoardUncheckedUpdateManyWithoutUserNestedInput
-    ViewdBoardStore?: ViewdBoardStoreUncheckedUpdateManyWithoutUserNestedInput
     ViewdProductStore?: ViewdProductStoreUncheckedUpdateManyWithoutUserNestedInput
-    BoardLikeDisLike?: BoardLikeDisLikeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sendMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedMessages?: MessageUncheckedUpdateManyWithoutReceiverNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     buyer?: BuyerUncheckedUpdateManyWithoutUserNestedInput
     seller?: SellerUncheckedUpdateManyWithoutUserNestedInput
+    ActivateToken?: ActivateTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutConversationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    hashedPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    hashedPassword?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29309,10 +25707,6 @@ export namespace Prisma {
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use BoardCountOutputTypeDefaultArgs instead
-     */
-    export type BoardCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = BoardCountOutputTypeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use ProductCountOutputTypeDefaultArgs instead
      */
     export type ProductCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -29324,6 +25718,10 @@ export namespace Prisma {
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ActivateTokenDefaultArgs instead
+     */
+    export type ActivateTokenArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ActivateTokenDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AccountDefaultArgs instead
      */
@@ -29337,14 +25735,6 @@ export namespace Prisma {
      */
     export type VerificationRequestArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = VerificationRequestDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use BoardDefaultArgs instead
-     */
-    export type BoardArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = BoardDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use BoardLikeDisLikeDefaultArgs instead
-     */
-    export type BoardLikeDisLikeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = BoardLikeDisLikeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use ProductDefaultArgs instead
      */
     export type ProductArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ProductDefaultArgs<ExtArgs>
@@ -29352,10 +25742,6 @@ export namespace Prisma {
      * @deprecated Use ReviewDefaultArgs instead
      */
     export type ReviewArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ReviewDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ViewdBoardStoreDefaultArgs instead
-     */
-    export type ViewdBoardStoreArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ViewdBoardStoreDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ViewdProductStoreDefaultArgs instead
      */

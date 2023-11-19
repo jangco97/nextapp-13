@@ -81,12 +81,15 @@ const Reservation = ({
               {reservationType === "구매예약" && (
                 <div className="text-white">
                   <span>판매자:</span>
-                  <span>{reservation.sellerName}</span>
+                  <Link href={`/user/${reservation?.sellerId}`}>
+                    <span>{reservation.sellerName}</span>
+                  </Link>
                 </div>
               )}
               {reservationType === "판매예약" && (
                 <div className=" ">
                   <span>구매자:</span>
+                  <Link href={`/user/${reservation?.buyerId}`}></Link>
                   <span>{reservation.buyerName}</span>
                 </div>
               )}
@@ -138,6 +141,22 @@ const Reservation = ({
                     ? formatTime(reservation?.meetTime)
                     : "시간이 정해지지 않았습니다."}
                 </span>
+              </div>
+              <div className="flex flex-col">
+                <div>
+                  {reservation && (
+                    <UserPurchase
+                      meetTime={new Date(reservation?.meetTime)}
+                      reservationType={reservationType}
+                      buyerId={reservation?.buyerId}
+                      sellerId={reservation?.sellerId}
+                      reservationId={reservation?.id}
+                      productId={reservation?.productId}
+                      sellerName={reservation?.sellerName}
+                      buyerName={reservation?.buyerName}
+                    />
+                  )}
+                </div>
               </div>
               {currentUser?.id === reservation?.sellerId && (
                 <section className="border-2 border-indigo-500/80 rounded-lg p-1">
@@ -204,23 +223,6 @@ const Reservation = ({
                         </div>
                       </Modal>
                     )}
-                  </div>
-                  {/* 예약 취소 */}
-                  <div className="flex flex-col">
-                    <div>
-                      {reservation?.meetTime && (
-                        <UserPurchase
-                          meetTime={new Date(reservation?.meetTime)}
-                          reservationType={reservationType}
-                          buyerId={reservation?.buyerId}
-                          sellerId={reservation?.sellerId}
-                          reservationId={reservation?.id}
-                          productId={reservation?.productId}
-                          sellerName={reservation?.sellerName}
-                          buyerName={reservation?.buyerName}
-                        />
-                      )}
-                    </div>
                   </div>
                 </section>
               )}

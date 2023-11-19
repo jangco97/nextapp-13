@@ -122,6 +122,15 @@ exports.Prisma.UserScalarFieldEnum = {
   averageproductRating: 'averageproductRating'
 };
 
+exports.Prisma.ActivateTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  activatedAt: 'activatedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -156,27 +165,6 @@ exports.Prisma.VerificationRequestScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.BoardScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  category: 'category',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  likes: 'likes',
-  dislikes: 'dislikes',
-  views: 'views'
-};
-
-exports.Prisma.BoardLikeDisLikeScalarFieldEnum = {
-  id: 'id',
-  type: 'type',
-  createdAt: 'createdAt',
-  userId: 'userId',
-  boardId: 'boardId'
-};
-
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -202,19 +190,13 @@ exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   sellerId: 'sellerId',
+  sellerName: 'sellerName',
   productId: 'productId',
   title: 'title',
   text: 'text',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userRating: 'userRating'
-};
-
-exports.Prisma.ViewdBoardStoreScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  boardId: 'boardId',
-  viewedAt: 'viewedAt'
 };
 
 exports.Prisma.ViewdProductStoreScalarFieldEnum = {
@@ -283,6 +265,7 @@ exports.Prisma.ReservationScalarFieldEnum = {
 exports.Prisma.BuyerScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  sellerId: 'sellerId',
   sellerName: 'sellerName',
   productId: 'productId',
   createdAt: 'createdAt',
@@ -293,6 +276,7 @@ exports.Prisma.BuyerScalarFieldEnum = {
 exports.Prisma.SellerScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  buyerId: 'buyerId',
   buyerName: 'buyerName',
   productId: 'productId',
   createdAt: 'createdAt',
@@ -320,14 +304,12 @@ exports.UserType = exports.$Enums.UserType = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  ActivateToken: 'ActivateToken',
   Account: 'Account',
   Session: 'Session',
   VerificationRequest: 'VerificationRequest',
-  Board: 'Board',
-  BoardLikeDisLike: 'BoardLikeDisLike',
   Product: 'Product',
   Review: 'Review',
-  ViewdBoardStore: 'ViewdBoardStore',
   ViewdProductStore: 'ViewdProductStore',
   Conversation: 'Conversation',
   Message: 'Message',

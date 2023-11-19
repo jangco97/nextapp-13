@@ -10,7 +10,13 @@ import FilterButton from "../filters/FilterButton";
 import UserProductsButton from "./button/UserProductsButton";
 // 바로 수정을 할 수 있도록 수정 버튼이 있어야 한다.
 
-const UserProducts = ({ userProducts }: { userProducts: any }) => {
+const UserProducts = ({
+  userProducts,
+  isGuest,
+}: {
+  userProducts: any;
+  isGuest: boolean;
+}) => {
   const [isAlive, setIsAlive] = useState(false);
 
   const router = useRouter();
@@ -77,14 +83,16 @@ const UserProducts = ({ userProducts }: { userProducts: any }) => {
 
                     <div className="w-full flex justify-end">
                       {" "}
-                      <button
-                        className="text-center w-20 border-2 text-white bg-indigo-400 rounded-xl p-2 hover:bg-indigo-500 duration-300"
-                        onClick={() =>
-                          router.push(`/products/${product.id}/edit`)
-                        }
-                      >
-                        수정
-                      </button>
+                      {isGuest === true ? null : (
+                        <button
+                          className="text-center w-20 border-2 text-white bg-indigo-400 rounded-xl p-2 hover:bg-indigo-500 duration-300"
+                          onClick={() =>
+                            router.push(`/products/${product.id}/edit`)
+                          }
+                        >
+                          수정
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -4,40 +4,40 @@ import { FaStar } from "react-icons/fa";
 import axios from "axios";
 interface PurchaseReviewProps {
   setIsModalOpen: (value: boolean) => void;
-  sellerId: string;
+  id: string;
   userId: string;
   productId: string;
+  sellerId: string;
 }
 const PurchaseReview = ({
   setIsModalOpen,
-  sellerId,
+  id,
   userId,
   productId,
+  sellerId,
 }: PurchaseReviewProps) => {
   const [userRating, setUserRating] = useState(0);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const reviewBtnClick = async () => {
-    const response = await fetch("/api/review", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        sellerId: sellerId,
+    await axios
+      .post("/api/review", {
+        id: id,
         userId: userId,
         productId: productId,
+        userRating: userRating,
+        sellerId: sellerId,
         title: title,
         text: text,
-        userRating: userRating,
-      }),
-    });
-    if (response.ok) {
-      alert("리뷰가 등록되었습니다.");
-    } else {
-      alert("리뷰 등록에 실패하였습니다.");
-    }
+      })
+      .then((res) => {
+        alert(res.data.message);
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
   };
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-row items-center gap-1">

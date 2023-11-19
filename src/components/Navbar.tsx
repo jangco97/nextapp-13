@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { SidebarContext } from "@/context/sidebaropen.context";
 import NavbarItem from "./NavbarItem";
@@ -25,8 +25,12 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
   if (params) {
     currentQuery = qs.parse(params?.toString()); //{'category' : 'interior', 'page' : '2'}
   }
-  console.log(currentQuery, "currentQuery");
-  console.log(params, "params");
+  const [isSessionValid, setIsSessionValid] = useState<boolean>(false);
+
+  // 로그인 상태에 따라 상태 업데이트
+  useEffect(() => {
+    setIsSessionValid(session?.user?.id ? true : false);
+  }, [session]);
   const {
     register,
     watch,
@@ -46,12 +50,14 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
     queryKey: ["user", currentUser?.favoriteIds],
     queryFn: () => fetch("/api/user").then((res) => res.json()),
     staleTime: 5 * 1000 * 60,
+    enabled: isSessionValid,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
     staleTime: 5 * 1000 * 60,
     refetchInterval: 1000,
+    enabled: isSessionValid,
   });
   console.log(chatData, "chatData");
   return (

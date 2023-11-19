@@ -78,7 +78,13 @@ const Message = async ({
       </div>
       <div className="flex flex-col items-start justify-center">
         <div className="flex items-center gap-2 mb-2 text-sm">
-          <span className="font-medium">{isSender ? "You" : receiverName}</span>
+          <span className="font-medium">
+            {isSender ? (
+              "You"
+            ) : (
+              <Link href={`/user/${receiverId}`}>{receiverName}</Link>
+            )}
+          </span>
           <span className="text-xs text-gray-600 opacity-60">
             {fromNow(messageTime)}
           </span>
