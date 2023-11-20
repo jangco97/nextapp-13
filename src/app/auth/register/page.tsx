@@ -36,7 +36,7 @@ const RegisterPage = () => {
       router.push("/auth/login");
     } catch (error) {
       console.log(error);
-      toast.error("something went wrong!");
+      toast.error("회원가입에 실패했습니다.");
     } finally {
       setIsLoading(false);
     }

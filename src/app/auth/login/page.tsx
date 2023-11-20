@@ -32,10 +32,10 @@ const LoginPage = () => {
     })
       .then((callback) => {
         if (callback?.error) {
-          toast.error("Invalid credentials");
+          toast.error("로그인 실패!");
         }
         if (callback?.ok && !callback?.error) {
-          toast.success("Login success");
+          toast.success("로그인 성공!");
           router.push("/");
           router.refresh();
         }
