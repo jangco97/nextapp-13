@@ -14,7 +14,7 @@ const Categories = () => {
   return (
     <div className=" bg-gray-100 pl-2 pr-3 pt-[90px] pb-[50px]">
       <div className="flex flex-col w-full ">
-        <div className="flex justify-start ml-32 mb-10 ">
+        <div className="flex justify-center mb-10 ">
           {label && (
             <div className=" bg-slate-400 rounded-md text-white p-1">
               {label}
