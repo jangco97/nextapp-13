@@ -18,7 +18,7 @@ const SidebarModal = ({
   const params = useSearchParams();
   const category = params?.get("category");
   async function getUser() {
-    const response = await fetch("/api/user");
+    const response = await fetch("/api/usercart");
     const data = await response.json();
     return data;
   }

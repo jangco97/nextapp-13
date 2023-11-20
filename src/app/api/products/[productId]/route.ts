@@ -108,5 +108,5 @@ export async function DELETE(
       id: productId,
     },
   });
-  return NextResponse.json(product);
+  return NextResponse.json({ message: "상품이 삭제되었습니다." });
 }

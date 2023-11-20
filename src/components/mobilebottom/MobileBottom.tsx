@@ -16,9 +16,9 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
   }, [currentUser]);
   const { data } = useQuery<User>({
     queryKey: ["user", currentUser?.favoriteIds],
-    queryFn: () => fetch("/api/user").then((res) => res.json()),
+    queryFn: () => fetch("/api/usercart").then((res) => res.json()),
     staleTime: 5 * 1000 * 60,
-    enabled: isSessionValid, // 로그인 상태에 따라 상태 업데이트
+    enabled: isSessionValid,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
@@ -31,7 +31,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
     (message: any) => message.isRead === false
   );
   return (
-    <div className="w-full fixed bottom-0 h-[50px] bg-slate-500/50 md:hidden">
+    <div className="w-full fixed bottom-0 h-[50px] bg-slate-500/50 md:hidden z-10">
       <div className="flex justify-evenly items-center h-full">
         <Link href="/products/upload">
           <FaPlus className="h-6  text-center w-full  text-white" />

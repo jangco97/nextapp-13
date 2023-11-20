@@ -70,7 +70,14 @@ export default async function getProducts(params: ProductParams) {
       };
     }
     const totalItems = await prisma.product.count({
-      where: query,
+      where: {
+        ...query,
+        NOT: {
+          status: {
+            equals: "판매완료",
+          },
+        },
+      },
     });
     const filterFunction = async (sort: string): Promise<any> => {
       if (sort === "PRICE_ASC") {

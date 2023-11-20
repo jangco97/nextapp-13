@@ -48,7 +48,7 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
   };
   const { data } = useQuery<User>({
     queryKey: ["user", currentUser?.favoriteIds],
-    queryFn: () => fetch("/api/user").then((res) => res.json()),
+    queryFn: () => fetch("/api/usercart").then((res) => res.json()),
     staleTime: 5 * 1000 * 60,
     enabled: isSessionValid,
   });

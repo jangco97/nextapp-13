@@ -31,7 +31,8 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
     router.push(`/products/${product.id}/edit`);
   };
   const deleteFunc = async () => {
-    await axios.delete(`/api/products/${product.id}`);
+    const deleteMessage = await axios.delete(`/api/products/${product.id}`);
+    alert(deleteMessage.data.message);
     router.push(`/`);
   };
   async function sendRequest(
