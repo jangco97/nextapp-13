@@ -19,7 +19,6 @@ const AreaFilter = () => {
 
   useEffect(() => {
     const List: any = regions.filter((item) => item.label === sido);
-    console.log(List[0]?.sigugun);
     setSigugunList(List[0]?.sigugun);
   }, [sido]);
   return (
@@ -28,10 +27,6 @@ const AreaFilter = () => {
         <span>
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2  text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
             {sido}
-            <ChevronDownIcon
-              className="-mr-1 h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            />
           </Menu.Button>
         </span>
 
@@ -46,7 +41,7 @@ const AreaFilter = () => {
         >
           <Menu.Items
             className={
-              "absolute right-0 z-10 mt-2 w-48 text-center origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              "absolute left-0 z-10 mt-2 w-48 text-center origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             }
           >
             <div className=" flex flex-col ">
@@ -75,10 +70,6 @@ const AreaFilter = () => {
         <span>
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
             {sigugun}
-            <ChevronDownIcon
-              className="-mr-1 h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            />
           </Menu.Button>
         </span>
 
@@ -93,7 +84,7 @@ const AreaFilter = () => {
         >
           <Menu.Items
             className={
-              "absolute right-0 z-10 mt-2 w-96 text-center origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              "absolute -right-20 z-10 mt-2 w-96 text-center origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             }
           >
             <Menu.Item>
@@ -103,12 +94,13 @@ const AreaFilter = () => {
                     key={item2}
                     href={{ query: { ...currentQuery, sigugun: item2 } }}
                   >
-                    <span
+                    <button
                       onClick={() => setSigugun(item2)}
+                      disabled={sigugunList.length === 0}
                       className=" border-2 text-xs  hover:border-indigo-800 transition cursor-pointer"
                     >
                       {item2}
-                    </span>
+                    </button>
                   </Link>
                 ))}
               </div>
