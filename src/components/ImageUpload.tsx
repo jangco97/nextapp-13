@@ -17,9 +17,7 @@ const ImageUpload = ({
 }: ImageUploadProps) => {
   const handleUpload = (result: any) => {
     onChange(result.info.secure_url);
-    console.log(result.info.secure_url, "imageTEST");
   };
-  console.log(imageSrc, "localImageTEST");
   const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
   const handleDelete = (image: string) => {
     const currentIndex = imageSrc.indexOf(image);
@@ -39,19 +37,14 @@ const ImageUpload = ({
             return (
               <div
                 onClick={() => open?.()}
-                className="relative flex flex-col items-center justify-center overflow-hidden gap-4 h-[40vh] w-[30vw] p-20 transition border-2 border-dashed cursor-pointer hover:opacity-70 border-neutral-300 text-neutral-300"
+                className="relative mb-10 flex flex-col items-center justify-center overflow-hidden gap-4 h-[40vh] w-[50vw]  transition border-2 border-dashed cursor-pointer hover:opacity-70 border-neutral-300 text-neutral-300"
               >
-                <TbPhotoPlus size={50} />
+                {<TbPhotoPlus size={50} />}
 
                 <>
                   {imageSrc[0] && (
                     <div className="w-full h-full">
-                      <Image
-                        fill
-                        style={{ objectFit: "cover" }}
-                        src={imageSrc[0]}
-                        alt="1"
-                      />
+                      <Image fill src={imageSrc[0]} alt="image" />
                     </div>
                   )}
                 </>
@@ -60,10 +53,10 @@ const ImageUpload = ({
           }}
         </CldUploadWidget>
       </div>
-      <div className="flex-grow h-[300px] border flex  items-center justify-center">
+      <div className="flex-grow h-[300px] border-2 flex  items-center justify-evenly">
         {imageSrc.map((image, index) => (
           <div key={index} onClick={() => handleDelete(image)}>
-            <Image width={300} height={300} src={image} alt={image} />
+            <Image width={150} height={150} src={image} alt={image} />
           </div>
         ))}
       </div>
