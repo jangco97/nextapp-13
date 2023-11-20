@@ -157,8 +157,8 @@ const ProductUploadPage = () => {
       <div className="mx-auto">
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
           <Heading
-            title="Product Upload"
-            subtitle="Upload your product"
+            title="상품 업로드"
+            subtitle="판매하고 싶은 상품을 업로드 해주세요."
             center={false}
           />
           <ImageUpload

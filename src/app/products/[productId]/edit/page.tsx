@@ -174,8 +174,8 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
       <div className="max-w-screen-lg mx-auto">
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
           <Heading
-            title="Product Upload"
-            subtitle="Upload your product"
+            title="상품 수정"
+            subtitle="판매하고 싶은 상품을 수정해주세요."
             center={false}
           />
           <ImageUpload
