@@ -150,7 +150,7 @@ const Reservation = ({
                 <div>
                   {reservation && (
                     <UserPurchase
-                      meetTime={new Date(reservation?.meetTime)}
+                      meetTime={reservation?.meetTime}
                       reservationType={reservationType}
                       buyerId={reservation?.buyerId}
                       sellerId={reservation?.sellerId}
