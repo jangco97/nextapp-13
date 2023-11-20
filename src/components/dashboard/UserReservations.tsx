@@ -104,8 +104,7 @@ const UserReservation = ({
       if (response.ok) {
         // If the response status is within the 200-299 range, it's a successful response.
         const data = await response.json();
-        router.push("/user?reservations");
-        setStatus("판매예약");
+        router.refresh();
         alert(data.message);
       }
     } catch (error: any) {

@@ -44,7 +44,7 @@ const UserReviews = ({ userReviews }: { userReviews: any }) => {
               <span>내용:</span>
               {review.text}
             </div>
-            <div>
+            <div className="flex w-full">
               <span>평점:</span>
               {[...Array(5)].map((star, index) => {
                 const scoreValue = index + 1;

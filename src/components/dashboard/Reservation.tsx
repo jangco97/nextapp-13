@@ -123,13 +123,17 @@ const Reservation = ({
                         </a>
                       </span>
                     </button>
-                    <button className="m-4 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-                      <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
-                        <Link href={`products/${reservation?.productId}/edit`}>
-                          위치 수정
-                        </Link>
-                      </span>
-                    </button>
+                    {currentUser?.id === reservation?.sellerId && (
+                      <button className="m-4 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+                        <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+                          <Link
+                            href={`products/${reservation?.productId}/edit`}
+                          >
+                            위치 수정
+                          </Link>
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

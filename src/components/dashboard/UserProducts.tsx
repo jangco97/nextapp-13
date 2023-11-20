@@ -8,6 +8,7 @@ import { fromNow } from "@/helpers/dayjs";
 import Image from "next/image";
 import FilterButton from "../filters/FilterButton";
 import UserProductsButton from "./button/UserProductsButton";
+import ProductStatusButton from "./button/ProductStatusButton";
 // 바로 수정을 할 수 있도록 수정 버튼이 있어야 한다.
 
 const UserProducts = ({
@@ -81,8 +82,14 @@ const UserProducts = ({
                     </div>
                     <hr />
 
-                    <div className="w-full flex justify-end">
+                    <div className="w-full flex justify-evenly">
                       {" "}
+                      {isGuest === true ? null : (
+                        <ProductStatusButton
+                          productId={product.id}
+                          currentStatus={product.status}
+                        />
+                      )}
                       {isGuest === true ? null : (
                         <button
                           className="text-center w-20 border-2 text-white bg-indigo-400 rounded-xl p-2 hover:bg-indigo-500 duration-300"
