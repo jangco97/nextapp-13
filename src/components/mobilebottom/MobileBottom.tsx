@@ -42,7 +42,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
         <Link href="/chat">
           <div className="flex relative w-full">
             <BsFillChatDotsFill className="h-6 w-full text-center  text-white" />
-            <div className="absolute right-0 top-0 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            <div className="absolute top-1 right-1 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
               {unReadMessage?.length}
             </div>
           </div>
@@ -54,18 +54,22 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
         <Link href="/cart">
           <div className="flex relative">
             <AiOutlineShoppingCart className="h-6 w-full text-center text-white"></AiOutlineShoppingCart>
-            <div className="absolute top-0 right-0 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            <div className="absolute top-1 right-1 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
               {data?.favoriteIds?.length}
             </div>
           </div>
 
-          <div className="text-xs w-full text-center font-bold text-white">
-            <span>장바구니</span>
+          <div className="text-xs w-full  text-center font-bold text-white">
+            장바구니
           </div>
         </Link>
         <Link href="/user?products">
-          <BiSolidUser className="h-6 w-full text-center  text-white" />
-          <div className="text-xs w-full font-bold text-white">마이페이지</div>
+          <div>
+            <BiSolidUser className="h-6 w-full text-center  text-white" />
+            <div className="text-xs w-full  text-center font-bold text-white">
+              마이페이지
+            </div>
+          </div>
         </Link>
       </div>
     </div>

@@ -7,7 +7,7 @@ import HeartButton from "../HeartButton";
 import { fromNow } from "@/helpers/dayjs";
 import { useSession } from "next-auth/react";
 import { FaLocationDot } from "react-icons/fa6";
-
+import { textReduce } from "@/helpers/textreduce";
 interface ProductCardProps {
   currentUser?: User | null;
   data: Product;
@@ -54,7 +54,7 @@ const ProductCard = ({ currentUser, data, status }: ProductCardProps) => {
           {/* <div className="font-light text-neutral-500">{}</div> */}
           <div className="flex">
             <FaLocationDot className="text-indigo-500/70" />
-            {data.address}
+            {textReduce(data?.address)}
           </div>
           <div className="flex flex-row justify-between items-center gap-1">
             <div>
