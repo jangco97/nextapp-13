@@ -32,7 +32,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
   );
   return (
     <div className="w-full fixed bottom-0 h-[50px] bg-slate-500/50 md:hidden z-10">
-      <div className="flex justify-evenly items-center h-full">
+      <div className="grid grid-cols-4 items-center h-full">
         <Link href="/products/upload">
           <FaPlus className="h-6  text-center w-full  text-white" />
           <div className="text-xs w-full  text-center font-bold text-white">
@@ -42,7 +42,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
         <Link href="/chat">
           <div className="flex relative w-full">
             <BsFillChatDotsFill className="h-6 w-full text-center  text-white" />
-            <div className="absolute top-1 right-1 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
               {unReadMessage?.length}
             </div>
           </div>
@@ -54,7 +54,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
         <Link href="/cart">
           <div className="flex relative">
             <AiOutlineShoppingCart className="h-6 w-full text-center text-white"></AiOutlineShoppingCart>
-            <div className="absolute top-1 right-1 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
               {data?.favoriteIds?.length}
             </div>
           </div>

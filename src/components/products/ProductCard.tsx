@@ -60,7 +60,7 @@ const ProductCard = ({ currentUser, data, status }: ProductCardProps) => {
             <div>
               {data.price} <span className="font-light">원</span>
             </div>
-            <div>{fromNow(data.createdAt)}</div>
+            <div className="text-xs">{fromNow(data.createdAt)}</div>
           </div>
         </div>
       </div>
