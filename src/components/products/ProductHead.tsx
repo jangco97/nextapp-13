@@ -30,15 +30,15 @@ const ProductHead = ({
     <>
       <Heading title={title} />
       {productId === currentUser?.id && (
-        <div>
+        <div className="flex justify-evenly">
           <button
-            className=" w-2/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
+            className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
             onClick={editFunc}
           >
             수정하기
           </button>
           <button
-            className=" w-2/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
+            className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
             onClick={deleteFunc}
           >
             삭제하기

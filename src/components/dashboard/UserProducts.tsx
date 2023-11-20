@@ -35,7 +35,7 @@ const UserProducts = ({
 
   return (
     isAlive && (
-      <div className="">
+      <div className="mb-20">
         <div className="w-full flex justify-evenly">
           <UserProductsButton />
           <FilterButton />
@@ -64,7 +64,7 @@ const UserProducts = ({
                     />
                     {product.status === "예약중" ||
                     product.status === "판매완료" ? (
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 text-3xl border-2 rounded-full border-indigo-800">
+                      <div className="absolute text-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 border-2 rounded-full border-indigo-800">
                         {product.status}
                       </div>
                     ) : null}

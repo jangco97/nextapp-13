@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Modal, Button } from "antd";
 import PurchaseReview from "./PurchaseReview";
 import Link from "next/link";
+import NothingComponents from "../NothingComponents";
 const PurchaseHistory = ({
   histories,
   historyType,
@@ -22,6 +23,12 @@ const PurchaseHistory = ({
 
   return (
     <>
+      {histories?.length === 0 && (
+        <NothingComponents
+          title={historyType === "판매내역" ? "판매한 상품" : "구매한 상품"}
+          pageType="reservation"
+        />
+      )}
       <div className="grid gap-10 md:grid md:grid-cols-2 md:gap-10">
         {histories?.map((history: any) => (
           <>

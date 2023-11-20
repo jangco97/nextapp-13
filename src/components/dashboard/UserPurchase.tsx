@@ -110,7 +110,7 @@ const UserPurchase = ({
   return (
     <div className="flex justify-center items-center">
       <div>
-        {timeRemaining > 0 ? (
+        {timeRemaining > 0 && meetTime && (
           <span className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
             <span>
               남은시간:{days !== 0 && days + "일"}{" "}
@@ -118,7 +118,8 @@ const UserPurchase = ({
               {seconds !== 0 && seconds + "초"}
             </span>
           </span>
-        ) : (
+        )}
+        {timeRemaining <= 0 && meetTime && (
           <span className="m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
             거래 시간이 만료되었습니다.
           </span>

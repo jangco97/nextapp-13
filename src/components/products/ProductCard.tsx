@@ -23,7 +23,7 @@ const ProductCard = ({ currentUser, data, status }: ProductCardProps) => {
       className="col-span-1 cursor-pointer group"
     >
       <div
-        className={`flex flex-col w-full gap-2 border-2 rounded-xl p-2 hover:border-indigo-800/70 hover:shadow-lg duration-300 ${
+        className={`flex flex-col w-full  gap-2 border-2 rounded-xl p-2 hover:border-indigo-800/70 hover:shadow-lg duration-300 ${
           status === "예약중" || status === "판매완료" ? "opacity-60" : ""
         }`}
       >
@@ -37,7 +37,7 @@ const ProductCard = ({ currentUser, data, status }: ProductCardProps) => {
             alt="product"
           />
           {status === "예약중" || status === "판매완료" ? (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-500 text-3xl border-2 rounded-full border-indigo-500">
+            <div className="absolute text-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-500  border-2 rounded-full border-indigo-500">
               {status}
             </div>
           ) : null}
