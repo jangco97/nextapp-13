@@ -119,11 +119,6 @@ const UserPurchase = ({
             </span>
           </span>
         )}
-        {timeRemaining <= 0 && meetTime && (
-          <span className="m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
-            거래 시간이 만료되었습니다.
-          </span>
-        )}
       </div>
       {isWithinTime && (
         <div>
