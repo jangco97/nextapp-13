@@ -34,19 +34,7 @@ export async function POST(request: NextRequest) {
       { status: 404 }
     );
   }
-  const reviews = await prisma.review.findMany({
-    where: {
-      userId: userId,
-      productId: productId,
-    },
-  });
-  let allRatingScore = userRating;
-  if (reviews.length > 0) {
-    for (let i = 0; i < reviews.length; i++) {
-      allRatingScore += reviews[i].userRating;
-    }
-  }
-  const averageRatingScore = allRatingScore / reviews.length + 1;
+
   try {
     // Attempt to create a new review
     await prisma.review.create({
@@ -69,14 +57,7 @@ export async function POST(request: NextRequest) {
         isReviewed: true,
       },
     });
-    await prisma.user.update({
-      where: {
-        id: sellerId,
-      },
-      data: {
-        averageRating: averageRatingScore,
-      },
-    });
+
     // If the review creation is successful, send a success response
     return NextResponse.json(
       { message: "리뷰가 작성되었습니다." },
