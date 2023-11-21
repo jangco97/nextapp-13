@@ -137,13 +137,10 @@ export const mainCategories = [
       },
     ],
   },
-  {
-    label: "무료나눔",
-    categoryId: "7",
-  },
+
   {
     label: "기타",
-    categoryId: "8",
+    categoryId: "7",
   },
 ];
 

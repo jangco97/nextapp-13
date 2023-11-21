@@ -5,7 +5,6 @@ import { IoShirtSharp } from "react-icons/io5";
 import { GiConverseShoe } from "react-icons/gi";
 import { ImMobile } from "react-icons/im";
 import { MdOutlineComputer } from "react-icons/md";
-import { AiFillHeart } from "react-icons/ai";
 import { GrStatusUnknown } from "react-icons/gr";
 const CategoryIcon = ({ label }: { label: string }) => {
   if (label === "도서/문구")
@@ -44,10 +43,7 @@ const CategoryIcon = ({ label }: { label: string }) => {
         aria-hidden="true"
       />
     );
-  if (label === "무료나눔")
-    return (
-      <AiFillHeart className="-mr-1 h-5 w-5 text-red-500" aria-hidden="true" />
-    );
+
   if (label === "기타")
     return <GrStatusUnknown className="-mr-1 h-5 w-5 " aria-hidden="true" />;
 };
