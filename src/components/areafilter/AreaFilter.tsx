@@ -2,7 +2,7 @@
 import React from "react";
 import { Fragment, useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { FaMapLocationDot } from "react-icons/fa6";
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";
@@ -26,6 +26,7 @@ const AreaFilter = () => {
       <Menu as="span" className="relative inline-block text-left ml-3">
         <span>
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2  text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+            <FaMapLocationDot />
             {sido}
           </Menu.Button>
         </span>
@@ -69,6 +70,7 @@ const AreaFilter = () => {
       <Menu as="span" className="relative inline-block text-left ml-3">
         <span>
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+            <FaMapLocationDot />
             {sigugun}
           </Menu.Button>
         </span>

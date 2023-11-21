@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import React, { useState, MouseEvent } from "react";
+import { FaMapLocationDot } from "react-icons/fa6";
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import KakaoMapCircle from "../KaKaoMapCircle";
-import { CiMapPin } from "react-icons/ci";
 import { Modal, Button } from "antd";
 const LocationComponent = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -70,7 +70,7 @@ const LocationComponent = () => {
           }
         }}
       >
-        <CiMapPin />
+        <FaMapLocationDot />
         위치 정보기반 검색
       </button>
       {location?.latitude && location?.longitude && isModalOpen && (
