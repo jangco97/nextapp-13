@@ -18,7 +18,16 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   const body = await request.json();
-  const { text, title, userRating, productId, userId, sellerId, id } = body;
+  const {
+    text,
+    title,
+    userRating,
+    productId,
+    userId,
+    sellerId,
+    id,
+    sellerName,
+  } = body;
   if (userId !== currentUser?.id) {
     return NextResponse.json(
       { message: "리뷰를 작성할 권한이 없습니다." },
@@ -49,6 +58,7 @@ export async function POST(request: NextRequest) {
         productId,
         userId,
         sellerId,
+        sellerName,
       },
     });
     await prisma.buyer.update({
