@@ -72,7 +72,7 @@ const PurchaseHistory = ({
                   <span className=" text-slate-500">판매자:</span>
                   <Link href={`/user/${history.sellerId}`}>
                     <span className=" text-emerald-800">
-                      {history.product?.sellerName}
+                      {history?.sellerName}
                     </span>
                   </Link>
                   {history?.isReviewd ? (
@@ -96,7 +96,7 @@ const PurchaseHistory = ({
                   <span className=" text-slate-500">구매자:</span>
                   {/* <Link href={`/user/${}`}> */}
                   <span className=" text-emerald-800">
-                    {history.product?.buyerName}
+                    {history?.buyerName}
                   </span>
                   {/* </Link> */}
                 </div>
