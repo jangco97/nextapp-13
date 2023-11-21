@@ -142,7 +142,7 @@ const Reservation = ({
                 </span>
               </div>
 
-              <section className="border-2 border-indigo-500/80 rounded-lg p-1">
+              <section className="border-2 border-indigo-500/80 rounded-lg p-2">
                 {" "}
                 {currentUser?.id === reservation?.sellerId && (
                   <>
