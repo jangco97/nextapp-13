@@ -9,6 +9,7 @@ import Image from "next/image";
 import FilterButton from "../filters/FilterButton";
 import UserProductsButton from "./button/UserProductsButton";
 import ProductStatusButton from "./button/ProductStatusButton";
+import NothingComponents from "../NothingComponents";
 // 바로 수정을 할 수 있도록 수정 버튼이 있어야 한다.
 
 const UserProducts = ({
@@ -40,7 +41,9 @@ const UserProducts = ({
           <UserProductsButton />
           <FilterButton />
         </div>
-
+        {userProducts?.length === 0 && (
+          <NothingComponents title="등록하신 상품" pageType="reservation" />
+        )}
         <div className="grid  gap-8 pt-12 pb-10 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gird-cols-5 2xl:grid-cols-6">
           {userProducts?.map((product: any) => (
             <div key={product.id}>

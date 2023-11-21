@@ -24,7 +24,7 @@ const UserPurchase = ({
   const router = useRouter();
   const [isWithinTime, setIsWithinTime] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(
-    meetTime ? meetTime?.getTime() - Date.now() : -1
+    meetTime ? new Date(meetTime)?.getTime() - Date.now() : -1
   );
   const purchase = async (reservationType: string) => {
     if (reservationType === "구매예약") {
@@ -70,7 +70,7 @@ const UserPurchase = ({
   useEffect(() => {
     const checkTimeDifference = () => {
       if (meetTime === null) return;
-      const timeDifference = meetTime?.getTime() - Date.now();
+      const timeDifference = new Date(meetTime)?.getTime() - Date.now();
       setIsWithinTime(timeDifference <= 60 * 20 * 1000);
     };
 
