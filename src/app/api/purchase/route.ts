@@ -23,8 +23,15 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   const body = await request.json();
-  const { buyerId, sellerId, reservationId, productId, sellerName, buyerName } =
-    body;
+  const {
+    buyerId,
+    sellerId,
+    reservationId,
+    productId,
+    sellerName,
+    buyerName,
+    purchaseType,
+  } = body;
 
   if (!currentUser) {
     return NextResponse.json({ message: "권한이 없습니다." }, { status: 404 });
@@ -32,7 +39,7 @@ export async function POST(request: NextRequest) {
 
   let createPurchase = false;
 
-  if (buyerId) {
+  if (purchaseType === "구매") {
     await prisma.reservation.update({
       where: {
         id: reservationId,
@@ -59,7 +66,7 @@ export async function POST(request: NextRequest) {
     if (reservation?.buyAccept && reservation?.sellAccept) {
       createPurchase = true;
     }
-  } else if (sellerId) {
+  } else if (purchaseType === "판매") {
     await prisma.reservation.update({
       where: {
         id: reservationId,

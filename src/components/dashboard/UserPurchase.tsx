@@ -36,9 +36,11 @@ const UserPurchase = ({
           },
           body: JSON.stringify({
             reservationId: reservationId,
+            buyerId: buyerId,
             sellerId: sellerId,
             productId: productId,
             sellerName: sellerName,
+            purchaseType: "구매",
           }),
         });
         alert("구매확정이 완료되었습니다.");
@@ -56,8 +58,10 @@ const UserPurchase = ({
           body: JSON.stringify({
             reservationId: reservationId,
             buyerId: buyerId,
+            sellerId: sellerId,
             productId: productId,
             buyerName: buyerName,
+            purchaseType: "판매",
           }),
         });
         alert("판매확정이 완료되었습니다.");
