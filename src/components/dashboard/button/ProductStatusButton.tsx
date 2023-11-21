@@ -26,11 +26,7 @@ export const ProductStatusButton = ({
     alert(chnageMessage.data.message);
   };
   const productDelete = async (productId: string) => {
-    const deleteMessage = await axios.delete(`/api/user`, {
-      data: {
-        productId,
-      },
-    });
+    const deleteMessage = await axios.delete(`/api/products/${productId}`);
     alert(deleteMessage.data.message);
   };
   return (
