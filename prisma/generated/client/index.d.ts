@@ -8767,7 +8767,7 @@ export namespace Prisma {
     id: string
     userId: string
     sellerId: string
-    sellerName: string
+    sellerName: string | null
     productId: string
     title: string
     text: string
@@ -8839,7 +8839,7 @@ export namespace Prisma {
       id: string
       userId: string
       sellerId: string
-      sellerName: string
+      sellerName: string | null
       productId: string
       title: string
       text: string
@@ -9252,7 +9252,7 @@ export namespace Prisma {
     readonly text: FieldRef<"Review", 'String'>
     readonly createdAt: FieldRef<"Review", 'DateTime'>
     readonly updatedAt: FieldRef<"Review", 'DateTime'>
-    readonly userRating: FieldRef<"Review", 'Float'>
+    readonly userRating: FieldRef<"Review", 'Int'>
   }
     
 
@@ -17354,13 +17354,13 @@ export namespace Prisma {
     id?: StringFilter<"Review"> | string
     userId?: StringFilter<"Review"> | string
     sellerId?: StringFilter<"Review"> | string
-    sellerName?: StringFilter<"Review"> | string
+    sellerName?: StringNullableFilter<"Review"> | string | null
     productId?: StringFilter<"Review"> | string
     title?: StringFilter<"Review"> | string
     text?: StringFilter<"Review"> | string
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
-    userRating?: FloatFilter<"Review"> | number
+    userRating?: IntFilter<"Review"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }
@@ -17369,7 +17369,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
-    sellerName?: SortOrder
+    sellerName?: SortOrderInput | SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -17387,13 +17387,13 @@ export namespace Prisma {
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     userId?: StringFilter<"Review"> | string
     sellerId?: StringFilter<"Review"> | string
-    sellerName?: StringFilter<"Review"> | string
+    sellerName?: StringNullableFilter<"Review"> | string | null
     productId?: StringFilter<"Review"> | string
     title?: StringFilter<"Review"> | string
     text?: StringFilter<"Review"> | string
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
-    userRating?: FloatFilter<"Review"> | number
+    userRating?: IntFilter<"Review"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
     product?: XOR<ProductRelationFilter, ProductWhereInput>
   }, "id">
@@ -17402,7 +17402,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     sellerId?: SortOrder
-    sellerName?: SortOrder
+    sellerName?: SortOrderInput | SortOrder
     productId?: SortOrder
     title?: SortOrder
     text?: SortOrder
@@ -17423,13 +17423,13 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Review"> | string
     userId?: StringWithAggregatesFilter<"Review"> | string
     sellerId?: StringWithAggregatesFilter<"Review"> | string
-    sellerName?: StringWithAggregatesFilter<"Review"> | string
+    sellerName?: StringNullableWithAggregatesFilter<"Review"> | string | null
     productId?: StringWithAggregatesFilter<"Review"> | string
     title?: StringWithAggregatesFilter<"Review"> | string
     text?: StringWithAggregatesFilter<"Review"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
-    userRating?: FloatWithAggregatesFilter<"Review"> | number
+    userRating?: IntWithAggregatesFilter<"Review"> | number
   }
 
   export type ViewdProductStoreWhereInput = {
@@ -18599,12 +18599,12 @@ export namespace Prisma {
   export type ReviewCreateInput = {
     id?: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
     user: UserCreateNestedOneWithoutReviewsInput
     product: ProductCreateNestedOneWithoutReviewsInput
   }
@@ -18613,24 +18613,24 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     productId: string
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
   }
 
   export type ReviewUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
     product?: ProductUpdateOneRequiredWithoutReviewsNestedInput
   }
@@ -18639,50 +18639,50 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReviewCreateManyInput = {
     id?: string
     userId: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     productId: string
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
   }
 
   export type ReviewUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReviewUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ViewdProductStoreCreateInput = {
@@ -21916,25 +21916,25 @@ export namespace Prisma {
   export type ReviewCreateWithoutUserInput = {
     id?: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
     product: ProductCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateWithoutUserInput = {
     id?: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     productId: string
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
   }
 
   export type ReviewCreateOrConnectWithoutUserInput = {
@@ -22265,13 +22265,13 @@ export namespace Prisma {
     id?: StringFilter<"Review"> | string
     userId?: StringFilter<"Review"> | string
     sellerId?: StringFilter<"Review"> | string
-    sellerName?: StringFilter<"Review"> | string
+    sellerName?: StringNullableFilter<"Review"> | string | null
     productId?: StringFilter<"Review"> | string
     title?: StringFilter<"Review"> | string
     text?: StringFilter<"Review"> | string
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
-    userRating?: FloatFilter<"Review"> | number
+    userRating?: IntFilter<"Review"> | number
   }
 
   export type BuyerUpsertWithWhereUniqueWithoutUserInput = {
@@ -22789,12 +22789,12 @@ export namespace Prisma {
   export type ReviewCreateWithoutProductInput = {
     id?: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
     user: UserCreateNestedOneWithoutReviewsInput
   }
 
@@ -22802,12 +22802,12 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
   }
 
   export type ReviewCreateOrConnectWithoutProductInput = {
@@ -24852,13 +24852,13 @@ export namespace Prisma {
   export type ReviewCreateManyUserInput = {
     id?: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     productId: string
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
   }
 
   export type BuyerCreateManyUserInput = {
@@ -25190,37 +25190,37 @@ export namespace Prisma {
   export type ReviewUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
     product?: ProductUpdateOneRequiredWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReviewUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type BuyerUpdateWithoutUserInput = {
@@ -25314,12 +25314,12 @@ export namespace Prisma {
     id?: string
     userId: string
     sellerId: string
-    sellerName?: string
+    sellerName?: string | null
     title: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRating: number
+    userRating?: number
   }
 
   export type PurchaseCreateManyProductInput = {
@@ -25388,12 +25388,12 @@ export namespace Prisma {
   export type ReviewUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
   }
 
@@ -25401,24 +25401,24 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReviewUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     sellerId?: StringFieldUpdateOperationsInput | string
-    sellerName?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRating?: FloatFieldUpdateOperationsInput | number
+    userRating?: IntFieldUpdateOperationsInput | number
   }
 
   export type PurchaseUpdateWithoutProductInput = {
