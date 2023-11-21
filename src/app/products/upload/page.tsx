@@ -13,6 +13,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { getSession } from "next-auth/react";
+import { toast } from "react-toastify";
 const session = getSession();
 console.log(session, "session");
 export interface Address {
@@ -52,9 +53,11 @@ const ProductUploadPage = () => {
     axios
       .post("/api/products", data)
       .then((response) => {
+        toast.success("상품이 등록되었습니다.");
         router.push(`/products/${response.data.id}`);
       })
       .catch((err) => {
+        toast.error("상품 등록에 실패했습니다.");
         console.log(err);
       })
       .finally(() => {
