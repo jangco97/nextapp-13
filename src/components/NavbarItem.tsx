@@ -30,7 +30,7 @@ const NavbarItem = ({
         <Link href={"/pricechart"}>시세조회</Link>
       </li> */}
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
-        <Link href={"/cart"}>판매하기</Link>
+        <Link href={"/products/upload"}>판매하기</Link>
       </li>
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
         <Link href={"/cart"}>장바구니</Link>
@@ -57,7 +57,9 @@ const NavbarItem = ({
             <button onClick={() => router.push("/auth/login")}>로그인</button>
           </li>
           <li className="py-2 text-center border-b-4 cursor-pointer">
-            <button onClick={() => router.push("/auth/login")}>회원가입</button>
+            <button onClick={() => router.push("/auth/register")}>
+              회원가입
+            </button>
           </li>
         </>
       )}{" "}
