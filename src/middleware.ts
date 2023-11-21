@@ -24,33 +24,33 @@ export async function middleware(req: NextRequest) {
   if (pathname.startsWith("/auth") && session) {
     return NextResponse.redirect(new URL("/", req.url));
   }
-  if (
-    pathname.startsWith("/products") &&
-    pathname.endsWith("/edit") &&
-    session
-  ) {
-    const parts = pathname.split("/");
-    const productId = parts[2]; // 동적 URL에서 productId 가져오기
-    const product = await fetch(
-      `https://nextapp-13.vercel.app/api/products/${productId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((res) => res.json());
-    if (product?.userId !== session.id) {
-      return NextResponse.redirect(new URL("/", req.url));
-    }
-  }
-  if (
-    pathname.startsWith("/products") &&
-    pathname.endsWith("/edit") &&
-    !session
-  ) {
-    return NextResponse.redirect(new URL("/", req.url));
-  }
+  //   if (
+  //     pathname.startsWith("/products") &&
+  //     pathname.endsWith("/edit") &&
+  //     session
+  //   ) {
+  //     const parts = pathname.split("/");
+  //     const productId = parts[2]; // 동적 URL에서 productId 가져오기
+  //     const product = await fetch(
+  //       `https://nextapp-13.vercel.app/api/products/${productId}`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     ).then((res) => res.json());
+  //     if (product?.userId !== session) {
+  //       return NextResponse.redirect(new URL("/", req.url));
+  //     }
+  //   }
+  //   if (
+  //     pathname.startsWith("/products") &&
+  //     pathname.endsWith("/edit") &&
+  //     !session
+  //   ) {
+  //     return NextResponse.redirect(new URL("/", req.url));
+  //   }
 }
 export const config = {
   matcher: [
@@ -59,6 +59,6 @@ export const config = {
     "/products/upload",
     "/chat",
     "/cart",
-    "/products/:path*",
+    // "/products/:path*",
   ],
 };

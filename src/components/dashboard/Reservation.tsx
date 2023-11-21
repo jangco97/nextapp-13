@@ -141,29 +141,14 @@ const Reservation = ({
                     : "시간이 정해지지 않았습니다."}
                 </span>
               </div>
-              <div className="flex flex-col">
-                <div>
-                  {reservation && (
-                    <UserPurchase
-                      meetTime={reservation?.meetTime}
-                      reservationType={reservationType}
-                      buyerId={reservation?.buyerId}
-                      sellerId={reservation?.sellerId}
-                      reservationId={reservation?.id}
-                      productId={reservation?.productId}
-                      sellerName={reservation?.sellerName}
-                      buyerName={reservation?.buyerName}
-                    />
-                  )}
-                </div>
-              </div>
+
               {currentUser?.id === reservation?.sellerId && (
                 <section className="border-2 border-indigo-500/80 rounded-lg p-1">
                   {" "}
                   <div className="text-md flex justify-center text-neutral-600 font-bold">
                     아래 날짜를 클릭해 거래 시간을 정하세요.
                   </div>
-                  <div className="flex items-center justify-center md:flex-col md:items-start">
+                  <div className="flex flex-col md:flex-col md:items-start">
                     {" "}
                     <div>
                       <DatePicker
@@ -204,6 +189,22 @@ const Reservation = ({
                           시간변경
                         </span>
                       </button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <div>
+                      {reservation && (
+                        <UserPurchase
+                          meetTime={reservation?.meetTime}
+                          reservationType={reservationType}
+                          buyerId={reservation?.buyerId}
+                          sellerId={reservation?.sellerId}
+                          reservationId={reservation?.id}
+                          productId={reservation?.productId}
+                          sellerName={reservation?.sellerName}
+                          buyerName={reservation?.buyerName}
+                        />
+                      )}
                     </div>
                   </div>
                 </section>
