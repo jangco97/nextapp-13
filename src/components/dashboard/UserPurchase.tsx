@@ -110,7 +110,7 @@ const UserPurchase = ({
   const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-start items-center">
       <div>
         {timeRemaining > 0 && meetTime && (
           <span className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
