@@ -12,7 +12,7 @@ const UserPurchase = ({
   sellerName,
   buyerName,
 }: {
-  meetTime: Date;
+  meetTime: Date | null;
   reservationType: string;
   buyerId: string;
   sellerId: string;
@@ -24,7 +24,7 @@ const UserPurchase = ({
   const router = useRouter();
   const [isWithinTime, setIsWithinTime] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(
-    meetTime.getTime() - new Date().getTime()
+    meetTime ? meetTime?.getTime() - Date.now() : -1
   );
   const purchase = async (reservationType: string) => {
     if (reservationType === "구매예약") {
@@ -69,7 +69,8 @@ const UserPurchase = ({
   };
   useEffect(() => {
     const checkTimeDifference = () => {
-      const timeDifference = meetTime.getTime() - Date.now();
+      if (meetTime === null) return;
+      const timeDifference = meetTime?.getTime() - Date.now();
       setIsWithinTime(timeDifference <= 60 * 20 * 1000);
     };
 
@@ -84,6 +85,7 @@ const UserPurchase = ({
   }, [meetTime]);
 
   useEffect(() => {
+    if (!timeRemaining) return;
     const interval = setInterval(() => {
       // 1초마다 시간을 감소
       setTimeRemaining(timeRemaining - 1000);
@@ -120,7 +122,7 @@ const UserPurchase = ({
           </span>
         )}
       </div>
-      {isWithinTime && (
+      {isWithinTime && meetTime && (
         <div>
           <button
             className="p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white"
