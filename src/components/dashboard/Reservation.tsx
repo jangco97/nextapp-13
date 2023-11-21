@@ -142,73 +142,77 @@ const Reservation = ({
                 </span>
               </div>
 
-              {currentUser?.id === reservation?.sellerId && (
-                <section className="border-2 border-indigo-500/80 rounded-lg p-1">
-                  {" "}
-                  <div className="text-md flex justify-center text-neutral-600 font-bold">
-                    아래 날짜를 클릭해 거래 시간을 정하세요.
-                  </div>
-                  <div className="flex flex-col md:flex-col md:items-start">
-                    {" "}
-                    <div>
-                      <DatePicker
-                        shouldCloseOnSelect
-                        className="datepicker"
-                        locale={ko}
-                        dateFormat="yyyy년 MM월 dd일 hh시 mm분"
-                        selected={selectedDates[reservation?.id] || new Date()}
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        onChange={(date) =>
-                          handleDateChange(date, reservation.id)
-                        }
-                        minDate={new Date()}
-                        customInput={
-                          <input className="text-white m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
-                        }
-                      />
+              <section className="border-2 border-indigo-500/80 rounded-lg p-1">
+                {" "}
+                {currentUser?.id === reservation?.sellerId && (
+                  <>
+                    <div className="text-md flex justify-center text-neutral-600 font-bold">
+                      아래 날짜를 클릭해 거래 시간을 정하세요.
                     </div>
-                    <div>
-                      <button
-                        className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
-                        onClick={() =>
-                          setMeetTime(
-                            reservation?.id,
-                            reservation?.buyerId,
-                            reservation?.sellerId,
-                            reservation?.productId,
-                            reservation?.address,
-                            reservation?.addressDetail,
-                            reservation?.latitude,
-                            reservation?.longitude
-                          )
-                        }
-                      >
-                        <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
-                          {" "}
-                          시간변경
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex flex-col">
-                    <div>
-                      {reservation && (
-                        <UserPurchase
-                          meetTime={reservation?.meetTime}
-                          reservationType={reservationType}
-                          buyerId={reservation?.buyerId}
-                          sellerId={reservation?.sellerId}
-                          reservationId={reservation?.id}
-                          productId={reservation?.productId}
-                          sellerName={reservation?.sellerName}
-                          buyerName={reservation?.buyerName}
+                    <div className="flex flex-col md:flex-col md:items-start">
+                      {" "}
+                      <div>
+                        <DatePicker
+                          shouldCloseOnSelect
+                          className="datepicker"
+                          locale={ko}
+                          dateFormat="yyyy년 MM월 dd일 hh시 mm분"
+                          selected={
+                            selectedDates[reservation?.id] || new Date()
+                          }
+                          showTimeSelect
+                          timeFormat="HH:mm"
+                          onChange={(date) =>
+                            handleDateChange(date, reservation.id)
+                          }
+                          minDate={new Date()}
+                          customInput={
+                            <input className="text-white m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
+                          }
                         />
-                      )}
+                      </div>
+                      <div>
+                        <button
+                          className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
+                          onClick={() =>
+                            setMeetTime(
+                              reservation?.id,
+                              reservation?.buyerId,
+                              reservation?.sellerId,
+                              reservation?.productId,
+                              reservation?.address,
+                              reservation?.addressDetail,
+                              reservation?.latitude,
+                              reservation?.longitude
+                            )
+                          }
+                        >
+                          <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
+                            {" "}
+                            시간변경
+                          </span>
+                        </button>
+                      </div>
                     </div>
+                  </>
+                )}
+                <div className="flex flex-col">
+                  <div>
+                    {reservation && (
+                      <UserPurchase
+                        meetTime={reservation?.meetTime}
+                        reservationType={reservationType}
+                        buyerId={reservation?.buyerId}
+                        sellerId={reservation?.sellerId}
+                        reservationId={reservation?.id}
+                        productId={reservation?.productId}
+                        sellerName={reservation?.sellerName}
+                        buyerName={reservation?.buyerName}
+                      />
+                    )}
                   </div>
-                </section>
-              )}
+                </div>
+              </section>
             </div>
           </div>
         ))}

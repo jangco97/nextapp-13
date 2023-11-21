@@ -130,7 +130,7 @@ const UserPurchase = ({
               purchase(reservationType);
             }}
           >
-            <div className="block text-gray-200 px-1 py-1 font-semibold rounded-full bg-gray-300/40">
+            <div className="block text-gray-200 px-1 py-1 font-semibold rounded-full ml-1 bg-gray-300/40">
               {" "}
               {reservationType === "구매예약" ? "구매확정" : "판매확정"}
             </div>
