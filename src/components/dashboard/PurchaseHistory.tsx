@@ -51,6 +51,7 @@ const PurchaseHistory = ({
                   userId={history?.userId}
                   sellerId={history?.product?.userId}
                   productId={history?.product?.id}
+                  sellerName={history?.sellerName}
                 />
               </Modal>
             )}

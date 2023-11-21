@@ -8,6 +8,7 @@ interface PurchaseReviewProps {
   userId: string;
   productId: string;
   sellerId: string;
+  sellerName: string;
 }
 const PurchaseReview = ({
   setIsModalOpen,
@@ -15,6 +16,7 @@ const PurchaseReview = ({
   userId,
   productId,
   sellerId,
+  sellerName,
 }: PurchaseReviewProps) => {
   const [userRating, setUserRating] = useState(0);
   const [title, setTitle] = useState("");
@@ -29,6 +31,7 @@ const PurchaseReview = ({
         sellerId: sellerId,
         title: title,
         text: text,
+        sellerName: sellerName,
       })
       .then((res) => {
         alert(res.data.message);
