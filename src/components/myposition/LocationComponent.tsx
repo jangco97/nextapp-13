@@ -107,13 +107,13 @@ const LocationComponent = () => {
             {" "}
             <div className="flex justify-between">
               <span>5.5km</span>
-              <span>11km</span>
-              <span>16.5km</span>
+              <span>12.5km</span>
+              <span>22km</span>
             </div>{" "}
             <input
               type="range"
               min="0.05"
-              max="0.15"
+              max="0.20"
               step="0.01"
               value={distance}
               className="w-full"
