@@ -38,7 +38,7 @@ const UserPurchase = ({
             reservationId: reservationId,
             buyerId: buyerId,
             productId: productId,
-            buyerName: buyerName,
+            sellerName: sellerName,
           }),
         });
         alert("구매확정이 완료되었습니다.");
@@ -57,7 +57,7 @@ const UserPurchase = ({
             reservationId: reservationId,
             sellerId: sellerId,
             productId: productId,
-            sellerName: sellerName,
+            buyerName: buyerName,
           }),
         });
         alert("판매확정이 완료되었습니다.");

@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
         userId: buyerId,
         sellerId: sellerId,
         productId,
-        sellerName,
+        sellerName: sellerName,
       },
     });
     // Check if both buyAccept and sellAccept are true
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
         userId: sellerId,
         buyerId: buyerId,
         productId,
-        buyerName,
+        buyerName: buyerName,
       },
     });
     await prisma.product.update({
