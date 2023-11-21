@@ -36,7 +36,7 @@ const UserPurchase = ({
           },
           body: JSON.stringify({
             reservationId: reservationId,
-            buyerId: buyerId,
+            sellerId: sellerId,
             productId: productId,
             sellerName: sellerName,
           }),
@@ -55,7 +55,7 @@ const UserPurchase = ({
           },
           body: JSON.stringify({
             reservationId: reservationId,
-            sellerId: sellerId,
+            buyerId: buyerId,
             productId: productId,
             buyerName: buyerName,
           }),
