@@ -65,34 +65,34 @@ const PurchaseReview = ({
           })}
         </div>
       </div>
-      <div>
-        {" "}
-        <span>제목:</span>
-        <input
-          className="border-2 border-blue-400 p-2 m-3"
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-      </div>
-      <div>
-        <span>내용</span>
-        <textarea
-          className="border-2 border-blue-400 p-2 m-3"
-          onChange={(e) => setText(e.target.value)}
-          value={text}
-        />
-      </div>
+      <form>
+        <div>
+          {" "}
+          <span>제목:</span>
+          <input
+            className="border-2 border-blue-400 p-2 m-3"
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        </div>
+        <div>
+          <label>
+            내용:
+            <textarea name="postContent" rows={4} cols={30} />
+          </label>
+        </div>
 
-      <button
-        className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer"
-        onClick={() => {
-          reviewBtnClick();
-          setIsModalOpen(false);
-        }}
-      >
-        리뷰작성완료
-      </button>
+        <button
+          className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer"
+          onClick={() => {
+            reviewBtnClick();
+            setIsModalOpen(false);
+          }}
+        >
+          리뷰작성완료
+        </button>
+      </form>
     </div>
   );
 };
