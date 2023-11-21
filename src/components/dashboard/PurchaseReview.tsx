@@ -70,7 +70,7 @@ const PurchaseReview = ({
           {" "}
           <span>제목:</span>
           <input
-            className="border-2 border-blue-400 p-2 m-3"
+            className="w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
@@ -78,8 +78,15 @@ const PurchaseReview = ({
         </div>
         <div>
           <label>
-            내용:
-            <textarea name="postContent" rows={4} cols={30} />
+            <div>내용:</div>
+            <textarea
+              id="postContent"
+              className="w-full border-2 p-4 pt-6 font-light bg-white rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed"
+              name="postContent"
+              rows={4}
+              cols={30}
+              onChange={(e) => setText(e.target.value)}
+            />
           </label>
         </div>
 
