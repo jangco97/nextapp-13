@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { set } from "date-fns";
 
 const UserPurchase = ({
   meetTime,
@@ -43,8 +44,8 @@ const UserPurchase = ({
             purchaseType: "구매",
           }),
         });
+        router.refresh();
         alert("구매확정이 완료되었습니다.");
-        router.push("/user?.reservation");
       } catch (error: any) {
         alert(`An error occurred: ${error.message}`);
       }
@@ -64,8 +65,8 @@ const UserPurchase = ({
             purchaseType: "판매",
           }),
         });
+        router.refresh();
         alert("판매확정이 완료되었습니다.");
-        router.push("/user?.reservation");
       } catch (error: any) {
         alert(`An error occurred: ${error.message}`);
       }
@@ -74,8 +75,11 @@ const UserPurchase = ({
   useEffect(() => {
     const checkTimeDifference = () => {
       if (meetTime === null) return;
-      const timeDifference = new Date(meetTime)?.getTime() - Date.now();
-      setIsWithinTime(timeDifference <= 60 * 20 * 1000);
+      setTimeRemaining(
+        (meetTime ? new Date(meetTime)?.getTime() : -1) - Date.now()
+      );
+      const timeDifference = timeRemaining;
+      setIsWithinTime(timeDifference <= 0);
     };
 
     checkTimeDifference(); // 초기 실행
@@ -86,10 +90,11 @@ const UserPurchase = ({
     return () => {
       clearInterval(interval); // 컴포넌트 언마운트 시 setInterval 정리
     };
-  }, [meetTime]);
+  }, [meetTime, timeRemaining]);
 
   useEffect(() => {
     if (!timeRemaining) return;
+
     const interval = setInterval(() => {
       // 1초마다 시간을 감소
       setTimeRemaining(timeRemaining - 1000);
@@ -103,7 +108,7 @@ const UserPurchase = ({
     return () => {
       clearInterval(interval); // 컴포넌트 언마운트 시 setInterval 정리
     };
-  }, [timeRemaining]);
+  }, [timeRemaining, meetTime]);
 
   //몇일 남았는지 계산, 1일 2시간 30분 몇초 이런식으로
 

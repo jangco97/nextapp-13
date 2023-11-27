@@ -7,7 +7,7 @@ import qs from "query-string";
 import Link from "next/link";
 export const FilterButton = () => {
   const params = useSearchParams();
-  const [currentSort, setCurrentSort] = useState("필터");
+  const [currentSort, setCurrentSort] = useState("최신순");
   let currentQuery = {};
   if (params) {
     currentQuery = qs.parse(params?.toString()); //{'category' : 'interior', 'page' : '2'}

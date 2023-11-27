@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import qs from "query-string";
 import Reservation from "./Reservation";
 import { useQuery } from "@tanstack/react-query";
@@ -9,6 +8,7 @@ import PurchaseHistory from "./PurchaseHistory";
 import ReservationButton from "./button/ReservationButton";
 import useSWRMutation from "swr/mutation";
 import { formatTime } from "@/helpers/dayjs";
+import { useQueryClient } from "@tanstack/react-query";
 const UserReservation = ({
   currentUser,
   buyingHistory,
@@ -63,7 +63,7 @@ const UserReservation = ({
     }).then((res) => res.json());
   }
   const { trigger } = useSWRMutation("/api/chat", sendRequest);
-
+  const queryClient = useQueryClient();
   const setMeetTime = async (
     reservationId: string,
     buyerId: string,
@@ -101,12 +101,9 @@ const UserReservation = ({
           reservationId: reservationId,
         }),
       });
-      if (response.ok) {
-        // If the response status is within the 200-299 range, it's a successful response.
-        const data = await response.json();
-        router.refresh();
-        alert(data.message);
-      }
+      queryClient.invalidateQueries({ queryKey: ["meettime"] });
+      router.refresh();
+      alert("예약시간이 변경되었습니다.");
     } catch (error: any) {
       alert(`An error occurred: ${error.message}`);
     }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import prisma from "@/app/libs/prismadb";
+import { randomUUID } from "crypto";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();

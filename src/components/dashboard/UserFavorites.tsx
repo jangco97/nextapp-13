@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";
-import CartPage from "@/app/cart/page";
 import Image from "next/image";
 import HeartButton from "@/components/HeartButton";
 import { FaLocationDot } from "react-icons/fa6";

@@ -23,6 +23,7 @@ interface ProductInfoProps {
   price?: number;
   address?: string | null;
   addressDetail?: string | null;
+  currentUser?: User | null;
 }
 const ProductInfo = ({
   user,
@@ -33,15 +34,20 @@ const ProductInfo = ({
   price,
   address,
   addressDetail,
+  currentUser,
 }: ProductInfoProps) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 text-xl font-semibold">
           <Avatar src={user?.image} />
-          <Link href={`/user/${user?.id}`}>
+          {currentUser?.id !== user?.id ? (
+            <Link href={`/user/${user?.id}`}>
+              <p>{user?.name}</p>
+            </Link>
+          ) : (
             <p>{user?.name}</p>
-          </Link>
+          )}
         </div>
         <div>{formatTime(createdAt)}</div>
         <hr />

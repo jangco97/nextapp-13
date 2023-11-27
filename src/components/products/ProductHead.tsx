@@ -15,6 +15,7 @@ interface ProductHeadProps {
   deleteFunc: () => void;
   currentUser?: User | null;
   productUserId: string;
+  status?: string | null;
 }
 const ProductHead = ({
   title,
@@ -25,10 +26,11 @@ const ProductHead = ({
   deleteFunc,
   currentUser,
   productUserId,
+  status,
 }: ProductHeadProps) => {
   return (
     <>
-      <Heading title={title} />
+      <Heading title={title} subtitle={status!} />
       {productId === currentUser?.id && (
         <div className="flex justify-evenly">
           <button
@@ -45,8 +47,8 @@ const ProductHead = ({
           </button>
         </div>
       )}
-      <div className="w-full h-[60vh] rounded-xl relative overflow-hidden">
-        <div>
+      <div className="h-[80vh] md:h-[50vh] rounded-xl w-full relative overflow-hidden place-content-center">
+        <div className="flex justify-center mt-5">
           <ProductImage imageSrc={imageSrc} />
         </div>
         {currentUser?.id !== productUserId && (

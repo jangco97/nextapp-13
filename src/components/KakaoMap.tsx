@@ -56,26 +56,27 @@ const KakaoMap = ({
       >
         <MapMarker position={{ lat: latitude, lng: longitude }}></MapMarker>
       </Map>
-
-      {!isBigger && (
-        <button
-          onClick={handleToggleSize}
-          className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
-        >
-          지도확장
-        </button>
-      )}
-      {address && (
-        <button className=" w-4/12 p-2 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center">
-          <a
-            href={`https://map.kakao.com/link/map/${address},${latitude},${longitude}`}
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className="flex justify-center ">
+        {!isBigger && (
+          <button
+            onClick={handleToggleSize}
+            className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
           >
-            큰지도보기
-          </a>
-        </button>
-      )}
+            지도확장
+          </button>
+        )}
+        {address && (
+          <button className=" w-4/12 p-2 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center">
+            <a
+              href={`https://map.kakao.com/link/map/${address},${latitude},${longitude}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              큰지도보기
+            </a>
+          </button>
+        )}
+      </div>
     </div>
   );
 };

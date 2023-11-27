@@ -95,11 +95,11 @@ const PurchaseHistory = ({
               {historyType === "판매내역" && (
                 <div>
                   <span className=" text-slate-500">구매자:</span>
-                  {/* <Link href={`/user/${}`}> */}
-                  <span className=" text-emerald-800">
-                    {history?.buyerName}
-                  </span>
-                  {/* </Link> */}
+                  <Link href={`/user/${history.buyerId}`}>
+                    <span className=" text-emerald-800">
+                      {history?.buyerName}
+                    </span>
+                  </Link>
                 </div>
               )}
               <div>

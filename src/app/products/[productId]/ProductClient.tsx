@@ -1,5 +1,4 @@
 "use client";
-
 import Container from "@/components/Container";
 import { mainCategories, subCategories } from "@/constants";
 import ProductHead from "@/components/products/ProductHead";
@@ -69,7 +68,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
         productId: product?.id,
       });
       alert("예약이 완료되었습니다.");
-      router.push("/chat");
+      router.push(`/chat/${product.userId}`);
     } catch (error) {
       console.error(error);
     }
@@ -87,6 +86,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
             productId={product.user.id}
             editFunc={editRoute}
             deleteFunc={deleteFunc}
+            status={product.status}
           />
           <div className="grid grid-cols-1 mt-6 gap-5">
             <ProductInfo
@@ -98,6 +98,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
               price={product.price}
               address={product.address}
               addressDetail={product.addressDetail}
+              currentUser={currentUser}
             />
 
             <div className="order-first mb-10 mt-10 md:order-last md:col-span-3">
@@ -111,26 +112,24 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
               )}
             </div>
           </div>
-          {currentUser?.id !== product?.user?.id &&
-            product.status === "판매중" && (
-              <form onSubmit={handleSubmit}>
-                <div className="mt-10 ">
-                  <Button label="상품 예약하기" />
-                </div>
-              </form>
+          <div className="">
+            {currentUser?.id !== product?.user?.id &&
+              product.status === "판매중" && (
+                <form onSubmit={handleSubmit}>
+                  <div className="mt-10 ">
+                    <Button label="상품 예약하기" />
+                  </div>
+                </form>
+              )}
+            {currentUser?.id !== product?.user?.id && (
+              <div className="mt-10 ">
+                <Button
+                  onClick={() => router.push(`/chat/${product?.user?.id}`)}
+                  label="이 유저와 채팅하기"
+                />
+              </div>
             )}
-          {currentUser?.id !== product?.user?.id && (
-            <div className="mt-10 ">
-              <Button
-                onClick={() =>
-                  router.push(
-                    `/chat?id=${product?.user?.id}&name=${product?.user?.name}&image=${product?.user?.image}`
-                  )
-                }
-                label="이 유저와 채팅하기"
-              />
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </Container>

@@ -3,10 +3,6 @@ import React from "react";
 import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
-import {
-  ChevronDownIcon,
-  ChevronDoubleUpIcon,
-} from "@heroicons/react/20/solid";
 import axios from "axios";
 
 export const ProductStatusButton = ({
@@ -28,6 +24,7 @@ export const ProductStatusButton = ({
   const productDelete = async (productId: string) => {
     const deleteMessage = await axios.delete(`/api/products/${productId}`);
     alert(deleteMessage.data.message);
+    router.refresh();
   };
   return (
     <Menu as="div" className="relative inline-block text-left z-5">

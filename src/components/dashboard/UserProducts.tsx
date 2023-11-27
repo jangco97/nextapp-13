@@ -49,11 +49,7 @@ const UserProducts = ({
             <div key={product.id}>
               <div className="col-span-1">
                 <div
-                  className={`flex flex-col w-full gap-2 border-2 rounded-xl p-2 hover:border-indigo-800/70 hover:shadow-lg duration-300 ${
-                    product.status === "예약중" || product.status === "판매완료"
-                      ? "opacity-60"
-                      : ""
-                  }`}
+                  className={`flex flex-col w-full gap-2 border-2 rounded-xl p-2 hover:border-indigo-800/70 hover:shadow-lg duration-300`}
                 >
                   <div className="relative w-full overflow-hidden aspect-square ">
                     {" "}
@@ -67,7 +63,7 @@ const UserProducts = ({
                     />
                     {product.status === "예약중" ||
                     product.status === "판매완료" ? (
-                      <div className="absolute text-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 border-2 rounded-full border-indigo-800">
+                      <div className="absolute text-lg font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 border-2 rounded-full border-indigo-800">
                         {product.status}
                       </div>
                     ) : null}

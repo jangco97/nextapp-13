@@ -24,7 +24,7 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   return (
     <>
       <section className="pt-[75px]">
-        <header className="flex items-center p-2">
+        <header className="flex justify-center items-center p-10">
           <Avatar src={currentUser?.image || null} />
           <div className="text-lg text-slate-500 ml-3">{currentUser?.name}</div>
         </header>

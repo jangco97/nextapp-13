@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+export const dynamic = "force-dynamic";
 interface Params {
   productId?: string;
 }
@@ -103,7 +104,7 @@ export async function DELETE(
     return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const { productId } = params;
-  const product = await prisma.product.delete({
+  await prisma.product.delete({
     where: {
       id: productId,
     },

@@ -84,8 +84,9 @@ const Reservation = ({
               {reservationType === "판매예약" && (
                 <div className=" ">
                   <span>구매자:</span>
-                  <Link href={`/user/${reservation?.buyerId}`}></Link>
-                  <span>{reservation.buyerName}</span>
+                  <Link href={`/user/${reservation?.buyerId}`}>
+                    <span>{reservation.buyerName}</span>
+                  </Link>
                 </div>
               )}
               <div>

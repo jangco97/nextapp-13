@@ -64,6 +64,7 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
         setIsLoading(false);
       });
   };
+
   const imageSrc = watch("imageSrc");
   const categories = watch("categories");
   const latitude = watch("latitude");

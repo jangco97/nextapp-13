@@ -3,8 +3,8 @@ import { useSearchParams } from "next/navigation";
 import FilterButton from "../filters/FilterButton";
 import PriceFilterButton from "../filters/PriceFilterButton";
 import CategoryCircle from "./CategoryCircle";
-import AreaFilter from "../areafilter/AreaFilter";
 import LocationComponent from "../myposition/LocationComponent";
+import Link from "next/link";
 const Categories = () => {
   const params = useSearchParams();
   const category = params?.get("category");
@@ -41,11 +41,14 @@ const Categories = () => {
                   <FilterButton />
                 </div>
               </div>
+
               <div className="grid grid-cols-2 gap-3 place-items-center">
-                <AreaFilter />
-              </div>
-              <div>
                 <LocationComponent />
+                <Link href="/">
+                  <button className="flex rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    필터 제거
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
