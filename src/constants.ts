@@ -3,7 +3,7 @@ export const BOARDS_PER_PAGE = 10;
 export const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 export const PASSWORD_REGEX =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-export const NotSpecial_REGEX = /^[a-zA-Z0-9]*$/;
+export const NotSpecial_REGEX = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]+$/;
 export const mainCategories = [
   {
     label: "도서/문구",
