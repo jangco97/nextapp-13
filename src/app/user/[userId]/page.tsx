@@ -8,6 +8,7 @@ import UserProducts from "@/components/dashboard/UserProducts";
 import UserReviews from "@/components/dashboard/UserReviews";
 import getUserReviews from "@/app/actions/getUserReviews";
 import { Params } from "@/app/actions/getUserProducts";
+import Link from "next/link";
 const UserDetailPage = async ({
   searchParams,
   params,
@@ -21,9 +22,16 @@ const UserDetailPage = async ({
   return (
     <>
       <section className="pt-[75px]">
-        <header className="flex items-center p-2">
-          <Avatar src={user?.image || null} />
+        <header className="flex justify-center items-center p-10">
+          <Link href={`/user/${params.userId}`}>
+            <Avatar src={user?.image || null} />
+          </Link>
           <div className="text-lg text-slate-500 ml-3">{user?.name}</div>
+          <Link href={`/chat/${user?.id}`}>
+            <button className="ml-5 p-2 flex justify-center items-center border-2  border-indigo-400 text-indigo-400 rounded-md hover:bg-indigo-700 hover:text-white">
+              채팅하기
+            </button>
+          </Link>
         </header>
         <header>
           <Navigation isGuest={true} />

@@ -28,3 +28,20 @@ export async function PATCH(
 
   return NextResponse.json(success);
 }
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { userId: string } }
+) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
+  }
+
+  const userdata = await prisma.user.findUnique({
+    where: {
+      id: params.userId as string,
+    },
+  });
+
+  return NextResponse.json(userdata);
+}

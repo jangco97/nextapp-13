@@ -25,7 +25,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
     data: users,
     error,
     isLoading,
-  } = useSWR(`/api/chat`, fetcher, { refreshInterval: 1000 });
+  } = useSWR(`/api/chat`, fetcher, { refreshInterval: 2000 });
   const currentUserWithMessage = users?.find(
     (user: TUserWithChat) => user.email === currentUser?.email
   );
