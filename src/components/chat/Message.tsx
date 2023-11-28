@@ -239,7 +239,12 @@ const Message = async ({
         )}
         {messageImage && messageType !== "reservation" && (
           <div className="overflow-hidden rounded-md mx-p[0.6rem] max-w-[80%]">
-            <Image src={messageImage} width={300} height={300} alt="" />
+            <Image
+              src={messageImage}
+              width={300}
+              height={300}
+              alt="채팅 이미지"
+            />
           </div>
         )}
         {messageType === "text" && (
@@ -250,7 +255,7 @@ const Message = async ({
                 : "bg-gray-500 rounded-tl-none"
             }`}
           >
-            <p className="">{messageText}</p>
+            <span>{messageText}</span>
           </div>
         )}
       </div>
