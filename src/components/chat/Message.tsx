@@ -86,7 +86,7 @@ const Message = async ({
         isSender ? "flex-row-reverse" : "flex-row"
       } w-full grid-cols-[40px_1fr] gap-2 mx-auto `}
     >
-      <div className={`flex w-[30px] h-[30px] ${isSender ? "ml-1" : "mr-1"}`}>
+      <div className={`w-[30px] h-[30px]`}>
         <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
       </div>
       <div
