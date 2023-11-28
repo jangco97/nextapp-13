@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Avatar from "../Avatar";
-import { fromNow, formatTime } from "@/helpers/dayjs";
+import { fromNow } from "@/helpers/dayjs";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { set } from "date-fns";
 interface MessageProps {
   isSender: boolean;
   messageText?: string | null;
@@ -43,7 +46,11 @@ const Message = async ({
   longitude,
   productTitle,
 }: MessageProps) => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   const patchAccepted = async (num: number) => {
+    setIsLoading(true);
     await fetch(`/api/chat`, {
       method: "PATCH",
       headers: {
@@ -54,8 +61,11 @@ const Message = async ({
         messageId: messageId,
       }),
     });
+    router.refresh();
+    setIsLoading(false);
   };
   const createReservation = async () => {
+    setIsLoading(true);
     await fetch(`/api/reservation`, {
       method: "POST",
       headers: {
@@ -67,6 +77,8 @@ const Message = async ({
         sellerId: receiverId,
       }),
     });
+    router.refresh();
+    setIsLoading(false);
   };
   return (
     <div
@@ -122,6 +134,7 @@ const Message = async ({
                   <>
                     <hr />
                     <button
+                      disabled={isLoading}
                       onClick={() => {
                         createReservation();
                         patchAccepted(1);
@@ -131,6 +144,7 @@ const Message = async ({
                       수락
                     </button>
                     <button
+                      disabled={isLoading}
                       onClick={() => patchAccepted(2)}
                       className="w-[50%] hover:text-red"
                     >

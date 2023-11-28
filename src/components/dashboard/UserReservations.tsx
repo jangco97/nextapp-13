@@ -31,6 +31,7 @@ const UserReservation = ({
   const currentQuery = qs.parse(params?.toString());
   const { myReservation, acceptedReservation } = data || {};
   console.log(data, "data");
+
   useEffect(() => {
     if ("reservations" in currentQuery) {
       setIsAlive(true);

@@ -69,8 +69,6 @@ const ProductUploadPage = () => {
   const latitude = watch("latitude");
   const longitude = watch("longitude");
   const address = watch("address");
-  const faceToFace = watch("faceToFace");
-  const delivery = watch("delivery");
   const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
     ssr: false,
   });

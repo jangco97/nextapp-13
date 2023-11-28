@@ -47,6 +47,9 @@ const PurchaseReview = ({
       })
       .catch((err) => {
         alert(err.response.data.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 

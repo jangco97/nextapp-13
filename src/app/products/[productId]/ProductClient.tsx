@@ -6,7 +6,7 @@ import ProductInfo from "@/components/products/ProductInfo";
 import { Product, User } from "../../../../prisma/generated/client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import axios from "axios";
 import Button from "@/components/Button";
 import useSWRMutation from "swr/mutation";
@@ -17,6 +17,7 @@ interface ProductClientProps {
 }
 const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const category = mainCategories.find(
     (item) => item.categoryId === product.categories[0]
   );
@@ -57,6 +58,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   const { trigger } = useSWRMutation("/api/chat", sendRequest);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     if (!currentUser) return;
     try {
       trigger({
@@ -71,6 +73,8 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
       router.push(`/chat/${product.userId}`);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -117,7 +121,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
               product.status === "판매중" && (
                 <form onSubmit={handleSubmit}>
                   <div className="mt-10 ">
-                    <Button label="상품 예약하기" />
+                    <Button label="상품 예약하기" disabled={isLoading} />
                   </div>
                 </form>
               )}
