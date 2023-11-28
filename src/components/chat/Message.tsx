@@ -87,27 +87,45 @@ const Message = async ({
       } w-full grid-cols-[40px_1fr] gap-2 mx-auto `}
     >
       <div>
-        <div className={`w-[30px] h-[30px]`}>
-          <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
-        </div>
-        <div
-          className={`flex flex-col ${
-            isSender ? "items-end" : "items-start"
-          } justify-center`}
-        >
-          <div className="flex items-center gap-1 mb-2 text-sm">
-            <span className="font-medium">
-              {isSender ? (
-                "You"
-              ) : (
-                <Link href={`/user/${receiverId}`}>{receiverName}</Link>
-              )}
-            </span>
-            <span className="text-xs text-gray-600 opacity-60">
-              {fromNow(messageTime)}
-            </span>
+        {isSender ? (
+          <div
+            className={`flex flex-col ${
+              isSender ? "items-end" : "items-start"
+            } justify-center`}
+          >
+            <div className="flex items-center gap-1 mb-2 text-sm">
+              <span className="font-medium">You</span>
+              <span className="text-xs text-gray-600 opacity-60">
+                {fromNow(messageTime)}
+              </span>
+            </div>
+            <div className={`w-[30px] h-[30px]`}>
+              <Avatar
+                src={senderImage && isSender ? senderImage : receiverImage}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div
+            className={`flex flex-col ${
+              isSender ? "items-end" : "items-start"
+            } justify-center`}
+          >
+            <div className={`w-[30px] h-[30px]`}>
+              <Avatar
+                src={senderImage && isSender ? senderImage : receiverImage}
+              />
+            </div>
+            <div className="flex items-center gap-1 mb-2 text-sm">
+              <span className="font-medium">
+                <Link href={`/user/${receiverId}`}>{receiverName}</Link>
+              </span>
+              <span className="text-xs text-gray-600 opacity-60">
+                {fromNow(messageTime)}
+              </span>
+            </div>
+          </div>
+        )}
 
         {messageType === "reservation" && (
           <div
