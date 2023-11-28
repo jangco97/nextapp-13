@@ -7,7 +7,7 @@ interface AvatarProps {
 const Avatar = ({ src }: AvatarProps) => {
   return (
     <Image
-      className="w-10 h-10 rounded-full"
+      className="w-[30px] h-[30px] rounded-full"
       height={30}
       width={30}
       alt="Avatar"
