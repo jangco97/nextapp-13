@@ -5,7 +5,7 @@ import { fromNow } from "@/helpers/dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { set } from "date-fns";
+
 interface MessageProps {
   isSender: boolean;
   messageText?: string | null;
@@ -84,7 +84,7 @@ const Message = async ({
     <div
       className={`flex gap-3 ${
         isSender ? "flex-row-reverse" : "flex-row"
-      } w-full grid-cols-[40px_1fr] gap-3 mx-auto `}
+      } w-full grid-cols-[30px_1fr] md:grid-cols-[40px_1fr] gap-3 mx-auto `}
     >
       <div className={`flex ${isSender ? "ml-1" : "mr-1"}`}>
         <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
