@@ -2,6 +2,8 @@
 import React, { useState, MouseEvent } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 interface PurchaseReviewProps {
   setIsModalOpen: (value: boolean) => void;
   id: string;
@@ -9,6 +11,8 @@ interface PurchaseReviewProps {
   productId: string;
   sellerId: string;
   sellerName: string;
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
 }
 const PurchaseReview = ({
   setIsModalOpen,
@@ -17,11 +21,15 @@ const PurchaseReview = ({
   productId,
   sellerId,
   sellerName,
+  isLoading,
+  setIsLoading,
 }: PurchaseReviewProps) => {
+  const router = useRouter();
   const [userRating, setUserRating] = useState(0);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const reviewBtnClick = async () => {
+    setIsLoading(true);
     await axios
       .post("/api/review", {
         id: id,
@@ -34,6 +42,7 @@ const PurchaseReview = ({
         sellerName: sellerName,
       })
       .then((res) => {
+        router.refresh();
         alert(res.data.message);
       })
       .catch((err) => {
@@ -95,6 +104,7 @@ const PurchaseReview = ({
 
         <button
           className="gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer"
+          disabled={isLoading}
           onClick={() => {
             reviewBtnClick();
             setIsModalOpen(false);

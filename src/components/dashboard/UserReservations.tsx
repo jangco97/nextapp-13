@@ -114,6 +114,7 @@ const UserReservation = ({
       ...prevDates,
       [reservationId]: date,
     }));
+    queryClient.invalidateQueries({ queryKey: ["meettime"] });
   };
   return (
     isAlive && (

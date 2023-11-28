@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { set } from "date-fns";
+import { useQueryClient } from "@tanstack/react-query";
 
 const UserPurchase = ({
   meetTime,
@@ -23,6 +23,7 @@ const UserPurchase = ({
   buyerName?: string;
 }) => {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const [isWithinTime, setIsWithinTime] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(
     meetTime ? new Date(meetTime)?.getTime() - Date.now() : -1
@@ -44,6 +45,8 @@ const UserPurchase = ({
             purchaseType: "구매",
           }),
         });
+
+        queryClient.invalidateQueries({ queryKey: ["meettime"] });
         router.refresh();
         alert("구매확정이 완료되었습니다.");
       } catch (error: any) {
