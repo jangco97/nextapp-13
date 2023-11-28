@@ -108,7 +108,7 @@ const Message = async ({
         </div>
         {messageType === "reservation" && (
           <div
-            className={`flex items-center gap-2 mb-2 text-sm  p-2 break-all text-white rounded-lg ${
+            className={`flex items-center gap-2 mb-2 text-sm  p-1 break-all text-white rounded-lg ${
               isSender
                 ? "bg-indigo-500/70 rounded-tr-none"
                 : "bg-gray-600 rounded-tl-none"
@@ -121,7 +121,7 @@ const Message = async ({
                 </div>
               )}
               <div
-                className={`p-2 break-all text-white rounded-lg ${
+                className={`p-1 break-all text-white rounded-lg ${
                   isSender
                     ? "bg-indigo-500/50 rounded-tr-none"
                     : "bg-gray-500 rounded-tl-none"
@@ -163,7 +163,7 @@ const Message = async ({
         )}
         {messageType === "cancelReservation" && (
           <div
-            className={`p-2 break-all text-white rounded-lg ${
+            className={`p-1 break-all text-white rounded-lg ${
               isSender
                 ? "bg-indigo-500/60 rounded-tr-none"
                 : "bg-gray-500 rounded-tl-none"
@@ -175,7 +175,7 @@ const Message = async ({
         )}
         {messageType === "meetTime" && (
           <div
-            className={`flex items-center gap-2 mb-2 text-sm  p-2 break-all text-white rounded-lg ${
+            className={`flex items-center gap-2 mb-2 text-sm  p-1 break-all text-white rounded-lg ${
               isSender
                 ? "bg-indigo-500/70 rounded-tr-none"
                 : "bg-gray-600 rounded-tl-none"
@@ -183,7 +183,7 @@ const Message = async ({
           >
             <div className="flex flex-col items-center p-10 ">
               <div
-                className={`p-2 break-all text-white rounded-lg ${
+                className={`p-1 break-all text-white rounded-lg ${
                   isSender
                     ? "bg-indigo-500/50  rounded-tr-none"
                     : "bg-gray-500 rounded-tl-none"
@@ -198,7 +198,7 @@ const Message = async ({
                 </p>
               </div>
               <div className="flex justify-evenly w-full">
-                <button className="p-2 rounded-lg mt-10 bg-slate-500 hover:bg-indigo-600/50 text-gray-100 text-center">
+                <button className="p-1 rounded-lg mt-10 bg-slate-500 hover:bg-indigo-600/50 text-gray-100 text-center">
                   <a
                     href={`https://map.kakao.com/link/map/${address},${latitude},${longitude}`}
                     target="_blank"
@@ -208,7 +208,7 @@ const Message = async ({
                   </a>
                 </button>
                 <Link href={`/products/${productId}`}>
-                  <button className="p-2 rounded-lg mt-10 bg-rose-300 hover:bg-indigo-600/50 text-gray-100 text-center">
+                  <button className="p-1 rounded-lg mt-10 bg-rose-300 hover:bg-indigo-600/50 text-gray-100 text-center">
                     제품보기
                   </button>
                 </Link>
@@ -223,10 +223,10 @@ const Message = async ({
         )}
         {messageType === "text" && (
           <div
-            className={`p-2 break-all text-white rounded-lg ${
+            className={`p-1 break-all text-white rounded-lg  ${
               isSender
-                ? "bg-indigo-500/60 rounded-tr-none"
-                : "bg-gray-500 rounded-tl-none"
+                ? "bg-indigo-500/60 rounded-tr-none mr-1"
+                : "bg-gray-500 rounded-tl-none ml-1"
             }`}
           >
             <p className="">{messageText}</p>
