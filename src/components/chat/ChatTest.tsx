@@ -7,6 +7,7 @@ import ChatHeader from "@/components/chat/ChatHeader";
 import Message from "@/components/chat/Message";
 import { TConversation, TUserWithChat } from "@/types";
 import useSWR from "swr";
+
 interface ChatTestProps {
   chatId: string;
   currentUser: any;
@@ -18,6 +19,12 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
     receiverImage: "",
   });
   const [layout, setLayout] = useState(false);
+
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     axios.get(`/api/chat/${chatId}`).then((response: any) => {
@@ -42,7 +49,7 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
     currentUserWithMessage?.conversations.find((conversation: TConversation) =>
       conversation.users.find((user) => user.id === receiver.receiverId)
     );
-  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
   return (
     <>
       {" "}
@@ -60,6 +67,12 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
           detailPage={true}
         />
       </div>
+      <button
+        className=" absolute right-2  bottom-20  p-2 border-2 border-indigo-500 rounded-full cursor-pointer hover:bg-indigo-300"
+        onClick={() => scrollToBottom()}
+      >
+        <FaArrowDown className=" text-indigo-500" />
+      </button>
       <div className="flex flex-col gap-8 p-4 overflow-auto h-[calc(100vh_-_60px_-_70px_-_80px)]">
         {conversation &&
           conversation.messages.map((message) => {

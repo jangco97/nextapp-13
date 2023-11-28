@@ -82,13 +82,18 @@ const Message = async ({
   };
   return (
     <div
-      className="grid w-full grid-cols-[40px_1fr] gap-3 mx-auto"
-      style={{ direction: `${isSender ? "rtl" : "ltr"}` }}
+      className={`flex ${
+        isSender ? "flex-row-reverse" : "flex-row"
+      } w-full grid-cols-[40px_1fr] gap-3 mx-auto`}
     >
       <div>
         <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
       </div>
-      <div className="flex flex-col items-start justify-center">
+      <div
+        className={`flex flex-col ${
+          isSender ? "items-end" : "items-start"
+        } justify-center`}
+      >
         <div className="flex items-center gap-2 mb-2 text-sm">
           <span className="font-medium">
             {isSender ? (
@@ -224,7 +229,7 @@ const Message = async ({
                 : "bg-gray-500 rounded-tl-none"
             }`}
           >
-            <p>{messageText}</p>
+            <p className="">{messageText}</p>
           </div>
         )}
       </div>
