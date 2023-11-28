@@ -82,7 +82,7 @@ const Message = async ({
   };
   return (
     <div
-      className={`flex ${
+      className={`flex gap-2 ${
         isSender ? "flex-row-reverse" : "flex-row"
       } w-full grid-cols-[40px_1fr] gap-3 mx-auto `}
     >
@@ -108,7 +108,7 @@ const Message = async ({
         </div>
         {messageType === "reservation" && (
           <div
-            className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg w-3/4 md:w-1/6 ${
+            className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg  ${
               isSender
                 ? "bg-indigo-500/70 rounded-tr-none"
                 : "bg-gray-600 rounded-tl-none"
@@ -163,7 +163,7 @@ const Message = async ({
         )}
         {messageType === "cancelReservation" && (
           <div
-            className={`p-1 break-all text-white rounded-lg w-3/4 md:w-1/6 ${
+            className={`p-1 break-all text-white rounded-lg  ${
               isSender
                 ? "bg-indigo-500/60 rounded-tr-none"
                 : "bg-gray-500 rounded-tl-none"
@@ -175,7 +175,7 @@ const Message = async ({
         )}
         {messageType === "meetTime" && (
           <div
-            className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg w-3/4 md:w-1/6 ${
+            className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg  ${
               isSender
                 ? "bg-indigo-500/70 rounded-tr-none"
                 : "bg-gray-600 rounded-tl-none"
@@ -223,7 +223,7 @@ const Message = async ({
         )}
         {messageType === "text" && (
           <div
-            className={`p-1 break-all text-white rounded-lg max-w-sm md:max-w-lg${
+            className={`p-1 break-all text-white rounded-lg max-w-[70%]${
               isSender
                 ? "bg-indigo-500/60 rounded-tr-none"
                 : "bg-gray-500 rounded-tl-none"
