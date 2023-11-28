@@ -45,7 +45,6 @@ const UserPurchase = ({
             purchaseType: "구매",
           }),
         });
-
         queryClient.invalidateQueries({ queryKey: ["meettime"] });
         router.refresh();
         alert("구매확정이 완료되었습니다.");
@@ -68,6 +67,7 @@ const UserPurchase = ({
             purchaseType: "판매",
           }),
         });
+        queryClient.invalidateQueries({ queryKey: ["meettime"] });
         router.refresh();
         alert("판매확정이 완료되었습니다.");
       } catch (error: any) {
