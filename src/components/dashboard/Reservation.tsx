@@ -16,6 +16,7 @@ interface ReservationType {
   handleDateChange: any;
   reservationType: string;
   currentUser: any;
+  isLoading?: boolean;
 }
 const Reservation = ({
   products,
@@ -24,6 +25,7 @@ const Reservation = ({
   handleDateChange,
   reservationType,
   currentUser,
+  isLoading,
 }: ReservationType) => {
   if (reservationType === "구매예약") {
     products = products?.filter((product: any) => {
@@ -174,6 +176,7 @@ const Reservation = ({
                       </div>
                       <div>
                         <button
+                          disabled={isLoading}
                           className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"
                           onClick={() =>
                             setMeetTime(

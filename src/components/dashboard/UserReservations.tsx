@@ -9,6 +9,7 @@ import ReservationButton from "./button/ReservationButton";
 import useSWRMutation from "swr/mutation";
 import { formatTime } from "@/helpers/dayjs";
 import { useQueryClient } from "@tanstack/react-query";
+import { set } from "date-fns";
 const UserReservation = ({
   currentUser,
   buyingHistory,
@@ -30,7 +31,7 @@ const UserReservation = ({
   const params = useSearchParams();
   const currentQuery = qs.parse(params?.toString());
   const { myReservation, acceptedReservation } = data || {};
-  console.log(data, "data");
+  const [isLoading2, setIsLoading2] = useState(false);
 
   useEffect(() => {
     if ("reservations" in currentQuery) {
@@ -76,6 +77,7 @@ const UserReservation = ({
     longitude: number
   ) => {
     if (!currentUser) return;
+    setIsLoading2(true);
     try {
       trigger({
         text: `${formatTime(selectedDates[reservationId])}`,
@@ -90,6 +92,8 @@ const UserReservation = ({
       });
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading2(false);
     }
     try {
       const response = await fetch(`/api/reservation`, {
@@ -166,6 +170,7 @@ const UserReservation = ({
             handleDateChange={handleDateChange}
             selectedDates={selectedDates}
             reservationType={"판매예약"}
+            isLoading={isLoading2}
           />
         )}
 
