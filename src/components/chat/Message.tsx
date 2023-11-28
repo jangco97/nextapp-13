@@ -82,7 +82,7 @@ const Message = async ({
   };
   return (
     <div
-      className={`flex gap-2 ${
+      className={`flex gap-3 ${
         isSender ? "flex-row-reverse" : "flex-row"
       } w-full grid-cols-[40px_1fr] gap-3 mx-auto `}
     >
@@ -223,7 +223,7 @@ const Message = async ({
         )}
         {messageType === "text" && (
           <div
-            className={`p-1 break-all text-white rounded-lg max-w-[70%]${
+            className={`p-1 break-all text-white rounded-lg ${
               isSender
                 ? "bg-indigo-500/60 rounded-tr-none"
                 : "bg-gray-500 rounded-tl-none"
