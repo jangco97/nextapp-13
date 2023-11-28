@@ -94,7 +94,7 @@ const Message = async ({
           isSender ? "items-end" : "items-start"
         } justify-center`}
       >
-        <div className="flex items-center gap-2 mb-2 text-sm">
+        <div className="flex items-center gap-1 mb-2 text-sm">
           <span className="font-medium">
             {isSender ? (
               "You"
@@ -108,13 +108,13 @@ const Message = async ({
         </div>
         {messageType === "reservation" && (
           <div
-            className={`flex items-center gap-2 mb-2 text-sm  p-1 break-all text-white rounded-lg ${
+            className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg ${
               isSender
                 ? "bg-indigo-500/70 rounded-tr-none"
                 : "bg-gray-600 rounded-tl-none"
             }`}
           >
-            <div className="flex flex-col items-center p-10 ">
+            <div className="flex flex-col items-center p-3 ">
               {messageImage && (
                 <div className="rounded-full mx-p[0.6rem] max-w-[80%] mb-5">
                   <Image src={messageImage} width={200} height={200} alt="" />
@@ -175,13 +175,13 @@ const Message = async ({
         )}
         {messageType === "meetTime" && (
           <div
-            className={`flex items-center gap-2 mb-2 text-sm  p-1 break-all text-white rounded-lg ${
+            className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg ${
               isSender
                 ? "bg-indigo-500/70 rounded-tr-none"
                 : "bg-gray-600 rounded-tl-none"
             }`}
           >
-            <div className="flex flex-col items-center p-10 ">
+            <div className="flex flex-col items-center p-3">
               <div
                 className={`p-1 break-all text-white rounded-lg ${
                   isSender
@@ -225,8 +225,8 @@ const Message = async ({
           <div
             className={`p-1 break-all text-white rounded-lg  ${
               isSender
-                ? "bg-indigo-500/60 rounded-tr-none mr-1"
-                : "bg-gray-500 rounded-tl-none ml-1"
+                ? "bg-indigo-500/60 rounded-tr-none"
+                : "bg-gray-500 rounded-tl-none"
             }`}
           >
             <p className="">{messageText}</p>
