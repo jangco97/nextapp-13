@@ -98,11 +98,11 @@ const Message = async ({
               <span className="text-xs text-gray-600 opacity-60">
                 {fromNow(messageTime)}
               </span>
-            </div>
-            <div className={`w-[30px] h-[30px]`}>
-              <Avatar
-                src={senderImage && isSender ? senderImage : receiverImage}
-              />
+              <div className={`w-[30px] h-[30px]`}>
+                <Avatar
+                  src={senderImage && isSender ? senderImage : receiverImage}
+                />
+              </div>
             </div>
           </div>
         ) : (
@@ -111,12 +111,12 @@ const Message = async ({
               isSender ? "items-end" : "items-start"
             } justify-center`}
           >
-            <div className={`w-[30px] h-[30px]`}>
-              <Avatar
-                src={senderImage && isSender ? senderImage : receiverImage}
-              />
-            </div>
             <div className="flex items-center gap-1 mb-2 text-sm">
+              <div className={`w-[30px] h-[30px]`}>
+                <Avatar
+                  src={senderImage && isSender ? senderImage : receiverImage}
+                />
+              </div>
               <span className="font-medium">
                 <Link href={`/user/${receiverId}`}>{receiverName}</Link>
               </span>
