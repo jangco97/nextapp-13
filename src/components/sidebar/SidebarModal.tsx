@@ -25,7 +25,6 @@ const SidebarModal = ({
   const { data } = useQuery<User>({
     queryKey: ["user", session?.user?.favoriteIds],
     queryFn: () => getUser(),
-
     staleTime: 5 * 1000,
   });
   const { data: chatData } = useQuery({
