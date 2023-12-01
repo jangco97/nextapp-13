@@ -32,6 +32,7 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
     <div className="w-full">
       <div>
         <ChatHeader
+          detailPage={false}
           setLayout={setLayout}
           receiverName={receiver.receiverName}
           receiverImage={receiver.receiverImage}
