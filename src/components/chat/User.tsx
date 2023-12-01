@@ -32,7 +32,7 @@ const User = ({ user, currentUserId, unReadMessage }: UserProps) => {
       </div>
 
       <div className="flex justify-end text-xs text-gray-500">
-        {unReadMessage.length > 0 ? (
+        {unReadMessage?.length > 0 ? (
           <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
             {unReadMessage?.length}
           </div>

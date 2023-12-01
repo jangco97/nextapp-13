@@ -61,6 +61,7 @@ const Message = async ({
         messageId: messageId,
       }),
     });
+    router.refresh();
     setIsLoading(false);
   };
   const createReservation = async () => {
@@ -76,6 +77,7 @@ const Message = async ({
         sellerId: receiverId,
       }),
     });
+    router.refresh();
     setIsLoading(false);
   };
   return (

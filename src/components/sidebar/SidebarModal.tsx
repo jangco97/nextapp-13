@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
 import { useQuery } from "@tanstack/react-query";
 import { User } from "prisma/generated/client";
+
 const SidebarModal = ({
   session,
   currentUser,
@@ -22,6 +23,7 @@ const SidebarModal = ({
     const data = await response.json();
     return data;
   }
+
   const { data } = useQuery<User>({
     queryKey: ["user", session?.user?.favoriteIds],
     queryFn: () => getUser(),

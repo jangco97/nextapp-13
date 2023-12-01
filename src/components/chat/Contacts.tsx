@@ -20,14 +20,17 @@ const Contacts = ({
   setLayout,
   setReceiver,
 }: ContactsProps) => {
+  console.log(users);
+  console.log(currentUser);
   const queryClient = useQueryClient();
   const { data } = useQuery<any>({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
     staleTime: 0,
   });
-  const readMessageStatus = async (userId: string) => {
-    await fetch(`/api/chat/${userId}`, {
+
+  const readMessageStatus = (userId: string) => {
+    fetch(`/api/chat/${userId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

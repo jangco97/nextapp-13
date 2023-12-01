@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaPlus } from "react-icons/fa6";
-import { BiLineChart } from "react-icons/bi";
 import { BiSolidUser } from "react-icons/bi";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
