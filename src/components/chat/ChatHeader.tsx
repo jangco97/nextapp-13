@@ -25,19 +25,20 @@ const ChatHeader = ({
   return (
     <div className="pl-4 border-b-[1px]">
       <div className="flex items-center h-16 gap-4">
-        <div className="flex items-center justify-center text-3xl text-gray-500 hover:text-gray-800">
-          <button onClick={() => setLayout(false)} className="md:hidden">
-            <IoChevronBackCircleSharp />
-          </button>
-        </div>
+        {!detailPage && (
+          <div className="flex items-center justify-center text-3xl text-gray-500 hover:text-gray-800">
+            <button onClick={() => setLayout(false)} className="md:hidden">
+              <IoChevronBackCircleSharp />
+            </button>
+          </div>
+        )}
 
-        <div className="flex items-center gap-[0.6rem]">
+        <div className="flex items-center gap-[0.6rem] font-semibold text-sm md:text-lg">
           <div>
-            <Link href={`/user/${receiverId}`}></Link>
             <Avatar src={receiverImage} />
           </div>
-          <h2 className="text-lg font-semibold">
-            {receiverName}
+          <h2>
+            <Link href={`/user/${receiverId}`}>{receiverName}</Link>
             {lastMessageTime && (
               <p className="text-gray-600">{formatTime(lastMessageTime)}</p>
             )}

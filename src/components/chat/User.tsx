@@ -8,15 +8,12 @@ interface UserProps {
   unReadMessage: any;
 }
 const User = ({ user, currentUserId, unReadMessage }: UserProps) => {
-  console.log(currentUserId);
-  console.log(user);
   const messagesWithCurrentUser = user.conversations.find(
     (conversation: TConversation) =>
       conversation.users.find((user) => user.id === currentUserId)
   );
-  console.log(messagesWithCurrentUser);
   let latestMessage = messagesWithCurrentUser?.messages.slice(-1)[0];
-  console.log(latestMessage);
+
   return (
     <div className="grid grid-cols-[40px_1fr_50px] grid-rows-[40px] gap-3 py-3 px-4 border-b-[1px] hover:cursor-pointer hover:bg-orange-500">
       <div>

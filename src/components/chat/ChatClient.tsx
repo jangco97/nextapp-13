@@ -17,9 +17,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
     receiverImage: "",
   });
   const [layout, setLayout] = useState(false);
-  useEffect(() => {
-    axios.get(`/api/chat`).then((response) => console.log(response));
-  });
+
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const {
     data: users,

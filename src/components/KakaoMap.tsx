@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useState } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
