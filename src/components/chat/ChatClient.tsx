@@ -30,18 +30,10 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
     (user: TUserWithChat) => user.email === currentUser?.email
   );
 
-  if (error)
-    return (
-      <div className="flex justify-center items-center h-[100vh] ">
-        <h1 className="text-2xl font-bold">채팅을 불러오는데 실패했습니다.</h1>
-      </div>
-    );
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center h-[100vh] ">
-        <h1 className="text-2xl font-bold">채팅을 불러오는 중입니다.</h1>
-      </div>
-    );
+  if (error) return <p>채팅을 불러오는데 실패했습니다.</p>;
+
+  if (isLoading) return <p>Loading...</p>;
+
   return (
     <Container>
       <div className="grid grid-cols-[1fr] md:grid-cols-[300px_1fr]">
