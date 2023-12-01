@@ -11,13 +11,12 @@ const NavbarItem = ({
 }: {
   currentUser: any;
   data: any;
-  chatData: any;
+  chatData?: any;
 }) => {
   const router = useRouter();
   const unReadMessage = chatData?.receivedMessages?.filter(
     (message: any) => message.isRead === false
   );
-
   return (
     <ul
       className={`flex text-md flex-col ml-5 items-start md:mr-2 md:flex-row md:justify-center md:gap-4 md:w-full md:items-center  `}
@@ -26,9 +25,6 @@ const NavbarItem = ({
       <li className="py-2 text-center border-b-4 cursor-pointer">
         <Link href={"/"}>홈</Link>
       </li>
-      {/* <li className="py-2 text-center border-b-4 cursor-pointer">
-        <Link href={"/pricechart"}>시세조회</Link>
-      </li> */}
       <li className="py-2 flex justify-evenly text-center border-b-4 cursor-pointer">
         <Link href={"/products/upload"}>판매하기</Link>
       </li>

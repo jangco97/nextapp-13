@@ -23,7 +23,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
-    staleTime: 5 * 1000 * 60,
+    staleTime: 0,
     enabled: isSessionValid,
   });
   const unReadMessage = chatData?.receivedMessages?.filter(

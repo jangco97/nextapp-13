@@ -24,7 +24,7 @@ const Contacts = ({
   const { data } = useQuery<any>({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
-    staleTime: 5 * 1000 * 60,
+    staleTime: 0,
   });
   const readMessageStatus = async (userId: string) => {
     await fetch(`/api/chat/${userId}`, {
