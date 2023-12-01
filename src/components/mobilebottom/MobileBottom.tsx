@@ -9,21 +9,15 @@ import { useQuery } from "@tanstack/react-query";
 import { User } from "prisma/generated/client";
 
 const MobileBottom = ({ currentUser }: { currentUser: any }) => {
-  const [isSessionValid, setIsSessionValid] = useState<boolean>(false);
-  useEffect(() => {
-    setIsSessionValid(currentUser?.id ? true : false);
-  }, [currentUser]);
   const { data } = useQuery<User>({
     queryKey: ["user", currentUser?.favoriteIds],
     queryFn: () => fetch("/api/usercart").then((res) => res.json()),
     staleTime: 5 * 1000 * 60,
-    enabled: isSessionValid,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
     staleTime: 0,
-    enabled: isSessionValid,
   });
   const unReadMessage = chatData?.receivedMessages?.filter(
     (message: any) => message.isRead === false

@@ -20,8 +20,6 @@ const Contacts = ({
   setLayout,
   setReceiver,
 }: ContactsProps) => {
-  console.log(users);
-  console.log(currentUser);
   const queryClient = useQueryClient();
   const { data } = useQuery<any>({
     queryKey: ["chat"],

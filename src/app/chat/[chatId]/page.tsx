@@ -1,9 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import Input from "@/components/chat/Input";
-import ChatHeader from "@/components/chat/ChatHeader";
-import Message from "@/components/chat/Message";
 import ChatTest from "@/components/chat/ChatTest";
 import Container from "@/components/Container";
 

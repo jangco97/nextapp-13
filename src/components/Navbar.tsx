@@ -24,12 +24,9 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
   if (params) {
     currentQuery = qs.parse(params?.toString()); //{'category' : 'interior', 'page' : '2'}
   }
-  const [isSessionValid, setIsSessionValid] = useState<boolean>(false);
 
   // 로그인 상태에 따라 상태 업데이트
-  useEffect(() => {
-    setIsSessionValid(session?.user?.id ? true : false);
-  }, [session]);
+
   const {
     register,
     watch,
@@ -49,13 +46,11 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
     queryKey: ["user", currentUser?.favoriteIds],
     queryFn: () => fetch("/api/usercart").then((res) => res.json()),
     staleTime: 5 * 1000 * 60,
-    enabled: isSessionValid,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
     staleTime: 0,
-    enabled: isSessionValid,
   });
   console.log(chatData, "chatData");
   return (

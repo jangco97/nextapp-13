@@ -4,7 +4,6 @@ import Avatar from "../Avatar";
 import { fromNow } from "@/helpers/dayjs";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 interface MessageProps {
   isSender: boolean;
@@ -46,7 +45,6 @@ const Message = async ({
   longitude,
   productTitle,
 }: MessageProps) => {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const patchAccepted = async (num: number) => {
@@ -61,7 +59,6 @@ const Message = async ({
         messageId: messageId,
       }),
     });
-    router.refresh();
     setIsLoading(false);
   };
   const createReservation = async () => {
@@ -77,7 +74,7 @@ const Message = async ({
         sellerId: receiverId,
       }),
     });
-    router.refresh();
+
     setIsLoading(false);
   };
   return (
