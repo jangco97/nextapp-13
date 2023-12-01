@@ -40,7 +40,7 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
     data: users,
     error,
     isLoading,
-  } = useSWR(`/api/chat`, fetcher, { refreshInterval: 2000 });
+  } = useSWR(`/api/chat`, fetcher, { refreshInterval: 1000 });
   const currentUserWithMessage = users?.find(
     (user: TUserWithChat) => user.email === currentUser?.email
   );
@@ -49,7 +49,18 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
     currentUserWithMessage?.conversations.find((conversation: TConversation) =>
       conversation.users.find((user) => user.id === receiver.receiverId)
     );
-
+  if (error)
+    return (
+      <div className="flex justify-center items-center h-[100vh] ">
+        <h1 className="text-2xl font-bold">채팅을 불러오는데 실패했습니다.</h1>
+      </div>
+    );
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-[100vh] ">
+        <h1 className="text-2xl font-bold">채팅을 불러오는 중입니다.</h1>
+      </div>
+    );
   return (
     <>
       {" "}
