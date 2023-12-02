@@ -55,7 +55,6 @@ const Contacts = ({
         {users?.length > 0 &&
           users
             .filter((user) => user.id !== currentUser?.id)
-            .filter((user) => user.conversations.length > 0)
             .map((user) => {
               let unReadMessage = data?.receivedMessages?.filter(
                 (message: any) =>

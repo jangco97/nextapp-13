@@ -18,7 +18,7 @@ export const fetchChatData = async () => {
   return response.data;
 };
 
-const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
+const ChatTestClient = ({ chatId, currentUser }: ChatTestProps) => {
   const [receiver, setReceiver] = useState({
     receiverId: "",
     receiverName: "",
@@ -142,4 +142,4 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
   );
 };
 
-export default ChatTest;
+export default ChatTestClient;
