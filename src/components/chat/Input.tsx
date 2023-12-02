@@ -94,6 +94,7 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
         multiple={false}
         onChange={(e) => previewImage(e, setImagePreview, setImage)}
       />
+
       <div
         className="text-2xl text-gray-200 cursor-pointer"
         onClick={chooseImage}
