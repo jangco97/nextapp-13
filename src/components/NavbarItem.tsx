@@ -34,7 +34,7 @@ const NavbarItem = ({
           {data?.favoriteIds?.length | 0}
         </div>
       </li>
-      <li className="py-2 text-center border-b-4 cursor-pointer">
+      <li className="py-2 text-center cursor-pointer">
         <Link href={"/user?products"}>마이페이지</Link>
       </li>
       <li className="py-2 flex justify-evenly text-center  cursor-pointer">
@@ -49,10 +49,10 @@ const NavbarItem = ({
         </li>
       ) : (
         <>
-          <li className="py-2 text-center border-b-4 cursor-pointer">
+          <li className="py-2 text-center cursor-pointer">
             <button onClick={() => router.push("/auth/login")}>로그인</button>
           </li>
-          <li className="py-2 text-center border-b-4 cursor-pointer">
+          <li className="py-2 text-center cursor-pointer">
             <button onClick={() => router.push("/auth/register")}>
               회원가입
             </button>

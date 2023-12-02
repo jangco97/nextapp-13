@@ -103,7 +103,7 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
       </div>
       <button
         type="submit"
-        className="flex items-center justify-center p-2 text-gray-900 bg-indigo-300 rounded-lg cursor-pointer hover:bg-indigo-500 disabled:opacity-60"
+        className="flex items-center justify-center p-2 text-gray-900 bg-indigo-500 rounded-lg cursor-pointer hover:bg-indigo-700 disabled:opacity-60"
       >
         <BiMailSend className="text-white" />
       </button>
