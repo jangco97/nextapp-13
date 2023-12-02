@@ -28,7 +28,7 @@ const Contacts = ({
     refetchInterval: 1000,
   });
 
-  const readMessageStatus = (userId: string) => {
+  const readMessageStatus = async (userId: string) => {
     fetch(`/api/chat/${userId}`, {
       method: "PATCH",
       headers: {

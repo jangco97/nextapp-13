@@ -37,6 +37,7 @@ const LoginPage = () => {
         if (callback?.ok && !callback?.error) {
           toast.success("로그인 성공!");
           router.push("/");
+          router.refresh();
         }
       })
       .finally(() => setIsLoading(false));
