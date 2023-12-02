@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import ChatTest from "./ChatTest";
+import ChatTestClient from "./ChatTestClient";
 import Container from "@/components/Container";
 
 interface ChatDetailPageProps {
@@ -14,7 +14,7 @@ const ChatDetailPage = async ({ params }: { params: ChatDetailPageProps }) => {
   return (
     <Container>
       <div className="w-full">
-        <ChatTest chatId={chatId} currentUser={currentUser} />
+        <ChatTestClient chatId={chatId} currentUser={currentUser} />
       </div>
     </Container>
   );
