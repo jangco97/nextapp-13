@@ -118,6 +118,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
           </div>
           <div className="">
             {currentUser?.id !== product?.user?.id &&
+              currentUser?.id &&
               product.status === "판매중" && (
                 <form onSubmit={handleSubmit}>
                   <div className="mt-10 ">
@@ -125,7 +126,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
                   </div>
                 </form>
               )}
-            {currentUser?.id !== product?.user?.id && (
+            {currentUser?.id !== product?.user?.id && currentUser?.id && (
               <div className="mt-10 ">
                 <Button
                   onClick={() => router.push(`/chat/${product?.user?.id}`)}
