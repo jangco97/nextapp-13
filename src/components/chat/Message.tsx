@@ -25,7 +25,7 @@ interface MessageProps {
   longitude?: number | null;
   productTitle?: string | null;
 }
-const Message = async ({
+const Message = ({
   isSender,
   messageText,
   messageImage,

@@ -50,7 +50,7 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
       >
         <FaArrowDown className=" text-indigo-500" />
       </button>
-      <div className="flex flex-col gap-8 p-1 overflow-auto h-[calc(100vh_-_60px_-_70px_-_80px)]">
+      <div className="flex flex-col gap-8 p-4 overflow-auto h-[calc(100vh_-_60px_-_70px_-_80px)]">
         {conversation &&
           conversation.messages.map((message) => {
             return (
