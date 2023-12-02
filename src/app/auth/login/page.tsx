@@ -37,7 +37,6 @@ const LoginPage = () => {
         if (callback?.ok && !callback?.error) {
           toast.success("로그인 성공!");
           router.push("/");
-          router.refresh();
         }
       })
       .finally(() => setIsLoading(false));
@@ -63,7 +62,7 @@ const LoginPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col justify-center gap-4 min-w-[350px]"
         >
-          <h1 className="text-2xl">Login</h1>
+          <h1 className="text-2xl">로그인</h1>
           <Input
             id="email"
             type="email"
