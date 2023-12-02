@@ -56,6 +56,7 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
     queryKey: ["chatuser", chatId],
     queryFn: fetchChatData,
     staleTime: 0,
+    refetchInterval: 1000,
   });
   const currentUserWithMessage = users?.find(
     (user: TUserWithChat) => user.email === currentUser?.email
