@@ -18,7 +18,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
   });
   const [layout, setLayout] = useState(false);
   useEffect(() => {
-    axios.get(`/api/chat`).then((response) => console.log(response));
+    axios.get("/api/chat").then((response) => console.log(response));
   });
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const {
@@ -29,7 +29,6 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
   const currentUserWithMessage = users?.find(
     (user: TUserWithChat) => user.email === currentUser?.email
   );
-
   if (error)
     return (
       <div className="flex justify-center items-center h-[100vh] ">
