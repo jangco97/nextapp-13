@@ -49,7 +49,7 @@ const RegisterPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col justify-center gap-4 min-w-[350px]"
         >
-          <h1 className="text-2xl">Register</h1>
+          <h1 className="text-2xl">회원가입</h1>
           <RegisterInput
             label="Email"
             type="email"

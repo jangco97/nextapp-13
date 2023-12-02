@@ -1,7 +1,7 @@
 "use client";
 import React, { FormEvent, useRef, useState } from "react";
 import { IoImageOutline } from "react-icons/io5";
-import { RiSendPlaneLine } from "react-icons/ri";
+import { BiMailSend } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import useSWRMutation from "swr/mutation";
 import { previewImage } from "@/helpers/previewImage";
@@ -103,9 +103,9 @@ const Input = ({ receiverId, currentUserId }: InputProps) => {
       </div>
       <button
         type="submit"
-        className="flex items-center justify-center p-2 text-gray-900 bg-orange-300 rounded-lg cursor-pointer hover:bg-orange-500 disabled:opacity-60"
+        className="flex items-center justify-center p-2 text-gray-900 bg-indigo-300 rounded-lg cursor-pointer hover:bg-indigo-500 disabled:opacity-60"
       >
-        <RiSendPlaneLine className="text-white" />
+        <BiMailSend className="text-white" />
       </button>
     </form>
   );
