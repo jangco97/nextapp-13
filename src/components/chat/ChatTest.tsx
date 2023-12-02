@@ -7,11 +7,16 @@ import ChatHeader from "@/components/chat/ChatHeader";
 import Message from "@/components/chat/Message";
 import { TConversation, TUserWithChat } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { fetchChatData } from "./get";
+
 interface ChatTestProps {
   chatId: string;
   currentUser: any;
 }
+
+export const fetchChatData = async () => {
+  const response = await axios.get(`/api/chat`);
+  return response.data;
+};
 
 const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
   const [receiver, setReceiver] = useState({
