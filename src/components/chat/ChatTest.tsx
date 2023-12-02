@@ -6,7 +6,7 @@ import Input from "@/components/chat/Input";
 import ChatHeader from "@/components/chat/ChatHeader";
 import Message from "@/components/chat/Message";
 import { TConversation, TUserWithChat } from "@/types";
-import useSWR from "swr";
+import { useQuery } from "@tanstack/react-query";
 
 interface ChatTestProps {
   chatId: string;
@@ -35,16 +35,31 @@ const ChatTest = ({ chatId, currentUser }: ChatTestProps) => {
       });
     });
   }, [chatId]);
-  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  // const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  // const {
+  //   data: users,
+  //   error,
+  //   isLoading,
+  // } = useSWR(`/api/chat`, fetcher, { refreshInterval: 1000 });
+  // const currentUserWithMessage = users?.find(
+  //   (user: TUserWithChat) => user.email === currentUser?.email
+  // );
+  const fetchChatData = async () => {
+    const response = await axios.get(`/api/chat`);
+    return response.data;
+  };
   const {
     data: users,
     error,
     isLoading,
-  } = useSWR(`/api/chat`, fetcher, { refreshInterval: 1000 });
+  } = useQuery({
+    queryKey: ["chatuser", chatId],
+    queryFn: fetchChatData,
+    staleTime: 0,
+  });
   const currentUserWithMessage = users?.find(
     (user: TUserWithChat) => user.email === currentUser?.email
   );
-
   const conversation: TConversation | undefined =
     currentUserWithMessage?.conversations.find((conversation: TConversation) =>
       conversation.users.find((user) => user.id === receiver.receiverId)
