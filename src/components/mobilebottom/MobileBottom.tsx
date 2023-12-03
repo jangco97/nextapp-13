@@ -12,7 +12,8 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
   const { data } = useQuery<User>({
     queryKey: ["user", currentUser?.favoriteIds],
     queryFn: () => fetch("/api/usercart").then((res) => res.json()),
-    staleTime: 5 * 1000 * 60,
+    staleTime: 1000 * 60,
+    refetchInterval: 60 * 1000,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],

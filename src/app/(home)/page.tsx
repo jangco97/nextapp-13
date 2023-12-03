@@ -4,7 +4,6 @@ import getCurrentUser from "../actions/getCurrentUser";
 import Container from "@/components/Container";
 import EmptyState from "@/components/EmptyState";
 import ProductCard from "@/components/products/ProductCard";
-import FloatingButton from "@/components/FloatingButton";
 import Categories from "@/components/categories/Categories";
 import Pagination from "@/components/Pagination";
 import { Product } from "../../../prisma/generated/client";
@@ -54,7 +53,6 @@ export default async function Home({ searchParams }: HomeProps) {
           totalItems={products.totalItems}
           perPage={PRODUCTS_PER_PAGE}
         />
-        <FloatingButton href={"/products/upload"}>+</FloatingButton>
       </Container>
     </>
   );
