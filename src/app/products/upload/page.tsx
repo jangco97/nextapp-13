@@ -1,10 +1,10 @@
 "use client";
-import Container from "@/components/Container";
-import Heading from "@/components/Heading";
+import Container from "@/components/shared/Container";
+import Heading from "@/components/shared/Heading";
 import ImageUpload from "@/components/ImageUpload";
 import { Modal, Button } from "antd";
 import DaumPostcode from "react-daum-postcode";
-import Input from "@/components/Input";
+import Input from "@/components/shared/Input";
 import CategoryInput from "@/components/categories/CategoryInput";
 import { mainCategories, subCategories } from "@/constants";
 import dynamic from "next/dynamic";
@@ -69,7 +69,7 @@ const ProductUploadPage = () => {
   const latitude = watch("latitude");
   const longitude = watch("longitude");
   const address = watch("address");
-  const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
+  const KakaoMap = dynamic(() => import("@/components/services/KakaoMap"), {
     ssr: false,
   });
 

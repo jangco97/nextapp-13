@@ -1,10 +1,10 @@
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import React from "react";
 import getCurrentCarts from "../actions/getCurrentCarts";
 import Link from "next/link";
 import Image from "next/image";
 import getCurrentUser from "../actions/getCurrentUser";
-import HeartButton from "@/components/HeartButton";
+import HeartButton from "@/components/products/HeartButton";
 import { FaLocationDot } from "react-icons/fa6";
 const CartPage = async () => {
   const carts = await getCurrentCarts();

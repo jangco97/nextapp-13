@@ -1,11 +1,11 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import ToastProvider from "@/components/ToastProvider";
 import { NextAuthProvider } from "./provider";
 import { SidebarProvider } from "@/context/sidebaropen.context";
-import SidebarModal from "@/components/sidebar/SidebarModal";
+import SidebarModal from "@/components/layout/sidebar/SidebarModal";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import Providers from "@/utils/provider";

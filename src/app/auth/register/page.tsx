@@ -1,14 +1,14 @@
 "use client";
-import RegisterInput from "@/components/RegisterInput";
+import RegisterInput from "@/components/shared/RegisterInput";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import Button from "@/components/Button";
+import Button from "@/components/shared/Button";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import { EMAIL_REGEX, PASSWORD_REGEX, NotSpecial_REGEX } from "@/constants";
 
 const RegisterPage = () => {

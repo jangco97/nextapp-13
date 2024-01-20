@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import getCurrentUser from "../actions/getCurrentUser";
 import getUserProducts from "../actions/getUserProducts";
 import { Params } from "../actions/getUserProducts";
@@ -11,7 +11,7 @@ import getBuyingHistory from "../actions/getBuyingHistory";
 import getSellingHistory from "../actions/getSellingHistory";
 import Navigation from "@/components/dashboard/navigation/Navigation";
 import getUserReviews from "../actions/getUserReviews";
-import Avatar from "@/components/Avatar";
+import Avatar from "@/components/shared/Avatar";
 
 const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const carts = await getCurrentCarts();

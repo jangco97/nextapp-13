@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { TUserWithChat } from "@/types";
 import Contacts from "@/components/chat/Contacts";
 import Chat from "@/components/chat/Chat";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 interface ChatClientProps {
   currentUser?: User | null;
 }

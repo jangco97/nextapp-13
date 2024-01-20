@@ -1,6 +1,6 @@
 import { TConversation, TUserWithChat } from "@/types";
 import React from "react";
-import Avatar from "../Avatar";
+import Avatar from "../shared/Avatar";
 import { fromNow } from "@/helpers/dayjs";
 interface UserProps {
   user: TUserWithChat;

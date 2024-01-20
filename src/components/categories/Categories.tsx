@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import FilterButton from "../filters/FilterButton";
-import PriceFilterButton from "../filters/PriceFilterButton";
+import FilterButton from "../filterbutton/FilterButton";
+import PriceFilterButton from "../filterbutton/PriceFilterButton";
 import CategoryCircle from "./CategoryCircle";
 import LocationComponent from "../myposition/LocationComponent";
 import Link from "next/link";

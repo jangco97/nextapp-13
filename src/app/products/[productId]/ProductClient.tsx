@@ -1,5 +1,5 @@
 "use client";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import { mainCategories, subCategories } from "@/constants";
 import ProductHead from "@/components/products/ProductHead";
 import ProductInfo from "@/components/products/ProductInfo";
@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
-import Button from "@/components/Button";
+import Button from "@/components/shared/Button";
 import useSWRMutation from "swr/mutation";
 
 interface ProductClientProps {
@@ -24,7 +24,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   const subCategory = subCategories.find(
     (item) => item.categoryId === product.categories[1]
   );
-  const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
+  const KakaoMap = dynamic(() => import("@/components/services/KakaoMap"), {
     ssr: false,
   });
   const editRoute = () => {

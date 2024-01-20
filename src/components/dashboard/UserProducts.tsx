@@ -6,7 +6,7 @@ import qs from "query-string";
 import Link from "next/link";
 import { fromNow } from "@/helpers/dayjs";
 import Image from "next/image";
-import FilterButton from "../filters/FilterButton";
+import FilterButton from "@/components/filterbutton/FilterButton";
 import UserProductsButton from "./button/UserProductsButton";
 import ProductStatusButton from "./button/ProductStatusButton";
 import NothingComponents from "../NothingComponents";

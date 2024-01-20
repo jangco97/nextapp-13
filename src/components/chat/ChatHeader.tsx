@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
-import Avatar from "../Avatar";
+import Avatar from "../shared/Avatar";
 import { formatTime } from "@/helpers/dayjs";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

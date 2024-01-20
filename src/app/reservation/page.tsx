@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import React from "react";
 // reservation post를 통해 건내줘야 하는 것은
 //sellerId, buyerId, productId, meetTime
@@ -13,9 +13,6 @@ import React from "react";
 
 const ReservationPage = () => {
   return;
-  <Container>
-    <div className="text-center">예약 상품 확인하기</div>
-  </Container>;
 };
 
 export default ReservationPage;

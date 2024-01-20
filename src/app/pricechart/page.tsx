@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import ProductLineChart from "@/components/ProductLineChart";
 import PriceChartSearch from "@/app/pricechart/PriceChartSearch";
 import React from "react";

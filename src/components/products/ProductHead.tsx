@@ -1,8 +1,8 @@
 "use client";
 import { User } from "../../../prisma/generated/client";
 import React from "react";
-import Heading from "../Heading";
-import HeartButton from "../HeartButton";
+import Heading from "../shared/Heading";
+import HeartButton from "./HeartButton";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import ProductImage from "./ProductImage";
 

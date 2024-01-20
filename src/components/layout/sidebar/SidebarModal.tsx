@@ -2,7 +2,7 @@
 import { SidebarContext } from "@/context/sidebaropen.context";
 import React, { useContext } from "react";
 import { mainCategories } from "@/constants";
-import CategoryBox from "../categories/CategoryBox";
+import CategoryBox from "@/components/categories/CategoryBox";
 import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
 import { useQuery } from "@tanstack/react-query";

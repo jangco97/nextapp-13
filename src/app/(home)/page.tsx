@@ -1,11 +1,11 @@
 import "../globals.css";
 import getProducts, { ProductParams } from "../actions/getProducts";
 import getCurrentUser from "../actions/getCurrentUser";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import EmptyState from "@/components/EmptyState";
 import ProductCard from "@/components/products/ProductCard";
 import Categories from "@/components/categories/Categories";
-import Pagination from "@/components/Pagination";
+import Pagination from "@/components/pagination/Pagination";
 import { Product } from "../../../prisma/generated/client";
 import { PRODUCTS_PER_PAGE } from "@/constants";
 

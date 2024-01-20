@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ChatTestClient from "./ChatTestClient";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 
 interface ChatDetailPageProps {
   chatId: string;

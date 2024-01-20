@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";
 import Image from "next/image";
-import HeartButton from "@/components/HeartButton";
+import HeartButton from "@/components/products/HeartButton";
 import { FaLocationDot } from "react-icons/fa6";
 const UserFavorites = ({
   carts,

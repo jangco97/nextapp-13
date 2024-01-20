@@ -3,7 +3,7 @@ import { Product, User } from "../../../prisma/generated/client";
 import Image from "next/image";
 import React, { use } from "react";
 import { useRouter } from "next/navigation";
-import HeartButton from "../HeartButton";
+import HeartButton from "./HeartButton";
 import { fromNow } from "@/helpers/dayjs";
 import { useSession } from "next-auth/react";
 import { FaLocationDot } from "react-icons/fa6";

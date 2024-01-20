@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Avatar from "../Avatar";
+import Avatar from "../shared/Avatar";
 import { fromNow } from "@/helpers/dayjs";
 import Image from "next/image";
 import Link from "next/link";

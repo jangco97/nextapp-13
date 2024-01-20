@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import Input from "@/components/Input";
+import Input from "@/components/shared/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Button from "@/components/Button";
+import Button from "@/components/shared/Button";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
