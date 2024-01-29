@@ -28,11 +28,13 @@ const SidebarModal = ({
     queryKey: ["user", session?.user?.favoriteIds],
     queryFn: () => getUser(),
     staleTime: 5 * 1000,
+    enabled: !!currentUser,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
-    staleTime: 0,
+    staleTime: 5 * 1000,
+    enabled: !!currentUser,
   });
   return (
     <div

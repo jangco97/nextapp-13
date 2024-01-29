@@ -47,12 +47,14 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
     queryFn: () => fetch("/api/usercart").then((res) => res.json()),
     staleTime: 1000 * 60,
     refetchInterval: 60 * 1000,
+    enabled: !!currentUser,
   });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
     staleTime: 60 * 1000,
-    refetchInterval: 1000,
+    refetchInterval: 60 * 1000,
+    enabled: !!currentUser,
   });
   console.log(chatData, "chatData");
   return (
