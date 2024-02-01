@@ -16,6 +16,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "줄건중고",
   description: "중고거래 웹 애플리케이션",
+  icons: {
+    icon: "/marketicon.png",
+  },
 };
 
 export default async function RootLayout({
