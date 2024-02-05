@@ -27,7 +27,6 @@ const PriceChartSearch = () => {
     },
   });
   const chartsearch = watch("chartsearch");
-  console.log(chartsearch);
   const router = useRouter();
   // const searchdata = async (data: any) => {
   //   setIsLoading(true);
@@ -62,8 +61,6 @@ const PriceChartSearch = () => {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
-      console.log(data);
-
       if (data.length > 0) {
         let sum = 0;
         data.map((item: any) => {
@@ -71,10 +68,9 @@ const PriceChartSearch = () => {
         });
         setAverage(sum / data.length);
       }
-      console.log(average);
     },
   });
-  console.log(mutation, "mutation");
+
   return (
     <>
       <div className="flex justify-center">

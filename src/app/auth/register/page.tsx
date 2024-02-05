@@ -31,11 +31,9 @@ const RegisterPage = () => {
     setIsLoading(true);
     try {
       const { data } = await axios.post("/api/register", body);
-      console.log(data);
       toast.success("회원가입이 완료되었습니다.");
       router.push("/auth/login");
     } catch (error) {
-      console.log(error);
       toast.error("회원가입에 실패했습니다.");
     } finally {
       setIsLoading(false);

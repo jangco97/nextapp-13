@@ -72,7 +72,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
       alert("예약이 완료되었습니다.");
       router.push(`/chat/${product.userId}`);
     } catch (error) {
-      console.error(error);
+      alert("예약에 실패했습니다.");
     } finally {
       setIsLoading(false);
     }

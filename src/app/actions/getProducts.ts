@@ -15,7 +15,6 @@ export interface ProductParams {
   distance?: number;
 }
 export default async function getProducts(params: ProductParams) {
-  console.log(params, "params");
   try {
     const {
       latitude,

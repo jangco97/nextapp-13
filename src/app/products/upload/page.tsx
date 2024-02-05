@@ -15,7 +15,7 @@ import axios from "axios";
 import { getSession } from "next-auth/react";
 import { toast } from "react-toastify";
 const session = getSession();
-console.log(session, "session");
+
 export interface Address {
   address: string;
   zonecode: string;
@@ -58,7 +58,6 @@ const ProductUploadPage = () => {
       })
       .catch((err) => {
         toast.error("상품 등록에 실패했습니다.");
-        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -125,14 +124,13 @@ const ProductUploadPage = () => {
     if (!latitude || !longitude) return;
     setValue("latitude", latitude);
     setValue("longitude", longitude);
-    console.log(latitude, longitude);
   };
   const isOver = imageSrc.length >= 3;
   const mapHandler = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setIsMapBigger(!isMapBigger);
   };
-  console.log(isMapBigger, "isMapBigger");
+
   return (
     <Container>
       {isModalOpen && (

@@ -17,7 +17,7 @@ export const metadata = {
   title: "줄건중고",
   description: "중고거래 웹 애플리케이션",
   icons: {
-    icon: "/marketicon.png",
+    icon: "/marketicon.ico", // /public path
   },
 };
 

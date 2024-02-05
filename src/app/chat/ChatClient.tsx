@@ -2,7 +2,7 @@
 import { User } from "../../../prisma/generated/client";
 import axios from "axios";
 import useSWR from "swr";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TUserWithChat } from "@/types";
 import Contacts from "@/components/chat/Contacts";
 import Chat from "@/components/chat/Chat";
@@ -17,9 +17,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
     receiverImage: "",
   });
   const [layout, setLayout] = useState(false);
-  useEffect(() => {
-    axios.get("/api/chat").then((response) => console.log(response));
-  });
+
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const {
     data: users,

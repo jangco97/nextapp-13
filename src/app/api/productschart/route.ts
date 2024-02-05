@@ -8,7 +8,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   const body = await request.json();
-  console.log(body);
   const searchArray = body.chartsearch.split(" ");
   const products = await prisma.product.findMany({
     where: {

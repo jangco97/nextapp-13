@@ -16,7 +16,7 @@ interface ProductCardProps {
 const ProductCard = ({ currentUser, data, status }: ProductCardProps) => {
   const router = useRouter();
   const session = useSession();
-  console.log("session", session);
+
   return (
     <div
       onClick={() => router.push(`/products/${data.id}`)}

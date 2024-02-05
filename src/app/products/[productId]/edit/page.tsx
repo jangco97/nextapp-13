@@ -58,7 +58,7 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
         router.push(`/products/${productId}`);
       })
       .catch((err) => {
-        console.log(err);
+        console.error("상품 수정 중 오류 발생:", err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -125,7 +125,6 @@ const ProductEditPage = async ({ params }: { params: ProductEditProps }) => {
     if (!latitude || !longitude) return;
     setValue("latitude", latitude);
     setValue("longitude", longitude);
-    console.log(latitude, longitude);
   };
   const fetchData = async () => {
     try {

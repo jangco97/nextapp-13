@@ -4,7 +4,6 @@ export { default } from "next-auth/middleware";
 
 export async function middleware(req: NextRequest) {
   const session = await getToken({ req, secret: process.env.JWT_SECRET! }); //req를 통해 토큰을 받아온다.
-  console.log(session, "session");
   const pathname = req.nextUrl.pathname;
 
   //로그인한 유저만 접근 가능

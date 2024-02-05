@@ -27,7 +27,7 @@ const ProductLineChart = () => {
   let year = today.getFullYear();
   let month = today.getMonth() + 1;
   let day = today.getDate();
-  console.log(year, month, day);
+
   return (
     <div>
       <Line

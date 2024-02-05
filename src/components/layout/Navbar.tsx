@@ -56,7 +56,7 @@ const Navbar = ({ session, currentUser }: NavbarProps) => {
     refetchInterval: 60 * 1000,
     enabled: !!currentUser,
   });
-  console.log(chatData, "chatData");
+
   return (
     <nav className="fixed right-0 left-0  flex items-center justify-between px-3 h-[75px] z-10  bg-indigo-800/70 text-white">
       <div className="flex">

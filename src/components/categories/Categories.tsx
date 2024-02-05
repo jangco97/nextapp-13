@@ -10,7 +10,7 @@ const Categories = () => {
   const category = params?.get("category");
   const label = params?.get("label");
   const subLabel = params?.get("subLabel");
-  console.log(label);
+
   return (
     <div className=" bg-gray-100 pl-2 pr-3 pt-[90px] pb-[50px]">
       <div className="flex flex-col w-full ">
