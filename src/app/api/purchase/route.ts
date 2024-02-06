@@ -1,12 +1,12 @@
-import { NextResponse, NextRequest } from "next/server";
-import prisma from "@/app/libs/prismadb";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import { NextResponse, NextRequest } from 'next/server';
+import prisma from '@/app/libs/prismadb';
+import getCurrentUser from '@/app/actions/getCurrentUser';
 
 //구매한 목록, 판매한 목록
 export async function GET(request: NextRequest) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "권한이 없습니다." }, { status: 404 });
+    return NextResponse.json({ message: '권한이 없습니다.' }, { status: 404 });
   }
   const myPurchase = await prisma.purchase.findMany({
     where: {
@@ -23,23 +23,15 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   const body = await request.json();
-  const {
-    buyerId,
-    sellerId,
-    reservationId,
-    productId,
-    sellerName,
-    buyerName,
-    purchaseType,
-  } = body;
+  const { buyerId, sellerId, reservationId, productId, sellerName, buyerName, purchaseType } = body;
 
   if (!currentUser) {
-    return NextResponse.json({ message: "권한이 없습니다." }, { status: 404 });
+    return NextResponse.json({ message: '권한이 없습니다.' }, { status: 404 });
   }
 
   let createPurchase = false;
 
-  if (purchaseType === "구매") {
+  if (purchaseType === '구매') {
     await prisma.reservation.update({
       where: {
         id: reservationId,
@@ -66,7 +58,7 @@ export async function POST(request: NextRequest) {
     if (reservation?.buyAccept && reservation?.sellAccept) {
       createPurchase = true;
     }
-  } else if (purchaseType === "판매") {
+  } else if (purchaseType === '판매') {
     await prisma.reservation.update({
       where: {
         id: reservationId,
@@ -88,7 +80,7 @@ export async function POST(request: NextRequest) {
         id: productId,
       },
       data: {
-        status: "판매완료",
+        status: '판매완료',
       },
     });
     // Check if both buyAccept and sellAccept are true
@@ -111,10 +103,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (!reservation) {
-      return NextResponse.json(
-        { message: "예약 정보를 찾을 수 없습니다." },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: '예약 정보를 찾을 수 없습니다.' }, { status: 404 });
     }
 
     await prisma.purchase.create({
@@ -126,5 +115,5 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  return NextResponse.json({ message: "완료되었습니다.!" }, { status: 200 });
+  return NextResponse.json({ message: '완료되었습니다.!' }, { status: 200 });
 }

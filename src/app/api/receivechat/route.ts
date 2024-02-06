@@ -1,12 +1,12 @@
-import getCurrentUser from "@/app/actions/getCurrentUser";
-import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/libs/prismadb";
-export const dynamic = "force-dynamic";
+import getCurrentUser from '@/app/actions/getCurrentUser';
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/app/libs/prismadb';
+
 export async function GET(request: NextRequest) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
   const users = await prisma.user.findUnique({
     where: {
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
           receiver: true,
         },
         orderBy: {
-          createdAt: "asc",
+          createdAt: 'asc',
         },
       },
     },
