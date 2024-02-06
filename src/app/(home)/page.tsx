@@ -1,13 +1,13 @@
-import "../globals.css";
-import getProducts, { ProductParams } from "../actions/getProducts";
-import getCurrentUser from "../actions/getCurrentUser";
-import Container from "@/components/shared/Container";
-import EmptyState from "@/components/EmptyState";
-import ProductCard from "@/components/products/ProductCard";
-import Categories from "@/components/categories/Categories";
-import Pagination from "@/components/pagination/Pagination";
-import { Product } from "../../../prisma/generated/client";
-import { PRODUCTS_PER_PAGE } from "@/constants";
+import '../globals.css';
+import getProducts, { ProductParams } from '../actions/getProducts';
+import getCurrentUser from '../actions/getCurrentUser';
+import Container from '@/components/shared/Container';
+import EmptyState from '@/components/EmptyState';
+import ProductCard from '@/components/products/ProductCard';
+import Categories from '@/components/categories/Categories';
+import Pagination from '@/components/pagination/Pagination';
+import { Product } from '../../../prisma/generated/client';
+import { PRODUCTS_PER_PAGE } from '@/constants';
 
 interface HomeProps {
   searchParams: ProductParams;
@@ -15,8 +15,7 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const page = searchParams?.page;
-  const pageNum = typeof page === "string" ? Number(page) : 1;
-  const search = searchParams?.search;
+  const pageNum = typeof page === 'string' ? Number(page) : 1;
   const products = await getProducts(searchParams);
   const currentUser = await getCurrentUser();
 
@@ -41,11 +40,7 @@ export default async function Home({ searchParams }: HomeProps) {
             </div>
           </>
         )}
-        <Pagination
-          page={pageNum}
-          totalItems={products.totalItems}
-          perPage={PRODUCTS_PER_PAGE}
-        />
+        <Pagination page={pageNum} totalItems={products.totalItems} perPage={PRODUCTS_PER_PAGE} />
       </Container>
     </>
   );
