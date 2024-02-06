@@ -1,42 +1,38 @@
-import Navbar from "@/components/layout/Navbar";
-import "./globals.css";
-import { Inter } from "next/font/google";
-import Script from "next/script";
-import ToastProvider from "@/components/ToastProvider";
-import { NextAuthProvider } from "./provider";
-import { SidebarProvider } from "@/context/sidebaropen.context";
-import SidebarModal from "@/components/layout/sidebar/SidebarModal";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
-import Providers from "@/utils/provider";
-import getCurrentUser from "./actions/getCurrentUser";
-import MobileBottom from "@/components/mobilebottom/MobileBottom";
-const inter = Inter({ subsets: ["latin"] });
+import Navbar from '@/components/layout/Navbar';
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Script from 'next/script';
+import ToastProvider from '@/components/ToastProvider';
+import { NextAuthProvider } from './provider';
+import { SidebarProvider } from '@/context/sidebaropen.context';
+import SidebarModal from '@/components/layout/sidebar/SidebarModal';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]/route';
+import Providers from '@/utils/provider';
+import getCurrentUser from './actions/getCurrentUser';
+import MobileBottom from '@/components/mobilebottom/MobileBottom';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "줄건중고",
-  description: "중고거래 웹 애플리케이션",
+  title: '줄건중고',
+  description: '중고거래 웹 애플리케이션',
   icons: {
-    icon: "/marketicon.ico", // /public path
+    icon: '/marketicon.png',
   },
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const session = await getServerSession(authOptions);
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <NextAuthProvider session={session}>
+          <NextAuthProvider>
             <SidebarProvider>
-              <Navbar session={session} currentUser={currentUser} />
+              <Navbar currentUser={currentUser} />
               <ToastProvider />
-              <SidebarModal session={session} currentUser={currentUser} />
+              <SidebarModal currentUser={currentUser} />
               {children}
               <MobileBottom currentUser={currentUser} />
             </SidebarProvider>

@@ -1,14 +1,14 @@
-import Container from "@/components/shared/Container";
-import React from "react";
-import getCurrentCarts from "../actions/getCurrentCarts";
-import Link from "next/link";
-import Image from "next/image";
-import getCurrentUser from "../actions/getCurrentUser";
-import HeartButton from "@/components/products/HeartButton";
-import { FaLocationDot } from "react-icons/fa6";
+import Container from '@/components/shared/Container';
+import React, { Fragment } from 'react';
+import getCurrentCarts from '../actions/getCurrentCarts';
+import Link from 'next/link';
+import Image from 'next/image';
+import getCurrentUser from '../actions/getCurrentUser';
+import HeartButton from '@/components/products/HeartButton';
+import { FaLocationDot } from 'react-icons/fa6';
 const CartPage = async () => {
-  const carts = await getCurrentCarts();
   const currentUser = await getCurrentUser();
+  const carts = await getCurrentCarts();
   return (
     <Container>
       <div>
@@ -17,7 +17,7 @@ const CartPage = async () => {
           <div className="grid grid-cols-4 gap-4 place-items-center text-gray">
             <p>이미지</p>
             <p className="flex">
-              {" "}
+              {' '}
               <FaLocationDot />
               주소
             </p>
@@ -26,13 +26,10 @@ const CartPage = async () => {
           </div>
           <hr className="mt-5 mb-5" />
           {carts?.map((cart: any) => (
-            <>
-              <div
-                key={cart.id}
-                className="grid grid-cols-4 gap-4 place-items-center "
-              >
+            <Fragment key={cart.id}>
+              <div className="grid grid-cols-4 gap-4 place-items-center ">
                 <div className="relative w-20 h-20 overflow-hidden aspect-square rounded-xl">
-                  {" "}
+                  {' '}
                   <Image
                     src={cart.imageSrc[0]}
                     fill
@@ -42,24 +39,21 @@ const CartPage = async () => {
                   />
                   {currentUser?.id !== cart.userId && (
                     <div className="absolute top-3 right-3">
-                      <HeartButton
-                        productId={cart.id}
-                        currentUser={currentUser}
-                      />
+                      <HeartButton productId={cart.id} currentUser={currentUser} />
                     </div>
                   )}
                 </div>
                 <div>{cart.address}</div>
 
                 <Link href={`/products/${cart.id}`}>
-                  {" "}
+                  {' '}
                   <h2 className=" text-blue-500">{cart.title}</h2>
                 </Link>
 
                 <p>{cart.price}</p>
               </div>
               <hr className="mb-5 mt-5" />
-            </>
+            </Fragment>
           ))}
         </div>
       </div>

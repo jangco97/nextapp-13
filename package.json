@@ -34,7 +34,6 @@
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
-    "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
     "i": "^0.3.7",
     "jwt-decode": "^3.1.2",
@@ -64,6 +63,9 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
     "prisma": "^5.3.1"
   }
 }
