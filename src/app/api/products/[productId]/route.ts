@@ -1,18 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/libs/prismadb";
-import getCurrentUser from "@/app/actions/getCurrentUser";
-export const dynamic = "force-dynamic";
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/app/libs/prismadb';
+import getCurrentUser from '@/app/actions/getCurrentUser';
+
 interface Params {
   productId?: string;
 }
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Params }
-) {
+export async function GET(request: NextRequest, { params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
   const { productId } = params;
   const products = await prisma.product.findUnique({
@@ -23,17 +20,14 @@ export async function GET(
   return NextResponse.json(products);
 }
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: Params }
-) {
+export async function PUT(request: NextRequest, { params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
   const { productId } = params;
   if (!productId) {
-    return NextResponse.json({ message: "Product not found" }, { status: 404 });
+    return NextResponse.json({ message: 'Product not found' }, { status: 404 });
   }
   const body = await request.json();
 
@@ -46,7 +40,7 @@ export async function PUT(
     },
   });
   if (!product) {
-    return NextResponse.json({ message: "Product not found" }, { status: 404 });
+    return NextResponse.json({ message: 'Product not found' }, { status: 404 });
   }
   const {
     id,
@@ -95,13 +89,10 @@ export async function PUT(
   return NextResponse.json(updatedProduct);
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Params }
-) {
+export async function DELETE(request: NextRequest, { params }: { params: Params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
   const { productId } = params;
   await prisma.product.delete({
@@ -109,5 +100,5 @@ export async function DELETE(
       id: productId,
     },
   });
-  return NextResponse.json({ message: "상품이 삭제되었습니다." });
+  return NextResponse.json({ message: '상품이 삭제되었습니다.' });
 }

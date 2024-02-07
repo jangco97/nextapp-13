@@ -3,9 +3,5 @@ const nextConfig = {
   images: {
     domains: ['res.cloudinary.com', 'via.placeholder.com'], //도메인 허용하기
   },
-  experimental: {
-    serverActions: true,
-    appDir: true,
-  },
 };
 module.exports = nextConfig;

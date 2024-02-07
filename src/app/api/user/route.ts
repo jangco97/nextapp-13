@@ -1,11 +1,11 @@
-import { NextResponse, NextRequest } from "next/server";
-import prisma from "@/app/libs/prismadb";
-import getCurrentUser from "@/app/actions/getCurrentUser";
-export const dynamic = "force-dynamic";
+import { NextResponse, NextRequest } from 'next/server';
+import prisma from '@/app/libs/prismadb';
+import getCurrentUser from '@/app/actions/getCurrentUser';
+
 export async function POST(request: NextRequest) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
   const body = await request.json();
   const { productId } = body;
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
   const body = await request.json();
   const { productId, status } = body;
@@ -35,5 +35,5 @@ export async function PATCH(request: NextRequest) {
       status: status,
     },
   });
-  return NextResponse.json({ message: "상태가 변경되었습니다." });
+  return NextResponse.json({ message: '상태가 변경되었습니다.' });
 }

@@ -1,22 +1,22 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
-import prisma from "@/app/libs/prismadb";
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcryptjs';
+import prisma from '@/app/libs/prismadb';
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
         email: {
-          label: "Email",
-          type: "email",
+          label: 'Email',
+          type: 'email',
         },
-        password: { label: "Password", type: "password" },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         // Add logic here to look up the user from the credentials supplied
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Invalid Credentials");
+          throw new Error('Invalid Credentials');
         }
         const user = await prisma.user.findUnique({
           where: {
@@ -24,17 +24,14 @@ export const authOptions: NextAuthOptions = {
           },
         });
         if (!user || !user.hashedPassword) {
-          throw new Error("Invalid Credentials");
+          throw new Error('Invalid Credentials');
         }
         if (!user.emailVerified) {
-          throw new Error("Please verify your email");
+          throw new Error('Please verify your email');
         }
-        const isCorrectPassword = await bcrypt.compare(
-          credentials.password,
-          user.hashedPassword
-        );
+        const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword);
         if (!isCorrectPassword) {
-          throw new Error("Invalid credentials");
+          throw new Error('Invalid credentials');
         }
         return user;
       },
@@ -42,21 +39,24 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET!,
   pages: {
-    signIn: "/auth/login",
+    signIn: '/auth/login',
   },
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
   jwt: {
     secret: process.env.JWT_SECRET!,
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user };
+    async jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account.accessToken;
+      }
+      return token;
     },
-    async session({ session, token }) {
-      session.user = token;
+    async session({ session, token }: { session: any; token: any }) {
+      session.accessToken = token.accessToken;
       return session;
     },
   },

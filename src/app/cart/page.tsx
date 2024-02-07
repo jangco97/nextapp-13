@@ -6,6 +6,7 @@ import Image from 'next/image';
 import getCurrentUser from '../actions/getCurrentUser';
 import HeartButton from '@/components/products/HeartButton';
 import { FaLocationDot } from 'react-icons/fa6';
+
 const CartPage = async () => {
   const currentUser = await getCurrentUser();
   const carts = await getCurrentCarts();

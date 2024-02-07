@@ -1,15 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/libs/prismadb";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/app/libs/prismadb';
+import getCurrentUser from '@/app/actions/getCurrentUser';
 
-export const dynamic = "force-dynamic";
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { userId: string } }
-) {
+export async function PATCH(request: NextRequest, { params }: { params: { userId: string } }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
 
   const success = await prisma.message.updateMany({
@@ -28,13 +24,10 @@ export async function PATCH(
 
   return NextResponse.json(success);
 }
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { userId: string } }
-) {
+export async function GET(request: NextRequest, { params }: { params: { userId: string } }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
+    return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
 
   const userdata = await prisma.user.findUnique({

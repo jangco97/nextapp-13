@@ -1,5 +1,6 @@
-import React from "react";
-import Container from "@/components/shared/Container";
+import React from 'react';
+import Container from '@/components/shared/Container';
+export const dynamic = 'force-dynamic';
 const ReviewPage = () => {
   return (
     <Container>

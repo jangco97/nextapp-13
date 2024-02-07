@@ -1,18 +1,18 @@
-import Container from "@/components/shared/Container";
-import getCurrentUser from "../actions/getCurrentUser";
-import getUserProducts from "../actions/getUserProducts";
-import { Params } from "../actions/getUserProducts";
-import UserProducts from "@/components/dashboard/UserProducts";
-import UserFavorites from "@/components/dashboard/UserFavorites";
-import UserReviews from "@/components/dashboard/UserReviews";
-import UserReservations from "@/components/dashboard/UserReservations";
-import getCurrentCarts from "../actions/getCurrentCarts";
-import getBuyingHistory from "../actions/getBuyingHistory";
-import getSellingHistory from "../actions/getSellingHistory";
-import Navigation from "@/components/dashboard/navigation/Navigation";
-import getUserReviews from "../actions/getUserReviews";
-import Avatar from "@/components/shared/Avatar";
-
+import Container from '@/components/shared/Container';
+import getCurrentUser from '../actions/getCurrentUser';
+import getUserProducts from '../actions/getUserProducts';
+import { Params } from '../actions/getUserProducts';
+import UserProducts from '@/components/dashboard/UserProducts';
+import UserFavorites from '@/components/dashboard/UserFavorites';
+import UserReviews from '@/components/dashboard/UserReviews';
+import UserReservations from '@/components/dashboard/UserReservations';
+import getCurrentCarts from '../actions/getCurrentCarts';
+import getBuyingHistory from '../actions/getBuyingHistory';
+import getSellingHistory from '../actions/getSellingHistory';
+import Navigation from '@/components/dashboard/navigation/Navigation';
+import getUserReviews from '../actions/getUserReviews';
+import Avatar from '@/components/shared/Avatar';
+export const dynamic = 'force-dynamic';
 const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const carts = await getCurrentCarts();
   const currentUser = await getCurrentUser();
