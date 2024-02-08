@@ -6,7 +6,6 @@ import Navigation from "@/components/dashboard/navigation/Navigation";
 import Container from "@/components/shared/Container";
 import UserProducts from "@/components/dashboard/UserProducts";
 import UserReviews from "@/components/dashboard/UserReviews";
-import getUserReviews from "@/app/actions/getUserReviews";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { Params } from "@/app/actions/getUserProducts";
 import Link from "next/link";
@@ -19,7 +18,7 @@ const UserDetailPage = async ({
 }) => {
   const user = await getUser(params.userId);
   const userProducts = await getUserProducts({ searchParams, params });
-  const userReviews = await getUserReviews(params.userId);
+
   const currentUser = await getCurrentUser();
   return (
     <>
@@ -44,11 +43,11 @@ const UserDetailPage = async ({
       {/* 상품 전용 섹션 */}
       <Container>
         <section>
-          <UserProducts userProducts={userProducts} isGuest={true} searchParams={searchParams} />
+          <UserProducts userProducts={userProducts} isGuest={true} />
         </section>
         {/* 리뷰 전용 */}
         <section>
-          <UserReviews userReviews={userReviews} />
+          <UserReviews userId={params.userId} />
         </section>
       </Container>
     </>
