@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import HeartButton from "@/components/products/HeartButton";
+import getCurrentCarts from "@/app/actions/getCurrentCarts";
 import { FaLocationDot } from "react-icons/fa6";
-const UserFavorites = ({ carts, currentUser }: { carts: any; currentUser: any }) => {
+import { User } from "prisma/generated/client";
+const UserFavorites = async ({ currentUser }: { currentUser: User }) => {
+  const carts = await getCurrentCarts();
   return (
     <div>
       <div className="flex flex-col content-between ">

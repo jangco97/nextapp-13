@@ -43,7 +43,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
 
           <div className="text-xs w-full  text-center font-bold text-white">채팅하기</div>
         </Link>
-        <Link href="/cart">
+        <Link prefetch={false} href="/cart">
           <div className="flex relative">
             <AiOutlineShoppingCart className="h-6 w-full text-center text-white"></AiOutlineShoppingCart>
             <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">

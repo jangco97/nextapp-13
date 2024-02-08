@@ -6,15 +6,7 @@ import NothingComponents from "../NothingComponents";
 import ImageClient from "./image/ImageClient";
 import EditButton from "./button/EditButton";
 
-const UserProducts = ({
-  userProducts,
-  isGuest,
-  searchParams,
-}: {
-  userProducts: any;
-  isGuest: boolean;
-  searchParams: any;
-}) => {
+const UserProducts = ({ userProducts, isGuest }: { userProducts: any; isGuest: boolean }) => {
   return (
     <div className="mb-20">
       <div className="w-full flex justify-evenly">
@@ -47,7 +39,7 @@ const UserProducts = ({
                     <div>
                       {product.price} <span className="font-light">원</span>
                     </div>
-                    {/* <div>{fromNow(product.createdAt)}</div> */}
+                    <div>{fromNow(product.createdAt)}</div>
                   </div>
                   <hr />
 

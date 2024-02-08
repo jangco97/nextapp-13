@@ -1,8 +1,10 @@
 import Link from "next/link";
 import NothingComponents from "../NothingComponents";
+import getUserReviews from "@/app/actions/getUserReviews";
 import { FaStar } from "react-icons/fa";
-const UserReviews = ({ userReviews }: { userReviews: any }) => {
-  return userReviews?.length > 0 ? (
+const UserReviews = async ({ userId }: { userId: string }) => {
+  const userReviews = await getUserReviews(userId);
+  return userReviews?.length ?? 0 > 0 ? (
     <div className="flex flex-col">
       {userReviews?.map((review: any) => (
         <div key={review.id} className="border-2 border-red-400 ">

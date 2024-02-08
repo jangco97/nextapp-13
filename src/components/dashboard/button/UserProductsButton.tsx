@@ -34,10 +34,7 @@ const UserProductsButton = () => {
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           {currentStatus}
-          <ChevronDownIcon
-            className="-mr-1 h-5 w-5 text-gray-400"
-            aria-hidden="true"
-          />
+          <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
         </Menu.Button>
       </div>
 
@@ -57,7 +54,7 @@ const UserProductsButton = () => {
         >
           <div className=" flex flex-col ">
             <Menu.Item>
-              <Link href={{ query: all }}>
+              <Link prefetch={false} href={{ query: all }}>
                 <div
                   onClick={() => setCurrentStatus("전체")}
                   className=" border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"
@@ -67,7 +64,7 @@ const UserProductsButton = () => {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link href={{ query: selling }}>
+              <Link prefetch={false} href={{ query: selling }}>
                 <div
                   onClick={() => setCurrentStatus("판매중")}
                   className=" border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"
@@ -77,7 +74,7 @@ const UserProductsButton = () => {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link href={{ query: reservating }}>
+              <Link prefetch={false} href={{ query: reservating }}>
                 <div
                   onClick={() => setCurrentStatus("예약중")}
                   className="border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"
@@ -87,7 +84,7 @@ const UserProductsButton = () => {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link href={{ query: sold }}>
+              <Link prefetch={false} href={{ query: sold }}>
                 <div
                   onClick={() => setCurrentStatus("판매완료")}
                   className="border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"

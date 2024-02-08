@@ -49,7 +49,7 @@ export const FilterButton = () => {
         >
           <div className=" flex flex-col ">
             <Menu.Item>
-              <Link href={{ query: descSort }}>
+              <Link prefetch={false} href={{ query: descSort }}>
                 <div
                   onClick={() => setCurrentSort("최신순")}
                   className=" border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"
@@ -59,7 +59,7 @@ export const FilterButton = () => {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link href={{ query: lowPriceSort }}>
+              <Link prefetch={false} href={{ query: lowPriceSort }}>
                 <div
                   onClick={() => setCurrentSort("낮은가격순")}
                   className=" border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"
@@ -69,7 +69,7 @@ export const FilterButton = () => {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link href={{ query: highPriceSort }}>
+              <Link prefetch={false} href={{ query: highPriceSort }}>
                 <div
                   onClick={() => setCurrentSort("높은가격순")}
                   className="border-2 p-4 flex flex-col gap-3 hover:border-indigo-800 transition cursor-pointer"

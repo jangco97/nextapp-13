@@ -3,6 +3,7 @@ import getCurrentUser from "./getCurrentUser";
 export interface Params {
   status?: string | undefined;
   sort?: string;
+  link?: string;
 }
 export default async function getUserProducts({
   searchParams,

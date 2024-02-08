@@ -32,7 +32,9 @@ const NavbarItem = ({
             <Link href={"/products/upload"}>판매하기</Link>
           </li>
           <li className="py-2 flex justify-evenly text-center  cursor-pointer">
-            <Link href={"/cart"}>장바구니</Link>
+            <Link prefetch={false} href={"/cart"}>
+              장바구니
+            </Link>
             <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
               {data?.favoriteIds?.length | 0}
             </div>
