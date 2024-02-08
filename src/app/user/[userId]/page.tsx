@@ -42,13 +42,17 @@ const UserDetailPage = async ({
       </section>
       {/* 상품 전용 섹션 */}
       <Container>
-        <section>
-          <UserProducts userProducts={userProducts} isGuest={true} />
-        </section>
+        {searchParams?.link === "products" && (
+          <section>
+            <UserProducts userProducts={userProducts} isGuest={true} />
+          </section>
+        )}
         {/* 리뷰 전용 */}
-        <section>
-          <UserReviews userId={params.userId} />
-        </section>
+        {searchParams?.link === "reviews" && (
+          <section>
+            <UserReviews userId={params.userId} />
+          </section>
+        )}
       </Container>
     </>
   );
