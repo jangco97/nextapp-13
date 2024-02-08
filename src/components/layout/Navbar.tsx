@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
+import React, { MouseEventHandler, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { SidebarContext } from "@/context/sidebaropen.context";
 import NavbarItem from "./NavbarItem";
@@ -37,7 +37,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
     },
   });
   const search = watch("search");
-  const updatedQurry = {
+  const updatedQuery = {
     ...currentQuery,
     search: search,
   };
@@ -55,7 +55,9 @@ const Navbar = ({ currentUser }: NavbarProps) => {
     refetchInterval: 60 * 1000,
     enabled: !!currentUser,
   });
-
+  const handleSearch = () => {
+    router.push(qs.stringifyUrl({ url: "/", query: updatedQuery }));
+  };
   return (
     <nav className="fixed right-0 left-0  flex items-center justify-between px-3 h-[75px] z-10  bg-indigo-800/70 text-white">
       <div className="flex">
@@ -80,14 +82,13 @@ const Navbar = ({ currentUser }: NavbarProps) => {
             placeholder="Search"
             // disabled={isLoading}
           />
-          <Link href={{ query: updatedQurry }}>
-            <button
-              className="hover:bg-gray-800 bg-gray-500  border-s-gray-50 cursor-pointer h-[40px] w-[40px] rounded-r-full flex justify-center items-center"
-              // disabled={isLoading}
-            >
-              <HiMagnifyingGlass className="text-md" />
-            </button>
-          </Link>
+
+          <button
+            className="hover:bg-gray-800 bg-gray-500  border-s-gray-50 cursor-pointer h-[40px] w-[40px] rounded-r-full flex justify-center items-center"
+            onClick={handleSearch}
+          >
+            <HiMagnifyingGlass className="text-md" />
+          </button>
         </form>
       </div>
       <div className="hidden md:block">

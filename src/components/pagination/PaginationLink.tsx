@@ -27,7 +27,7 @@ const PaginationLink = ({
     currentQuery = qs.parse(params?.toString()); //{'category' : 'interior', 'page' : '2'}
   }
 
-  const updatedQurry = {
+  const updatedQuery = {
     ...currentQuery,
     page: page,
     skip: skip,
@@ -36,9 +36,9 @@ const PaginationLink = ({
   return (
     <Link
       prefetch={false}
-      href={{ query: updatedQurry }}
+      href={{ query: updatedQuery }}
       className={`p-2 text-2xl 
-    ${active ? "fond-bild text-orange-500" : "text-gray-500"} 
+    ${active ? "fond-bold text-orange-500" : "text-gray-500"} 
     ${disabled ? "pointer-events-none text-gray-200" : ""}
     `}
     >
