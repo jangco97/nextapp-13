@@ -20,7 +20,6 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const buyingHistory = await getBuyingHistory();
   const sellingHistory = await getSellingHistory();
   const userReviews = await getUserReviews(currentUser?.id);
-  // const reservations = await getReservations();
   return (
     <>
       <section className="pt-[75px]">

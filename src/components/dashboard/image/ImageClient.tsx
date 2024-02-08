@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 const ImageClient = ({ productId, src }: { productId: string; src: string }) => {
   const router = useRouter();
   return (
