@@ -1,5 +1,3 @@
-import React, { Suspense } from "react";
-
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ChatTestClient from "./ChatTestClient";
 import Container from "@/components/shared/Container";

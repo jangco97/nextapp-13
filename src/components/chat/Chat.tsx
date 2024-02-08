@@ -21,10 +21,10 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
     messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const conversation: TConversation | undefined =
-    currentUser?.conversations.find((conversation: TConversation) =>
-      conversation.users.find((user) => user.id === receiver.receiverId)
-    );
+  const conversation: TConversation | undefined = currentUser?.conversations.find(
+    (conversation: TConversation) =>
+      conversation.users.find((user) => user.id === receiver.receiverId),
+  );
   if (!receiver.receiverName || !currentUser) {
     return <div className="w-full h-full"></div>;
   }
@@ -80,10 +80,7 @@ const Chat = ({ currentUser, receiver, setLayout }: ChatProps) => {
         <div ref={messagesEndRef} />
       </div>
       <div>
-        <Input
-          receiverId={receiver?.receiverId}
-          currentUserId={currentUser?.id}
-        />
+        <Input receiverId={receiver?.receiverId} currentUserId={currentUser?.id} />
       </div>
     </div>
   );

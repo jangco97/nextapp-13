@@ -85,41 +85,25 @@ const Message = ({
     >
       <div>
         {isSender ? (
-          <div
-            className={`flex flex-col ${
-              isSender ? "items-end" : "items-start"
-            } justify-center`}
-          >
+          <div className={`flex flex-col ${isSender ? "items-end" : "items-start"} justify-center`}>
             <div className="flex items-center gap-1 mb-2 text-sm">
               <span className="font-medium">You</span>
-              <span className="text-xs text-gray-600 opacity-60">
-                {fromNow(messageTime)}
-              </span>
+              <span className="text-xs text-gray-600 opacity-60">{fromNow(messageTime)}</span>
               <div className={`w-[30px] h-[30px]`}>
-                <Avatar
-                  src={senderImage && isSender ? senderImage : receiverImage}
-                />
+                <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
               </div>
             </div>
           </div>
         ) : (
-          <div
-            className={`flex flex-col ${
-              isSender ? "items-end" : "items-start"
-            } justify-center`}
-          >
+          <div className={`flex flex-col ${isSender ? "items-end" : "items-start"} justify-center`}>
             <div className="flex items-center gap-1 mb-2 text-sm">
               <div className={`w-[30px] h-[30px]`}>
-                <Avatar
-                  src={senderImage && isSender ? senderImage : receiverImage}
-                />
+                <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
               </div>
               <span className="font-medium">
                 <Link href={`/user/${receiverId}`}>{receiverName}</Link>
               </span>
-              <span className="text-xs text-gray-600 opacity-60">
-                {fromNow(messageTime)}
-              </span>
+              <span className="text-xs text-gray-600 opacity-60">{fromNow(messageTime)}</span>
             </div>
           </div>
         )}
@@ -127,9 +111,7 @@ const Message = ({
         {messageType === "reservation" && (
           <div
             className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg  ${
-              isSender
-                ? "bg-indigo-500/70 rounded-tr-none"
-                : "bg-gray-600 rounded-tl-none"
+              isSender ? "bg-indigo-500/70 rounded-tr-none" : "bg-gray-600 rounded-tl-none"
             }`}
           >
             <div className="flex flex-col items-center p-3 ">
@@ -140,19 +122,13 @@ const Message = ({
               )}
               <div
                 className={`p-1 break-all text-white rounded-lg ${
-                  isSender
-                    ? "bg-indigo-500/50 rounded-tr-none"
-                    : "bg-gray-500 rounded-tl-none"
+                  isSender ? "bg-indigo-500/50 rounded-tr-none" : "bg-gray-500 rounded-tl-none"
                 }`}
               >
                 <p className="text-center text-xl">{messageText}</p>
                 <p>해당 상품에 대한 예약 구매 요청이 들어왔습니다</p>
-                {isAccepted === 1 && (
-                  <p className="text-blue-300 text-center">수락되었습니다</p>
-                )}
-                {isAccepted === 2 && (
-                  <p className=" text-red-300 text-center">거절되었습니다</p>
-                )}
+                {isAccepted === 1 && <p className="text-blue-300 text-center">수락되었습니다</p>}
+                {isAccepted === 2 && <p className=" text-red-300 text-center">거절되었습니다</p>}
                 {!isSender && isAccepted === 0 && (
                   <>
                     <hr />
@@ -182,9 +158,7 @@ const Message = ({
         {messageType === "cancelReservation" && (
           <div
             className={`p-1 break-all text-white rounded-lg  ${
-              isSender
-                ? "bg-indigo-500/60 rounded-tr-none"
-                : "bg-gray-500 rounded-tl-none"
+              isSender ? "bg-indigo-500/60 rounded-tr-none" : "bg-gray-500 rounded-tl-none"
             }`}
           >
             <p className="text-center text-xl">{messageText}</p>
@@ -194,23 +168,17 @@ const Message = ({
         {messageType === "meetTime" && (
           <div
             className={`flex items-center gap-1 mb-2 text-sm  p-1 break-all text-white rounded-lg  ${
-              isSender
-                ? "bg-indigo-500/70 rounded-tr-none"
-                : "bg-gray-600 rounded-tl-none"
+              isSender ? "bg-indigo-500/70 rounded-tr-none" : "bg-gray-600 rounded-tl-none"
             }`}
           >
             <div className="flex flex-col items-center p-3">
               <div
                 className={`p-1 break-all text-white rounded-lg ${
-                  isSender
-                    ? "bg-indigo-500/50  rounded-tr-none"
-                    : "bg-gray-500 rounded-tl-none"
+                  isSender ? "bg-indigo-500/50  rounded-tr-none" : "bg-gray-500 rounded-tl-none"
                 }`}
               >
                 <p className="text-center">약속을 만들었습니다</p>
-                <p className="text-center text-xl">
-                  날짜 및 시간:{messageText}
-                </p>
+                <p className="text-center text-xl">날짜 및 시간:{messageText}</p>
                 <p className="text-center text-xl">
                   장소:{address} {addressDetail}
                 </p>
@@ -236,20 +204,13 @@ const Message = ({
         )}
         {messageImage && messageType !== "reservation" && (
           <div className="overflow-hidden rounded-md mx-p[0.6rem] max-w-[80%]">
-            <Image
-              src={messageImage}
-              width={300}
-              height={300}
-              alt="채팅 이미지"
-            />
+            <Image src={messageImage} width={300} height={300} alt="채팅 이미지" />
           </div>
         )}
         {messageType === "text" && (
           <div
             className={`p-1 break-all text-white rounded-lg ${
-              isSender
-                ? "bg-indigo-500/60 rounded-tr-none"
-                : "bg-gray-500 rounded-tl-none"
+              isSender ? "bg-indigo-500/60 rounded-tr-none" : "bg-gray-500 rounded-tl-none"
             }`}
           >
             <span>{messageText}</span>

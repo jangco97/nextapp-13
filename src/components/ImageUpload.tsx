@@ -9,12 +9,7 @@ interface ImageUploadProps {
   updateImageSrc: (value: string[]) => void;
 }
 
-const ImageUpload = ({
-  onChange,
-  imageSrc,
-  disabled,
-  updateImageSrc,
-}: ImageUploadProps) => {
+const ImageUpload = ({ onChange, imageSrc, disabled, updateImageSrc }: ImageUploadProps) => {
   const handleUpload = (result: any) => {
     onChange(result.info.secure_url);
   };

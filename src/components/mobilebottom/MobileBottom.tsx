@@ -24,16 +24,14 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
     enabled: !!currentUser,
   });
   const unReadMessage = chatData?.receivedMessages?.filter(
-    (message: any) => message.isRead === false
+    (message: any) => message.isRead === false,
   );
   return (
     <div className="w-full fixed bottom-0 h-[50px] bg-slate-500/50 md:hidden z-10">
       <div className="grid grid-cols-4 items-center h-full">
         <Link href="/products/upload">
           <FaPlus className="h-6  text-center w-full  text-white" />
-          <div className="text-xs w-full  text-center font-bold text-white">
-            판매하기
-          </div>
+          <div className="text-xs w-full  text-center font-bold text-white">판매하기</div>
         </Link>
         <Link href="/chat">
           <div className="flex relative w-full">
@@ -43,9 +41,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
             </div>
           </div>
 
-          <div className="text-xs w-full  text-center font-bold text-white">
-            채팅하기
-          </div>
+          <div className="text-xs w-full  text-center font-bold text-white">채팅하기</div>
         </Link>
         <Link href="/cart">
           <div className="flex relative">
@@ -55,16 +51,12 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
             </div>
           </div>
 
-          <div className="text-xs w-full  text-center font-bold text-white">
-            장바구니
-          </div>
+          <div className="text-xs w-full  text-center font-bold text-white">장바구니</div>
         </Link>
         <Link href="/user?products">
           <div>
             <BiSolidUser className="h-6 w-full text-center  text-white" />
-            <div className="text-xs w-full  text-center font-bold text-white">
-              마이페이지
-            </div>
+            <div className="text-xs w-full  text-center font-bold text-white">마이페이지</div>
           </div>
         </Link>
       </div>

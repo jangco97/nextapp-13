@@ -49,12 +49,7 @@ const Pagination = ({ page, totalItems, perPage }: PaginationProps) => {
           );
         }
         return (
-          <PaginationLink
-            active={current}
-            page={page}
-            key={index}
-            perPage={perPage}
-          >
+          <PaginationLink active={current} page={page} key={index} perPage={perPage}>
             {page}
           </PaginationLink>
         );

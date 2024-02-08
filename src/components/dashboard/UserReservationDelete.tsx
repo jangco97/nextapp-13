@@ -31,7 +31,7 @@ const UserReservationDelete = ({
         messageType: string;
         productTitle: string;
       };
-    }
+    },
   ) {
     return fetch(url, {
       method: "POST",

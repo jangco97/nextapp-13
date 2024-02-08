@@ -18,12 +18,8 @@ interface ProductClientProps {
 const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const category = mainCategories.find(
-    (item) => item.categoryId === product.categories[0]
-  );
-  const subCategory = subCategories.find(
-    (item) => item.categoryId === product.categories[1]
-  );
+  const category = mainCategories.find((item) => item.categoryId === product.categories[0]);
+  const subCategory = subCategories.find((item) => item.categoryId === product.categories[1]);
   const KakaoMap = dynamic(() => import("@/components/services/KakaoMap"), {
     ssr: false,
   });
@@ -48,7 +44,7 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
         messageType: string;
         productId: string;
       };
-    }
+    },
   ) {
     return fetch(url, {
       method: "POST",

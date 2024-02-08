@@ -34,7 +34,6 @@
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
-    "eslint-config-next": "13.4.7",
     "i": "^0.3.7",
     "jwt-decode": "^3.1.2",
     "next": "^13.5.6",
@@ -62,8 +61,10 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.1.0",
     "@types/bcryptjs": "^2.4.2",
     "eslint": "^8.56.0",
+    "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
     "prisma": "^5.3.1"

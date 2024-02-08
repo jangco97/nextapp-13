@@ -26,7 +26,7 @@ const UserPurchase = ({
   const queryClient = useQueryClient();
   const [isWithinTime, setIsWithinTime] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(
-    meetTime ? new Date(meetTime)?.getTime() - Date.now() : -1
+    meetTime ? new Date(meetTime)?.getTime() - Date.now() : -1,
   );
   const purchase = async (reservationType: string) => {
     if (reservationType === "구매예약") {
@@ -78,9 +78,7 @@ const UserPurchase = ({
   useEffect(() => {
     const checkTimeDifference = () => {
       if (meetTime === null) return;
-      setTimeRemaining(
-        (meetTime ? new Date(meetTime)?.getTime() : -1) - Date.now()
-      );
+      setTimeRemaining((meetTime ? new Date(meetTime)?.getTime() : -1) - Date.now());
       const timeDifference = timeRemaining;
       setIsWithinTime(timeDifference <= 0);
     };
@@ -116,9 +114,7 @@ const UserPurchase = ({
   //몇일 남았는지 계산, 1일 2시간 30분 몇초 이런식으로
 
   const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
+  const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
   return (
@@ -127,9 +123,8 @@ const UserPurchase = ({
         {timeRemaining > 0 && meetTime && (
           <span className="m-2 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white">
             <span>
-              남은시간:{days !== 0 && days + "일"}{" "}
-              {hours !== 0 && hours + "시간"} {minutes !== 0 && minutes + "분"}{" "}
-              {seconds !== 0 && seconds + "초"}
+              남은시간:{days !== 0 && days + "일"} {hours !== 0 && hours + "시간"}{" "}
+              {minutes !== 0 && minutes + "분"} {seconds !== 0 && seconds + "초"}
             </span>
           </span>
         )}

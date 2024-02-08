@@ -1,19 +1,19 @@
-'use client';
-import React, { Fragment, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
-import qs from 'query-string';
-import Link from 'next/link';
-import Image from 'next/image';
-import HeartButton from '@/components/products/HeartButton';
-import { FaLocationDot } from 'react-icons/fa6';
+"use client";
+import React, { Fragment, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import qs from "query-string";
+import Link from "next/link";
+import Image from "next/image";
+import HeartButton from "@/components/products/HeartButton";
+import { FaLocationDot } from "react-icons/fa6";
 const UserFavorites = ({ carts, currentUser }: { carts: any; currentUser: any }) => {
   const [isAlive, setIsAlive] = useState(false);
   const router = useRouter();
   const params = useSearchParams();
   const currentQuery = qs.parse(params?.toString());
   useEffect(() => {
-    if ('favorites' in currentQuery) {
+    if ("favorites" in currentQuery) {
       setIsAlive(true);
     }
     return () => {
@@ -28,7 +28,7 @@ const UserFavorites = ({ carts, currentUser }: { carts: any; currentUser: any })
           <div className="grid grid-cols-4 gap-4 place-items-center text-gray">
             <p>이미지</p>
             <p className="flex">
-              {' '}
+              {" "}
               <FaLocationDot />
               주소
             </p>
@@ -40,7 +40,7 @@ const UserFavorites = ({ carts, currentUser }: { carts: any; currentUser: any })
             <Fragment key={cart.id}>
               <div className="grid grid-cols-4 gap-4 place-items-center ">
                 <div className="relative w-20 h-20 overflow-hidden aspect-square rounded-xl">
-                  {' '}
+                  {" "}
                   <Image
                     src={cart.imageSrc[0]}
                     fill
@@ -57,7 +57,7 @@ const UserFavorites = ({ carts, currentUser }: { carts: any; currentUser: any })
                 <div>{cart.address}</div>
 
                 <Link href={`/products/${cart.id}`}>
-                  {' '}
+                  {" "}
                   <h2 className=" text-blue-500">{cart.title}</h2>
                 </Link>
 

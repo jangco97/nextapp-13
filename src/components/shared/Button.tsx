@@ -32,11 +32,7 @@ const Button: React.FC<ButtonProps> = ({
     ${outline ? "bg-white" : "bg-indigo-500"}
     ${outline ? "border-black" : "bg-indigo-500"}
     ${outline ? "text-black" : "text-white"}
-    ${
-      small
-        ? "py-1 text-sm font-light border-[1px]"
-        : "py-3 text-md font-semibold border-2"
-    }
+    ${small ? "py-1 text-sm font-light border-[1px]" : "py-3 text-md font-semibold border-2"}
   `}
     >
       {Icon && <Icon size={24} className="absolute left-4 top3" />}

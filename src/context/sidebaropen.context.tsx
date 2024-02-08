@@ -27,15 +27,7 @@ export const SidebarContext = createContext<{
   dispatch: () => null,
 });
 
-export const SidebarProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const SidebarProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, { isSidebarOpen: false });
-  return (
-    <SidebarContext.Provider value={{ state, dispatch }}>
-      {children}
-    </SidebarContext.Provider>
-  );
+  return <SidebarContext.Provider value={{ state, dispatch }}>{children}</SidebarContext.Provider>;
 };

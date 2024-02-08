@@ -1,7 +1,5 @@
-import React, { Suspense } from 'react';
-export const dynamic = 'force-dynamic';
-import getCurrentUser from '../actions/getCurrentUser';
-import ChatClient from './ChatClient';
+import getCurrentUser from "../actions/getCurrentUser";
+import ChatClient from "./ChatClient";
 const ChatPage = async () => {
   const currentUser = await getCurrentUser();
 

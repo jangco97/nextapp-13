@@ -3,10 +3,7 @@ export const uploadImage = async (image: File) => {
   const formData = new FormData();
 
   formData.append("file", image);
-  formData.append(
-    "upload_preset",
-    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!
-  );
+  formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!);
 
   const response = await fetch(url, {
     method: "POST",

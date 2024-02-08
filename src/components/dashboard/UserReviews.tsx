@@ -52,9 +52,7 @@ const UserReviews = ({ userReviews }: { userReviews: any }) => {
                   <label key={index}>
                     <FaStar
                       className="cursor-pointer"
-                      color={
-                        scoreValue <= review.userRating ? "#ffc107" : "#e4e5e9"
-                      }
+                      color={scoreValue <= review.userRating ? "#ffc107" : "#e4e5e9"}
                       size={20}
                     />
                   </label>

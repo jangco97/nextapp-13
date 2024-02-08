@@ -57,7 +57,7 @@ const UserReservation = ({
         latitude: number;
         longitude: number;
       };
-    }
+    },
   ) {
     return fetch(url, {
       method: "POST",
@@ -74,7 +74,7 @@ const UserReservation = ({
     address: string,
     addressDetail: string,
     latitude: number,
-    longitude: number
+    longitude: number,
   ) => {
     if (!currentUser) return;
     setIsLoading2(true);
@@ -126,26 +126,10 @@ const UserReservation = ({
       <div>
         <div className="flex justify-end mb-5 mt-5">
           {" "}
-          <ReservationButton
-            setStatus={setStatus}
-            status={status}
-            name="구매예약"
-          />
-          <ReservationButton
-            setStatus={setStatus}
-            status={status}
-            name="판매예약"
-          />
-          <ReservationButton
-            setStatus={setStatus}
-            status={status}
-            name="구매내역"
-          />
-          <ReservationButton
-            setStatus={setStatus}
-            status={status}
-            name="판매내역"
-          />
+          <ReservationButton setStatus={setStatus} status={status} name="구매예약" />
+          <ReservationButton setStatus={setStatus} status={status} name="판매예약" />
+          <ReservationButton setStatus={setStatus} status={status} name="구매내역" />
+          <ReservationButton setStatus={setStatus} status={status} name="판매내역" />
         </div>
 
         {/* 구매 예약 상품*/}
@@ -180,10 +164,7 @@ const UserReservation = ({
         )}
 
         {status === "판매내역" && (
-          <PurchaseHistory
-            histories={sellingHistory}
-            historyType={"판매내역"}
-          />
+          <PurchaseHistory histories={sellingHistory} historyType={"판매내역"} />
         )}
       </div>
     )

@@ -12,13 +12,7 @@ import ProductStatusButton from "./button/ProductStatusButton";
 import NothingComponents from "../NothingComponents";
 // 바로 수정을 할 수 있도록 수정 버튼이 있어야 한다.
 
-const UserProducts = ({
-  userProducts,
-  isGuest,
-}: {
-  userProducts: any;
-  isGuest: boolean;
-}) => {
+const UserProducts = ({ userProducts, isGuest }: { userProducts: any; isGuest: boolean }) => {
   const [isAlive, setIsAlive] = useState(false);
 
   const router = useRouter();
@@ -61,8 +55,7 @@ const UserProducts = ({
                       className=" cursor-pointer group object-cover w-full h-full  group-hover:scale-110 group-hover:ease-out duration-300 rounded-xl"
                       alt="product"
                     />
-                    {product.status === "예약중" ||
-                    product.status === "판매완료" ? (
+                    {product.status === "예약중" || product.status === "판매완료" ? (
                       <div className="absolute text-lg font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 border-2 rounded-full border-indigo-800">
                         {product.status}
                       </div>
@@ -92,9 +85,7 @@ const UserProducts = ({
                       {isGuest === true ? null : (
                         <button
                           className="text-center w-20 border-2 text-white bg-indigo-400 rounded-xl p-2 hover:bg-indigo-500 duration-300"
-                          onClick={() =>
-                            router.push(`/products/${product.id}/edit`)
-                          }
+                          onClick={() => router.push(`/products/${product.id}/edit`)}
                         >
                           수정
                         </button>

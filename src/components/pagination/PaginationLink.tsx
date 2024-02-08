@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useSearchParams } from 'next/navigation';
-import React, { PropsWithChildren } from 'react';
-import qs from 'query-string';
-import Link from 'next/link';
+import { useSearchParams } from "next/navigation";
+import React, { PropsWithChildren } from "react";
+import qs from "query-string";
+import Link from "next/link";
 type PaginationLinkProps = {
   page?: number | string;
   active?: boolean;
@@ -35,11 +35,10 @@ const PaginationLink = ({
 
   return (
     <Link
-      prefetch={false}
       href={{ query: updatedQurry }}
       className={`p-2 text-2xl 
-    ${active ? 'fond-bild text-orange-500' : 'text-gray-500'} 
-    ${disabled ? 'pointer-events-none text-gray-200' : ''}
+    ${active ? "fond-bild text-orange-500" : "text-gray-500"} 
+    ${disabled ? "pointer-events-none text-gray-200" : ""}
     `}
     >
       {children}

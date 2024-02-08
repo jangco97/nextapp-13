@@ -14,12 +14,7 @@ interface ContactsProps {
     receiverImage: string;
   }) => void;
 }
-const Contacts = ({
-  users,
-  currentUser,
-  setLayout,
-  setReceiver,
-}: ContactsProps) => {
+const Contacts = ({ users, currentUser, setLayout, setReceiver }: ContactsProps) => {
   const queryClient = useQueryClient();
   const { data } = useQuery<any>({
     queryKey: ["chat"],
@@ -37,11 +32,7 @@ const Contacts = ({
       },
     });
   };
-  const filterMessages = (
-    userId: string,
-    userName: string | null,
-    userImage: string | null
-  ) => {
+  const filterMessages = (userId: string, userName: string | null, userImage: string | null) => {
     setReceiver({
       receiverId: userId,
       receiverName: userName || "",
@@ -59,8 +50,7 @@ const Contacts = ({
             .filter((user) => user.id !== currentUser?.id)
             .map((user) => {
               let unReadMessage = data?.receivedMessages?.filter(
-                (message: any) =>
-                  message.isRead === false && message.senderId === user.id
+                (message: any) => message.isRead === false && message.senderId === user.id,
               );
               return (
                 <div
@@ -72,11 +62,7 @@ const Contacts = ({
                     queryClient.invalidateQueries({ queryKey: ["chat"] });
                   }}
                 >
-                  <User
-                    user={user}
-                    currentUserId={currentUser?.id}
-                    unReadMessage={unReadMessage}
-                  />
+                  <User user={user} currentUserId={currentUser?.id} unReadMessage={unReadMessage} />
                 </div>
               );
             })}

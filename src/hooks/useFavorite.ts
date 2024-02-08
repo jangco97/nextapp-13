@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import { useMemo } from 'react';
-import { toast } from 'react-toastify';
-import { useQueryClient } from '@tanstack/react-query';
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useMemo } from "react";
+import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface UseFavoriteProps {
   productId: string;
@@ -20,7 +20,7 @@ const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
   const toggleFavorite = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (!currentUser) {
-      toast.warn('로그인이 필요합니다.');
+      toast.warn("로그인이 필요합니다.");
       return;
     }
     try {
@@ -31,11 +31,11 @@ const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
         request = () => axios.post(`/api/favorites/${productId}`);
       }
       await request();
-      queryClient.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: ["user"] });
       router.refresh();
-      toast.success('성공적으로 처리되었습니다.');
+      toast.success("성공적으로 처리되었습니다.");
     } catch (err) {
-      toast.error('실패했습니다.');
+      toast.error("실패했습니다.");
     }
   };
 

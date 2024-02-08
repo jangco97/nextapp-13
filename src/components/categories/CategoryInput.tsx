@@ -9,12 +9,7 @@ interface CategoryInputProps {
   onClick: (a: string, b: string) => void;
 }
 
-const CategoryInput = ({
-  label,
-  categoryId,
-  secondCategory,
-  onClick,
-}: CategoryInputProps) => {
+const CategoryInput = ({ label, categoryId, secondCategory, onClick }: CategoryInputProps) => {
   return (
     <div className="flex gap-[300px] bg-gray-100 justify-center p-7 mb-10">
       <div>
@@ -26,10 +21,7 @@ const CategoryInput = ({
           >
             <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
               {label}
-              <ChevronDownIcon
-                className="-mr-1 h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
+              <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
             </Menu.Button>
           </div>
           <Transition

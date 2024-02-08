@@ -8,12 +8,7 @@ interface InputProps {
   type?: string;
 }
 
-const RegisterInput: React.FC<InputProps> = ({
-  label,
-  disabled,
-  register,
-  type,
-}) => {
+const RegisterInput: React.FC<InputProps> = ({ label, disabled, register, type }) => {
   return (
     <div className="relative w-full">
       <>

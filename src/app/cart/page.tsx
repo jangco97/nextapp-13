@@ -1,11 +1,11 @@
-import Container from '@/components/shared/Container';
-import React, { Fragment } from 'react';
-import getCurrentCarts from '../actions/getCurrentCarts';
-import Link from 'next/link';
-import Image from 'next/image';
-import getCurrentUser from '../actions/getCurrentUser';
-import HeartButton from '@/components/products/HeartButton';
-import { FaLocationDot } from 'react-icons/fa6';
+import Container from "@/components/shared/Container";
+import { Fragment } from "react";
+import getCurrentCarts from "../actions/getCurrentCarts";
+import Link from "next/link";
+import Image from "next/image";
+import getCurrentUser from "../actions/getCurrentUser";
+import HeartButton from "@/components/products/HeartButton";
+import { FaLocationDot } from "react-icons/fa6";
 
 const CartPage = async () => {
   const currentUser = await getCurrentUser();
@@ -18,7 +18,7 @@ const CartPage = async () => {
           <div className="grid grid-cols-4 gap-4 place-items-center text-gray">
             <p>이미지</p>
             <p className="flex">
-              {' '}
+              {" "}
               <FaLocationDot />
               주소
             </p>
@@ -30,7 +30,7 @@ const CartPage = async () => {
             <Fragment key={cart.id}>
               <div className="grid grid-cols-4 gap-4 place-items-center ">
                 <div className="relative w-20 h-20 overflow-hidden aspect-square rounded-xl">
-                  {' '}
+                  {" "}
                   <Image
                     src={cart.imageSrc[0]}
                     fill
@@ -47,7 +47,7 @@ const CartPage = async () => {
                 <div>{cart.address}</div>
 
                 <Link href={`/products/${cart.id}`}>
-                  {' '}
+                  {" "}
                   <h2 className=" text-blue-500">{cart.title}</h2>
                 </Link>
 

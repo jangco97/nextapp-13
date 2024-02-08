@@ -1,9 +1,8 @@
-'use client';
-import Container from '@/components/shared/Container';
-import ProductLineChart from '@/components/ProductLineChart';
-import PriceChartSearch from '@/app/pricechart/PriceChartSearch';
-import React from 'react';
-export const dynamic = 'force-dynamic';
+import Container from "@/components/shared/Container";
+import ProductLineChart from "@/components/ProductLineChart";
+import PriceChartSearch from "@/app/pricechart/PriceChartSearch";
+import React from "react";
+
 const PriceChart = () => {
   return (
     <Container>

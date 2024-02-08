@@ -8,9 +8,8 @@ interface UserProps {
   unReadMessage: any;
 }
 const User = ({ user, currentUserId, unReadMessage }: UserProps) => {
-  const messagesWithCurrentUser = user.conversations.find(
-    (conversation: TConversation) =>
-      conversation.users.find((user) => user.id === currentUserId)
+  const messagesWithCurrentUser = user.conversations.find((conversation: TConversation) =>
+    conversation.users.find((user) => user.id === currentUserId),
   );
   let latestMessage = messagesWithCurrentUser?.messages.slice(-1)[0];
 

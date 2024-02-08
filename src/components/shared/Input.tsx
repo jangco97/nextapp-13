@@ -24,9 +24,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div className="relative w-full">
-      {formatPrice && (
-        <span className="absolute text-neutral-700 top-5 left-2">￦</span>
-      )}
+      {formatPrice && <span className="absolute text-neutral-700 top-5 left-2">￦</span>}
       {label === "Description" ? (
         <textarea
           id={id}

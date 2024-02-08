@@ -1,14 +1,14 @@
-'use client';
-export const dynamic = 'force-dynamic';
-import React, { useState } from 'react';
-import Input from '@/components/shared/Input';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import Button from '@/components/shared/Button';
-import Link from 'next/link';
-import { signIn } from 'next-auth/react';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
-import Container from '@/components/shared/Container';
+"use client";
+
+import React, { useState } from "react";
+import Input from "@/components/shared/Input";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import Button from "@/components/shared/Button";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import Container from "@/components/shared/Container";
 
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,25 +19,25 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (body) => {
     setIsLoading(true);
-    signIn('credentials', {
+    signIn("credentials", {
       redirect: false,
       email: body.email,
       password: body.password,
     })
       .then((callback) => {
         if (callback?.error) {
-          toast.error('로그인 실패!');
+          toast.error("로그인 실패!");
         }
         if (callback?.ok && !callback?.error) {
-          toast.success('로그인 성공!');
-          router.push('/');
+          toast.success("로그인 성공!");
+          router.push("/");
           router.refresh();
         }
       })
@@ -87,8 +87,8 @@ const LoginPage = () => {
           <hr />
           <div className="text-center">
             <p className="text-gray-400">
-              You do not have an account?{' '}
-              <Link href={'/auth/register'} className=" text-blue-500 hover:underline">
+              You do not have an account?{" "}
+              <Link href={"/auth/register"} className=" text-blue-500 hover:underline">
                 register
               </Link>
             </p>

@@ -1,8 +1,8 @@
-'use client';
-import React, { Fragment } from 'react';
-import { mainCategories } from '@/constants';
-import CategoryIcon from './CategoryIcon';
-import Link from 'next/link';
+"use client";
+import React, { Fragment } from "react";
+import { mainCategories } from "@/constants";
+import CategoryIcon from "./CategoryIcon";
+import Link from "next/link";
 const CategoryCircle = ({ currentLabel }: { currentLabel: string | null }) => {
   return (
     <>
@@ -16,7 +16,6 @@ const CategoryCircle = ({ currentLabel }: { currentLabel: string | null }) => {
                   className="flex items-center justify-center  w-24 h-10  rounded-md bg-gradient-to-r from-blue-400  via-indigo-400 to-indigo-500 p-2 hover:bg-gray-500/50 cursor-pointer"
                 >
                   <Link
-                    prefetch={false}
                     href={`/?category=${subitem.categoryId}&label=${item.label}&subLabel=${subitem.label}`}
                   >
                     <span className="block text-xs text-white px-4 py-2 font-semibold rounded-md ">

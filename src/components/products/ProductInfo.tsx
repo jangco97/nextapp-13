@@ -53,9 +53,7 @@ const ProductInfo = ({
         <hr />
       </div>
 
-      {category && (
-        <ProductCategory category={category} subCategory={subCategory} />
-      )}
+      {category && <ProductCategory category={category} subCategory={subCategory} />}
       {price && <div>{price}원</div>}
       <hr />
       <div>{description}</div>

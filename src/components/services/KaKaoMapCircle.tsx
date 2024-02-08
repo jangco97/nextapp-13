@@ -8,12 +8,7 @@ interface KakaoMapProps {
   isClicked: boolean;
 }
 
-const KakaoMapCircle = ({
-  distance,
-  latitude,
-  longitude,
-  isClicked,
-}: KakaoMapProps) => {
+const KakaoMapCircle = ({ distance, latitude, longitude, isClicked }: KakaoMapProps) => {
   const mapRef = useRef<kakao.maps.Map>(null);
   const defaultLevel = 5;
   const [level, setLevel] = useState(defaultLevel);

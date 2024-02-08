@@ -1,12 +1,6 @@
 import React from "react";
 
-const NothingComponents = ({
-  title,
-  pageType,
-}: {
-  title: string;
-  pageType: string;
-}) => {
+const NothingComponents = ({ title, pageType }: { title: string; pageType: string }) => {
   return (
     <>
       {pageType == "reservation" && (

@@ -41,11 +41,7 @@ const Reservation = ({
     <>
       {products?.length === 0 && (
         <NothingComponents
-          title={
-            reservationType === "구매예약"
-              ? "구매 예약한 상품"
-              : "판매 예약한 상품"
-          }
+          title={reservationType === "구매예약" ? "구매 예약한 상품" : "판매 예약한 상품"}
           pageType="reservation"
         />
       )}
@@ -124,11 +120,7 @@ const Reservation = ({
                     {currentUser?.id === reservation?.sellerId && (
                       <button className="m-4 p-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
                         <span className="block text-gray-200 px-4 py-2 font-semibold rounded-full bg-gray-300/40">
-                          <Link
-                            href={`/products/${reservation?.productId}/edit`}
-                          >
-                            위치 수정
-                          </Link>
+                          <Link href={`/products/${reservation?.productId}/edit`}>위치 수정</Link>
                         </span>
                       </button>
                     )}
@@ -160,14 +152,10 @@ const Reservation = ({
                           className="datepicker"
                           locale={ko}
                           dateFormat="yyyy년 MM월 dd일 hh시 mm분"
-                          selected={
-                            selectedDates[reservation?.id] || new Date()
-                          }
+                          selected={selectedDates[reservation?.id] || new Date()}
                           showTimeSelect
                           timeFormat="HH:mm"
-                          onChange={(date) =>
-                            handleDateChange(date, reservation.id)
-                          }
+                          onChange={(date) => handleDateChange(date, reservation.id)}
                           minDate={new Date()}
                           customInput={
                             <input className="text-white m-2 p-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500" />
@@ -187,7 +175,7 @@ const Reservation = ({
                               reservation?.address,
                               reservation?.addressDetail,
                               reservation?.latitude,
-                              reservation?.longitude
+                              reservation?.longitude,
                             )
                           }
                         >
