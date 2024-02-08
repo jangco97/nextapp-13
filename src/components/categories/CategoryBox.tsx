@@ -16,7 +16,7 @@ const CategoryBox = ({ label, categoryId, selected, secondCategory }: CategoryBo
     <div className="relative">
       <Menu as="div" className="relative">
         <div className="flex w-full justify-between items-center pl-1 pr-1 ">
-          <Link href={`/?category=${categoryId}&label=${label}`}>
+          <Link prefetch={false} href={`/?category=${categoryId}&label=${label}`}>
             <div className=" cursor-pointer hover:bg-gray-500/20 p-3 rounded-md">{label}</div>
           </Link>
           <div>
