@@ -42,7 +42,7 @@ const ProductInfo = ({
         <div className="flex items-center gap-2 text-xl font-semibold">
           <Avatar src={user?.image} />
           {currentUser?.id !== user?.id ? (
-            <Link href={`/user/${user?.id}`}>
+            <Link href={`/user/${user?.id}?link=products`}>
               <p>{user?.name}</p>
             </Link>
           ) : (
