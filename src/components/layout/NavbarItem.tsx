@@ -38,7 +38,9 @@ const NavbarItem = ({
             </div>
           </li>
           <li className="py-2 text-center cursor-pointer">
-            <Link href={"/user?products"}>마이페이지</Link>
+            <Link prefetch={false} href={"/user?products"}>
+              마이페이지
+            </Link>
           </li>
           <li className="py-2 flex justify-evenly text-center  cursor-pointer">
             <Link href={"/chat"}>채팅</Link>
