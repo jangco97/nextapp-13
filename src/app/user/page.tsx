@@ -35,7 +35,7 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
       {/* 상품 전용 섹션 */}
       <Container>
         <section>
-          <UserProducts userProducts={userProducts} isGuest={false} />
+          <UserProducts userProducts={userProducts} isGuest={false} searchParams={searchParams} />
         </section>
         {/* 리뷰 전용 */}
         <section>

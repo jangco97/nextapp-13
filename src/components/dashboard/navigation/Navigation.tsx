@@ -8,27 +8,23 @@ const Navigation = ({ isGuest }: { isGuest: boolean }) => {
   const currentQuery = qs.parse(params?.toString());
   return (
     <div className="grid grid-cols-4 border-4 border-r-0 text-white bg-gray-400 rounded-sm">
-      <Link href={{ query: "products" }}>
+      <Link prefetch={false} href={{ query: "products" }}>
         <button
-          className={`w-full border-r-4 h-10 ${
-            "products" in currentQuery && "bg-indigo-800/70"
-          }`}
+          className={`w-full border-r-4 h-10 ${"products" in currentQuery && "bg-indigo-800/70"}`}
         >
           상품
         </button>
       </Link>
-      <Link href={{ query: "reviews" }}>
+      <Link prefetch={false} href={{ query: "reviews" }}>
         <button
-          className={`w-full border-r-4 h-10 ${
-            "reviews" in currentQuery && "bg-indigo-800/70"
-          }`}
+          className={`w-full border-r-4 h-10 ${"reviews" in currentQuery && "bg-indigo-800/70"}`}
         >
           리뷰
         </button>
       </Link>
       {isGuest ? null : (
         <>
-          <Link href={{ query: "favorites" }}>
+          <Link prefetch={false} href={{ query: "favorites" }}>
             <button
               className={`w-full border-r-4 h-10 ${
                 "favorites" in currentQuery && "bg-indigo-800/70"
@@ -37,7 +33,7 @@ const Navigation = ({ isGuest }: { isGuest: boolean }) => {
               찜
             </button>
           </Link>
-          <Link href={{ query: "reservations" }}>
+          <Link prefetch={false} href={{ query: "reservations" }}>
             <button
               className={`w-full border-r-4 h-10 ${
                 "reservations" in currentQuery && "bg-indigo-800/70"

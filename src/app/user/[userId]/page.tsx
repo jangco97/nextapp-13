@@ -7,6 +7,7 @@ import Container from "@/components/shared/Container";
 import UserProducts from "@/components/dashboard/UserProducts";
 import UserReviews from "@/components/dashboard/UserReviews";
 import getUserReviews from "@/app/actions/getUserReviews";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 import { Params } from "@/app/actions/getUserProducts";
 import Link from "next/link";
 const UserDetailPage = async ({
@@ -19,19 +20,22 @@ const UserDetailPage = async ({
   const user = await getUser(params.userId);
   const userProducts = await getUserProducts({ searchParams, params });
   const userReviews = await getUserReviews(params.userId);
+  const currentUser = await getCurrentUser();
   return (
     <>
       <section className="pt-[75px]">
         <header className="flex justify-center items-center p-10">
-          <Link href={`/user/${params.userId}`}>
+          <Link prefetch={false} href={`/user/${params.userId}`}>
             <Avatar src={user?.image || null} />
           </Link>
           <div className="text-lg text-slate-500 ml-3">{user?.name}</div>
-          <Link href={`/chat/${user?.id}`}>
-            <button className="ml-5 p-2 flex justify-center items-center border-2  border-indigo-400 text-indigo-400 rounded-md hover:bg-indigo-700 hover:text-white">
-              채팅하기
-            </button>
-          </Link>
+          {currentUser?.id ? (
+            <Link href={`/chat/${user?.id}`}>
+              <button className="ml-5 p-2 flex justify-center items-center border-2  border-indigo-400 text-indigo-400 rounded-md hover:bg-indigo-700 hover:text-white">
+                채팅하기
+              </button>
+            </Link>
+          ) : null}
         </header>
         <header>
           <Navigation isGuest={true} />
@@ -40,13 +44,12 @@ const UserDetailPage = async ({
       {/* 상품 전용 섹션 */}
       <Container>
         <section>
-          <UserProducts userProducts={userProducts} isGuest={true} />
+          <UserProducts userProducts={userProducts} isGuest={true} searchParams={searchParams} />
         </section>
         {/* 리뷰 전용 */}
         <section>
           <UserReviews userReviews={userReviews} />
         </section>
-        {/* 찜 전용 */}
       </Container>
     </>
   );
