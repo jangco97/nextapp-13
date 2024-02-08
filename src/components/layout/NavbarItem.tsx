@@ -3,7 +3,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { useSession } from "next-auth/react";
+
 const NavbarItem = ({
   currentUser,
   data,
@@ -17,8 +17,7 @@ const NavbarItem = ({
   const unReadMessage = chatData?.receivedMessages?.filter(
     (message: any) => message.isRead === false,
   );
-  const { data: session } = useSession();
-  console.log("session", session);
+
   return (
     <ul
       className={`flex text-md flex-col ml-5 items-start md:mr-2 md:flex-row md:justify-center md:gap-4 md:w-full md:items-center  `}
