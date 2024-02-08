@@ -10,7 +10,7 @@ const ImageClient = ({ productId, src }: { productId: string; src: string }) => 
       sizes="auto"
       className=" cursor-pointer group object-cover w-full h-full  group-hover:scale-110 group-hover:ease-out duration-300 rounded-xl"
       alt="product"
-      onClick={() => router.push(`/products/${productId}/edit`)}
+      onClick={() => router.push(`/products/${productId}`)}
     />
   );
 };
