@@ -21,13 +21,17 @@ const ProductCategory = ({ category, subCategory }: ProductCategoryProps) => {
       <div className="flex flex-row items-center gap-4">
         <div className="flex flex-col">
           <div className="text-lg font-semibold">
-            <Link href={`/?category=${category?.categoryId}&label=${category?.label}`}>
+            <Link
+              prefetch={false}
+              href={`/?category=${category?.categoryId}&label=${category?.label}`}
+            >
               {category?.label}
             </Link>{" "}
             {subCategory?.label && (
               <>
                 <span className="text-lg font-semibold">{">"}</span>
                 <Link
+                  prefetch={false}
                   href={`/?category=${subCategory?.categoryId}&label=${category?.label}&subLabel=${subCategory?.label}`}
                 >
                   {subCategory?.label}
