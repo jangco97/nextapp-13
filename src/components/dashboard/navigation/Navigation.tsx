@@ -17,7 +17,7 @@ const Navigation = ({ isGuest }: { isGuest: boolean }) => {
         }}
       >
         <button
-          className={`w-full border-r-4 h-10 ${"products" in currentQuery && "bg-indigo-800/70"}`}
+          className={`w-full border-r-4 h-10 ${currentQuery?.link === "products" && "bg-indigo-800/70"}`}
         >
           상품
         </button>
@@ -31,7 +31,7 @@ const Navigation = ({ isGuest }: { isGuest: boolean }) => {
         }}
       >
         <button
-          className={`w-full border-r-4 h-10 ${"reviews" in currentQuery && "bg-indigo-800/70"}`}
+          className={`w-full border-r-4 h-10 ${currentQuery?.link === "reviews" && "bg-indigo-800/70"}`}
         >
           리뷰
         </button>
@@ -48,7 +48,7 @@ const Navigation = ({ isGuest }: { isGuest: boolean }) => {
           >
             <button
               className={`w-full border-r-4 h-10 ${
-                "favorites" in currentQuery && "bg-indigo-800/70"
+                currentQuery?.link === "favorites" && "bg-indigo-800/70"
               }`}
             >
               찜
@@ -64,7 +64,7 @@ const Navigation = ({ isGuest }: { isGuest: boolean }) => {
           >
             <button
               className={`w-full border-r-4 h-10 ${
-                "reservations" in currentQuery && "bg-indigo-800/70"
+                currentQuery?.link === "reservations" && "bg-indigo-800/70"
               }`}
             >
               예약
