@@ -16,6 +16,7 @@ const CategoryCircle = ({ currentLabel }: { currentLabel: string | null }) => {
                   className="flex items-center justify-center  w-24 h-10  rounded-md bg-gradient-to-r from-blue-400  via-indigo-400 to-indigo-500 p-2 hover:bg-gray-500/50 cursor-pointer"
                 >
                   <Link
+                    prefetch={false}
                     href={`/?category=${subitem.categoryId}&label=${item.label}&subLabel=${subitem.label}`}
                   >
                     <span className="block text-xs text-white px-4 py-2 font-semibold rounded-md ">
@@ -31,7 +32,7 @@ const CategoryCircle = ({ currentLabel }: { currentLabel: string | null }) => {
         {mainCategories.map((item) => (
           <Fragment key={item.label}>
             <div className="flex flex-col items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-300 via-indigo-400 to-indigo-500 p-2 border-2 rounded-full hover:bg-gray-500/50 cursor-pointer">
-              <Link href={`/?category=${item.categoryId}&label=${item.label}`}>
+              <Link prefetch={false} href={`/?category=${item.categoryId}&label=${item.label}`}>
                 <div className="flex flex-col items-center justify-center text-xs text-white  font-semibold rounded-full">
                   <CategoryIcon label={item.label} />
                   {item.label}

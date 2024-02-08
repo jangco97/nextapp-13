@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { MouseEventHandler, useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { SidebarContext } from "@/context/sidebaropen.context";
 import NavbarItem from "./NavbarItem";
@@ -18,7 +18,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
   const { state, dispatch } = useContext(SidebarContext);
   const router = useRouter();
   const params = useSearchParams();
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   let currentQuery = {};
   if (params) {
     currentQuery = qs.parse(params?.toString()); //{'category' : 'interior', 'page' : '2'}
@@ -56,7 +56,9 @@ const Navbar = ({ currentUser }: NavbarProps) => {
     enabled: !!currentUser,
   });
   const handleSearch = () => {
+    setIsLoading(true);
     router.push(qs.stringifyUrl({ url: "/", query: updatedQuery }));
+    setIsLoading(false);
   };
   return (
     <nav className="fixed right-0 left-0  flex items-center justify-between px-3 h-[75px] z-10  bg-indigo-800/70 text-white">
@@ -80,12 +82,13 @@ const Navbar = ({ currentUser }: NavbarProps) => {
             {...register("search", { required: true })}
             className="p-[5px] md:p-[10px] h-[40px] border-s-gray-50 text-sm bg-gray-400/50"
             placeholder="Search"
-            // disabled={isLoading}
+            disabled={isLoading}
           />
 
           <button
-            className="hover:bg-gray-800 bg-gray-500  border-s-gray-50 cursor-pointer h-[40px] w-[40px] rounded-r-full flex justify-center items-center"
+            className="hover:bg-gray-800 bg-gray-500  border-s-gray-50 cursor-pointer h-[40px] w-[40px] rounded-r-full flex justify-center items-center disabled:cursor-not-allowed disabled:bg-gray-500/50 disabled:text-gray-500/50 disabled:hover:bg-gray-500/50 disabled:hover:text-gray-500/50"
             onClick={handleSearch}
+            disabled={isLoading}
           >
             <HiMagnifyingGlass className="text-md" />
           </button>
