@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { fromNow } from "@/helpers/dayjs";
-import Image from "next/image";
 import FilterButton from "@/components/filterbutton/FilterButton";
 import UserProductsButton from "./button/UserProductsButton";
 import ProductStatusButton from "./button/ProductStatusButton";
@@ -49,7 +47,7 @@ const UserProducts = ({
                     <div>
                       {product.price} <span className="font-light">원</span>
                     </div>
-                    <div>{fromNow(product.createdAt)}</div>
+                    {/* <div>{fromNow(product.createdAt)}</div> */}
                   </div>
                   <hr />
 
