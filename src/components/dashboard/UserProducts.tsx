@@ -5,6 +5,8 @@ import FilterButton from "@/components/filterbutton/FilterButton";
 import UserProductsButton from "./button/UserProductsButton";
 import ProductStatusButton from "./button/ProductStatusButton";
 import NothingComponents from "../NothingComponents";
+import ImageClient from "./image/ImageClient";
+import EditButton from "./button/EditButton";
 
 const UserProducts = ({
   userProducts,
@@ -33,15 +35,7 @@ const UserProducts = ({
               >
                 <div className="relative w-full overflow-hidden aspect-square ">
                   {" "}
-                  <Link href={`/products/${product.id}`}>
-                    <Image
-                      src={product.imageSrc[0]}
-                      fill
-                      sizes="auto"
-                      className=" cursor-pointer group object-cover w-full h-full  group-hover:scale-110 group-hover:ease-out duration-300 rounded-xl"
-                      alt="product"
-                    />
-                  </Link>
+                  <ImageClient src={product.imageSrc[0]} productId={product.id} />
                   {product.status === "예약중" || product.status === "판매완료" ? (
                     <div className="absolute text-lg font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 border-2 rounded-full border-indigo-800">
                       {product.status}
@@ -64,13 +58,7 @@ const UserProducts = ({
                     {isGuest === true ? null : (
                       <ProductStatusButton productId={product.id} currentStatus={product.status} />
                     )}
-                    {isGuest === true ? null : (
-                      <Link href={`/products/${product.id}/edit`}>
-                        <button className="text-center w-20 border-2 text-white bg-indigo-400 rounded-xl p-2 hover:bg-indigo-500 duration-300">
-                          수정
-                        </button>
-                      </Link>
-                    )}
+                    {isGuest === true ? null : <EditButton productId={product.id} />}
                   </div>
                 </div>
               </div>
