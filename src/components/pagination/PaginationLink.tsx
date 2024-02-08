@@ -35,6 +35,7 @@ const PaginationLink = ({
 
   return (
     <Link
+      prefetch={false}
       href={{ query: updatedQurry }}
       className={`p-2 text-2xl 
     ${active ? "fond-bild text-orange-500" : "text-gray-500"} 
