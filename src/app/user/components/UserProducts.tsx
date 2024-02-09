@@ -14,7 +14,7 @@ const UserProducts = async ({
   isGuest,
 }: {
   searchParams: Params;
-  params: { userId: string };
+  params?: { userId: string };
   isGuest: boolean;
 }) => {
   const userProducts =
