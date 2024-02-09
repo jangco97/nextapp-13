@@ -44,7 +44,7 @@ const UserDetailPage = async ({
       <Container>
         {searchParams?.link === "products" && (
           <section>
-            <UserProducts userProducts={userProducts} isGuest={true} />
+            <UserProducts searchParams={searchParams} isGuest={true} />
           </section>
         )}
         {/* 리뷰 전용 */}

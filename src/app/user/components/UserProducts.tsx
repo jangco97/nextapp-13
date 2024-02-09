@@ -6,8 +6,16 @@ import UserProductsButton from "./button/UserProductsButton";
 import EditButton from "./button/EditButton";
 import ProductStatusButton from "./button/ProductStatusButton";
 import { Suspense } from "react";
+import getUserProducts, { Params } from "@/app/actions/getUserProducts";
 
-const UserProducts = ({ userProducts, isGuest }: { userProducts: any; isGuest: boolean }) => {
+const UserProducts = async ({
+  searchParams,
+  isGuest,
+}: {
+  searchParams: Params;
+  isGuest: boolean;
+}) => {
+  const userProducts = await getUserProducts({ searchParams });
   return (
     <div className="mb-20">
       <div className="w-full flex justify-evenly">

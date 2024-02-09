@@ -1,3 +1,4 @@
+import { Product } from "prisma/generated/client";
 import prisma from "../../app/libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
 export interface Params {
@@ -18,7 +19,7 @@ export default async function getUserProducts({
     currentUserId = params?.userId;
   }
   let orderBy = {};
-  let product = {};
+  let product = [];
   try {
     const { status = "전체", sort = "DATE_DESC" } = searchParams;
     if (sort === "PRICE_ASC") {

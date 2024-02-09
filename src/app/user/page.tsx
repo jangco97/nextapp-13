@@ -11,7 +11,7 @@ import Avatar from "@/components/shared/Avatar";
 import { Suspense } from "react";
 const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const currentUser = await getCurrentUser();
-  const userProducts = await getUserProducts({ searchParams });
+
   if (!currentUser) return null;
 
   return (
@@ -30,7 +30,7 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
         {searchParams?.link === "products" && (
           <section>
             <Suspense fallback={<div>user Products loading...</div>}>
-              <UserProducts userProducts={userProducts} isGuest={false} />
+              <UserProducts searchParams={searchParams} isGuest={false} />
             </Suspense>
           </section>
         )}
