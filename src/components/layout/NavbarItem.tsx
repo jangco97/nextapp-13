@@ -8,11 +8,11 @@ import React from "react";
 const NavbarItem = ({
   currentUser,
   favoriteIdsCount,
-  chatData,
+  chatCount,
 }: {
   currentUser: any;
   favoriteIdsCount?: number;
-  chatData?: ReceiveChatRes;
+  chatCount?: number;
 }) => {
   const router = useRouter();
 
@@ -46,9 +46,9 @@ const NavbarItem = ({
           </li>
           <li className="py-2 flex justify-evenly text-center  cursor-pointer">
             <Link href={"/chat"}>채팅</Link>
-            {chatData?.unreadMessageCount && (
-              <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
-                {chatData?.unreadMessageCount}
+            {chatCount && (
+              <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+                {chatCount}
               </div>
             )}
           </li>

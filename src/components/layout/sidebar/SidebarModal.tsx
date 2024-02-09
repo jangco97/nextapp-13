@@ -27,7 +27,7 @@ const SidebarModal = ({ currentUser }: { currentUser: any }) => {
           <NavbarItem
             currentUser={currentUser}
             favoriteIdsCount={data?.favoriteIdsCount}
-            chatData={chatData}
+            chatCount={chatData?.unreadMessageCount}
           />
         </div>
         {mainCategories.map((item: any) => (

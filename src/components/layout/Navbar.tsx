@@ -7,7 +7,7 @@ import NavbarItem from "./NavbarItem";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FieldValues, useForm } from "react-hook-form";
 import qs from "query-string";
-import { useQuery } from "@tanstack/react-query";
+import { receivechat } from "@/queries";
 import { useGetCart } from "@/queries";
 
 interface NavbarProps {
@@ -42,13 +42,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
     search: search,
   };
   const { data } = useGetCart(currentUser?.id as string);
-  const { data: chatData } = useQuery({
-    queryKey: ["chat"],
-    queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
-    staleTime: 60 * 1000,
-    refetchInterval: 60 * 1000,
-    enabled: !!currentUser,
-  });
+  const { data: chatData } = receivechat(currentUser?.id as string);
   const handleSearch = () => {
     setIsLoading(true);
     router.push(qs.stringifyUrl({ url: "/", query: updatedQuery }));
@@ -92,7 +86,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
         <NavbarItem
           currentUser={currentUser}
           favoriteIdsCount={data?.favoriteIdsCount}
-          chatData={chatData}
+          chatCount={chatData?.unreadMessageCount}
         />
       </div>
     </nav>
