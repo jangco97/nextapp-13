@@ -5,6 +5,7 @@ import NothingComponents from "@/components/NothingComponents";
 import UserProductsButton from "./button/UserProductsButton";
 import EditButton from "./button/EditButton";
 import ProductStatusButton from "./button/ProductStatusButton";
+import { Suspense } from "react";
 
 const UserProducts = ({ userProducts, isGuest }: { userProducts: any; isGuest: boolean }) => {
   return (
@@ -25,7 +26,9 @@ const UserProducts = ({ userProducts, isGuest }: { userProducts: any; isGuest: b
               >
                 <div className="relative w-full overflow-hidden aspect-square ">
                   {" "}
-                  <ImageClient src={product.imageSrc[0]} productId={product.id} />
+                  <Suspense fallback={<div>image loading...</div>}>
+                    <ImageClient src={product.imageSrc[0]} productId={product.id} />
+                  </Suspense>
                   {product.status === "예약중" || product.status === "판매완료" ? (
                     <div className="absolute text-lg font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex justify-center items-center text-indigo-800 border-2 rounded-full border-indigo-800">
                       {product.status}
