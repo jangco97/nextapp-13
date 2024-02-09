@@ -5,14 +5,8 @@ import Image from "next/image";
 import { Modal, Button } from "antd";
 import PurchaseReview from "./PurchaseReview";
 import Link from "next/link";
-import NothingComponents from "../NothingComponents";
-const PurchaseHistory = ({
-  histories,
-  historyType,
-}: {
-  histories: any;
-  historyType: string;
-}) => {
+import NothingComponents from "@/components/NothingComponents";
+const PurchaseHistory = ({ histories, historyType }: { histories: any; historyType: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -74,9 +68,7 @@ const PurchaseHistory = ({
                 <div>
                   <span className=" text-slate-500">판매자:</span>
                   <Link href={`/user/${history.sellerId}`}>
-                    <span className=" text-emerald-800">
-                      {history?.sellerName}
-                    </span>
+                    <span className=" text-emerald-800">{history?.sellerName}</span>
                   </Link>
                   {history?.isReviewed ? (
                     <div className="gap-x-1.5 rounded-md bg-gray-500/50 m-3 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer">
@@ -98,44 +90,32 @@ const PurchaseHistory = ({
                 <div>
                   <span className=" text-slate-500">구매자:</span>
                   <Link href={`/user/${history.buyerId}`}>
-                    <span className=" text-emerald-800">
-                      {history?.buyerName}
-                    </span>
+                    <span className=" text-emerald-800">{history?.buyerName}</span>
                   </Link>
                 </div>
               )}
               <div>
                 <span className=" text-slate-500">상품명:</span>
-                <span className=" text-emerald-800">
-                  {history.product?.title}
-                </span>
+                <span className=" text-emerald-800">{history.product?.title}</span>
               </div>
               <div>
                 <span className=" text-slate-500">가격:</span>
-                <span className=" text-emerald-800">
-                  {history.product?.price}
-                </span>
+                <span className=" text-emerald-800">{history.product?.price}</span>
               </div>
 
               <div>
                 <div>
                   <span className=" text-slate-500">주소:</span>
-                  <span className="text-emerald-800">
-                    {history?.product?.address}
-                  </span>
+                  <span className="text-emerald-800">{history?.product?.address}</span>
                 </div>
                 <div>
                   <span className=" text-slate-500">상세주소:</span>
-                  <span className="text-emerald-800">
-                    {history?.product?.addressDetail}
-                  </span>
+                  <span className="text-emerald-800">{history?.product?.addressDetail}</span>
                 </div>
               </div>
               <div>
                 <span className=" text-slate-500">날짜:</span>
-                <span className="text-emerald-800">
-                  {formatTime(history?.createdAt)}
-                </span>
+                <span className="text-emerald-800">{formatTime(history?.createdAt)}</span>
               </div>
             </div>
           </>

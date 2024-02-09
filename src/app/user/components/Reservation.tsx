@@ -5,7 +5,7 @@ import Image from "next/image";
 import "react-datepicker/dist/react-datepicker.css";
 import ko from "date-fns/locale/ko";
 import UserPurchase from "./UserPurchase";
-import NothingComponents from "../NothingComponents";
+import NothingComponents from "@/components/NothingComponents";
 import UserReservationDelete from "./UserReservationDelete";
 
 import Link from "next/link";

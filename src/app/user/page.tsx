@@ -2,11 +2,11 @@ import Container from "@/components/shared/Container";
 import getCurrentUser from "../actions/getCurrentUser";
 import getUserProducts from "../actions/getUserProducts";
 import { Params } from "../actions/getUserProducts";
-import UserProducts from "@/components/dashboard/UserProducts";
-import UserFavorites from "@/components/dashboard/UserFavorites";
-import UserReviews from "@/components/dashboard/UserReviews";
-import UserReservations from "@/components/dashboard/UserReservations";
-import Navigation from "@/components/dashboard/navigation/Navigation";
+import UserProducts from "./components/UserProducts";
+import Navigation from "./components/navigation/Navigation";
+import UserReviews from "./components/UserReviews";
+import UserFavorites from "./components/UserFavorites";
+import UserReservation from "./components/UserReservations";
 import Avatar from "@/components/shared/Avatar";
 
 const UserPage = async ({ searchParams }: { searchParams: Params }) => {
@@ -45,7 +45,7 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
         )}
         {searchParams?.link === "reservations" && (
           <section>
-            <UserReservations currentUser={currentUser} />
+            <UserReservation currentUser={currentUser} />
           </section>
         )}
       </Container>

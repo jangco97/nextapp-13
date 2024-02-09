@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NothingComponents from "../NothingComponents";
+import NothingComponents from "@/components/NothingComponents";
 import getUserReviews from "@/app/actions/getUserReviews";
 import { FaStar } from "react-icons/fa";
 const UserReviews = async ({ userId }: { userId: string }) => {
