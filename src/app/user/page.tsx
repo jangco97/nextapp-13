@@ -28,16 +28,18 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
       {/* 상품 전용 섹션 */}
       <Container>
         {searchParams?.link === "products" && (
-          <Suspense fallback={<div>loading...</div>}>
-            <section>
+          <section>
+            <Suspense fallback={<div>user Products loading...</div>}>
               <UserProducts userProducts={userProducts} isGuest={false} />
-            </section>
-          </Suspense>
+            </Suspense>
+          </section>
         )}
 
         {searchParams?.link === "reviews" && (
           <section>
-            <UserReviews userId={currentUser?.id} />
+            <Suspense fallback={<div>user Reviews loading...</div>}>
+              <UserReviews userId={currentUser?.id} />
+            </Suspense>
           </section>
         )}
         {searchParams?.link === "favorites" && (
