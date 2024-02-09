@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Avatar from "@/components/shared/Avatar";
 import getUser from "../../actions/getUser";
 import getUserProducts from "@/app/actions/getUserProducts";
@@ -17,8 +17,6 @@ const UserDetailPage = async ({
   params: { userId: string };
 }) => {
   const user = await getUser(params.userId);
-  const userProducts = await getUserProducts({ searchParams, params });
-
   const currentUser = await getCurrentUser();
   return (
     <>
@@ -28,7 +26,7 @@ const UserDetailPage = async ({
             <Avatar src={user?.image || null} />
           </Link>
           <div className="text-lg text-slate-500 ml-3">{user?.name}</div>
-          {currentUser?.id ? (
+          {currentUser?.id && currentUser?.id !== params.userId ? (
             <Link href={`/chat/${user?.id}`}>
               <button className="ml-5 p-2 flex justify-center items-center border-2  border-indigo-400 text-indigo-400 rounded-md hover:bg-indigo-700 hover:text-white">
                 채팅하기
@@ -44,13 +42,17 @@ const UserDetailPage = async ({
       <Container>
         {searchParams?.link === "products" && (
           <section>
-            <UserProducts searchParams={searchParams} isGuest={true} />
+            <Suspense fallback={<div>user Products loading...</div>}>
+              <UserProducts searchParams={searchParams} params={params} isGuest={true} />
+            </Suspense>
           </section>
         )}
         {/* 리뷰 전용 */}
         {searchParams?.link === "reviews" && (
           <section>
-            <UserReviews userId={params.userId} />
+            <Suspense fallback={<div>user Reviews loading...</div>}>
+              <UserReviews userId={params.userId} />
+            </Suspense>
           </section>
         )}
       </Container>

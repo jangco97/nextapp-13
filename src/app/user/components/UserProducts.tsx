@@ -10,12 +10,17 @@ import getUserProducts, { Params } from "@/app/actions/getUserProducts";
 
 const UserProducts = async ({
   searchParams,
+  params,
   isGuest,
 }: {
   searchParams: Params;
+  params: { userId: string };
   isGuest: boolean;
 }) => {
-  const userProducts = await getUserProducts({ searchParams });
+  const userProducts =
+    isGuest === true
+      ? await getUserProducts({ searchParams, params })
+      : await getUserProducts({ searchParams });
   return (
     <div className="mb-20">
       <div className="w-full flex justify-evenly">

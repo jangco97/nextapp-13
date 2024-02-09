@@ -44,12 +44,16 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
         )}
         {searchParams?.link === "favorites" && (
           <section>
-            <UserFavorites currentUser={currentUser} />
+            <Suspense fallback={<div>user Favorites loading...</div>}>
+              <UserFavorites currentUser={currentUser} />
+            </Suspense>
           </section>
         )}
         {searchParams?.link === "reservations" && (
           <section>
-            <UserReservation currentUser={currentUser} />
+            <Suspense fallback={<div>user Reservations loading...</div>}>
+              <UserReservation currentUser={currentUser} />
+            </Suspense>
           </section>
         )}
       </Container>
