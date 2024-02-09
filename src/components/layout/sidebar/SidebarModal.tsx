@@ -5,21 +5,16 @@ import { mainCategories } from "@/constants";
 import CategoryBox from "@/components/categories/CategoryBox";
 import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
-import { useQuery } from "@tanstack/react-query";
+import { receivechat } from "@/queries";
 import { useGetCart } from "@/queries";
 
 const SidebarModal = ({ currentUser }: { currentUser: any }) => {
   const { state } = useContext(SidebarContext);
   const params = useSearchParams();
   const category = params?.get("category");
-  const { data: favoriteIdsData } = useGetCart(currentUser?.id as string);
+  const { data } = useGetCart(currentUser?.id as string);
 
-  const { data: chatData } = useQuery({
-    queryKey: ["chat"],
-    queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
-    staleTime: 5 * 1000,
-    enabled: !!currentUser,
-  });
+  const { data: chatData } = receivechat(currentUser?.id as string);
   return (
     <div
       className={`fixed top-[75px] h-[calc(100vh-75px)] w-[208.3px]  bg-gradient-to-r from-gray-400 via-gray-300 to-gray-200/90 transition-transform duration-300 ease-in-out z-20 overflow-auto ${
@@ -31,7 +26,7 @@ const SidebarModal = ({ currentUser }: { currentUser: any }) => {
         <div className="block md:hidden">
           <NavbarItem
             currentUser={currentUser}
-            favoriteIdsData={favoriteIdsData}
+            favoriteIdsCount={data?.favoriteIdsCount}
             chatData={chatData}
           />
         </div>

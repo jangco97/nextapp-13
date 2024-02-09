@@ -15,5 +15,7 @@ export async function GET(request: NextRequest) {
       favoriteIds: true,
     },
   });
-  return NextResponse.json(userFavoriteIds);
+
+  const favoriteIdsCount = userFavoriteIds?.favoriteIds?.length ?? 0;
+  return NextResponse.json({ favoriteIdsCount });
 }

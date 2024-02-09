@@ -1,5 +1,5 @@
 "use client";
-import { QueryRes } from "@/queries";
+import { QueryRes, ReceiveChatRes } from "@/queries";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -7,17 +7,14 @@ import React from "react";
 
 const NavbarItem = ({
   currentUser,
-  favoriteIdsData,
+  favoriteIdsCount,
   chatData,
 }: {
   currentUser: any;
-  favoriteIdsData?: QueryRes;
-  chatData?: any;
+  favoriteIdsCount?: number;
+  chatData?: ReceiveChatRes;
 }) => {
   const router = useRouter();
-  const unReadMessage = chatData?.receivedMessages?.filter(
-    (message: any) => message.isRead === false,
-  );
 
   return (
     <ul
@@ -36,9 +33,9 @@ const NavbarItem = ({
             <Link prefetch={false} href={"/cart"}>
               장바구니
             </Link>
-            {favoriteIdsData?.favoriteIds && (
+            {favoriteIdsCount && (
               <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
-                {favoriteIdsData?.favoriteIds?.length}
+                {favoriteIdsCount}
               </div>
             )}
           </li>
@@ -49,9 +46,11 @@ const NavbarItem = ({
           </li>
           <li className="py-2 flex justify-evenly text-center  cursor-pointer">
             <Link href={"/chat"}>채팅</Link>
-            <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
-              {unReadMessage?.length}
-            </div>
+            {chatData?.unreadMessageCount && (
+              <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+                {chatData?.unreadMessageCount}
+              </div>
+            )}
           </li>
           <li className="py-2 text-center cursor-pointer">
             <button onClick={() => signOut()}>로그아웃</button>

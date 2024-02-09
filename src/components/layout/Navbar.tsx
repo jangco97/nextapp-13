@@ -41,7 +41,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
     ...currentQuery,
     search: search,
   };
-  const { data: favoriteIdsData } = useGetCart(currentUser?.id as string);
+  const { data } = useGetCart(currentUser?.id as string);
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
@@ -91,7 +91,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
       <div className="hidden md:block">
         <NavbarItem
           currentUser={currentUser}
-          favoriteIdsData={favoriteIdsData}
+          favoriteIdsCount={data?.favoriteIdsCount}
           chatData={chatData}
         />
       </div>

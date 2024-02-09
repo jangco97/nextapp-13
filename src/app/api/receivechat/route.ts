@@ -8,21 +8,11 @@ export async function GET(request: NextRequest) {
   if (!currentUser) {
     return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
-  const users = await prisma.user.findUnique({
+  const unreadMessageCount = await prisma.message.count({
     where: {
-      id: currentUser.id as string,
-    },
-    include: {
-      receivedMessages: {
-        include: {
-          sender: true,
-          receiver: true,
-        },
-        orderBy: {
-          createdAt: "asc",
-        },
-      },
+      receiverId: currentUser.id,
+      isRead: false,
     },
   });
-  return NextResponse.json(users);
+  return NextResponse.json({ unreadMessageCount });
 }
