@@ -8,7 +8,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FieldValues, useForm } from "react-hook-form";
 import qs from "query-string";
 import { useQuery } from "@tanstack/react-query";
-import { User } from "prisma/generated/client";
+import { useGetCart } from "@/queries";
 
 interface NavbarProps {
   currentUser: any;
@@ -41,13 +41,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
     ...currentQuery,
     search: search,
   };
-  const { data } = useQuery<User>({
-    queryKey: ["user", currentUser?.favoriteIds],
-    queryFn: () => fetch("/api/usercart").then((res) => res.json()),
-    staleTime: 1000 * 60,
-    refetchInterval: 60 * 1000,
-    enabled: !!currentUser,
-  });
+  const { data: favoriteIdsData } = useGetCart(currentUser?.id as string);
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
@@ -95,7 +89,11 @@ const Navbar = ({ currentUser }: NavbarProps) => {
         </form>
       </div>
       <div className="hidden md:block">
-        <NavbarItem currentUser={currentUser} data={data} chatData={chatData} />
+        <NavbarItem
+          currentUser={currentUser}
+          favoriteIdsData={favoriteIdsData}
+          chatData={chatData}
+        />
       </div>
     </nav>
   );

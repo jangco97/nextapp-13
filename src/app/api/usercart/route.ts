@@ -7,10 +7,13 @@ export async function GET(request: NextRequest) {
   if (!currentUser) {
     return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
-  const user = await prisma.user.findUnique({
+  const userFavoriteIds = await prisma.user.findUnique({
     where: {
       id: currentUser.id as string,
     },
+    select: {
+      favoriteIds: true,
+    },
   });
-  return NextResponse.json(user);
+  return NextResponse.json(userFavoriteIds);
 }

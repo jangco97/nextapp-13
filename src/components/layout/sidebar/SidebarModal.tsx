@@ -6,24 +6,14 @@ import CategoryBox from "@/components/categories/CategoryBox";
 import { useSearchParams } from "next/navigation";
 import NavbarItem from "../NavbarItem";
 import { useQuery } from "@tanstack/react-query";
-import { User } from "prisma/generated/client";
+import { useGetCart } from "@/queries";
 
 const SidebarModal = ({ currentUser }: { currentUser: any }) => {
   const { state } = useContext(SidebarContext);
   const params = useSearchParams();
   const category = params?.get("category");
-  async function getUser() {
-    const response = await fetch("/api/usercart");
-    const data = await response.json();
-    return data;
-  }
+  const { data: favoriteIdsData } = useGetCart(currentUser?.id as string);
 
-  const { data } = useQuery<User>({
-    queryKey: ["user"],
-    queryFn: () => getUser(),
-    staleTime: 5 * 1000,
-    enabled: !!currentUser,
-  });
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
@@ -39,7 +29,11 @@ const SidebarModal = ({ currentUser }: { currentUser: any }) => {
     >
       <div className="py-1 flex flex-col ">
         <div className="block md:hidden">
-          <NavbarItem currentUser={currentUser} data={data} chatData={chatData} />
+          <NavbarItem
+            currentUser={currentUser}
+            favoriteIdsData={favoriteIdsData}
+            chatData={chatData}
+          />
         </div>
         {mainCategories.map((item: any) => (
           <CategoryBox

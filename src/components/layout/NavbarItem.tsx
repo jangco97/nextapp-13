@@ -1,4 +1,5 @@
 "use client";
+import { QueryRes } from "@/queries";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -6,11 +7,11 @@ import React from "react";
 
 const NavbarItem = ({
   currentUser,
-  data,
+  favoriteIdsData,
   chatData,
 }: {
   currentUser: any;
-  data: any;
+  favoriteIdsData?: QueryRes;
   chatData?: any;
 }) => {
   const router = useRouter();
@@ -35,9 +36,11 @@ const NavbarItem = ({
             <Link prefetch={false} href={"/cart"}>
               장바구니
             </Link>
-            <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
-              {data?.favoriteIds?.length | 0}
-            </div>
+            {favoriteIdsData?.favoriteIds && (
+              <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+                {favoriteIdsData?.favoriteIds?.length}
+              </div>
+            )}
           </li>
           <li className="py-2 text-center cursor-pointer">
             <Link prefetch={false} href={"/user?link=products"}>

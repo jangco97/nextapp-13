@@ -1,21 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { FaPlus } from "react-icons/fa6";
 import { BiSolidUser } from "react-icons/bi";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useQuery } from "@tanstack/react-query";
-import { User } from "prisma/generated/client";
+import { useGetCart } from "@/queries";
 
 const MobileBottom = ({ currentUser }: { currentUser: any }) => {
-  const { data } = useQuery<User>({
-    queryKey: ["user", currentUser?.favoriteIds],
-    queryFn: () => fetch("/api/usercart").then((res) => res.json()),
-    staleTime: 1000 * 60,
-    refetchInterval: 60 * 1000,
-    enabled: !!currentUser,
-  });
+  const { data: favoriteIdsData } = useGetCart(currentUser?.id as string);
   const { data: chatData } = useQuery({
     queryKey: ["chat"],
     queryFn: () => fetch("/api/receivechat").then((res) => res.json()),
@@ -46,9 +40,11 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
         <Link prefetch={false} href="/cart">
           <div className="flex relative">
             <AiOutlineShoppingCart className="h-6 w-full text-center text-white"></AiOutlineShoppingCart>
-            <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
-              {data?.favoriteIds?.length}
-            </div>
+            {favoriteIdsData?.favoriteIds && (
+              <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+                {favoriteIdsData?.favoriteIds?.length}
+              </div>
+            )}
           </div>
 
           <div className="text-xs w-full  text-center font-bold text-white">장바구니</div>
