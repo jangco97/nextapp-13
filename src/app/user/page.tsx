@@ -8,7 +8,7 @@ import UserReviews from "./components/UserReviews";
 import UserFavorites from "./components/UserFavorites";
 import UserReservation from "./components/UserReservations";
 import Avatar from "@/components/shared/Avatar";
-
+import { Suspense } from "react";
 const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const currentUser = await getCurrentUser();
   const userProducts = await getUserProducts({ searchParams });
@@ -28,9 +28,11 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
       {/* 상품 전용 섹션 */}
       <Container>
         {searchParams?.link === "products" && (
-          <section>
-            <UserProducts userProducts={userProducts} isGuest={false} />
-          </section>
+          <Suspense fallback={<div>loading...</div>}>
+            <section>
+              <UserProducts userProducts={userProducts} isGuest={false} />
+            </section>
+          </Suspense>
         )}
 
         {searchParams?.link === "reviews" && (
