@@ -7,7 +7,7 @@ import { NextAuthProvider } from "./provider";
 import { SidebarProvider } from "@/context/sidebaropen.context";
 import SidebarModal from "@/components/layout/sidebar/SidebarModal";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import authOptions from "@/lib/auth";
 import Providers from "@/utils/provider";
 import getCurrentUser from "./actions/getCurrentUser";
 import MobileBottom from "@/components/mobilebottom/MobileBottom";
