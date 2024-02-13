@@ -23,22 +23,22 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
   const currentUser = await getCurrentUser();
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          {/* <NextAuthProvider session={session}> */}
-          <SidebarProvider>
-            <Navbar currentUser={currentUser} />
-            <ToastProvider />
-            <SidebarModal currentUser={currentUser} />
-            {children}
-            <MobileBottom currentUser={currentUser} />
-          </SidebarProvider>
-          {/* </NextAuthProvider> */}
+          <NextAuthProvider session={session}>
+            <SidebarProvider>
+              <Navbar currentUser={currentUser} />
+              <ToastProvider />
+              <SidebarModal currentUser={currentUser} />
+              {children}
+              <MobileBottom currentUser={currentUser} />
+            </SidebarProvider>
+          </NextAuthProvider>
         </Providers>
         <Script
           type="text/javascript"
