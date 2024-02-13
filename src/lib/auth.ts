@@ -1,9 +1,9 @@
 import prisma from "@/app/libs/prismadb";
 import bcrypt from "bcryptjs";
 import CredentialsProvider from "next-auth/providers/credentials";
-import type { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/login",
   },
@@ -72,3 +72,5 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
+
+export default authOptions;
