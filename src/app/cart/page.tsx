@@ -7,13 +7,9 @@ import getCurrentUser from "../actions/getCurrentUser";
 import HeartButton from "@/components/products/HeartButton";
 import { FaLocationDot } from "react-icons/fa6";
 
-const getCart = async () => {
-  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/cart`);
-  return response.json();
-};
 const CartPage = async () => {
   const currentUser = await getCurrentUser();
-  const carts = await getCart();
+  const carts = await getCurrentCarts();
   return (
     <Container>
       <div>
