@@ -10,6 +10,7 @@ import { FaLocationDot } from "react-icons/fa6";
 const CartPage = async () => {
   const currentUser = await getCurrentUser();
   const carts = await getCurrentCarts();
+  // const favoriteCount = await fetch("http://localhost:3000/api/usercart").then((res) => res.json());
   return (
     <Container>
       <div>
@@ -24,6 +25,7 @@ const CartPage = async () => {
             </p>
             <p>상품이름</p>
             <p>가격</p>
+            <p>찜한 상품 수: {favoriteCount.favoriteIdsCount}</p>
           </div>
           <hr className="mt-5 mb-5" />
           {carts?.map((cart: any) => (

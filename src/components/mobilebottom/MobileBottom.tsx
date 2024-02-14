@@ -20,25 +20,25 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
           <div className="text-xs w-full  text-center font-bold text-white">판매하기</div>
         </Link>
         <Link href="/chat">
-          <div className="flex relative w-full">
-            <BsFillChatDotsFill className="h-6 w-full text-center  text-white" />
-            {chatData?.unreadMessageCount && (
-              <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+          <div className="flex items-center justify-center relative ">
+            <BsFillChatDotsFill className="h-6 text-center  text-white" />
+            {chatData?.unreadMessageCount && chatData?.unreadMessageCount > 0 ? (
+              <span className="text-white border-2 rounded-full w-4 h-4 p-2 flex items-center justify-center">
                 {chatData?.unreadMessageCount}
-              </div>
-            )}
+              </span>
+            ) : null}
           </div>
 
           <div className="text-xs w-full  text-center font-bold text-white">채팅하기</div>
         </Link>
         <Link prefetch={false} href="/cart">
-          <div className="flex relative">
-            <AiOutlineShoppingCart className="h-6 w-full text-center text-white"></AiOutlineShoppingCart>
-            {data?.favoriteIdsCount && (
-              <div className="absolute top-1 right-4 rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+          <div className="flex items-center justify-center relative">
+            <AiOutlineShoppingCart className="h-6 text-center text-white"></AiOutlineShoppingCart>
+            {data?.favoriteIdsCount && data?.favoriteIdsCount > 0 ? (
+              <span className="text-white border-2 rounded-full w-4 h-4 p-2 flex items-center justify-center">
                 {data?.favoriteIdsCount}
-              </div>
-            )}
+              </span>
+            ) : null}
           </div>
 
           <div className="text-xs w-full  text-center font-bold text-white">장바구니</div>

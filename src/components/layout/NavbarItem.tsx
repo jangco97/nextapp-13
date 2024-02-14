@@ -26,31 +26,31 @@ const NavbarItem = ({
       </li>
       {currentUser?.id ? (
         <>
-          <li className="py-2 flex justify-evenly text-center cursor-pointer">
+          <li className="py-2 text-center cursor-pointer">
             <Link href={"/products/upload"}>판매하기</Link>
           </li>
-          <li className="py-2 flex justify-evenly text-center  cursor-pointer">
+          <li className="py-2 flex justify-evenly text-center  items-center cursor-pointer">
             <Link prefetch={false} href={"/cart"}>
               장바구니
             </Link>
-            {favoriteIdsCount && (
-              <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            {favoriteIdsCount && favoriteIdsCount > 0 ? (
+              <span className="text-white border-2 rounded-full w-4 h-4 p-2 flex items-center justify-center">
                 {favoriteIdsCount}
-              </div>
-            )}
+              </span>
+            ) : null}
           </li>
           <li className="py-2 text-center cursor-pointer">
             <Link prefetch={false} href={"/user?link=products"}>
               마이페이지
             </Link>
           </li>
-          <li className="py-2 flex justify-evenly text-center  cursor-pointer">
+          <li className="py-2 flex justify-evenly text-center items-center  cursor-pointer">
             <Link href={"/chat"}>채팅</Link>
-            {chatCount && (
-              <div className="rounded-full bg-violet-700 outline-sky-300 border-2 p-2 w-4 h-4  flex justify-center items-center text-white">
+            {chatCount && chatCount > 0 ? (
+              <span className="text-white border-2 rounded-full w-4 h-4 p-2 flex items-center justify-center">
                 {chatCount}
-              </div>
-            )}
+              </span>
+            ) : null}
           </li>
           <li className="py-2 text-center cursor-pointer">
             <button onClick={() => signOut()}>로그아웃</button>

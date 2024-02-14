@@ -14,5 +14,5 @@ export async function GET(request: NextRequest) {
       isRead: false,
     },
   });
-  return NextResponse.json({ unreadMessageCount });
+  return NextResponse.json({ unreadMessageCount: unreadMessageCount });
 }
