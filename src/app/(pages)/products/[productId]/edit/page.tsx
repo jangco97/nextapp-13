@@ -14,7 +14,6 @@ const ProductEditPage = async ({ params }: { params: { productId: string } }) =>
     },
   });
   if (!currentUser || !productData || currentUser.id !== productData.user.id) {
-    alert("상품을 수정할 수 있는 권한이 없습니다.");
     redirect(`/products/${productId}`);
   }
   return <ProductEditOrUpload productId={productId} productData={productData} />;
