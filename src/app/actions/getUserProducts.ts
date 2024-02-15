@@ -1,4 +1,3 @@
-import { Product } from "prisma/generated/client";
 import prisma from "../../app/libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
 export interface Params {

@@ -7,7 +7,7 @@ export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
   //로그인한 유저만 접근 가능
-  if (pathname.startsWith("/user") && !session) {
+  if (pathname.startsWith("/mypage") && !session) {
     return NextResponse.redirect(new URL("/auth/login", req.url)); //세션이 없으면 로그인 페이지로 이동
   }
   if (pathname.startsWith("/products/upload") && !session) {

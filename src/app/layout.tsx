@@ -11,11 +11,15 @@ import authOptions from "@/lib/auth";
 import Providers from "@/utils/provider";
 import getCurrentUser from "./actions/getCurrentUser";
 import MobileBottom from "@/components/mobilebottom/MobileBottom";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "줄건중고",
+export const metadata: Metadata = {
+  title: {
+    template: "%s | 줄건중고",
+    default: "줄건중고",
+  },
   description: "중고거래 웹 애플리케이션",
   icons: {
     icon: "/marketicon.png",
