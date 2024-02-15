@@ -40,7 +40,7 @@ const NavbarItem = ({
             ) : null}
           </li>
           <li className="py-2 text-center cursor-pointer">
-            <Link prefetch={false} href={"/user?link=products"}>
+            <Link prefetch={false} href={"/mypage?link=products"}>
               마이페이지
             </Link>
           </li>

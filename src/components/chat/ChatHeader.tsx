@@ -38,10 +38,8 @@ const ChatHeader = ({
             <Avatar src={receiverImage} />
           </div>
           <h2>
-            <Link href={`/user/${receiverId}`}>{receiverName}</Link>
-            {lastMessageTime && (
-              <p className="text-gray-600">{formatTime(lastMessageTime)}</p>
-            )}
+            <Link href={`/shop/${receiverId}`}>{receiverName}</Link>
+            {lastMessageTime && <p className="text-gray-600">{formatTime(lastMessageTime)}</p>}
           </h2>
           {detailPage && (
             <button

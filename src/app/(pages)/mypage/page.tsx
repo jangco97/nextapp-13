@@ -1,11 +1,10 @@
 import Container from "@/components/shared/Container";
-import getCurrentUser from "../actions/getCurrentUser";
-import getUserProducts from "../actions/getUserProducts";
-import { Params } from "../actions/getUserProducts";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import { Params } from "@/app/actions/getUserProducts";
 import UserProducts from "./components/UserProducts";
 import Navigation from "./components/navigation/Navigation";
 import UserReviews from "./components/UserReviews";
-import UserFavorites from "./components/UserFavorites";
+import UserFavorites from "../cart/components/UserFavorites";
 import UserReservation from "./components/UserReservations";
 import Avatar from "@/components/shared/Avatar";
 import { Suspense } from "react";

@@ -101,7 +101,7 @@ const Message = ({
                 <Avatar src={senderImage && isSender ? senderImage : receiverImage} />
               </div>
               <span className="font-medium">
-                <Link href={`/user/${receiverId}`}>{receiverName}</Link>
+                <Link href={`/shop/${receiverId}`}>{receiverName}</Link>
               </span>
               <span className="text-xs text-gray-600 opacity-60">{fromNow(messageTime)}</span>
             </div>

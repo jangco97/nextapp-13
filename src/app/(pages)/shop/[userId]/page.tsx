@@ -1,11 +1,10 @@
 import React, { Suspense } from "react";
 import Avatar from "@/components/shared/Avatar";
-import getUser from "../../actions/getUser";
-import getUserProducts from "@/app/actions/getUserProducts";
-import Navigation from "../components/navigation/Navigation";
+import getUser from "@/app/actions/getUser";
+import Navigation from "../../mypage/components/navigation/Navigation";
 import Container from "@/components/shared/Container";
-import UserProducts from "../components/UserProducts";
-import UserReviews from "../components/UserReviews";
+import UserProducts from "../../mypage/components/UserProducts";
+import UserReviews from "../../mypage/components/UserReviews";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { Params } from "@/app/actions/getUserProducts";
 import Link from "next/link";
@@ -22,9 +21,7 @@ const UserDetailPage = async ({
     <>
       <section className="pt-[75px]">
         <header className="flex justify-center items-center p-10">
-          <Link prefetch={false} href={`/user/${params.userId}`}>
-            <Avatar src={user?.image || null} />
-          </Link>
+          <Avatar src={user?.image || null} />
           <div className="text-lg text-slate-500 ml-3">{user?.name}</div>
           {currentUser?.id && currentUser?.id !== params.userId ? (
             <Link href={`/chat/${user?.id}`}>

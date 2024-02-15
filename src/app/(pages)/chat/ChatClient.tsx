@@ -1,7 +1,7 @@
 "use client";
-import { User } from "../../../prisma/generated/client";
 import axios from "axios";
 import useSWR from "swr";
+import { User } from "prisma/generated/client";
 import { useState } from "react";
 import { TUserWithChat } from "@/types";
 import Contacts from "@/components/chat/Contacts";

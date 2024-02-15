@@ -3,7 +3,7 @@ import Container from "@/components/shared/Container";
 import { mainCategories, subCategories } from "@/constants";
 import ProductHead from "@/components/products/ProductHead";
 import ProductInfo from "@/components/products/ProductInfo";
-import { Product, User } from "../../../../prisma/generated/client";
+import { Product, User } from "prisma/generated/client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";

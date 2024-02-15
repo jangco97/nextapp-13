@@ -67,7 +67,7 @@ const PurchaseHistory = ({ histories, historyType }: { histories: any; historyTy
               {historyType === "구매내역" && (
                 <div>
                   <span className=" text-slate-500">판매자:</span>
-                  <Link href={`/user/${history.sellerId}`}>
+                  <Link href={`/shop/${history.sellerId}`}>
                     <span className=" text-emerald-800">{history?.sellerName}</span>
                   </Link>
                   {history?.isReviewed ? (
@@ -89,7 +89,7 @@ const PurchaseHistory = ({ histories, historyType }: { histories: any; historyTy
               {historyType === "판매내역" && (
                 <div>
                   <span className=" text-slate-500">구매자:</span>
-                  <Link href={`/user/${history.buyerId}`}>
+                  <Link href={`/shop/${history.buyerId}`}>
                     <span className=" text-emerald-800">{history?.buyerName}</span>
                   </Link>
                 </div>

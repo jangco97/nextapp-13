@@ -18,7 +18,7 @@ const UserReviews = async ({ userId }: { userId: string }) => {
               {review.product?.title}
             </div>
           </Link>
-          <Link href={`/user/${review.product?.userId}`}>
+          <Link href={`/shop/${review.product?.userId}`}>
             <div>
               <span>판매자:</span>
               {review.sellerName}

@@ -43,7 +43,7 @@ const MobileBottom = ({ currentUser }: { currentUser: any }) => {
 
           <div className="text-xs w-full  text-center font-bold text-white">장바구니</div>
         </Link>
-        <Link prefetch={false} href="/user?products">
+        <Link prefetch={false} href="/mypage?products">
           <div>
             <BiSolidUser className="h-6 w-full text-center  text-white" />
             <div className="text-xs w-full  text-center font-bold text-white">마이페이지</div>
