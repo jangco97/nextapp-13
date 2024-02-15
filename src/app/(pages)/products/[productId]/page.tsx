@@ -1,9 +1,9 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getProductById from "@/app/actions/getProductById";
-import EmptyState from "@/components/EmptyState";
-import React from "react";
-import ProductClient from "./ProductClient";
 import getProductName from "@/app/actions/getProductName";
+import EmptyState from "@/components/EmptyState";
+import ProductClient from "./components/ProductClient";
+
 interface Params {
   productId?: string;
 }

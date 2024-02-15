@@ -9,3 +9,8 @@ export type TConversation = {
   messages: Message[];
   users: User[];
 };
+
+export type Address = {
+  address: string;
+  zonecode: string;
+};
