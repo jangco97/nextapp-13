@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowDown } from "react-icons/fa6";
 import axios from "axios";
 import Input from "@/components/chat/Input";
@@ -62,12 +62,12 @@ const ChatTestClient = ({ chatId, currentUser }: ChatTestProps) => {
     refetchInterval: 1000,
   });
   const currentUserWithMessage = users?.find(
-    (user: TUserWithChat) => user.email === currentUser?.email
+    (user: TUserWithChat) => user.email === currentUser?.email,
   );
-  const conversation: TConversation | undefined =
-    currentUserWithMessage?.conversations.find((conversation: TConversation) =>
-      conversation.users.find((user) => user.id === receiver.receiverId)
-    );
+  const conversation: TConversation | undefined = currentUserWithMessage?.conversations.find(
+    (conversation: TConversation) =>
+      conversation.users.find((user) => user.id === receiver.receiverId),
+  );
   if (error)
     return (
       <div className="flex justify-center items-center h-[100vh] ">
@@ -133,10 +133,7 @@ const ChatTestClient = ({ chatId, currentUser }: ChatTestProps) => {
         <div ref={messagesEndRef} />
       </div>
       <div>
-        <Input
-          receiverId={receiver?.receiverId}
-          currentUserId={currentUser?.id!}
-        />
+        <Input receiverId={receiver?.receiverId} currentUserId={currentUser?.id!} />
       </div>
     </>
   );

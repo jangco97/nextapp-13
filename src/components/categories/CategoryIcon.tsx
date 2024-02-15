@@ -1,4 +1,3 @@
-import React from "react";
 import { FaBook } from "react-icons/fa";
 import { CgSmartHomeRefrigerator } from "react-icons/cg";
 import { IoShirtSharp } from "react-icons/io5";

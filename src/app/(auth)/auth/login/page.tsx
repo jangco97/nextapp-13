@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "@/components/shared/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "@/components/shared/Button";

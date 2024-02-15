@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Reservation from "./Reservation";
 import PurchaseHistory from "./PurchaseHistory";

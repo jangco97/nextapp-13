@@ -1,10 +1,11 @@
 "use client";
 import { User } from "../../../prisma/generated/client";
-import React from "react";
+
 import Heading from "../shared/Heading";
 import HeartButton from "./HeartButton";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import ProductImage from "./ProductImage";
+import Button from "../shared/Button";
 
 interface ProductHeadProps {
   title: string;
@@ -32,19 +33,23 @@ const ProductHead = ({
     <>
       <Heading title={title} subtitle={status!} />
       {productId === currentUser?.id && (
-        <div className="flex justify-evenly">
-          <button
-            className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
+        <div className="flex justify-end gap-4">
+          <Button
+            label="상품수정"
             onClick={editFunc}
-          >
-            수정하기
-          </button>
-          <button
-            className=" w-4/12 p-2 mr-5 rounded-lg mt-10 bg-gray-500 hover:bg-indigo-600/50 text-gray-100 text-center"
+            size="medium"
+            rounded="rounded-md"
+            width="w-10"
+          />
+          <Button
+            label="삭제하기"
+            bgColor="bg-rose-500"
+            hover="hover:bg-rose-600"
+            rounded="rounded-md"
+            width="w-10"
+            size="medium"
             onClick={deleteFunc}
-          >
-            삭제하기
-          </button>
+          />
         </div>
       )}
       <div className="h-[80vh] md:h-[50vh] rounded-xl w-full relative overflow-hidden place-content-center">

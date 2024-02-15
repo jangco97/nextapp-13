@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import { formatTime } from "@/helpers/dayjs";
 import Image from "next/image";
 import { Modal, Button } from "antd";

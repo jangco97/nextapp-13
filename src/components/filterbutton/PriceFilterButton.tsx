@@ -1,4 +1,3 @@
-import React from "react";
 import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { CiDollar } from "react-icons/ci";

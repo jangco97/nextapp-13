@@ -1,4 +1,3 @@
-import React from "react";
 import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 
 interface InputProps {

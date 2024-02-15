@@ -1,7 +1,7 @@
 "use client";
 
 import RegisterInput from "@/components/shared/RegisterInput";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "@/components/shared/Button";
 import Link from "next/link";

@@ -1,5 +1,5 @@
 import { User } from "../../../prisma/generated/client";
-import React from "react";
+
 import Avatar from "../shared/Avatar";
 import ProductCategory from "./ProductCategory";
 import { formatTime } from "@/helpers/dayjs";

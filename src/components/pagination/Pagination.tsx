@@ -1,6 +1,6 @@
 "use client";
 import usePagination from "@lucasmogari/react-pagination";
-import React from "react";
+
 import PaginationLink from "./PaginationLink";
 
 interface PaginationProps {

@@ -1,6 +1,6 @@
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
-import React from "react";
+
 import { TbPhotoPlus } from "react-icons/tb";
 interface ImageUploadProps {
   onChange: (value: string) => void;

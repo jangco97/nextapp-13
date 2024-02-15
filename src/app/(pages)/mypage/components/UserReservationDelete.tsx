@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import useSWRMutation from "swr/mutation";
 interface ReservationDelete {
   reservationId: string;

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 "use client";
 import { TUserWithChat } from "@/types";
-import React from "react";
+
 import User from "./User";
 import { useQuery } from "@tanstack/react-query";
 import { useQueryClient } from "@tanstack/react-query";

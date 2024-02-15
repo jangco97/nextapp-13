@@ -1,5 +1,3 @@
-import React from "react";
-
 const NothingComponents = ({ title, pageType }: { title: string; pageType: string }) => {
   return (
     <>

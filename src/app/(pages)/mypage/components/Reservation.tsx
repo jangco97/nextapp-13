@@ -1,4 +1,3 @@
-import React from "react";
 import DatePicker from "react-datepicker";
 import { formatTime } from "@/helpers/dayjs";
 import Image from "next/image";

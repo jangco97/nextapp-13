@@ -3,7 +3,6 @@ import { QueryRes, ReceiveChatRes } from "@/queries";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 const NavbarItem = ({
   currentUser,

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, MouseEvent } from "react";
+import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/navigation";
