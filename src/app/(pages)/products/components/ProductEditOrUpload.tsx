@@ -3,6 +3,7 @@ import Container from "@/components/shared/Container";
 import Heading from "@/components/shared/Heading";
 import ImageUpload from "@/components/ImageUpload";
 import { Modal, Button } from "antd";
+import CustomButton from "@/components/shared/Button";
 import DaumPostcode from "react-daum-postcode";
 import dynamic from "next/dynamic";
 import { MouseEvent, useState } from "react";
@@ -234,7 +235,10 @@ export default function ProductEditOrUpload({ productId, productData }: ProductE
           <KakaoMap setCustomValue={setCustomValue} latitude={latitude} longitude={longitude} />
           {/* 빌드타임이 아닌 런타임에 불러옴 */}
 
-          <Button htmlType="submit">{productData?.id ? "상품 수정" : "상품 업로드"}</Button>
+          <CustomButton
+            label={productData?.id ? "상품 수정" : "상품 업로드"}
+            disabled={isLoading}
+          />
         </form>
       </div>
     </Container>
