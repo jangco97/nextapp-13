@@ -94,7 +94,7 @@ const RegisterPage = () => {
           <div className="text-red-500">
             {errors.password && errors.password.message?.toString()}
           </div>
-          <Button label="Register" />
+          <Button label="Register" type="submit" />
           <div className="text-center">
             <p className="text-gray-400">
               Already have an account?{" "}

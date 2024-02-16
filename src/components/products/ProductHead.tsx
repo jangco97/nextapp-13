@@ -35,18 +35,20 @@ const ProductHead = ({
       {productId === currentUser?.id && (
         <div className="flex justify-end gap-4">
           <Button
+            type="button"
             label="상품수정"
             onClick={editFunc}
             size="medium"
             rounded="rounded-md"
-            width="w-10"
+            width="w-32"
           />
           <Button
+            type="button"
             label="삭제하기"
             bgColor="bg-rose-500"
             hover="hover:bg-rose-600"
             rounded="rounded-md"
-            width="w-10"
+            width="w-32"
             size="medium"
             onClick={deleteFunc}
           />

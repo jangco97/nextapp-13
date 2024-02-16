@@ -236,6 +236,8 @@ export default function ProductEditOrUpload({ productId, productData }: ProductE
           {/* 빌드타임이 아닌 런타임에 불러옴 */}
 
           <CustomButton
+            type="submit"
+            width="w-40"
             label={productData?.id ? "상품 수정" : "상품 업로드"}
             disabled={isLoading}
           />

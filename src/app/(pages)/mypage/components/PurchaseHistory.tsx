@@ -3,6 +3,7 @@ import { useState, MouseEvent } from "react";
 import { formatTime } from "@/helpers/dayjs";
 import Image from "next/image";
 import { Modal, Button } from "antd";
+import CustomButton from "@/components/shared/Button";
 import PurchaseReview from "./PurchaseReview";
 import Link from "next/link";
 import NothingComponents from "@/components/NothingComponents";
@@ -75,14 +76,12 @@ const PurchaseHistory = ({ histories, historyType }: { histories: any; historyTy
                       리뷰완료
                     </div>
                   ) : (
-                    <button
-                      className="gap-x-1.5 rounded-md bg-gray-500/50 m-3 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 cursor-pointer"
-                      onClick={() => {
-                        setIsModalOpen(true);
-                      }}
-                    >
-                      리뷰작성
-                    </button>
+                    <CustomButton
+                      label="리뷰작성"
+                      type="button"
+                      size="small"
+                      onClick={() => setIsModalOpen(true)}
+                    />
                   )}
                 </div>
               )}

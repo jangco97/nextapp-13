@@ -2,6 +2,7 @@ import { IconType } from "react-icons";
 import React from "react";
 interface ButtonProps {
   label: string;
+  type: "button" | "submit" | "reset";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   icon?: IconType;
@@ -15,6 +16,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   label,
+  type,
   onClick,
   disabled,
   icon: Icon,
@@ -33,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      type="submit"
+      type={type}
       disabled={disabled}
       onClick={onClick}
       className={`

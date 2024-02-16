@@ -19,7 +19,9 @@ const EmptyState = ({
     <div className="h-[60vh] flex flex-col gap-2 justify-center items-center">
       <Heading center title={title} subtitle={subtitle} />
       <div className="w-48 mt-4">
-        {showReset && <Button label="모든 필터 제거" onClick={() => router.push("/")} />}
+        {showReset && (
+          <Button type="button" label="모든 필터 제거" onClick={() => router.push("/")} />
+        )}
       </div>
     </div>
   );
