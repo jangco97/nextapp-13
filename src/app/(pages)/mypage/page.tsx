@@ -7,6 +7,7 @@ import UserReviews from "./components/UserReviews";
 import UserFavorites from "../cart/components/UserFavorites";
 import UserReservation from "./components/UserReservations";
 import Avatar from "@/components/shared/Avatar";
+import CustomLoader from "@/components/shared/CustomLoader";
 import { Suspense } from "react";
 const UserPage = async ({ searchParams }: { searchParams: Params }) => {
   const currentUser = await getCurrentUser();
@@ -28,7 +29,7 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
       <Container>
         {searchParams?.link === "products" && (
           <section>
-            <Suspense fallback={<div>user Products loading...</div>}>
+            <Suspense fallback={<CustomLoader />}>
               <UserProducts searchParams={searchParams} isGuest={false} />
             </Suspense>
           </section>
@@ -36,21 +37,21 @@ const UserPage = async ({ searchParams }: { searchParams: Params }) => {
 
         {searchParams?.link === "reviews" && (
           <section>
-            <Suspense fallback={<div>user Reviews loading...</div>}>
+            <Suspense fallback={<CustomLoader />}>
               <UserReviews userId={currentUser?.id} />
             </Suspense>
           </section>
         )}
         {searchParams?.link === "favorites" && (
           <section>
-            <Suspense fallback={<div>user Favorites loading...</div>}>
+            <Suspense fallback={<CustomLoader />}>
               <UserFavorites currentUser={currentUser} />
             </Suspense>
           </section>
         )}
         {searchParams?.link === "reservations" && (
           <section>
-            <Suspense fallback={<div>user Reservations loading...</div>}>
+            <Suspense fallback={<CustomLoader />}>
               <UserReservation currentUser={currentUser} />
             </Suspense>
           </section>
