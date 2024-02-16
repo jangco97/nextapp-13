@@ -8,7 +8,7 @@ import { SidebarProvider } from "@/context/sidebaropen.context";
 import SidebarModal from "@/components/layout/sidebar/SidebarModal";
 import { getServerSession } from "next-auth";
 import authOptions from "@/lib/auth";
-import Providers from "@/utils/provider";
+import Providers from "./reactQueryProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import MobileBottom from "@/components/mobilebottom/MobileBottom";
 import { Metadata } from "next";

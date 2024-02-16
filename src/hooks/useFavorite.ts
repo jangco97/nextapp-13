@@ -33,9 +33,9 @@ const useFavorite = ({ productId, currentUser }: UseFavoriteProps) => {
       await request();
       queryClient.invalidateQueries({ queryKey: ["user"] });
       router.refresh();
-      toast.success("성공적으로 처리되었습니다.");
+      toast.success("장바구니에 추가되었습니다.");
     } catch (err) {
-      toast.error("실패했습니다.");
+      toast.error("장바구니 추가에 실패했습니다.");
     }
   };
 

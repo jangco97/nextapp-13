@@ -10,6 +10,7 @@ import React, { FormEvent, useState } from "react";
 import axios from "axios";
 import Button from "@/components/shared/Button";
 import useSWRMutation from "swr/mutation";
+import { toast } from "react-toastify";
 
 interface ProductClientProps {
   product: Product & { user: User }; //user 프로퍼티 안에 유저가 있음
@@ -65,10 +66,10 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
         messageType: "reservation",
         productId: product?.id,
       });
-      alert("예약이 완료되었습니다.");
+      toast.success("상품이 예약되었습니다.");
       router.push(`/chat/${product.userId}`);
     } catch (error) {
-      alert("예약에 실패했습니다.");
+      toast.error("상품 예약에 실패했습니다.");
     } finally {
       setIsLoading(false);
     }
@@ -112,24 +113,33 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
               )}
             </div>
           </div>
-          <div className="">
+          <div>
             {currentUser?.id !== product?.user?.id &&
               currentUser?.id &&
               product.status === "판매중" && (
                 <form onSubmit={handleSubmit}>
-                  <div className="mt-10 ">
-                    <Button label="상품 예약하기" disabled={isLoading} />
+                  <div className="mt-10 flex gap-4 justify-center">
+                    <Button
+                      type="submit"
+                      label="상품 예약하기"
+                      disabled={isLoading}
+                      bgColor="bg-orange-500"
+                      hover={"hover:bg-orange-600"}
+                      width="w-52"
+                      size="small"
+                    />
+                    <Button
+                      type="button"
+                      bgColor="bg-indigo-500"
+                      hover="hover:bg-indigo-600"
+                      width="w-52"
+                      onClick={() => router.push(`/chat/${product?.user?.id}`)}
+                      label="이 유저와 채팅하기"
+                      size="small"
+                    />
                   </div>
                 </form>
               )}
-            {currentUser?.id !== product?.user?.id && currentUser?.id && (
-              <div className="mt-10 ">
-                <Button
-                  onClick={() => router.push(`/chat/${product?.user?.id}`)}
-                  label="이 유저와 채팅하기"
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>

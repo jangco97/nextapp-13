@@ -33,10 +33,10 @@ const LoginPage = () => {
     })
       .then((callback) => {
         if (callback?.error) {
-          toast.error("로그인 실패!");
+          toast.error("로그인에 실패했습니다.");
         }
         if (callback?.ok && !callback?.error) {
-          toast.success("로그인 성공!");
+          toast.success("반갑습니다.");
           router.push("/");
           router.refresh();
         }
@@ -83,7 +83,7 @@ const LoginPage = () => {
             errors={errors}
             required
           />
-          <Button label="Login" />
+          <Button label="Login" type="submit" />
           <hr />
           <div className="text-center">
             <p className="text-gray-400">
